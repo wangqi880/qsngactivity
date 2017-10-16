@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.j.qsng.dao.UserActivityMapper" >
+    <resultMap id="userActivity" type="com.j.qsng.model.UserActivity" >
+        <id column="id" property="id" jdbcType="BIGINT" />
+        <result column="msisdn" property="msisdn" jdbcType="VARCHAR" />
+        <result column="name" property="name" jdbcType="VARCHAR" />
+        <result column="cardId" property="cardId" jdbcType="VARCHAR" />
+        <result column="age" property="age" jdbcType="INTEGER" />
+        <result column="sex" property="sex" jdbcType="VARCHAR" />
+        <result column="imageName" property="imageName" jdbcType="VARCHAR" />
+        <result column="intro" property="intro" jdbcType="VARCHAR" />
+        <result column="attachIds" property="attachIds" jdbcType="VARCHAR" />
+        <result column="msisdn" property="msisdn" jdbcType="VARCHAR" />
+    </resultMap>
+
+    <resultMap id="userActivityDto" type="com.j.qsng.dto.UserActivityDto" >
+        <id column="id" property="id" jdbcType="BIGINT" />
+        <result column="msisdn" property="msisdn" jdbcType="VARCHAR" />
+        <result column="name" property="name" jdbcType="VARCHAR" />
+        <result column="cardId" property="cardId" jdbcType="VARCHAR" />
+        <result column="age" property="age" jdbcType="INTEGER" />
+        <result column="sex" property="sex" jdbcType="VARCHAR" />
+        <result column="imageName" property="imageName" jdbcType="VARCHAR" />
+        <result column="intro" property="intro" jdbcType="VARCHAR" />
+        <result column="attachIds" property="attachIds" jdbcType="VARCHAR" />
+        <result column="msisdn" property="msisdn" jdbcType="VARCHAR" />
+    </resultMap>
+
+
+<insert id="add" parameterType="com.j.qsng.model.UserActivity">
+    INSERT INTO `t_user_activity` (`id`, `msisdn`, `name`, `cardId`, `age`, `sex`, `imageName`, `intro`, `attachIds`, `insertTime`) VALUES (#{id}, #{msisdn}, #{name}, #{cardId}, #{age}, #{sex}, #{imageName}, #{intro}, #{attachIds}, #{insertTime})
+</insert>
+
+    <select id="querybyMsisdn"  parameterType="string" resultMap="userActivity" >
+        select * from t_user_activity t where t.msisdn=#{msisdn}
+    </select>
+
+    <select id="queryDtobyMsisdn"  parameterType="string" resultMap="userActivityDto" >
+        select * from t_user_activity t where t.msisdn=#{msisdn}
+    </select>
+</mapper>

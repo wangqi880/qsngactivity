@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.j.qsng.dao.AttachmentMapper" >
+    <resultMap id="attachment" type="com.j.qsng.model.Attachment" >
+        <id column="id" property="id" jdbcType="BIGINT" />
+        <result column="newName" property="newName" jdbcType="VARCHAR" />
+        <result column="oldName" property="oldName" jdbcType="VARCHAR" />
+        <result column="type" property="type" jdbcType="VARCHAR" />
+        <result column="suffix" property="suffix" jdbcType="VARCHAR" />
+        <result column="size" property="size" jdbcType="INTEGER" />
+        <result column="isImg" property="isImg" jdbcType="INTEGER" />
+        <result column="insertTime" property="insertTime" jdbcType="VARCHAR" />
+
+    </resultMap>
+
+    <select id="load"  parameterType="string" resultMap="attachment" >
+        select * from t_attachment  where id =#{id}
+    </select>
+    <insert id="add" parameterType="com.j.qsng.model.Attachment">
+  insert into t_attachment(id,newName,oldName,type,suffix,size,isImg,insertTime) values(#{id},#{newName},#{oldName},#{type},#{suffix},#{size},#{isImg},#{insertTime})
+    </insert>
+</mapper>

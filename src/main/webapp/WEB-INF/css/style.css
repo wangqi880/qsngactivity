@@ -1,0 +1,133 @@
+    body {
+        background-color: #f8f8f8;
+    }
+    
+    .enroll {
+        background-color: #ff315d;
+        border: 2px solid #ffdfdf;
+        border-radius: 20px;
+        font-weight: bold;
+        line-height: 34px;
+        margin: 6px;
+        font-size: 18px !important;
+        padding: 7px 30px !important;
+    }
+    
+    .enroll2 {
+        background-color: #c1e3ff;
+        border: 2px solid #eaf6ff;
+   
+        border-radius: 20px;
+        font-weight: bold;
+        line-height: 34px;
+        margin: 6px;
+        font-size: 18px !important;
+        padding: 7px 30px !important;
+    }
+    
+    h2 {
+        font-weight: bold;
+        font-size: 20px;
+    }
+    
+    .first {
+        color: #0096ff;
+        margin-bottom: 20px;
+        margin-top: 30px;
+    }
+    
+    .qy-content>ul {
+        text-indent: 2em;
+    }
+    
+    .qy-content>ul>li {
+        list-style: none;
+        line-height: 32px;
+        font-size: 16px
+    }
+    
+    .qy-content2 b {
+        color: #ff315d;
+    }
+    
+    .qy-content2>ul {}
+    
+    .qy-content2>ul>li {
+        list-style: none;
+        line-height: 32px;
+        font-size: 16px
+    }
+    
+    .f16 {
+        font-size: 16px;
+    }
+    
+    .tip {
+        color: #ff315d;
+    }
+    
+    .title-content {
+        font-size: 16px;
+    }
+    
+    .footer {
+        background-color: #ddd9cb;
+    }
+    
+    .setting-first {
+        background-color: #eceeff;
+        padding: 50px 10px 20px 10px;
+        margin-top: -40px;
+    }
+    
+    .second-main {
+        margin-top: 20px;
+    }
+    
+    .setting-second {
+        background-color: #eceeff;
+        margin-top: -40px;
+        text-align: center;
+    }
+    
+    .second-content {
+        padding: 50px 10px 20px 10px;
+    }
+    
+    .mt20 {
+        margin-top: 20px;
+    }
+    /* bootstrap rewrite */
+    
+    .navbar-nav>li>a:hover {
+        color: #333;
+        background-color: rgba(0, 0, 0, 0.5) !important;
+    }
+    
+    .navbar {
+        border-radius: 0px !important;
+        background-color: #0096ff;
+        border-color: #0096ff;
+    }
+    
+    .active>a {
+        background-color: #0082dd !important;
+    }
+    
+    .navbar-nav>li>a {
+        color: #fff !important;
+        font-size: 20px;
+    }
+    
+    @media (min-width: 1200px) {
+        .container {
+            width: 990px;
+        }
+    }
+    /**/
+    
+    @media (max-width:768px) {
+        .timeline img {
+            width: 100%;
+        }
+    }
