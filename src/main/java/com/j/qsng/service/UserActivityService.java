@@ -13,4 +13,6 @@ public interface UserActivityService
 	public UserActivityDto queryDtobyMsisdn(String msisdn);
 
 
+
+
 }

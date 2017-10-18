@@ -87,25 +87,25 @@
                                     <td width="100" height="40" align="right"><span class="red">*</span>&nbsp;手机号：</td>
 
                                     <td align="left">
-                                        <input name="msisdn", class="select_240" value="15682051518" >
+                                        <input name="msisdn", class="select_240" value="${user.msisdn}" >
                                     </td>
                                 </tr>
                                 <tr>
                                     <td width="100" height="40" align="right"><span class="red">*</span>&nbsp;姓名：</td>
                                     <td align="left">
-                                        <input name="name", class="select_240" value="王琪" >
+                                        <input name="name", class="select_240" value="${user.name}" >
                                     </td>
                                 </tr>
                                 <tr>
                                     <td height="40" align="right"><span class="red">*</span>&nbsp;身份证号：</td>
                                     <td align="left">
-                                       <input name="cardId", class="select_240" value="511525199901050025">
+                                       <input name="cardId", class="select_240" value="${user.cardId}">
                                     </td>
                                 </tr>
                                 <tr>
                                     <td height="40" align="right"><span class="red">*</span>&nbsp;年龄：</td>
                                     <td align="left">
-                                        <input name="age", class="select_240" value="12">
+                                        <input name="age", class="select_240" value="${user.age}">
                                     </td>
                                 </tr>
                                 <tr>
@@ -380,14 +380,17 @@
 
         var msisdn_pattern = /^1[34578]\d{9}$/;
         if(!msisdn_pattern.test(msisdn)){
-            altert("手机号格式不对");
+            alert("手机号格式不对");
+            return ;
         }
         var cardId_pattern = /(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/;
        if(!cardId_pattern.test(cardId)){
            alert("身份证格式不对");
+           return ;
        }
        if(age<0||age>100){
            alert("年龄格式不对");
+           return ;
        }
 
         $('#form_1').submit();

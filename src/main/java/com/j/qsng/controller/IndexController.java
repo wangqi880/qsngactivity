@@ -1,8 +1,18 @@
 package com.j.qsng.controller;
 
+import com.j.qsng.common.pojo.BaseResp;
+import com.j.qsng.common.util.DateUtils;
+import com.j.qsng.common.util.IDUtils;
+import com.j.qsng.common.util.IdcardUtils;
+import com.j.qsng.model.User;
+import com.j.qsng.service.UserService;
+import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
@@ -14,6 +24,9 @@ import javax.servlet.http.HttpServletRequest;
 @RequestMapping("/index")
 public class IndexController
 {
+	final static String SUCCESS="success";
+	@Autowired UserService userService;
+
 	@RequestMapping("/index.html")
 	public ModelAndView index(HttpServletRequest request ){
 
@@ -58,4 +71,7 @@ public class IndexController
 		modelAndView.setViewName("index/prize_info");
 		return modelAndView;
 	}
+
+
+
 }

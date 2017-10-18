@@ -6,9 +6,11 @@ import com.j.qsng.common.util.DateUtils;
 import com.j.qsng.common.util.IDUtils;
 import com.j.qsng.dto.UserActivityDto;
 import com.j.qsng.model.Attachment;
+import com.j.qsng.model.User;
 import com.j.qsng.model.UserActivity;
 import com.j.qsng.service.AttachmentService;
 import com.j.qsng.service.UserActivityService;
+import com.j.qsng.service.UserService;
 import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.BeanUtils;
@@ -23,8 +25,8 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
@@ -46,6 +48,8 @@ public class UserContoller extends BaseController
 	@Autowired AttachmentService attachmentService;
 
 	@Autowired UserActivityService userActivityService;
+
+	@Autowired UserService userService;
 	//进入活动上传也，需要登录之后
 	@RequestMapping("/user/joinActivity.html")
 	public ModelAndView getJoinActivity(HttpServletRequest request){
@@ -208,11 +212,18 @@ public class UserContoller extends BaseController
 	}
 
 
+
 	@RequestMapping(value="/user/upload.html")
-	public ModelAndView upload(HttpServletRequest resp){
+	public ModelAndView upload(HttpServletRequest resp,HttpSession session){
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("user/upload");
+		User user = (User)session.getAttribute("loginUser");
+		modelAndView.addObject("user",user);
 		return modelAndView;
 	}
+
+
+
+
 
 }
