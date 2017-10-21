@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.j.qsng.dao.UserPicMapper" >
+
+    <resultMap id="userPic" type="com.j.qsng.model.UserPic" >
+        <id column="id" property="id" jdbcType="VARCHAR" />
+        <result column="userId" property="userId" jdbcType="VARCHAR" />
+        <result column="attachmentId" property="attachmentId" jdbcType="VARCHAR" />
+        <result column="imageName" property="imageName" jdbcType="VARCHAR" />
+        <result column="intro" property="intro" jdbcType="VARCHAR" />
+    </resultMap>
+
+<insert id="add" parameterType="com.j.qsng.model.UserPic">
+    INSERT INTO `t_user_pic` (`userId`, `attachmentId`,imageName,intro) VALUES (#{userId}, #{attachmentId},#{imageName},#{intro});
+</insert>
+
+    <select id="queryByUserId"  parameterType="string" resultMap="userPic" >
+       select * from t_user_pic t where t.userId=#{userId}
+    </select>
+    <delete id="delByUserIdAndAttachmentId" parameterType="hashmap">
+        DELETE FROM t_user_pic WHERE userId = #{userId} and attachmentId=#{attachmentId}
+    </delete>
+
+
+    <select id="queryByUserIdAndAttachmentId"  parameterType="hashmap" resultMap="userPic" >
+        select * from t_user_pic t where t.userId=#{userId} and t.attachmentId=#{attachmentId}
+    </select>
+
+
+    <update id="updateNameAndInfo" parameterType="com.j.qsng.model.UserPic">
+        UPDATE `t_user_pic`
+            SET
+            `imageName` = #{imageName},
+            `intro` = #{intro}
+        WHERE `userId` = #{userId} and attachmentId=#{attachmentId}
+
+    </update>
+
+</mapper>

@@ -82,7 +82,8 @@ public class LoginController
 	public ModelAndView login(User user,HttpSession session){
 		ModelAndView modelAndView = new ModelAndView();
 		if(null==user||StringUtils.isEmpty(user.getUsername()) || StringUtils.isEmpty(user.getPassword())){
-			modelAndView.setViewName("/index/login.html");
+			modelAndView.setViewName("/login/login");
+			modelAndView.addObject("message","账户或者密码不为空");
 			return modelAndView;
 		}
 		//判断用户是否用登录权限
@@ -92,7 +93,8 @@ public class LoginController
 			modelAndView.setViewName("redirect:/index/indexnew.html");
 			session.setAttribute("loginUser", oldU);
 		}else{
-			modelAndView.setViewName("/login/login.html");
+			modelAndView.setViewName("/login/login");
+			modelAndView.addObject("message","账户或者密码不正确");
 		}
 
 		return modelAndView;

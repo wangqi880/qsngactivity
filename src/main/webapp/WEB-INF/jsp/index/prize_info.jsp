@@ -38,6 +38,7 @@
       <li class="bg_ii">奖项设置</li>
       <li><a href="<%= path%>/user/showproduct.html" tppabs="http://pic.eol.cn/picture/take_in">作品展示</a></li>
       <li><a href="<%= path%>/user/upload.html" tppabs="http://pic.eol.cn/picture/upload">上传作品</a></li>
+      <li><a href="<%= path%>/user/userInfo.html">修改信息</a></li>
     </ul>
     </div>
 </div>

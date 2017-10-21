@@ -43,6 +43,9 @@
 					<input type="text" name="verify" id="verify" class="ipt" placeholder="输入验证码" required>
 					<img src="http://zrong.me/home/index/imgcode?id=" class="imgcode">
 				</div>--%>
+				<div class="group-ipt password">
+					<span style="color: red">${message}</span>
+				</div>
 			</div>
 			</form>
 		</div>

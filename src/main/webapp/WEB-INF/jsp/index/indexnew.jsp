@@ -16,7 +16,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <link href="<%= path%>/css/glb1311_utf.css" tppabs="http://www.eol.cn/css/cer.net/2011/glb1311_utf.css" rel="stylesheet" rev="stylesheet" type="text/css" media="all" ignoreapd="false">
         <link href="<%= path%>/css/css.css" tppabs="http://pic.eol.cn/app/static/css/css.css" rel="stylesheet" type="text/css" />
             <%--<link href="css.css" tppabs=<%= path%>/css/css.css" rel="stylesheet" type="text/css" />--%>
-            <script type="text/javascript" src="<%= path%>/js/activity/jQuery_latest.min.js" tppabs="http://www.eol.cn/js/global/jQuery_latest.min.js" ignoreapd="false"></script>
+            <script type="text/javascript" src="<%= path%>/js/jquery-1.9.1.min.js" tppabs="http://www.eol.cn/js/global/jQuery_latest.min.js" ignoreapd="false"></script>
             <script type="text/javascript" src="<%= path%>/js/activity/jQuery_tabs.js" tppabs="http://www.eol.cn/js/global/jQuery_tabs.js" ignoreapd="false"></script>
             <script type="text/javascript" src="<%= path%>/js/activity/jQuery_picFocus.js" tppabs="http://www.eol.cn/js/global/jQuery_picFocus.js" ignoreapd="false" charset="utf-8"></script>
             <script type="text/javascript" src="<%= path%>/js/activity/ctrl.js" tppabs="http://pic.eol.cn/app/static/script/ctrl.js" ignoreapd="false"></script>
@@ -35,6 +35,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <li><a href="<%= path%>/index/prize_info.html" tppabs="http://pic.eol.cn/picture/prize_info">奖项设置</a></li>
         <li><a href="<%= path%>/user/showproduct.html" tppabs="http://pic.eol.cn/picture/take_in">作品展示</a></li>
         <li><a href="<%= path%>/user/upload.html" tppabs="http://pic.eol.cn/picture/upload">上传作品</a></li>
+        <li><a href="<%= path%>/user/userInfo.html">修改信息</a></li>
     </ul>
     </div>
 
@@ -44,9 +45,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <div class="w_780 left">
                 <div class="title"><h2>
                     <span>
-                    |<a href="javascript:if(confirm('http://pic.eol.cn/picture/lists?order_by=new&shtype=1  \n\n�ļ���δ�� Teleport Pro ȡ�أ���Ϊ ���޷�ȡ�ã�������ȡ�غ������������Ŀֹͣ��̫�졣  \n\n��Ҫ�ӷ������ϴ�����'))window.location='http://pic.eol.cn/picture/lists?order_by=new&shtype=1'" tppabs="http://pic.eol.cn/picture/lists?order_by=new&shtype=1">大学校园</a>
-                    |<a href="javascript:if(confirm('http://pic.eol.cn/picture/lists?order_by=new&shtype=2  \n\n�ļ���δ�� Teleport Pro ȡ�أ���Ϊ ���޷�ȡ�ã�������ȡ�غ������������Ŀֹͣ��̫�졣  \n\n��Ҫ�ӷ������ϴ�����'))window.location='http://pic.eol.cn/picture/lists?order_by=new&shtype=2'" tppabs="http://pic.eol.cn/picture/lists?order_by=new&shtype=2">中小学校</a>
-                    |<a href="javascript:if(confirm('http://pic.eol.cn/picture/lists?order_by=new&shtype=3  \n\n�ļ���δ�� Teleport Pro ȡ�أ���Ϊ ���޷�ȡ�ã�������ȡ�غ������������Ŀֹͣ��̫�졣  \n\n��Ҫ�ӷ������ϴ�����'))window.location='http://pic.eol.cn/picture/lists?order_by=new&shtype=3'" tppabs="http://pic.eol.cn/picture/lists?order_by=new&shtype=3">海外院校</a>
+                    |<a href="javascript:if(confirm('http://pic.eol.cn/picture/lists?order_by=new&shtype=2 '))window.location='http://pic.eol.cn/picture/lists?order_by=new&shtype=2'">青少年宫</a>
+                    |<a href="javascript:if(confirm('http://pic.eol.cn/picture/lists?order_by=new&shtype=3 '))window.location='http://pic.eol.cn/picture/lists?order_by=new&shtype=3'" >用户</a>
                 </span>
                     <a href="<%= path%>/user/upload.html">我要上传</a></h2></div>
                 
@@ -369,25 +369,3 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         </div>
     </body>
 </html>
-<script type="text/javascript" src="<%= path%>/js/activity/vote.js" tppabs="http://pic.eol.cn/app/static/script/vote.js" ignoreapd="false"></script>
-<div style="width:1px;height:1px;overflow:hidden;">
-	<script type="text/javascript">
-	document.write('<img src="http://pv.img.eol.cn/images/cer.net/log/gao-kao.png?'+Math.round(Math.random()*1e17)+'" width="0" height="0"/>');
-	</script>
-	<noscript>
-	<img src="gao-kao.png" tppabs="http://pv.img.eol.cn/images/cer.net/log/gao-kao.png" width="0" height="0" />
-	</noscript>
-<!-- ecounter -->
-<script>
-var pkBaseURL = (("https:" == document.location.protocol) ? "https://stat.eol.cn/" : "http://stat.eol.cn/");
-document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
-</script><script type="text/javascript">
-try {
-var piwikTracker = Piwik.getTracker(pkBaseURL + "mysql.php", 76);
-piwikTracker.trackPageView();
-piwikTracker.enableLinkTracking();
-} catch( err ) {}
-</script><noscript><p><img src="mysql.php-idsite=76" tppabs="http://stat.eol.cn/mysql.php?idsite=76" style="border:0" alt="" /></p></noscript>
-<!-- End ecounter Tag -->
-<script src="stat.php-id=4696180&web_id=4696180" tppabs="http://s6.cnzz.com/stat.php?id=4696180&web_id=4696180" language="JavaScript"></script>
-</div>

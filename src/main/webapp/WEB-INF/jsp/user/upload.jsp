@@ -15,33 +15,45 @@
     <meta content="all" name="robots" />
     <link href="<%= path%>/css/glb1311_utf.css" rel="stylesheet" rev="stylesheet" type="text/css" media="all" ignoreapd="false">
     <link href="<%= path%>/css/css.css"  rel="stylesheet" type="text/css" />
-    <link href="<%= path%>/js/uploadify/css/jquery.fileupload-ui.css"  rel="stylesheet" type="text/css" />
+    <%--<link href="<%= path%>/js/uploadify/css/jquery.fileupload-ui.css"  rel="stylesheet" type="text/css" />
     <link href="<%= path%>/js/uploadify/css/jquery.fileupload.css"  rel="stylesheet" type="text/css" />
     <link href="<%= path%>/js/uploadify/css/jquery.fileupload-noscript.css"  rel="stylesheet" type="text/css" />
-    <link href="<%= path%>/js/uploadify/css/ jquery.fileupload-ui-noscript.css"  rel="stylesheet" type="text/css" />
+    <link href="<%= path%>/js/uploadify/css/ jquery.fileupload-ui-noscript.css"  rel="stylesheet" type="text/css" />--%>
 
+    <style type="text/css">
+        *{margin:0;padding:0;list-style-type:none;}
+        body{overflow-y:scroll;font-family:"HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, sans-serif;background:#f4f4f4;padding:0;margin:0;}
+        a,a:hover{border:none;text-decoration:none;}
+        img,a img{border:none;}
+        .clear{clear:both;}
 
+        /* gallery */
+        .zoomed > .gallery{-webkit-filter:blur(3px);filter:blur(3px);}
+        .gallery{width:800px;margin:20px auto;}
+        .gallery li{float:left;margin:10px; width:80px; height:80px;}
+        .gallery li:nth-child(6n){padding-right:0;}
+        .gallery li a,.gallery li img{float:left;}
+    </style>
+    <link rel="stylesheet"  href="<%= path%>/css/zoom.css" media="all" />
+    <%--<script type="text/javascript" src="<%= path%>/js/activity/jQuery_latest.min.js" ></script>--%>
 
-
-    <%--<link href="css.css" tppabs=<%= path%>/css/css.css" rel="stylesheet" type="text/css" />--%>
-    <script type="text/javascript" src="<%= path%>/js/activity/jQuery_latest.min.js" ></script>
-<%--
-    <script type="text/javascript" src="<%= path%>/js/jquery-3.2.1.min.js" ></script>
---%>
-
-    <script type="text/javascript" src="<%= path%>/js/activity/jQuery_tabs.js" tppabs="http://www.eol.cn/js/global/jQuery_tabs.js" ignoreapd="false"></script>
+   <%-- <script type="text/javascript" src="<%= path%>/js/activity/jQuery_tabs.js" tppabs="http://www.eol.cn/js/global/jQuery_tabs.js" ignoreapd="false"></script>
     <script type="text/javascript" src="<%= path%>/js/activity/jQuery_picFocus.js" tppabs="http://www.eol.cn/js/global/jQuery_picFocus.js" ignoreapd="false" charset="utf-8"></script>
-    <script type="text/javascript" src="<%= path%>/js/activity/ctrl.js" tppabs="http://pic.eol.cn/app/static/script/ctrl.js" ignoreapd="false"></script>
+    <script type="text/javascript" src="<%= path%>/js/activity/ctrl.js" tppabs="http://pic.eol.cn/app/static/script/ctrl.js" ignoreapd="false"></script>--%>
     <!--上传js-->
-    <script type="text/javascript"  src="<%= path%>/js/uploadify/js/vendor/jquery.ui.widget.js"></script>
+  <%--  <script type="text/javascript"  src="<%= path%>/js/uploadify/js/vendor/jquery.ui.widget.js"></script>
     <script type="text/javascript"  src="<%= path%>/js/uploadify/js/jquery.fileupload.js"></script>
     <script type="text/javascript"  src="<%= path%>/js/uploadify/js/jquery.fileupload-jquery-ui.js"></script>
     <script type="text/javascript"  src="<%= path%>/js/uploadify/js/jquery.fileupload-process.js"></script>
     <script type="text/javascript"  src="<%= path%>/js/uploadify/js/jquery.fileupload-ui.js"></script>
     <script type="text/javascript"  src="<%= path%>/js/uploadify/js/jquery.fileupload-validate.js"></script>
-    <script type="text/javascript"  src="<%= path%>/js/uploadify/js/jquery.iframe-transport.js"></script>
+    <script type="text/javascript"  src="<%= path%>/js/uploadify/js/jquery.iframe-transport.js"></script>--%>
+
+    <!--图片变大js-->
 
 
+    <script type="text/javascript" src="<%= path%>/js/jquery-1.9.1.min.js" ></script>
+    <script type="text/javascript" src="<%= path%>/js/zoom.min.js"></script>
 
     <!--
     <base  target="_blank"/>
@@ -49,6 +61,7 @@
 </head>
 
 <body>
+
 <div class="top_i" style="background:url(<%= path%>/images/top_i.jpg) no-repeat center top;" ><h1 class="hide">摄影大赛</h1></div>
 <div class="nav_i">
     <div class="main">
@@ -59,6 +72,7 @@
             <li><a href="<%= path%>/index/prize_info.html" tppabs="http://pic.eol.cn/picture/prize_info">奖项设置</a></li>
             <li><a href="<%= path%>/user/showproduct.html" tppabs="http://pic.eol.cn/picture/take_in">作品展示</a></li>
             <li class="bg_ii">上传作品</li>
+            <li><a href="<%= path%>/user/userInfo.html">修改信息</a></li>
         </ul>
     </div>
 </div>
@@ -75,11 +89,7 @@
                 <div class="no_way"></div>
                 <div class='box font_14'>
                     <div class='content' >
-
                         <input type="hidden" value="1"  name="shtype" id="shtype">
-
-
-
                         <form action="<%= path%>/user/addUserPics" method="post" enctype="multipart/form-data" name="form_action" id="form_1">
                             <input type="hidden" value="1"  name="shtype" />
                             <table width="760" border="0" align="center" cellpadding="5" cellspacing="0">
@@ -118,8 +128,9 @@
 
                                         </select></td>
                                 </tr>
-
-
+                                <tr>
+                                    <td width="80" align="left"><button type="button" id="addImage" value="add">添加照片</button></td>
+                                </tr>
                             </table>
                             <div class="dashed"></div>
                             <table width="780" border="0" align="center" cellpadding="5" cellspacing="0">
@@ -127,57 +138,74 @@
                                     <td width="29" align="left"><em>1.</em></td>
                                     <td width="74" height="40" align="right">作品名称：</td>
                                     <td width="647" align="left">
-                                        <input type="text" name="imageName"   class="iput_240" value="我是作品名称" />必填</td>
+                                        <input type="text" name="imageName1"   class="iput_240" value="我是作品名称" />必填</td>
                                 </tr>
                                 <tr>
                                     <td align="left"></td>
                                     <td height="40" align="right">作品图：</td>
 
                                     <td align="left">
-
-                                      <%--  <input id="fileupload" type="file" name="attachs" data-url="<%= path%>/user/pic/upload/" multiple="true">--%>
-<%--
-                                          <input id="fileupload" type="file" name="attachs" data-url="http://192.168.0.100:8080/qsngactivity/user/pic/upload" multiple="true">
---%>
                                           <form id="frm_identityA" action="" enctype="multipart/form-data">
                                                 <span>
-                                                    <input id="fileupload" name="attachs" accept="image/jpg" multiple="multiple" type="file" value="" />
+                                                    <input id="fileupload" name="attachs" accept="image/jpg"  type="file" value="" />
                                                 </span>
                                               <input id="btnImportOK" type="button" value="上传" />
                                           </form>
-
-
-
-                                        <%--<div class="progress progress-striped active">
-                                            <div class="progress-bar progress-bar-success" role="progressbar" style="width: 0%;">0%</div>
-                                        </div>--%>
-
-                                       <%-- <div class="fileupload-buttonbar">
-                                            <span class="fileinput-button">
-                                            <input type="file" name="files[]" multiple="true" accept="image/jpg"></span>
-                                            <button type="submit" class="start">上传</button>
-                                            <button type="reset" class="cancel">取消</button>
-                                        </div>--%>
-                                       <%-- <input id="fileupload" type="file" class="ehdel_upload" name="attachs[]" multiple="true" />      <i>(要求:长*宽限制在1620万像素之内,最长边的边长不可小于1000像素,jpg)</i>--%>
-                                    </td>
-                                </tr>
-
-                                <tr id="files">
-
-                                    <td align="left"></td>
-                                    <td align="right">
-                                        <div class="files">显示</div>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td align="left"></td>
                                     <td align="right" valign="top">作品介绍：</td>
                                     <td align="left">
-                                        <textarea name="intro"  cols="45" rows="5" class="textarea"></textarea></td>
+                                        <textarea name="intro1"  cols="45" rows="5" class="textarea"></textarea></td>
                                 </tr>
                             </table>
-                            <div class="dashed"></div>
+                                <div class="dashed"></div>
+                            <!--第二张图片-->
+                            <table width="780" id="second_image" border="0" align="center" cellpadding="5" cellspacing="0" style="display: none">
+                                <tr>
+                                    <td width="29" align="left"><em>2.</em></td>
+                                    <td width="74" height="40" align="right">作品名称：</td>
+                                    <td width="647" align="left">
+                                        <input type="text" name="imageName2"   class="iput_240" value="我是作品名称" />必填</td>
+                                </tr>
+                                <tr>
+                                    <td align="left"></td>
+                                    <td height="40" align="right">作品图：</td>
 
+                                    <td align="left">
+                                        <form id="frm_identityB" action="" enctype="multipart/form-data">
+                                                <span>
+                                                    <input id="fileuploadB" name="attachs" accept="image/jpg" type="file" value="" />
+                                                </span>
+                                            <input id="btnImportOKB" type="button" value="上传" />
+                                        </form>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="left"></td>
+                                    <td align="right" valign="top">作品介绍：</td>
+                                    <td align="left">
+                                        <textarea name="intro2"  cols="45" rows="5" class="textarea"></textarea></td>
+                                </tr>
+                            </table>
+
+                            <div class="gallery" >
+                                <!--显示图片-->
+                                <ul>
+                                    <li>
+                                        <a id="image1_a"> <img  name="imageName" id="image1" width="100%" height="100%"></a>
+                                    </li>
+                                    <li>
+                                        <a id="image2_b"> <img  name="imageName" id="image2" width="100%" height="100%"></a>
+                                    </li>
+                                </ul>
+                                <div class="clear"></div>
+                            </div>
+                            <script type="text/javascript" src="<%= path%>/js/zoom.min.js"></script>
+                            <input type="hidden"   name="attachmentId1" id="attachmentId1">
+                            <input type="hidden"   name="attachmentId2" id="attachmentId2">
+                            <div class="dashed"></div>
 
 
                             </table>
@@ -249,33 +277,22 @@
 </div>
 </body>
 </html>
-<script type="text/javascript" src="<%= path%>/js/activity/vote.js" tppabs="http://pic.eol.cn/app/static/script/vote.js" ignoreapd="false"></script>
-<div style="width:1px;height:1px;overflow:hidden;">
-    <%--<script type="text/javascript">
-        document.write('<img src="http://pv.img.eol.cn/images/cer.net/log/gao-kao.png?'+Math.round(Math.random()*1e17)+'" width="0" height="0"/>');
-    </script>--%>
-    <%--<noscript>
-        <img src="gao-kao.png" tppabs="http://pv.img.eol.cn/images/cer.net/log/gao-kao.png" width="0" height="0" />
-    </noscript>--%>
-    <!-- ecounter -->
-
-  <%-- <script type="text/javascript">
-    try {
-        var piwikTracker = Piwik.getTracker(pkBaseURL + "mysql.php", 76);
-        piwikTracker.trackPageView();
-        piwikTracker.enableLinkTracking();
-    } catch( err ) {}
-</script>--%>
-       <%-- <noscript><p><img src="mysql.php-idsite=76" tppabs="http://stat.eol.cn/mysql.php?idsite=76" style="border:0" alt="" /></p></noscript>--%>
-    <!-- End ecounter Tag -->
 <%--
-    <script src="stat.php-id=4696180&web_id=4696180" tppabs="http://s6.cnzz.com/stat.php?id=4696180&web_id=4696180" language="JavaScript"></script>
+<script type="text/javascript" src="<%= path%>/js/activity/vote.js" tppabs="http://pic.eol.cn/app/static/script/vote.js" ignoreapd="false"></script>
 --%>
-</div>
 
 <script type="text/javascript">
 
     $(document).ready(function(){
+
+
+        <!--添加照片-->
+        $("#addImage").click(function(){
+            $("#second_image").show();
+            var v = $("#addImage").val();
+        })
+
+        <!--上传第一张照片-->
         $("#btnImportOK").click(function () {
           /*  var formData = new FormData($("#frm_identityA")[0]);*/
             var paths = document.getElementById("fileupload").files;
@@ -310,26 +327,71 @@
                 processData: false,
             }).success(function(data) {
                 if (data.code=='000000') {
-
-                    var files =  document.getElementById("files");
-                    var node="<td align='left'></td> <td align='right'> <div class='files'>显示</div> </td>";
-                    $.each(data.data, function(i,img){
-                        node+="<td><a href='"+img.filePath+"'><img src='"+img.thumFilePath+"'/></a></td>";
-
-                        node+="<input type='hidden' name='attachIds' value='"+img.id+"'/>";
-                    });
-
-                    files.innerHTML=node;
-                    console.log(data.data);
+                    $("#image1").attr('src',"<%= path%>"+data.data[0].filePath);
+                    $("#image1_a").attr('href',"<%= path%>"+data.data[0].filePath);
+                    $("#attachmentId1").val(data.data[0].id);
                 } else {
+                    alert("上传失败"+data.info);
                     console.log(data.info);
                 }
 
             }).error(function(data) {
-                alert(data);
+                alert("上传失败"+data.info);
                 console.log(data);
             });
         });
+
+
+
+        <!--上传第二张照片-->
+        $("#btnImportOKB").click(function () {
+            /*  var formData = new FormData($("#frm_identityA")[0]);*/
+            var paths = document.getElementById("fileuploadB").files;
+
+            if(paths.length==0)
+            {
+                alert("请选择文件");
+                return;
+            }
+            var formData = new FormData();
+            for (var i = 0; i < paths.length; i++) {
+                var file = paths[i];
+                /*  alert(file.type);*/
+                //用正则表达式判断文件的类型是否是图片，这里大家可以自由发挥
+                if (!new RegExp("image/jpeg").test(file.type)) {
+                    alert("请注意，上传的文件一定要是图片文件(jpg)");
+                    return;
+                }
+            }
+            //我们可以预先定义一个FormData对象
+            var formData=new FormData();
+            for(var i=0;i<paths.length;i++)
+            {
+                //将每个文件设置一个string类型的名字，放入到formData中，这里类似于setAttribute("",Object)
+                formData.append(paths[i].name,paths[i]);
+            }
+            $.ajax({
+                type: "POST",
+                data: formData,
+                url: "http://localhost:8080/qsngactivity/user/pic/upload",
+                contentType: false,
+                processData: false,
+            }).success(function(data) {
+                if (data.code=='000000') {
+                    $("#image2").attr('src',"<%= path%>"+data.data[0].filePath);
+                    $("#image2_b").attr('href',"<%= path%>"+data.data[0].filePath);
+                    $("#attachmentId2").val(data.data[0].id);
+                } else {
+                    alert(上传失败+data.info);
+                    console.log(data.info);
+                }
+
+            }).error(function(data) {
+                alert(上传失败+data.info);
+                console.log(data);
+            });
+        });
+
 
     });
 </script>
@@ -337,14 +399,34 @@
 <script type="text/javascript">
 
     function formSubmit(){
+        var attachmentId2 = $("input[name='attachmentId2']").val();
+        var attachmentId1 = $("input[name='attachmentId1']").val();
+        if((attachmentId2==null||attachmentId2=="") && (attachmentId1==null||attachmentId1=="")){
+            alert("上传图片不能为空");
+            return ;
+        }
+        if(attachmentId1!=null && attachmentId1!=""){
+            var imageName1= $("input[name='imageName1']").val();
+            var intro1 = $("textarea[name='intro1']").val();
+            if(imageName1==null||imageName1==""){
+                alert("作品名称不能为空");
+                return ;
+            }
 
-        var msisdn = $("input[name='msisdn']").val();
+            if(intro1==null||intro1==""){
+                alert("描述不能为空");
+                return ;
+            }
+        }
+
+
+/*        var msisdn = $("input[name='msisdn']").val();
         var name = $("input[name='name']").val();
         var cardId = $("input[name='cardId']").val();
         var age =$("input[name='age']").val();
         var sex=$("select[name='sex']").val();
         var imageName= $("input[name='imageName']").val();
-        var images = $("input[name='attachIds']");
+
         var intro = $("textarea[name='intro']").val();
 
         if(msisdn==null||msisdn==""){
@@ -391,7 +473,7 @@
        if(age<0||age>100){
            alert("年龄格式不对");
            return ;
-       }
+       }*/
 
         $('#form_1').submit();
     }
@@ -400,7 +482,4 @@
 
 </script>
 
-<%--
-<script type="text/javascript" src="<%= path%>/js/activity/form.js" tppabs="http://pic.eol.cn/app/static/script/form.js" ignoreapd="false"></script>
---%>
 

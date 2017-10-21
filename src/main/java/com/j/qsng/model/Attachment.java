@@ -9,6 +9,7 @@ import lombok.Data;
 public class Attachment
 {
 	private long id;
+	private long userId;
 	/**
 	 * 附件上传之后的名称
 	 */

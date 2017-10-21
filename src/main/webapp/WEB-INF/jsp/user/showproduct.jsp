@@ -16,13 +16,23 @@
 <meta content="all" name="robots" />
   <link href="<%= path%>/css/glb1311_utf.css" rel="stylesheet" rev="stylesheet" type="text/css" media="all" ignoreapd="false">
   <link href="<%= path%>/css/css.css"  rel="stylesheet" type="text/css" />
-  <%--<link href="<%= path%>/js/uploadify/css/jquery.fileupload-ui.css"  rel="stylesheet" type="text/css" />
-  <link href="<%= path%>/js/uploadify/css/jquery.fileupload.css"  rel="stylesheet" type="text/css" />
-  <link href="<%= path%>/js/uploadify/css/jquery.fileupload-noscript.css"  rel="stylesheet" type="text/css" />
-  <link href="<%= path%>/js/uploadify/css/ jquery.fileupload-ui-noscript.css"  rel="stylesheet" type="text/css" />--%>
-<!--
-<base  target="_blank"/>
--->
+    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="stylesheet" type="text/css" href="<%= path%>/cardExpansion/css/normalize.css" />
+    <link rel="stylesheet" type="text/css" href="<%= path%>/cardExpansion/fonts/font-awesome-4.3.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="<%= path%>/cardExpansion/css/demo.css" />
+
+    <!--必要样式-->
+    <link rel="stylesheet" type="text/css" href="<%= path%>/cardExpansion/css/card.css" />
+    <link rel="stylesheet" type="text/css" href="<%= path%>/cardExpansion/css/pattern.css" />
+    <!--[if IE]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <script>
+        if (navigator.userAgent.toLowerCase().indexOf('firefox') > -1) {
+            var root = document.getElementsByTagName('html')[0];
+            root.setAttribute('class', 'ff');
+        };
+    </script>
 </head>
 
 <body>
@@ -35,54 +45,67 @@
       <li><a href="<%= path%>/index/act_rule.html" tppabs="http://pic.eol.cn/picture/act_rule">参赛规则</a></li>
       <li><a href="<%= path%>/index/prize_info.html" tppabs="http://pic.eol.cn/picture/prize_info">奖项设置</a></li>
       <li class="bg_ii">作品显示</li>
-      <li><a href="upload.htm">上传作品</a></li>
+      <li><a href="<%= path%>/user/upload.html">上传作品</a></li>
+        <li><a href="<%= path%>/user/userInfo.html">修改信息</a></li>
     </ul>
     </div>
 </div>
 
 
+<div class="container" style="color: white">
 
+    <header class="codrops-header">
+        <nav class="codrops-demos">
+            <a class="current-demo" href="test2.jsp">${user.name}作品展示</a>
+        </nav>
+    </header>
 
-<div class="bg_gary ">
-<div class="main mar_t_20" >
-	<div class="w_780 left">
-   	  <div class="title"><h2>${uadto.name}作品显示。（${message}）</h2></div>
-  	  <div class="jp_l" >
-      	<h2><span style="mrgin-top: 4px">作品描述：</span></h2>
-        <table width="360" border="0" align="center" cellpadding="10" cellspacing="0" class="font_18">
-  <tr>
+    <div class="content">
+        <!-- trianglify pattern container -->
+        <div class="pattern pattern--hidden"></div>
+        <!-- cards -->
+        <div class="wrapper">
+            <c:forEach items="${userPicShowDtoList}" var="imginfo">
+                <div class="card">
+                    <div class="card__container card__container--closed">
+                        <svg class="card__image" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 1920 500" preserveAspectRatio="xMidYMid slice">
+                            <defs>
+                                <clipPath id="clipPath1">
+                                    <!-- r = 992 = hyp = Math.sqrt(960*960+250*250) -->
+                                    <circle class="clip" cx="960" cy="250" r="992"></circle>
+                                </clipPath>
+                            </defs>
+                            <image clip-path="url(#clipPath1)" width="1920" height="500" xlink:href="<%= path%>/resources/upload/${imginfo.attachment.newName}"></image>
+                        </svg>
+                        <div class="card__content">
+                            <i class="card__btn-close fa fa-times"></i>
+                            <div class="card__caption">
+                                <h2 class="card__title">${imginfo.imageName}</h2>
+                                <p class="card__subtitle">${user.name}y</p>
+                            </div>
+                            <div class="card__copy">
+                                <div class="meta">
+                                        <%--<img class="meta__avatar" src="<%= path%>/cardExpansion/img/authors/1.png" alt="author01" />--%>
+                                    <span class="meta__author">${user.name}</span>
+                                    <span class="meta__date">${imginfo.attachment.insertTime}</span>
+                                </div>
+                                <p>${imginfo.intro}</p>
 
-    <td align="center" valign="middle">
-      <span>${uadto.intro}</span>
-    </td>
-
-  </tr>
-</table>
-      <h2 class="mar_t_20">图片展示：</h2>
-
-      <table width="580" border="0" align="center" cellpadding="10" cellspacing="0">
-        <c:forEach items="${uadto.attachList}" var="img">
-          <tr>
-            <td  align="center" valign="middle"><img src="${img.filePath}"/></td>
-          </tr>
-        </c:forEach>
-
-      </table>
-  </div>
-    
-    </div>
-   <div class="right w_280">
-    <div class="title"><a href="lists-order_by=hot&shtype=all.htm" tppabs="http://pic.eol.cn/picture/lists?order_by=hot&shtype=all"><h3>人气榜</h3></a></div>
-    <table width="278" border="0" cellspacing="0" cellpadding="0" align="center" class="border mar_t_30 line_24 font_14">
-  <tr>
-    <td width="38" height="30" align="center" valign="middle" bgcolor="#FB923F" class="white">排名</td>
-    <td width="122" align="" valign="middle" bgcolor="#FB923F" class="white">作品名称</td>
-    <td width="75" align="" valign="middle" bgcolor="#FB923F" class="white">作者</td>
-    <td width="41" align="" valign="middle" bgcolor="#FB923F" class="white">票数</td>
-  </tr>
-    </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </c:forEach>
+        </div>
+        <!-- /cards -->
+    </div><!-- /content -->
 </div>
-
+<script type="text/javascript" src="<%= path%>/cardExpansion/js/vendors/trianglify.min.js"></script>
+<script type="text/javascript" src="<%= path%>/cardExpansion/js/vendors/TweenMax.min.js"></script>
+<script type="text/javascript" src="<%= path%>/cardExpansion/js/vendors/ScrollToPlugin.min.js"></script>
+<script type="text/javascript" src="<%= path%>/cardExpansion/js/vendors/cash.min.js"></script>
+<script type="text/javascript" src="<%= path%>/cardExpansion/js/Card-circle.js"></script>
+<script type="text/javascript" src="<%= path%>/cardExpansion/js/demo.js"></script>
 
 <div class="no_way"></div>
 </div>

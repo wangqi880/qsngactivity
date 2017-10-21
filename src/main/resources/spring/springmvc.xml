@@ -53,9 +53,10 @@
 	<mvc:resources location="/WEB-INF/images/" mapping="/images/**"/>
 	<mvc:resources location="/WEB-INF/img/" mapping="/img/**"/>
 	<mvc:resources location="/WEB-INF/loginResource/" mapping="/loginResource/**"/>
+	<mvc:resources location="/WEB-INF/cardExpansion/" mapping="/cardExpansion/**"/>
 	<mvc:resources location="/resources/" mapping="/resources/**"/>
 
-	<!--拦截器-->
+	<!--拦截器 先不用，测试上传功能-->
 	<mvc:interceptors>
 		<mvc:interceptor>
 			<mvc:mapping path="/admin/**"/>

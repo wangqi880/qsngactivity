@@ -26,7 +26,7 @@ h1,h2,h3,h4{margin:0 auto; padding:0;}
 .nav_i a:hover,.nav_i a:active{display:block; color:#FFF; font-size:20px; padding:0 30px; height:100%; background:#F19D17;text-decoration:none;}
 .bg_ii{background:#F19D17;color:#FFF; font-size:20px; padding:0 30px;}
 
-.main{ width:1080px; height:auto; margin:0 auto;}
+.main{ width:1280px; height:auto; margin:0 auto;}
 
 .i_i{ width:53px; height:68px; top:695px; left:20px; text-indent:-9999px;}
 .i_i a:link,.i_i a:visited{ display:block; width:100%; height:100%; background:url(../images/b_i_01.png) no-repeat center top;text-decoration:none;}

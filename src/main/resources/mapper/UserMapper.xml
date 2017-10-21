@@ -23,6 +23,10 @@
     <select id="queryByMsisdn"  parameterType="string" resultMap="user" >
         select * from t_user t where t.msisdn=#{msisdn}
     </select>
+    <select id="queryById"  parameterType="string" resultMap="user" >
+        select * from t_user t where t.id=#{id}
+    </select>
+
 
     <select id="queryByUsername"  parameterType="string" resultMap="user" >
         select * from t_user t where t.username=#{username}
@@ -34,7 +38,6 @@
     <update id="update" parameterType="com.j.qsng.model.User">
         UPDATE `t_user`
         SET
-        `id` = #{id},
         `username` = #{username},
         `password` = #{password},
         `cardId` = #{cardId},
