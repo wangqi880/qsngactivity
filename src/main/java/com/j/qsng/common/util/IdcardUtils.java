@@ -13,7 +13,6 @@ import org.apache.commons.lang.StringUtils;
 
  * Function: 身份证工具类.
 
- * Reason: TODO ADD REASON(可选).
 
  * date: 2016年6月4日 上午10:39:44
 

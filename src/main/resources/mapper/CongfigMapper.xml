@@ -6,6 +6,7 @@
         <result column="conf_key" property="configKey" jdbcType="VARCHAR" />
         <result column="conf_value" property="configValue" jdbcType="VARCHAR" />
         <result column="insertTime" property="insertTime" jdbcType="INTEGER" />
+        <result column="desc" property="desc" jdbcType="VARCHAR" />
     </resultMap>
 
     <select id="getConfigvalue"  parameterType="string" resultType="string" >

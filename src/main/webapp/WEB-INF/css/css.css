@@ -130,7 +130,28 @@ h1,h2,h3,h4{margin:0 auto; padding:0;}
 .w_240{ padding:10px; border:1px solid #E6E6E6; background:#F4F4F4; margin-top:30px; width:218px;}
 .w_240 ul{ margin:10px 0 0 10px; line-height:30px; font-size:14px; font-family:"Microsoft YaHei", "微软雅黑", "SimHei", "黑体", "宋体"}
 .w_240 em{ color:#ff293a}
-.like{ top:280px; right:15px;}
+.like{ top:250px; right:15px;}
+.add-num{
+    display:none;
+}
+.add-animation{
+    color: #000;
+    position:absolute;
+    top:-15px;
+    left: 10px;
+    font-size: 15px;
+    opacity: 0;
+    filter: Alpha(opacity=0);
+    -moz-opacity:0;
+    animation: mypraise 0.5s ;
+    -moz-animation: mypraise 0.5s ;	/* Firefox */
+    -webkit-animation: mypraise 0.5s ;	/* Safari 和 Chrome */
+    -o-animation: mypraise 0.5s ;	/* Opera */
+    font-style:normal;
+}
+.praise .hover , .add-num .add-animation.hover , #praise-txt.hover{
+    color: #EB4F38;
+}
 
 .bot_i{ background:#95CA46 url(../images/bot.png) no-repeat center top; height:500px; padding-top:100px; width:100%; margin:20px auto 0}
 

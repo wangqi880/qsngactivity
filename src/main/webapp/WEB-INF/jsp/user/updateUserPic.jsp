@@ -337,61 +337,6 @@
         }
 
 
-/*        var msisdn = $("input[name='msisdn']").val();
-        var name = $("input[name='name']").val();
-        var cardId = $("input[name='cardId']").val();
-        var age =$("input[name='age']").val();
-        var sex=$("select[name='sex']").val();
-        var imageName= $("input[name='imageName']").val();
-
-        var intro = $("textarea[name='intro']").val();
-
-        if(msisdn==null||msisdn==""){
-            alert("手机号不能为空");
-            return ;
-        }
-
-        if(name==null||name==""){
-            alert("姓名不能为空");
-            return ;
-        }
-       if(cardId==null||cardId==""){
-           alert("身份证号码为空");
-           return ;
-       }
-        if(age==null||age==""){
-            alert("年龄不能为空");
-            return ;
-        }
-
-        if(imageName==null||imageName==""){
-            alert("作品名称不能为空");
-            return ;
-        }
-        if(intro==null||intro==""){
-            alert("作品描述不能空");
-            return ;
-        }
-        if(images==null||images=="" ||images.length<=0){
-            alert("作品不能空");
-            return ;
-        }
-
-        var msisdn_pattern = /^1[34578]\d{9}$/;
-        if(!msisdn_pattern.test(msisdn)){
-            alert("手机号格式不对");
-            return ;
-        }
-        var cardId_pattern = /(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/;
-       if(!cardId_pattern.test(cardId)){
-           alert("身份证格式不对");
-           return ;
-       }
-       if(age<0||age>100){
-           alert("年龄格式不对");
-           return ;
-       }*/
-
         $('#form_1').submit();
     }
 

@@ -9,9 +9,11 @@ import com.j.qsng.dto.UserPicShowDto;
 import com.j.qsng.model.Attachment;
 import com.j.qsng.model.User;
 import com.j.qsng.model.UserPic;
+import com.j.qsng.service.AdminUserPicService;
 import com.j.qsng.service.AttachmentService;
 import com.j.qsng.service.UserActivityService;
 import com.j.qsng.service.UserPicService;
+import com.j.qsng.service.UserPrizeService;
 import com.j.qsng.service.UserService;
 import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -23,6 +25,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
@@ -48,12 +51,13 @@ public class UserContoller
 	private final static String  UPLOADPAH="/resources/upload/";
 	private final static String  UPLOADTHUMPAH="/resources/upload/thumbnail/";
 
-	@Autowired AttachmentService attachmentService;
+	@Autowired AttachmentService   attachmentService;
 
-	@Autowired UserActivityService userActivityService;
 
-	@Autowired UserService userService;
-	@Autowired UserPicService userPicService;
+	@Autowired UserService         userService;
+	@Autowired UserPicService      userPicService;
+	@Autowired AdminUserPicService adminUserPicService;
+
 	//进入活动上传也，需要登录之后
 	@RequestMapping("/user/joinActivity.html")
 	public ModelAndView getJoinActivity(HttpServletRequest request){
@@ -370,4 +374,7 @@ public class UserContoller
 		modelAndView.setViewName("redirect:/user/userInfo.html");
 		return modelAndView;
 	}
+
+
+
 }

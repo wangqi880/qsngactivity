@@ -12,7 +12,7 @@ import javax.annotation.Resource;
 @Service ("configService")
 public class ConfigServiceImpl implements ConfigService
 {
-	@Autowired CongfigMapper congfigMapper;
+	@SuppressWarnings ("SpringJavaAutowiringInspection") @Autowired CongfigMapper congfigMapper;
 	public String getConfigvalue(String key)
 	{
 		String value = congfigMapper.getConfigvalue(key);

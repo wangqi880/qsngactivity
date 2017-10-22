@@ -386,7 +386,6 @@ public class DateUtils {
 	 * @author weiqingping
 	 * @dateTime 2017年4月13日 上午11:10:39
 	 * @email weiqingping@migu.cn
-	 * @Description: TODO  获取某事件的年月 格式为yyyyMM
 	 * @param @param date
 	 * @param @return    设定文件
 	 * @return String    返回类型
@@ -405,7 +404,6 @@ public class DateUtils {
 	 * @author weiqingping
 	 * @dateTime 2017年4月13日 上午11:13:55
 	 * @email weiqingping@migu.cn
-	 * @Description: TODO 获取当年时间的年月 格式为 yyyyMM
 	 * @param @return    设定文件
 	 * @return String    返回类型
 	 * @throws
@@ -560,7 +558,6 @@ public class DateUtils {
 	 * @author weiqingping
 	 * @dateTime 2017年4月13日 下午1:43:28
 	 * @email weiqingping@migu.cn
-	 * @Description: TODO比较时间
 	 * @param @param smdate
 	 * @param @param bdate
 	 * @param @return

@@ -332,12 +332,12 @@
                     $("#attachmentId1").val(data.data[0].id);
                 } else {
                     alert("上传失败"+data.info);
-                    console.log(data.info);
+                    /*console.log(data.info);*/
                 }
 
             }).error(function(data) {
                 alert("上传失败"+data.info);
-                console.log(data);
+                /*console.log(data);*/
             });
         });
 

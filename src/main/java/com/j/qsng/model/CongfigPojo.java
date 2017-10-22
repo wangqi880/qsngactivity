@@ -11,4 +11,5 @@ public class CongfigPojo
 	String configKey;
 	String configValue;
 	String insertTime;
+	String desc;
 }

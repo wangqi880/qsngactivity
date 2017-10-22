@@ -22,7 +22,6 @@ public class PropertyUtil {
         try {
 			pro.load(inStr);
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
