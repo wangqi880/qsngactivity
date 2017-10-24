@@ -55,6 +55,7 @@
 	<mvc:resources location="/WEB-INF/loginResource/" mapping="/loginResource/**"/>
 	<mvc:resources location="/WEB-INF/cardExpansion/" mapping="/cardExpansion/**"/>
 	<mvc:resources location="/resources/" mapping="/resources/**"/>
+	<mvc:resources location="/WEB-INF/admin/" mapping="/admin/**"/>
 
 	<!--拦截器 先不用，测试上传功能-->
 	<mvc:interceptors>

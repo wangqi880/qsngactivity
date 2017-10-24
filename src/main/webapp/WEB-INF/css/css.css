@@ -71,7 +71,7 @@ h1,h2,h3,h4{margin:0 auto; padding:0;}
 .z_i_01 a:link,.z_i_01 a:visited{ display:block; width:100%; height:100%; background:url(../images/z_i_02.png) no-repeat center top;text-decoration:none;}
 .z_i_01 a:hover,.z_i_01 a:active{display:block; width:100%; height:100%; background:url(../images/z_i_01.png) no-repeat center top;text-decoration:none;}
 
-.top_b{ background:url(../images/top_m.png) no-repeat center top; height: auto; padding-top:30px; overflow:hidden; width:100%; margin:0 auto;}
+.top_b{ /*background:url(../images/top_m.png) no-repeat center top; */height: auto; padding-top:30px; overflow:hidden; width:100%; margin:0 auto;}
 .bg_blue{ background:#1F4BC8; overflow:hidden; margin:0 auto; width:100%; height:auto;}
 
 .bg_gary{ background:#FFF; overflow:hidden; margin:0 auto; width:100%; height:auto;}
