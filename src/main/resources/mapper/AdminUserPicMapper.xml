@@ -62,14 +62,14 @@
     <update id="addParise" parameterType="map">
         UPDATE t_admin_user_pic
             SET
-            score =score+1
+            prize_num =prize_num+1
         WHERE  userId=#{userId} and attachmentId=#{attachmentId}
     </update>
 
     <update id="addPariseById" parameterType="string">
         UPDATE t_admin_user_pic
         SET
-        score =score+1
+        prize_num =prize_num+1
         WHERE  id=#{id}
     </update>
 

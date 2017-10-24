@@ -44,11 +44,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <div class="w_780 left" style="width: 800px">
                 <div class="title"><h2>
                     <span>
-                    |<a href="javascript:if(confirm('http://pic.eol.cn/picture/lists?order_by=new&shtype=2 '))window.location='http://pic.eol.cn/picture/lists?order_by=new&shtype=2'">青少年宫</a>
-                    |<a href="javascript:if(confirm('http://pic.eol.cn/picture/lists?order_by=new&shtype=3 '))window.location='http://pic.eol.cn/picture/lists?order_by=new&shtype=3'" >用户</a>
+                    |<a href="<%= path%>/index/indexnew.html">青少年宫</a>
+                    |<a href="<%= path%>/index/indexnew.html?type=2" >用户</a>
                 </span>
-                    <a href="<%= path%>/user/upload.html">我要上传</a></h2></div>
+                    <a href="<%= path%>/user/upload.html">我要上传</a></h2>
 
+                </div>
+                <div>${message}</div>
                 <c:forEach items="${page.datas}" var="item">
                     <div class="w_240 mar_r_30 left pos_r">
                         <p align="center">
@@ -58,7 +60,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             <li>${item.imageName}</li>
                            <li>${item.name}</li>
                             <li>票数：
-                                <span id="praise-txt-${item.id}" style="color: red">${item.score}</span>
+                                <span id="praise-txt-${item.id}" style="color: red">${item.prizeNum}</span>
                             </li>
                             <span id="add-num-${item.id}" class="add-num" ><em>+1</em></span>
                         </ul>
@@ -109,12 +111,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <td width="75" align="" valign="middle" bgcolor="#64b3ee" class="white">作者</td>
     <td width="41" align="" valign="middle" bgcolor="#64b3ee" class="white">票数</td>
   </tr>
-      <tr>
-    <td height="34" align="center" valign="middle" bgcolor="#F4F4F4"><em>1</em></td>
-    <td align="" valign="middle" bgcolor="#F4F4F4"><a href="javascript:if(confirm('http://pic.eol.cn/picture/show?pid=1184&shtype=1&order_by=hot  \n\n�ļ���δ�� Teleport Pro ȡ�أ���Ϊ ���޷�ȡ�ã�������ȡ�غ������������Ŀֹͣ��̫�졣  \n\n��Ҫ�ӷ������ϴ�����'))window.location='http://pic.eol.cn/picture/show?pid=1184&shtype=1&order_by=hot#top'" tppabs="http://pic.eol.cn/picture/show?pid=1184&shtype=1&order_by=hot#top">奋斗的青春最美丽</a></td>
-    <td align="" valign="middle" bgcolor="#F4F4F4">罗江勇</td>
-    <td align="" valign="middle" bgcolor="#F4F4F4"><i>139475</i></td>
-  </tr>
+<c:forEach items="${page.datas}" var="item" varStatus="status">
+    <tr>
+        <td height="34" align="center" valign="middle" bgcolor="#F4F4F4"><em>${status.index+1}</em></td>
+        <td align="" valign="middle" bgcolor="#F4F4F4"><a href="">${item.imageName}</a></td>
+        <td align="" valign="middle" bgcolor="#F4F4F4">${item.name}</td>
+        <td align="" valign="middle" bgcolor="#F4F4F4"><i>${item.prizeNum}</i></td>
+    </tr>
+</c:forEach>
     </table>
 </div>
         </div>

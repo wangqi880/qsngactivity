@@ -42,27 +42,27 @@ public class IndexController
 	@Autowired ConfigService       configService;
 	@Autowired UserPrizeService    userPrizeService;
 
+	final static String ADMINTYPE="1";
+	final static String USERTYPE="2";
 
-	@RequestMapping("/index.html")
-	public ModelAndView index(HttpServletRequest request ){
-
-		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.setViewName("index/index");
-		request.getSession().setAttribute("user","wq");
-		modelAndView.addObject("session",request.getSession());
-		return modelAndView;
-	}
 	@RequestMapping("/test.html")
 	public String test(){
 		return "index/test";
 	}
 
 	@RequestMapping("/indexnew.html")
-	public ModelAndView indexnew(){
+	public ModelAndView indexnew(String type){
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("index/indexnew");
-		Pager<AdminUserPicDto> page = adminUserPicService.queryByPage();
-		modelAndView.addObject("page",page);
+		if(StringUtils.isEmpty(type) ||ADMINTYPE.equals(type) ){
+			Pager<AdminUserPicDto> page = adminUserPicService.queryByPage();
+			modelAndView.addObject("page",page);
+
+		}
+		if(USERTYPE.equals(type)){
+			//普通用户的
+			modelAndView.addObject("message","还没有数据");
+		}
 		return modelAndView;
 	}
 
