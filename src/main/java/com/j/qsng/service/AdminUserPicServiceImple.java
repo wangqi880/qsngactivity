@@ -52,4 +52,9 @@ public class AdminUserPicServiceImple implements AdminUserPicService
 	{
 		adminUserPicMapper.addPariseById(id);
 	}
+
+	public AdminUserPicDto load(String id)
+	{
+		return adminUserPicMapper.load(id);
+	}
 }

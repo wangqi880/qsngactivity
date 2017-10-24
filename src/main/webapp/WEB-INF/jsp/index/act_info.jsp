@@ -50,7 +50,7 @@
 
 <div class="top_b">
 <div class="main mar_t_20" >
-	<div class="w_780 left">
+	<div class="w_780 ">
    	  <div class="title"><h2>最美校园”摄影大赛活动介绍</h2></div>
   	  <div class="jp_l">
   	  <div class="line_24 font_14 mar_f_20">
@@ -85,137 +85,7 @@
       </div>
     
     </div>
-   <div class="right w_280">
-    <div class="title"><a href="javascript:if(confirm('http://pic.eol.cn/picture/lists?order_by=hot&shtype=all  \n\n�ļ���δ�� Teleport Pro ȡ�أ���Ϊ ���޷�ȡ�ã�������ȡ�غ������������Ŀֹͣ��̫�졣  \n\n��Ҫ�ӷ������ϴ�����'))window.location='http://pic.eol.cn/picture/lists?order_by=hot&shtype=all'" tppabs="http://pic.eol.cn/picture/lists?order_by=hot&shtype=all"><h3>人气榜</h3></a></div>
-    <table width="278" border="0" cellspacing="0" cellpadding="0" align="center" class="border mar_t_30 line_24 font_14">
-  <tr>
-    <td width="38" height="30" align="center" valign="middle" bgcolor="#FB923F" class="white">排名</td>
-    <td width="122" align="" valign="middle" bgcolor="#FB923F" class="white">作品名称</td>
-    <td width="75" align="" valign="middle" bgcolor="#FB923F" class="white">作者</td>
-    <td width="41" align="" valign="middle" bgcolor="#FB923F" class="white">票数</td>
-  </tr>
-      <tr>
-    <td height="34" align="center" valign="middle" bgcolor="#F4F4F4"><em>1</em></td>
-    <td align="" valign="middle" bgcolor="#F4F4F4"><a href="javascript:if(confirm('http://pic.eol.cn/picture/show?pid=1184&shtype=1&order_by=hot  \n\n�ļ���δ�� Teleport Pro ȡ�أ���Ϊ ���޷�ȡ�ã�������ȡ�غ������������Ŀֹͣ��̫�졣  \n\n��Ҫ�ӷ������ϴ�����'))window.location='http://pic.eol.cn/picture/show?pid=1184&shtype=1&order_by=hot#top'" tppabs="http://pic.eol.cn/picture/show?pid=1184&shtype=1&order_by=hot#top">奋斗的青春最美丽</a></td>
-    <td align="" valign="middle" bgcolor="#F4F4F4">罗江勇</td>
-    <td align="" valign="middle" bgcolor="#F4F4F4"><i>139475</i></td>
-  </tr>
-    <tr>
-    <td height="34" align="center" valign="middle" bgcolor="#F4F4F4"><em>2</em></td>
-    <td align="" valign="middle" bgcolor="#F4F4F4"><a href="javascript:if(confirm('http://pic.eol.cn/picture/show?pid=1619&shtype=1&order_by=hot  \n\n�ļ���δ�� Teleport Pro ȡ�أ���Ϊ ���޷�ȡ�ã�������ȡ�غ������������Ŀֹͣ��̫�졣  \n\n��Ҫ�ӷ������ϴ�����'))window.location='http://pic.eol.cn/picture/show?pid=1619&shtype=1&order_by=hot#top'" tppabs="http://pic.eol.cn/picture/show?pid=1619&shtype=1&order_by=hot#top">鸟约校枝头1</a></td>
-    <td align="" valign="middle" bgcolor="#F4F4F4">江薇薇</td>
-    <td align="" valign="middle" bgcolor="#F4F4F4"><i>119388</i></td>
-  </tr>
-    <tr>
-    <td height="34" align="center" valign="middle" bgcolor="#F4F4F4"><em>3</em></td>
-    <td align="" valign="middle" bgcolor="#F4F4F4"><a href="javascript:if(confirm('http://pic.eol.cn/picture/show?pid=1747&shtype=2&order_by=hot  \n\n�ļ���δ�� Teleport Pro ȡ�أ���Ϊ ���޷�ȡ�ã�������ȡ�غ������������Ŀֹͣ��̫�졣  \n\n��Ҫ�ӷ������ϴ�����'))window.location='http://pic.eol.cn/picture/show?pid=1747&shtype=2&order_by=hot#top'" tppabs="http://pic.eol.cn/picture/show?pid=1747&shtype=2&order_by=hot#top">飞阁流丹</a></td>
-    <td align="" valign="middle" bgcolor="#F4F4F4">丁宇明</td>
-    <td align="" valign="middle" bgcolor="#F4F4F4"><i>113188</i></td>
-  </tr>
-    <tr>
-    <td height="34" align="center" valign="middle" bgcolor="#F4F4F4"><em>4</em></td>
-    <td align="" valign="middle" bgcolor="#F4F4F4"><a href="javascript:if(confirm('http://pic.eol.cn/picture/show?pid=3245&shtype=1&order_by=hot  \n\n�ļ���δ�� Teleport Pro ȡ�أ���Ϊ ���޷�ȡ�ã�������ȡ�غ������������Ŀֹͣ��̫�졣  \n\n��Ҫ�ӷ������ϴ�����'))window.location='http://pic.eol.cn/picture/show?pid=3245&shtype=1&order_by=hot#top'" tppabs="http://pic.eol.cn/picture/show?pid=3245&shtype=1&order_by=hot#top">翠幕风帘</a></td>
-    <td align="" valign="middle" bgcolor="#F4F4F4">陈斌</td>
-    <td align="" valign="middle" bgcolor="#F4F4F4"><i>105142</i></td>
-  </tr>
-    <tr>
-    <td height="34" align="center" valign="middle" bgcolor="#F4F4F4"><em>5</em></td>
-    <td align="" valign="middle" bgcolor="#F4F4F4"><a href="javascript:if(confirm('http://pic.eol.cn/picture/show?pid=2807&shtype=1&order_by=hot  \n\n�ļ���δ�� Teleport Pro ȡ�أ���Ϊ ���޷�ȡ�ã�������ȡ�غ������������Ŀֹͣ��̫�졣  \n\n��Ҫ�ӷ������ϴ�����'))window.location='http://pic.eol.cn/picture/show?pid=2807&shtype=1&order_by=hot#top'" tppabs="http://pic.eol.cn/picture/show?pid=2807&shtype=1&order_by=hot#top">青春的力量</a></td>
-    <td align="" valign="middle" bgcolor="#F4F4F4">朱兆成</td>
-    <td align="" valign="middle" bgcolor="#F4F4F4"><i>76302</i></td>
-  </tr>
-    <tr>
-    <td height="34" align="center" valign="middle" bgcolor="#F4F4F4"><em>6</em></td>
-    <td align="" valign="middle" bgcolor="#F4F4F4"><a href="javascript:if(confirm('http://pic.eol.cn/picture/show?pid=1748&shtype=2&order_by=hot  \n\n�ļ���δ�� Teleport Pro ȡ�أ���Ϊ ���޷�ȡ�ã�������ȡ�غ������������Ŀֹͣ��̫�졣  \n\n��Ҫ�ӷ������ϴ�����'))window.location='http://pic.eol.cn/picture/show?pid=1748&shtype=2&order_by=hot#top'" tppabs="http://pic.eol.cn/picture/show?pid=1748&shtype=2&order_by=hot#top">隐秘之美</a></td>
-    <td align="" valign="middle" bgcolor="#F4F4F4">丁宇明</td>
-    <td align="" valign="middle" bgcolor="#F4F4F4"><i>74253</i></td>
-  </tr>
-    <tr>
-    <td height="34" align="center" valign="middle" bgcolor="#F4F4F4"><em>7</em></td>
-    <td align="" valign="middle" bgcolor="#F4F4F4"><a href="javascript:if(confirm('http://pic.eol.cn/picture/show?pid=1514&shtype=2&order_by=hot  \n\n�ļ���δ�� Teleport Pro ȡ�أ���Ϊ ���޷�ȡ�ã�������ȡ�غ������������Ŀֹͣ��̫�졣  \n\n��Ҫ�ӷ������ϴ�����'))window.location='http://pic.eol.cn/picture/show?pid=1514&shtype=2&order_by=hot#top'" tppabs="http://pic.eol.cn/picture/show?pid=1514&shtype=2&order_by=hot#top">探索</a></td>
-    <td align="" valign="middle" bgcolor="#F4F4F4">丁宇明</td>
-    <td align="" valign="middle" bgcolor="#F4F4F4"><i>73880</i></td>
-  </tr>
-    <tr>
-    <td height="34" align="center" valign="middle" bgcolor="#F4F4F4"><em>8</em></td>
-    <td align="" valign="middle" bgcolor="#F4F4F4"><a href="javascript:if(confirm('http://pic.eol.cn/picture/show?pid=1512&shtype=2&order_by=hot  \n\n�ļ���δ�� Teleport Pro ȡ�أ���Ϊ ���޷�ȡ�ã�������ȡ�غ������������Ŀֹͣ��̫�졣  \n\n��Ҫ�ӷ������ϴ�����'))window.location='http://pic.eol.cn/picture/show?pid=1512&shtype=2&order_by=hot#top'" tppabs="http://pic.eol.cn/picture/show?pid=1512&shtype=2&order_by=hot#top">奋读</a></td>
-    <td align="" valign="middle" bgcolor="#F4F4F4">丁宇明</td>
-    <td align="" valign="middle" bgcolor="#F4F4F4"><i>69755</i></td>
-  </tr>
-    <tr>
-    <td height="34" align="center" valign="middle" bgcolor="#F4F4F4"><em>9</em></td>
-    <td align="" valign="middle" bgcolor="#F4F4F4"><a href="javascript:if(confirm('http://pic.eol.cn/picture/show?pid=1854&shtype=1&order_by=hot  \n\n�ļ���δ�� Teleport Pro ȡ�أ���Ϊ ���޷�ȡ�ã�������ȡ�غ������������Ŀֹͣ��̫�졣  \n\n��Ҫ�ӷ������ϴ�����'))window.location='http://pic.eol.cn/picture/show?pid=1854&shtype=1&order_by=hot#top'" tppabs="http://pic.eol.cn/picture/show?pid=1854&shtype=1&order_by=hot#top">春来花开人笑</a></td>
-    <td align="" valign="middle" bgcolor="#F4F4F4">吴迪</td>
-    <td align="" valign="middle" bgcolor="#F4F4F4"><i>67370</i></td>
-  </tr>
-    <tr>
-    <td height="34" align="center" valign="middle" bgcolor="#F4F4F4"><em>10</em></td>
-    <td align="" valign="middle" bgcolor="#F4F4F4"><a href="javascript:if(confirm('http://pic.eol.cn/picture/show?pid=1516&shtype=2&order_by=hot  \n\n�ļ���δ�� Teleport Pro ȡ�أ���Ϊ ���޷�ȡ�ã�������ȡ�غ������������Ŀֹͣ��̫�졣  \n\n��Ҫ�ӷ������ϴ�����'))window.location='http://pic.eol.cn/picture/show?pid=1516&shtype=2&order_by=hot#top'" tppabs="http://pic.eol.cn/picture/show?pid=1516&shtype=2&order_by=hot#top">生</a></td>
-    <td align="" valign="middle" bgcolor="#F4F4F4">丁宇明</td>
-    <td align="" valign="middle" bgcolor="#F4F4F4"><i>60025</i></td>
-  </tr>
-    <tr>
-    <td height="34" align="center" valign="middle" bgcolor="#F4F4F4"><em>11</em></td>
-    <td align="" valign="middle" bgcolor="#F4F4F4"><a href="javascript:if(confirm('http://pic.eol.cn/picture/show?pid=1621&shtype=1&order_by=hot  \n\n�ļ���δ�� Teleport Pro ȡ�أ���Ϊ ���޷�ȡ�ã�������ȡ�غ������������Ŀֹͣ��̫�졣  \n\n��Ҫ�ӷ������ϴ�����'))window.location='http://pic.eol.cn/picture/show?pid=1621&shtype=1&order_by=hot#top'" tppabs="http://pic.eol.cn/picture/show?pid=1621&shtype=1&order_by=hot#top">鸟约校枝头3</a></td>
-    <td align="" valign="middle" bgcolor="#F4F4F4">江薇薇</td>
-    <td align="" valign="middle" bgcolor="#F4F4F4"><i>29508</i></td>
-  </tr>
-    <tr>
-    <td height="34" align="center" valign="middle" bgcolor="#F4F4F4"><em>12</em></td>
-    <td align="" valign="middle" bgcolor="#F4F4F4"><a href="javascript:if(confirm('http://pic.eol.cn/picture/show?pid=1620&shtype=1&order_by=hot  \n\n�ļ���δ�� Teleport Pro ȡ�أ���Ϊ ���޷�ȡ�ã�������ȡ�غ������������Ŀֹͣ��̫�졣  \n\n��Ҫ�ӷ������ϴ�����'))window.location='http://pic.eol.cn/picture/show?pid=1620&shtype=1&order_by=hot#top'" tppabs="http://pic.eol.cn/picture/show?pid=1620&shtype=1&order_by=hot#top">鸟约校枝头2</a></td>
-    <td align="" valign="middle" bgcolor="#F4F4F4">江薇薇</td>
-    <td align="" valign="middle" bgcolor="#F4F4F4"><i>29436</i></td>
-  </tr>
-    <tr>
-    <td height="34" align="center" valign="middle" bgcolor="#F4F4F4"><em>13</em></td>
-    <td align="" valign="middle" bgcolor="#F4F4F4"><a href="javascript:if(confirm('http://pic.eol.cn/picture/show?pid=1515&shtype=2&order_by=hot  \n\n�ļ���δ�� Teleport Pro ȡ�أ���Ϊ ���޷�ȡ�ã�������ȡ�غ������������Ŀֹͣ��̫�졣  \n\n��Ҫ�ӷ������ϴ�����'))window.location='http://pic.eol.cn/picture/show?pid=1515&shtype=2&order_by=hot#top'" tppabs="http://pic.eol.cn/picture/show?pid=1515&shtype=2&order_by=hot#top">壁</a></td>
-    <td align="" valign="middle" bgcolor="#F4F4F4">丁宇明</td>
-    <td align="" valign="middle" bgcolor="#F4F4F4"><i>26885</i></td>
-  </tr>
-    <tr>
-    <td height="34" align="center" valign="middle" bgcolor="#F4F4F4"><em>14</em></td>
-    <td align="" valign="middle" bgcolor="#F4F4F4"><a href="javascript:if(confirm('http://pic.eol.cn/picture/show?pid=352&shtype=1&order_by=hot  \n\n�ļ���δ�� Teleport Pro ȡ�أ���Ϊ ���޷�ȡ�ã�������ȡ�غ������������Ŀֹͣ��̫�졣  \n\n��Ҫ�ӷ������ϴ�����'))window.location='http://pic.eol.cn/picture/show?pid=352&shtype=1&order_by=hot#top'" tppabs="http://pic.eol.cn/picture/show?pid=352&shtype=1&order_by=hot#top">书中自有黄金屋</a></td>
-    <td align="" valign="middle" bgcolor="#F4F4F4">陈锋</td>
-    <td align="" valign="middle" bgcolor="#F4F4F4"><i>25766</i></td>
-  </tr>
-    <tr>
-    <td height="34" align="center" valign="middle" bgcolor="#F4F4F4"><em>15</em></td>
-    <td align="" valign="middle" bgcolor="#F4F4F4"><a href="javascript:if(confirm('http://pic.eol.cn/picture/show?pid=1749&shtype=2&order_by=hot  \n\n�ļ���δ�� Teleport Pro ȡ�أ���Ϊ ���޷�ȡ�ã�������ȡ�غ������������Ŀֹͣ��̫�졣  \n\n��Ҫ�ӷ������ϴ�����'))window.location='http://pic.eol.cn/picture/show?pid=1749&shtype=2&order_by=hot#top'" tppabs="http://pic.eol.cn/picture/show?pid=1749&shtype=2&order_by=hot#top">交流</a></td>
-    <td align="" valign="middle" bgcolor="#F4F4F4">丁宇明</td>
-    <td align="" valign="middle" bgcolor="#F4F4F4"><i>22825</i></td>
-  </tr>
-    <tr>
-    <td height="34" align="center" valign="middle" bgcolor="#F4F4F4"><em>16</em></td>
-    <td align="" valign="middle" bgcolor="#F4F4F4"><a href="javascript:if(confirm('http://pic.eol.cn/picture/show?pid=1513&shtype=2&order_by=hot  \n\n�ļ���δ�� Teleport Pro ȡ�أ���Ϊ ���޷�ȡ�ã�������ȡ�غ������������Ŀֹͣ��̫�졣  \n\n��Ҫ�ӷ������ϴ�����'))window.location='http://pic.eol.cn/picture/show?pid=1513&shtype=2&order_by=hot#top'" tppabs="http://pic.eol.cn/picture/show?pid=1513&shtype=2&order_by=hot#top">光影视角</a></td>
-    <td align="" valign="middle" bgcolor="#F4F4F4">丁宇明</td>
-    <td align="" valign="middle" bgcolor="#F4F4F4"><i>21868</i></td>
-  </tr>
-    <tr>
-    <td height="34" align="center" valign="middle" bgcolor="#F4F4F4"><em>17</em></td>
-    <td align="" valign="middle" bgcolor="#F4F4F4"><a href="javascript:if(confirm('http://pic.eol.cn/picture/show?pid=2804&shtype=1&order_by=hot  \n\n�ļ���δ�� Teleport Pro ȡ�أ���Ϊ ���޷�ȡ�ã�������ȡ�غ������������Ŀֹͣ��̫�졣  \n\n��Ҫ�ӷ������ϴ�����'))window.location='http://pic.eol.cn/picture/show?pid=2804&shtype=1&order_by=hot#top'" tppabs="http://pic.eol.cn/picture/show?pid=2804&shtype=1&order_by=hot#top">朗润花景</a></td>
-    <td align="" valign="middle" bgcolor="#F4F4F4">朱兆成</td>
-    <td align="" valign="middle" bgcolor="#F4F4F4"><i>21821</i></td>
-  </tr>
-    <tr>
-    <td height="34" align="center" valign="middle" bgcolor="#F4F4F4"><em>18</em></td>
-    <td align="" valign="middle" bgcolor="#F4F4F4"><a href="javascript:if(confirm('http://pic.eol.cn/picture/show?pid=3522&shtype=1&order_by=hot  \n\n�ļ���δ�� Teleport Pro ȡ�أ���Ϊ ���޷�ȡ�ã�������ȡ�غ������������Ŀֹͣ��̫�졣  \n\n��Ҫ�ӷ������ϴ�����'))window.location='http://pic.eol.cn/picture/show?pid=3522&shtype=1&order_by=hot#top'" tppabs="http://pic.eol.cn/picture/show?pid=3522&shtype=1&order_by=hot#top">1976年PK...</a></td>
-    <td align="" valign="middle" bgcolor="#F4F4F4">吴悠</td>
-    <td align="" valign="middle" bgcolor="#F4F4F4"><i>20996</i></td>
-  </tr>
-    <tr>
-    <td height="34" align="center" valign="middle" bgcolor="#F4F4F4"><em>19</em></td>
-    <td align="" valign="middle" bgcolor="#F4F4F4"><a href="javascript:if(confirm('http://pic.eol.cn/picture/show?pid=3523&shtype=1&order_by=hot  \n\n�ļ���δ�� Teleport Pro ȡ�أ���Ϊ ���޷�ȡ�ã�������ȡ�غ������������Ŀֹͣ��̫�졣  \n\n��Ҫ�ӷ������ϴ�����'))window.location='http://pic.eol.cn/picture/show?pid=3523&shtype=1&order_by=hot#top'" tppabs="http://pic.eol.cn/picture/show?pid=3523&shtype=1&order_by=hot#top">1976年7月...</a></td>
-    <td align="" valign="middle" bgcolor="#F4F4F4">吴悠</td>
-    <td align="" valign="middle" bgcolor="#F4F4F4"><i>18980</i></td>
-  </tr>
-    <tr>
-    <td height="34" align="center" valign="middle" bgcolor="#F4F4F4"><em>20</em></td>
-    <td align="" valign="middle" bgcolor="#F4F4F4"><a href="javascript:if(confirm('http://pic.eol.cn/picture/show?pid=281&shtype=2&order_by=hot  \n\n�ļ���δ�� Teleport Pro ȡ�أ���Ϊ ���޷�ȡ�ã�������ȡ�غ������������Ŀֹͣ��̫�졣  \n\n��Ҫ�ӷ������ϴ�����'))window.location='http://pic.eol.cn/picture/show?pid=281&shtype=2&order_by=hot#top'" tppabs="http://pic.eol.cn/picture/show?pid=281&shtype=2&order_by=hot#top">巴渝名校</a></td>
-    <td align="" valign="middle" bgcolor="#F4F4F4">王世冲</td>
-    <td align="" valign="middle" bgcolor="#F4F4F4"><i>18909</i></td>
-  </tr>
-    </table>
-</div>
+
 
 
 <div class="no_way"></div>
@@ -225,11 +95,11 @@
 <div class="bot_i">
 	<div class="w_650">
       <div class="w_260 left">
-        <p align="center"><img src="<%= path%>/images/wb.png" tppabs="http://pic.eol.cn/app/static/images/wb.jpg" width="260" height="260" /></p>
+        <p align="center"><img src="<%= path%>/images/wb.png"  width="260" height="260" /></p>
         <h2>官方微博</h2>
       </div>
       <div class="w_260 right">
-        <p align="center"><img src="<%= path%>/images/wx.jpg" tppabs="http://pic.eol.cn/app/static/images/wx.jpg" width="260" height="260" /></p>
+        <p align="center"><img src="<%= path%>/images/wx.jpg"  width="260" height="260" /></p>
         <h2>官方微信</h2>
       </div>
       <div class="no_way"></div>
@@ -251,25 +121,3 @@
 </div>
 </body>
 </html>
-<script type="text/javascript" src="vote.js" tppabs="http://pic.eol.cn/app/static/script/vote.js" ignoreapd="false"></script>
-<div style="width:1px;height:1px;overflow:hidden;">
-	<script type="text/javascript">
-	document.write('<img src="http://pv.img.eol.cn/images/cer.net/log/gao-kao.png?'+Math.round(Math.random()*1e17)+'" width="0" height="0"/>');
-	</script>
-	<noscript>
-	<img src="gao-kao.png" tppabs="http://pv.img.eol.cn/images/cer.net/log/gao-kao.png" width="0" height="0" />
-	</noscript>
-<!-- ecounter -->
-<script>
-var pkBaseURL = (("https:" == document.location.protocol) ? "https://stat.eol.cn/" : "http://stat.eol.cn/");
-document.write(unescape("%3Cscript src='" + pkBaseURL + "piwik.js' type='text/javascript'%3E%3C/script%3E"));
-</script><script type="text/javascript">
-try {
-var piwikTracker = Piwik.getTracker(pkBaseURL + "mysql.php", 76);
-piwikTracker.trackPageView();
-piwikTracker.enableLinkTracking();
-} catch( err ) {}
-</script><noscript><p><img src="mysql.php-idsite=76" tppabs="http://stat.eol.cn/mysql.php?idsite=76" style="border:0" alt="" /></p></noscript>
-<!-- End ecounter Tag -->
-<script src="stat.php-id=4696180&web_id=4696180" tppabs="http://s6.cnzz.com/stat.php?id=4696180&web_id=4696180" language="JavaScript"></script>
-</div>

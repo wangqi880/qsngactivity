@@ -72,6 +72,7 @@
             <li><a href="<%= path%>/index/prize_info.html" tppabs="http://pic.eol.cn/picture/prize_info">奖项设置</a></li>
             <li><a href="<%= path%>/user/showproduct.html" tppabs="http://pic.eol.cn/picture/take_in">作品展示</a></li>
             <li class="bg_ii">上传作品</li>
+            <li><a href="<%= path%>/user/userInfo.html">修改信息</a></li>
         </ul>
     </div>
 </div>
@@ -251,6 +252,10 @@
 
     $(document).ready(function(){
 
+        var message = "${message}";
+        if(message!=""){
+            alert(message);
+        }
 
         <!--添加照片-->
         $("#addImage").click(function(){
@@ -336,8 +341,16 @@
             }
         }
 
+        $.get("<%= path%>/user/updateUserPicDateLimit",function(resutl){
+            if(resutl.code=="000000"){
+                $('#form_1').submit();
+            }else{
+                alert("修改时间已过，不能修改");
+                return;
+            }
+        })
 
-        $('#form_1').submit();
+
     }
 
 

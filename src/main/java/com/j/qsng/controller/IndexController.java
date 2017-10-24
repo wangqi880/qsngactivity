@@ -131,5 +131,15 @@ public class IndexController
 		return resp;
 	}
 
+	//展示图片详情
+	@RequestMapping("/show")
+	public ModelAndView show(String id,String type){
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.setViewName("index/show");
+		AdminUserPicDto adminUserPicDto = adminUserPicService.load(id);
+		modelAndView.addObject("updto",adminUserPicDto);
+		return modelAndView;
+	}
+
 
 }

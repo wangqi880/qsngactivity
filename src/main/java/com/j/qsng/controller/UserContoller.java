@@ -11,9 +11,8 @@ import com.j.qsng.model.User;
 import com.j.qsng.model.UserPic;
 import com.j.qsng.service.AdminUserPicService;
 import com.j.qsng.service.AttachmentService;
-import com.j.qsng.service.UserActivityService;
+import com.j.qsng.service.ConfigService;
 import com.j.qsng.service.UserPicService;
-import com.j.qsng.service.UserPrizeService;
 import com.j.qsng.service.UserService;
 import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -25,7 +24,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
@@ -33,6 +31,7 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
@@ -50,6 +49,12 @@ public class UserContoller
 
 	private final static String  UPLOADPAH="/resources/upload/";
 	private final static String  UPLOADTHUMPAH="/resources/upload/thumbnail/";
+	private final static  int UPLOADLIMITNUM=2;
+
+	//上传图片最小大小
+	private final static  int PICTURE_MIN=1000000;
+	//上传图片最大大小
+	private final static  int PICTURE_MAX=5000000;
 
 	@Autowired AttachmentService   attachmentService;
 
@@ -57,6 +62,7 @@ public class UserContoller
 	@Autowired UserService         userService;
 	@Autowired UserPicService      userPicService;
 	@Autowired AdminUserPicService adminUserPicService;
+	@Autowired ConfigService       configService;
 
 	//进入活动上传也，需要登录之后
 	@RequestMapping("/user/joinActivity.html")
@@ -111,12 +117,18 @@ public class UserContoller
 	public ModelAndView addUserPics(UserPicDto userPicDto,HttpSession session){
 		ModelAndView mode = new ModelAndView();
 
+		//时间是否上传控制
+		boolean flag = ipUpdate();
+		if(!flag){
+			mode.setViewName("redirect:/user/upload.html");
+			return mode;
+		}
 		User user = (User) session.getAttribute("loginUser");
 		String userId = String.valueOf(user.getId());
 
 		//如果已经上传那么调到展示界面
 		List<UserPic> oldUp = userPicService.queryByUserId(userId+"");
-		if(!CollectionUtils.isEmpty(oldUp) && oldUp.size()>=2){
+		if(!CollectionUtils.isEmpty(oldUp) && oldUp.size()>=UPLOADLIMITNUM){
 			mode.setViewName("redirect:/user/showproduct.html");
 			mode.addObject("message","你已经提交过作品并且已经大于2个");
 			return mode;
@@ -211,13 +223,6 @@ public class UserContoller
 		List<Attachment> list = new ArrayList<Attachment>();
 
 		User u = (User) session.getAttribute("loginUser");
-
-		/*if(null==u){
-			resp.setCode("000005");
-			resp.setInfo("登录失效，请重新登录");
-			return  resp;
-		}*/
-
 		String realPath= SystemContext.getRealPath();
 
 		String path = UPLOADPAH;
@@ -229,14 +234,22 @@ public class UserContoller
 			for(Map.Entry<String, MultipartFile> entry:map.entrySet()){
 				Attachment att = new Attachment();
 				MultipartFile attach=entry.getValue();
+
 				String ext = FilenameUtils.getExtension(attach.getOriginalFilename());
 				if(!imgTypes.contains(ext))
 				{
 					resp.setCode("000001");
 					resp.setInfo("只支持图片上传请上传图片");
+					return resp;
 				}else{
 					att.setIsImg(1);
 				}
+				if(attach.getSize()<PICTURE_MIN || attach.getSize()>PICTURE_MAX){
+					resp.setCode("000002");
+					resp.setInfo("图片只能1MB以上，5MB以下");
+					return resp;
+				}
+
 				long id = IDUtils.genItemId();
 				att.setId(id);
 				/*att.setUserId(u.getId());*/
@@ -324,6 +337,8 @@ public class UserContoller
 	public ModelAndView updateUserPic(@PathVariable String attachmentId,HttpSession session){
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("/user/updateUserPic");
+
+
 		User u = (User) session.getAttribute("loginUser");
 		String userId = String.valueOf(u.getId());
 		Attachment attachment = attachmentService.load(attachmentId);
@@ -343,7 +358,13 @@ public class UserContoller
 		modelAndView.setViewName("redirect:/user/showproduct.html");
 		User u = (User) session.getAttribute("loginUser");
 
-
+		//是否可以修改判断
+		boolean flag = ipUpdate();
+		if(!flag){
+			modelAndView.setViewName("redirect:/user/updateUserPic/"+oldAttachmentId);
+			modelAndView.addObject("message","已经超过修改期限");
+			return modelAndView;
+		}
 		String userId=String.valueOf(u.getId());
 		if(!oldAttachmentId.equals(userPic.getAttachmentId())){
 			//如果不想等，那么就是重新上传了,那么必须删除重新传
@@ -375,6 +396,118 @@ public class UserContoller
 		return modelAndView;
 	}
 
+	//查看是否可以上传作品
+	@RequestMapping("/user/isUploadPermission")
+	@ResponseBody
+	public Object isUploadPermission(HttpSession session){
+		BaseResp resp = new BaseResp();
+		User u = (User) session.getAttribute("loginUser");
+		String userId = String.valueOf(u.getId());
+		boolean flag = isUpload();
+		if(flag){
+			resp.setCode("000000");
+			resp.setInfo("可以上传");
+		}else{
+			resp.setCode("000002");
+			resp.setInfo("上传时间已过，不能上传");
+			return resp;
+		}
+
+		List<UserPic> oldUp = userPicService.queryByUserId(userId+"");
+		if(!CollectionUtils.isEmpty(oldUp) && oldUp.size()>=UPLOADLIMITNUM){
+			resp.setCode("000001");
+			resp.setInfo("已经达到上传上线，不可上传");
+			resp.setData(false);
+		}else {
+			resp.setCode("000000");
+			resp.setInfo("可以上传");
+			resp.setData(true);
+		}
+		return resp;
+	}
+
+	//是否能修改照片信息
+	@RequestMapping("/user/updateUserPicDateLimit")
+	@ResponseBody
+	public Object updateUserPicDateLimit(){
+		BaseResp resp = new BaseResp();
+		String limtDate = configService.getConfigvalue("limit_update_pic_date");
+		boolean flag=ipUpdate();
+		if(flag){
+			resp.setCode("000000");
+			resp.setInfo("可以修改");
+		}else {
+			resp.setCode("000001");
+			resp.setInfo("修改时间已过，不能修改");
+		}
+		return  resp;
+	}
+
+	//是否可以修改作品
+	public boolean ipUpdate(){
+		String limtDate = configService.getConfigvalue("limit_update_pic_date");
+		if(StringUtils.isNotEmpty(limtDate)){
+			long nowDatevalue = new Date().getTime();
+			long limtDateValue =0;
+			try
+			{
+				limtDateValue=DateUtils.toUnixTime(limtDate,DateUtils.STANDARD_DATETIME_FORMAT);
+			}
+			catch (ParseException e)
+			{
+				System.out.println("修改时间戳转换失败");
+				limtDateValue=nowDatevalue;
+			}
+
+			if(nowDatevalue>limtDateValue){
+				return false;
+			}else {
+				return true;
+			}
+		}
+		return false;
+	}
 
 
+	//是否可以上传作品
+	@RequestMapping("/user/uploadUserPicDateLimit")
+	@ResponseBody
+	public Object uploadUserPicDateLimit(){
+		BaseResp resp = new BaseResp();
+		boolean flag = isUpload();
+		if(flag){
+			resp.setCode("000000");
+			resp.setInfo("可以上传");
+		}else{
+			resp.setCode("000001");
+			resp.setInfo("上传时间已过，不能上传");
+		}
+		return  resp;
+	}
+	//是否可以上传作品函数
+	public boolean isUpload(){
+		String limtDate = configService.getConfigvalue("limit_upoad_pic_date");
+
+		if(StringUtils.isNotEmpty(limtDate)){
+			long nowDatevalue = new Date().getTime();
+			long limtDateValue =0;
+			try
+			{
+				limtDateValue=DateUtils.toUnixTime(limtDate,DateUtils.STANDARD_DATETIME_FORMAT);
+			}
+			catch (ParseException e)
+			{
+				System.out.println("修改时间戳转换失败");
+				limtDateValue=nowDatevalue;
+			}
+
+			if(nowDatevalue>limtDateValue){
+				return false;
+			}else {
+				return  true;
+			}
+
+		}
+		return true;
+	}
 }

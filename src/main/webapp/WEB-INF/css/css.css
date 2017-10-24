@@ -17,14 +17,14 @@ h1,h2,h3,h4{margin:0 auto; padding:0;}
 .hide {display:none;}
 .border{ border:1px solid #E6E6E6;}
 
-.top_i{ width:100%; height:500px; margin:0 auto; background:url(../images/top_i.jpg) no-repeat center top;}
+.top_i{ width:100%; height:532px; margin:0 auto; background-size: 80%; background:url(../images/top_i.jpg) no-repeat center top;}
 
-.nav_i{ background:#FFB400; height:60px; margin:0 auto; width:100%; line-height:60px; vertical-align:middle;}
+.nav_i{ background:#64b3ee; height:60px; margin:0 auto; width:100%; line-height:60px; vertical-align:middle;}
 .nav_i li{ float:left; margin-right:40px;}
 
 .nav_i a:link,.nav_i a:visited{ display:block; color:#FFF; font-size:20px; padding:0 30px; height:100%; background:none;text-decoration:none;}
-.nav_i a:hover,.nav_i a:active{display:block; color:#FFF; font-size:20px; padding:0 30px; height:100%; background:#F19D17;text-decoration:none;}
-.bg_ii{background:#F19D17;color:#FFF; font-size:20px; padding:0 30px;}
+.nav_i a:hover,.nav_i a:active{display:block; color:#FFF; font-size:20px; padding:0 30px; height:100%; background:#2fa2f7;text-decoration:none;}
+.bg_ii{background:#2fa2f7;color:#FFF; font-size:20px; padding:0 30px;}
 
 .main{ width:1280px; height:auto; margin:0 auto;}
 
@@ -106,20 +106,20 @@ h1,h2,h3,h4{margin:0 auto; padding:0;}
 .h_297 a{ color:#FFF; text-decoration:none;}
 .h_297 h4{font-family:"Microsoft YaHei", "微软雅黑", "SimHei", "黑体", "宋体"; font-weight:normal; font-size:24px; margin-bottom:40px;}
 .h_72{ width:100%; height:72px; margin:0 auto; background:url(../images/news_i.jpg) no-repeat center top;}
-.font_16{ line-height:34px; font-family:"Microsoft YaHei", "微软雅黑", "SimHei", "黑体", "宋体"; font-size:16px;}
+.fon t_16{ line-height:34px; font-family:"Microsoft YaHei", "微软雅黑", "SimHei", "黑体", "宋体"; font-size:16px;}
 .bg_white{ background:#FFF;}
 .font_18{font-size:18px;}
 
-.w_780{ width:780px;}
-.title{ border-bottom:1px solid #FFAD01; padding-bottom:15px; height:36px;}
-.title h2{ padding-left:10px; font-family:"Microsoft YaHei", "微软雅黑", "SimHei", "黑体", "宋体"; font-size:36px; font-weight: normal; color:#ff8401;}
-.title h2 a{color:#ff8401; text-decoration:none;}
-.title h2 a:link,.title h2 a:visited{color:#ff8401; text-decoration:none;}
-.title h2 a:hover,.title h2 a:active{dcolor:#ff8401; text-decoration:none;}
+.w_780{ width:1024px;}
+.title{ border-bottom:1px solid #64b3ee; padding-bottom:15px; height:36px;}
+.title h2{ padding-left:10px; font-family:"Microsoft YaHei", "微软雅黑", "SimHei", "黑体", "宋体"; font-size:36px; font-weight: normal; color:#64b3ee;}
+.title h2 a{color:#64b3ee; text-decoration:none;}
+.title h2 a:link,.title h2 a:visited{color:#64b3ee; text-decoration:none;}
+.title h2 a:hover,.title h2 a:active{dcolor:#64b3ee; text-decoration:none;}
 
 
 
-.title h3{ background:url(../images/renqi.jpg) no-repeat 3px 3px; padding-left:40px; padding-top:5px; font-family:"Microsoft YaHei", "微软雅黑", "SimHei", "黑体", "宋体"; font-size:24px; font-weight: normal; color:#ff8401;}
+.title h3{ background:url(../images/renqi.jpg) no-repeat 3px 3px; padding-left:40px; padding-top:10px; font-family:"Microsoft YaHei", "微软雅黑", "SimHei", "黑体", "宋体"; font-size:24px; font-weight: normal; color:#64b3ee;}
 .title span{ float:right; display: inline; font-size:18px; color:#666666; padding-top:20px;}
 .title span a{ margin-left:10px; margin-right:10px; color:#666666;}
 .title span a:link,.title span a:visited{margin-left:10px; margin-right:10px; color:#666666;}
@@ -153,7 +153,7 @@ h1,h2,h3,h4{margin:0 auto; padding:0;}
     color: #EB4F38;
 }
 
-.bot_i{ background:#95CA46 url(../images/bot.png) no-repeat center top; height:500px; padding-top:100px; width:100%; margin:20px auto 0}
+.bot_i{ background:#64b2ee url(../images/bot.png) no-repeat center top; /*height:490px;*/ padding-top:100px; width:100%; margin:20px auto 0}
 
 .w_650{ width:610px; margin:50px auto 20px;}
 .w_650 .w_260{ width:260px;}
@@ -191,7 +191,7 @@ h1,h2,h3,h4{margin:0 auto; padding:0;}
 .dashed{ border-bottom:1px dashed #CCCCCC; height:30px; margin-bottom:30px;}
 .jp_l h2{ background: url(../images/jx.jpg) no-repeat left top; height:43px; margin-bottom:40px; padding-top:3px; font-family:"Microsoft YaHei", "微软雅黑", "SimHei", "黑体", "宋体"; font-size:20px; padding-left:46px; font-weight:normal; color:#FFF}
 .jp_l{ padding:20px 0 0;}
-.jp_l em{ color:#fb9240; font-size:22px;}
+.jp_l em{ color:#64b2ee; font-size:22px;}
 .jp_l  a{ text-decoration:none;}
 .jp_l i{ color:#d80000;font-size:22px;}
 .jp_l .line_24{ line-height:28px; color:#666;}

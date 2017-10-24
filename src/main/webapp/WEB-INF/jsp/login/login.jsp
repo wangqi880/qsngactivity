@@ -16,7 +16,7 @@
 <div id="box"></div>
 <div class="cent-box">
 	<div class="cent-box-header">
-		<h1 class="main-title hide">千寻</h1>
+		<h1 class="main-title hide">少年宫</h1>
 		<h2 class="sub-title">生活热爱分享 -少年宫</h2>
 	</div>
 

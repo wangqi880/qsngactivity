@@ -19,4 +19,7 @@ public interface AdminUserPicService
 
 	//点赞数+1,根据记录id
 	public void addPariseById(String id);
+	//查询根据id
+	public AdminUserPicDto load(String id);
+
 }

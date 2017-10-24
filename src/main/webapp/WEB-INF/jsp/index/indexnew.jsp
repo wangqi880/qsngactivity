@@ -41,7 +41,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </div>
 <div class="top_b">
         <div class="main">
-            <div class="w_780 left">
+            <div class="w_780 left" style="width: 800px">
                 <div class="title"><h2>
                     <span>
                     |<a href="javascript:if(confirm('http://pic.eol.cn/picture/lists?order_by=new&shtype=2 '))window.location='http://pic.eol.cn/picture/lists?order_by=new&shtype=2'">青少年宫</a>
@@ -52,7 +52,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <c:forEach items="${page.datas}" var="item">
                     <div class="w_240 mar_r_30 left pos_r">
                         <p align="center">
-                            <a href=""><img src="<%= path%>/resources/upload/thumbnail/${item.newName}" width="215" height="170" /></a>
+                            <a href="<%= path%>/index/show?id=${item.id}"><img src="<%= path%>/resources/upload/thumbnail/${item.newName}" width="215" height="170" /></a>
                         </p>
                         <ul>
                             <li>${item.imageName}</li>
@@ -101,13 +101,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 </script>
             </div>
             <div class="right w_280">
-    <div class="title"><a href="javascript:if(confirm('http://pic.eol.cn/picture/lists?order_by=hot&shtype=all  \n\n�ļ���δ�� Teleport Pro ȡ�أ���Ϊ ���޷�ȡ�ã�������ȡ�غ������������Ŀֹͣ��̫�졣  \n\n��Ҫ�ӷ������ϴ�����'))window.location='http://pic.eol.cn/picture/lists?order_by=hot&shtype=all'" tppabs="http://pic.eol.cn/picture/lists?order_by=hot&shtype=all"><h3>人气榜</h3></a></div>
+    <div class="title"><a href=""><h3>人气榜</h3></a></div>
     <table width="278" border="0" cellspacing="0" cellpadding="0" align="center" class="border mar_t_30 line_24 font_14">
   <tr>
-    <td width="38" height="30" align="center" valign="middle" bgcolor="#FB923F" class="white">排名</td>
-    <td width="122" align="" valign="middle" bgcolor="#FB923F" class="white">作品名称</td>
-    <td width="75" align="" valign="middle" bgcolor="#FB923F" class="white">作者</td>
-    <td width="41" align="" valign="middle" bgcolor="#FB923F" class="white">票数</td>
+    <td width="38" height="30" align="center" valign="middle" bgcolor="#64b3ee" class="white">排名</td>
+    <td width="122" align="" valign="middle" bgcolor="#64b3ee" class="white">作品名称</td>
+    <td width="75" align="" valign="middle" bgcolor="#64b3ee" class="white">作者</td>
+    <td width="41" align="" valign="middle" bgcolor="#64b3ee" class="white">票数</td>
   </tr>
       <tr>
     <td height="34" align="center" valign="middle" bgcolor="#F4F4F4"><em>1</em></td>

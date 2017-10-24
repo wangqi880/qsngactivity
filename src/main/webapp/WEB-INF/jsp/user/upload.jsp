@@ -225,23 +225,6 @@
             </div>
 
         </div>
-        <div class="right w_280">
-            <div class="title"><a href="javascript:if(confirm('http://pic.eol.cn/picture/lists?order_by=hot&shtype=all  \n\n�ļ���δ�� Teleport Pro ȡ�أ���Ϊ ���޷�ȡ�ã�������ȡ�غ������������Ŀֹͣ��̫�졣  \n\n��Ҫ�ӷ������ϴ�����'))window.location='http://pic.eol.cn/picture/lists?order_by=hot&shtype=all'" tppabs="http://pic.eol.cn/picture/lists?order_by=hot&shtype=all"><h3>人气榜</h3></a></div>
-            <table width="278" border="0" cellspacing="0" cellpadding="0" align="center" class="border mar_t_30 line_24 font_14">
-                <tr>
-                    <td width="38" height="30" align="center" valign="middle" bgcolor="#FB923F" class="white">排名</td>
-                    <td width="122" align="" valign="middle" bgcolor="#FB923F" class="white">作品名称</td>
-                    <td width="75" align="" valign="middle" bgcolor="#FB923F" class="white">作者</td>
-                    <td width="41" align="" valign="middle" bgcolor="#FB923F" class="white">票数</td>
-                </tr>
-                <tr>
-                    <td height="34" align="center" valign="middle" bgcolor="#F4F4F4"><em>20</em></td>
-                    <td align="" valign="middle" bgcolor="#F4F4F4"><a href="javascript:if(confirm('http://pic.eol.cn/picture/show?pid=281&shtype=2&order_by=hot  \n\n�ļ���δ�� Teleport Pro ȡ�أ���Ϊ ���޷�ȡ�ã�������ȡ�غ������������Ŀֹͣ��̫�졣  \n\n��Ҫ�ӷ������ϴ�����'))window.location='http://pic.eol.cn/picture/show?pid=281&shtype=2&order_by=hot#top'" tppabs="http://pic.eol.cn/picture/show?pid=281&shtype=2&order_by=hot#top">巴渝名校</a></td>
-                    <td align="" valign="middle" bgcolor="#F4F4F4">王世冲</td>
-                    <td align="" valign="middle" bgcolor="#F4F4F4"><i>18909</i></td>
-                </tr>
-            </table>
-        </div>
 
 
         <div class="no_way"></div>
@@ -387,7 +370,7 @@
                 }
 
             }).error(function(data) {
-                alert(上传失败+data.info);
+                alert("上传失败:"+data.info);
                 console.log(data);
             });
         });
@@ -419,63 +402,16 @@
             }
         }
 
-
-/*        var msisdn = $("input[name='msisdn']").val();
-        var name = $("input[name='name']").val();
-        var cardId = $("input[name='cardId']").val();
-        var age =$("input[name='age']").val();
-        var sex=$("select[name='sex']").val();
-        var imageName= $("input[name='imageName']").val();
-
-        var intro = $("textarea[name='intro']").val();
-
-        if(msisdn==null||msisdn==""){
-            alert("手机号不能为空");
-            return ;
+    $.get("<%= path%>/user/isUploadPermission",function(result){
+        if(result.code=="000000"){
+            $('#form_1').submit();
+        }else{
+            alert(result.info);
+            return;
         }
+    })
 
-        if(name==null||name==""){
-            alert("姓名不能为空");
-            return ;
-        }
-       if(cardId==null||cardId==""){
-           alert("身份证号码为空");
-           return ;
-       }
-        if(age==null||age==""){
-            alert("年龄不能为空");
-            return ;
-        }
 
-        if(imageName==null||imageName==""){
-            alert("作品名称不能为空");
-            return ;
-        }
-        if(intro==null||intro==""){
-            alert("作品描述不能空");
-            return ;
-        }
-        if(images==null||images=="" ||images.length<=0){
-            alert("作品不能空");
-            return ;
-        }
-
-        var msisdn_pattern = /^1[34578]\d{9}$/;
-        if(!msisdn_pattern.test(msisdn)){
-            alert("手机号格式不对");
-            return ;
-        }
-        var cardId_pattern = /(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/;
-       if(!cardId_pattern.test(cardId)){
-           alert("身份证格式不对");
-           return ;
-       }
-       if(age<0||age>100){
-           alert("年龄格式不对");
-           return ;
-       }*/
-
-        $('#form_1').submit();
     }
 
 
