@@ -5,3 +5,5 @@
 <meta name="description" content="我爱少年宫-首届摄影大赛-成都市青少年宫" />
 <meta name="copyright" content="" />
 <meta content="all" name="robots" />
+<link rel="shortcut icon" href="<%= path%>/images/favicon.ico"/>
+<link rel="bookmark" href="<%= path%>/images/favicon.ico"/>
