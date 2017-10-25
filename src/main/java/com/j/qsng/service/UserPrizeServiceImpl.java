@@ -1,17 +1,11 @@
 package com.j.qsng.service;
 
-import com.j.qsng.common.util.BeanHolder;
-import com.j.qsng.dao.CongfigMapper;
 import com.j.qsng.dao.UserIsPrizeMapper;
 import com.j.qsng.model.UserPrize;
-import com.sun.webpane.platform.ConfigManager;
-import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
-import java.util.HashMap;
-import java.util.Map;
 
 /**
  * Created by Administrator on 2017/10/21.
