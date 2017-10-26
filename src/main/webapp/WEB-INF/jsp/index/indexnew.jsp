@@ -43,8 +43,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <div class="w_780 left" style="width: 800px">
                 <div class="title"><h2>
                     <span>
-                    |<a href="<%= path%>/index/indexnew.html">青少年宫</a>
-                    |<a href="<%= path%>/index/indexnew.html?type=2" >用户</a>
+                    |<a href="<%= path%>/index/indexnew.html"> 内部展示单元</a>
+                    |<a href="<%= path%>/index/indexnew.html?type=2" >参赛单元</a>
                 </span>
                     <a href="<%= path%>/user/upload.html">我要上传</a></h2>
 
