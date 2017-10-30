@@ -8,6 +8,7 @@ import lombok.Data;
 @Data
 public class CongfigPojo
 {
+	String id;
 	String configKey;
 	String configValue;
 	String insertTime;

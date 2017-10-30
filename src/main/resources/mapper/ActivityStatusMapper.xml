@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.j.qsng.dao.ActivityStatusMapper" >
+
+    <resultMap id="ctivityStatus" type="com.j.qsng.model.admin.ActivityStatus" >
+        <id column="id" property="id" jdbcType="VARCHAR" />
+        <result column="activityPeriod" property="activityPeriod" jdbcType="VARCHAR" />
+        <result column="activityDesc" property="activityDesc" jdbcType="VARCHAR" />
+        <result column="status" property="status" jdbcType="VARCHAR" />
+    </resultMap>
+
+    <select id="listAll" resultMap="ctivityStatus">
+        select * from t_activity_Status
+    </select>
+    <update id="updateStaus" parameterType="com.j.qsng.model.admin.ActivityStatus">
+        UPDATE `t_activity_status`
+            SET
+            `status` = #{status}
+        WHERE `id` = #{id}
+    </update>
+    <select id="queryByPeriod" parameterType="string" resultType="string">
+        select status from t_activity_status where activityPeriod=#{activityPeriod}
+    </select>
+    <select id="queryById" parameterType="string" resultMap="ctivityStatus">
+                select * from t_activity_status where id=#{id}
+    </select>
+</mapper>

@@ -22,7 +22,12 @@ public class UserPrizeServiceImpl implements UserPrizeService
 	//初始化
 	@PostConstruct
 	public void init(){
+		try{
 		LIMITNUM= Integer.parseInt(configService.getConfigvalue("day_prize_num"));
+		}catch (Exception e){
+			System.out.println(e);
+		}
+
 	}
 
 	public boolean isPrizeAdd(String userId, String adminUserPicId, String dayDate)

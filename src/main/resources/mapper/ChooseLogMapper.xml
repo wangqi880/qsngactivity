@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.j.qsng.dao.ChooseLogMapper" >
+
+    <resultMap id="chooseLog" type="com.j.qsng.model.admin.ChooseLog" >
+        <id column="id" property="id" jdbcType="VARCHAR" />
+        <result column="username" property="username" jdbcType="VARCHAR" />
+        <result column="attachmentId" property="attachmentId" jdbcType="VARCHAR" />
+        <result column="prodId" property="prodId" jdbcType="VARCHAR" />
+        <result column="choosePeriod" property="choosePeriod" jdbcType="VARCHAR" />
+        <result column="insertTime" property="insertTime" jdbcType="VARCHAR" />
+        <result column="chooseIs" property="chooseIs" jdbcType="VARCHAR" />
+        <result column="score" property="score" jdbcType="DOUBLE" />
+    </resultMap>
+
+    <resultMap id="chooseUserPicDto" type="com.j.qsng.dto.ChooseUserPicDto" >
+        <id column="id" property="id" jdbcType="VARCHAR" />
+        <result column="prodId" property="prodId" jdbcType="VARCHAR" />
+        <result column="userId" property="userId" jdbcType="VARCHAR" />
+        <result column="attachmentId" property="attachmentId" jdbcType="VARCHAR" />
+        <result column="chooseIs" property="chooseIs" jdbcType="VARCHAR" />
+        <result column="imageName" property="imageName" jdbcType="VARCHAR" />
+        <result column="intro" property="intro" jdbcType="VARCHAR" />
+        <result column="username" property="username" jdbcType="VARCHAR" />
+        <result column="name" property="name" jdbcType="VARCHAR" />
+        <result column="msisdn" property="msisdn" jdbcType="VARCHAR" />
+        <result column="sex" property="sex" jdbcType="VARCHAR" />
+        <result column="newName" property="newName" jdbcType="VARCHAR" />
+        <result column="score" property="score" jdbcType="DOUBLE" />
+    </resultMap>
+
+    <select id="queryNumByUsernameAndPeriod" parameterType="map" resultType="java.lang.Integer">
+        select count(1) from t_choose_log t where t.username=#{username} and t.choosePeriod=#{choosePeriod}
+    </select>
+    <insert id="add" parameterType="com.j.qsng.model.admin.ChooseLog">
+        insert into t_choose_log(username,prodId,choosePeriod,insertTime,chooseIs) values(#{username},#{prodId},#{choosePeriod},#{insertTime},#{chooseIs})
+    </insert>
+    <select id="queryByPeriodAndIsChoose" parameterType="map"  resultMap="chooseLog">
+        select * from t_choose_log t where t.choosePeriod=#{choosePeriod} and t.chooseIs=#{chooseIs}
+    </select>
+    <select id="queryFisrtChoosedByusernameAndPeriod" parameterType="map" resultType="java.lang.Integer">
+        select count(1) from t_choose_log t where t.username=#{username} and t.choosePeriod=#{choosePeriod} and t.prodId=#{prodId} and t.chooseIs='1'
+    </select>
+    <select id="deleteByPeriod" parameterType="string">
+        delete from t_choose_log  where choosePeriod=#{period}
+    </select>
+    <select id="queryByPeriod" parameterType="string" resultType="java.lang.Integer">
+        select count(1) from t_choose_log t where t.choosePeriod=#{period}
+    </select>
+
+    <select id="queryByUsernameAndPeriod" parameterType="map" resultMap="chooseUserPicDto">
+        SELECT
+              m1.id,
+              m1.prodId,
+               m1.userId,
+               m1.attachmentId,
+               m1.chooseIs,
+               m1.imageName,
+               m1.intro,
+               m2.username,
+               m2.name,
+               m2.msisdn,
+               m2.sex,
+               m3.newName,
+               m1.score
+          FROM (SELECT
+                      t1.id,
+                      t2.userId,
+                      t2.id as prodId,
+                       t2.attachmentId,
+                       t1.chooseIs,
+                       t2.imageName,
+                       t2.intro,
+                       t1.score
+                  FROM t_choose_log t1 LEFT JOIN t_user_pic t2 ON t1.prodId = t2.id
+                 WHERE t1.username = #{username} AND t1.choosePeriod = #{period}) m1
+               LEFT JOIN t_user m2 ON m1.userId = m2.id
+               LEFT JOIN t_attachment m3 ON m1.attachmentId = m3.id
+    </select>
+
+    <select id="queryDetailByPeriodAndIsChoose" resultType="map" resultMap="chooseUserPicDto">
+        SELECT
+              m1.id,
+              m1.prodId,
+               m1.userId,
+               m1.attachmentId,
+               m1.chooseIs,
+               m1.imageName,
+               m1.intro,
+               m2.username,
+               m2.name,
+               m2.msisdn,
+               m2.sex,
+               m3.newName,
+               m1.score
+          FROM (SELECT
+                      t1.id,
+                      t2.userId,
+                      t2.id as prodId,
+                       t2.attachmentId,
+                       t1.chooseIs,
+                       t2.imageName,
+                       t2.intro,
+                       t1.score
+                  FROM t_choose_log t1 LEFT JOIN t_user_pic t2 ON t1.prodId = t2.id
+                 WHERE t1.chooseIs = #{chooseIs} AND t1.choosePeriod = #{period}) m1
+               LEFT JOIN t_user m2 ON m1.userId = m2.id
+               LEFT JOIN t_attachment m3 ON m1.attachmentId = m3.id
+    </select>
+
+    <select id="queryById" parameterType="string" resultMap="chooseLog">
+        select * from t_choose_log  t where t.id=#{id}
+    </select>
+    <update id="updateCheck" parameterType="com.j.qsng.model.admin.ChooseLog">
+         update t_choose_log set chooseIs=#{chooseIs} where id=#{id}
+    </update>
+
+    <select id="queryNumByPeriodAndChecked" parameterType="map" resultType="int">
+                select count(1) from t_choose_log t where t.chooseIs=#{chooseIs} and t.choosePeriod=#{choosePeriod}
+    </select>
+    <select id="queryNumByUserAndPeriodAndChoosed" parameterType="map" resultType="int">
+        select count(1) from t_choose_log t where t.username=#{username} and t.choosePeriod=#{choosePeriod} and t.chooseIs=#{chooseIs}
+    </select>
+
+    <select id="queryStaticsByUserAndPeriodAndChoosed" resultType="com.j.qsng.dto.AdminuserChoosePeriodNum">
+            select t1.*,t2.allNum from (
+        select t.username, t.choosePeriod,count(1) as choosedNum from  t_choose_log t where t.chooseIs='1'  group by t.username, t.choosePeriod ORDER  by  t.choosePeriod ASC)t1
+        left join (select t.username, t.choosePeriod,count(1) as allNum from  t_choose_log t group by t.username, t.choosePeriod ORDER  by  t.choosePeriod ASC)t2
+        on t1.username = t2.username and t1.choosePeriod = t2.choosePeriod
+    </select>
+</mapper>

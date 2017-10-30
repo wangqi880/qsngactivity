@@ -60,7 +60,7 @@
 	<!--拦截器 先不用，测试上传功能-->
 	<mvc:interceptors>
 		<mvc:interceptor>
-			<mvc:mapping path="/admin/**"/>
+			<!--<mvc:mapping path="/admin/**"/>-->
 			<mvc:mapping path="/user/**"/>
 			<bean class="com.j.qsng.web.AuthInterceptor"/>
 		</mvc:interceptor>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.j.qsng.dao.UserScoreLogMapper" >
+
+    <resultMap id="userScoreLog" type="com.j.qsng.model.admin.UserScoreLog" >
+        <id column="id" property="id" jdbcType="VARCHAR" />
+        <result column="chooseLogId" property="chooseLogId" jdbcType="VARCHAR" />
+        <result column="score" property="score" jdbcType="DOUBLE" />
+        <result column="chooseUsername" property="chooseUsername" jdbcType="VARCHAR" />
+        <result column="insertTime" property="insertTime" jdbcType="VARCHAR" />
+    </resultMap>
+
+    <insert id="add" parameterType="com.j.qsng.model.admin.UserScoreLog">
+       INSERT INTO `t_user_score_log`(
+                               `chooseLogId`,
+                               `score`,
+                               `chooseUsername`,
+                               `insertTime`)
+        VALUES(
+
+        #{chooseLogId},
+        #{score},
+        #{chooseUsername},
+        #{insertTime})
+    </insert>
+    <select id="queryByChooseUsername" parameterType="string" resultMap="userScoreLog">
+        select * from  t_user_score_log t where t.chooseUsername=#{chooseUsername}
+    </select>
+
+    <select id="queryByChooseLogId" parameterType="string" resultMap="userScoreLog">
+        select * from t_user_score_log t where t.chooseLogId=#{chooseLogId}
+    </select>
+
+    <select id="excChooseLogIdAvg" parameterType="string" resultType="double">
+        select avg(t.score) from t_user_score_log t where t.chooseLogId=#{chooseLogId}  group by chooseLogId
+    </select>
+
+
+    <update id="deleteAll">
+        truncate table t_user_score_log
+    </update>
+
+</mapper>

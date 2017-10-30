@@ -87,4 +87,14 @@ public class UserPicServiceImpl implements  UserPicService
 	{
 		userPicMapper.updateNameAndInfo(userPic);
 	}
+
+	public int queryByAllNum()
+	{
+		return userPicMapper.queryByAllNum();
+	}
+
+	public List<UserPic> listAll()
+	{
+		return userPicMapper.listAll();
+	}
 }

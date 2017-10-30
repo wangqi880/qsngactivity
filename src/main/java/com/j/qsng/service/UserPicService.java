@@ -25,4 +25,9 @@ public interface UserPicService//根据用户id查询记录
 
 	//更新图片标题和描述
 	public  void updateNameAndInfo(UserPic userPic);
+	//一共有多少个作品
+	public int queryByAllNum();
+	//查询所有的作品
+	public List<UserPic> listAll();
+
 }

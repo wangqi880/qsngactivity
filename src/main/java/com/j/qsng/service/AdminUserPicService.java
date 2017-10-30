@@ -22,4 +22,5 @@ public interface AdminUserPicService
 	//查询根据id
 	public AdminUserPicDto load(String id);
 
+
 }

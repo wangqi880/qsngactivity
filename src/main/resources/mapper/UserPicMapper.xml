@@ -35,5 +35,12 @@
         WHERE `userId` = #{userId} and attachmentId=#{attachmentId}
 
     </update>
+    <select id="queryByAllNum" resultType="java.lang.Integer">
+          select count(1) from t_user_pic
+    </select>
+
+    <select id="listAll" resultMap="userPic">
+        select * from t_user_pic
+    </select>
 
 </mapper>
