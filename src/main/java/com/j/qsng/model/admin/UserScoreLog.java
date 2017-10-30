@@ -10,7 +10,7 @@ public class UserScoreLog
 {
 	String id;
 	String chooseLogId;
-	double score;
+	int score;
 	String chooseUsername;
 	String insertTime;
 

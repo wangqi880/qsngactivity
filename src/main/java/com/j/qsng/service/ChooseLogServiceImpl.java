@@ -105,4 +105,9 @@ public class ChooseLogServiceImpl implements ChooseLogService
 	{
 		return chooseLogMapper.queryStaticsByUserAndPeriodAndChoosed();
 	}
+
+	public ChooseUserPicDto queryDetailByid(String id)
+	{
+		return chooseLogMapper.queryDetailByid(id);
+	}
 }

@@ -46,4 +46,7 @@ public interface ChooseLogService
 
 	//统计每个用户，第几期，已经选择了多少照片
 	public List<AdminuserChoosePeriodNum> queryStaticsByUserAndPeriodAndChoosed();
+
+	//根据id查询详细信息
+	public ChooseUserPicDto queryDetailByid(String id);
 }

@@ -2,8 +2,11 @@ package com.j.qsng.controller;
 
 import com.j.qsng.common.pojo.BaseResp;
 import com.j.qsng.common.pojo.ChooseUtils;
+import com.j.qsng.common.util.DateUtils;
 import com.j.qsng.dto.ChooseUserPicDto;
+import com.j.qsng.dto.UserScoreLogDto;
 import com.j.qsng.model.admin.ChooseLog;
+import com.j.qsng.model.admin.UserScoreLog;
 import com.j.qsng.service.ChooseLogService;
 import com.j.qsng.service.ConfigService;
 import com.j.qsng.service.UserScoreLogService;
@@ -47,8 +50,10 @@ public class ChooseUserController
 			List<ChooseUserPicDto> chooseUserPicDtoList = chooseLogService.queryByUsernameAndPeriod(adminUsername,period);
 			modelAndView.addObject("chooseUserPicDtoList",chooseUserPicDtoList);
 		}else if(ChooseUtils.THIRD_PERIOD.equals(period)){
-			//第三期为，period=2，已选中
-			chooseLogService.queryByPeriodAndIsChoose(ChooseUtils.SECOND_PERIOD,ChooseUtils.YES_CHOOSE);
+			//第三期为，period=2，已选中,已经放在user_score表
+			 List<UserScoreLogDto> everyUserScorelist = userScoreLogService.queryDetailByUsernameAndScoreIs(adminUsername,null);
+			modelAndView.addObject("everyUserScorelist",everyUserScorelist);
+			modelAndView.setViewName("/chooseUser/thirdUserScore");
 		}
 		return  modelAndView;
 	}
@@ -136,5 +141,47 @@ public class ChooseUserController
 		//更新选中状态
 		chooseLogService.updateCheck(chooseLog);
 		return resp;
+	}
+
+	@RequestMapping("/chooseUser/updateUserScore/{id}/{score}")
+	@ResponseBody
+	public  Object updateUserScore(@PathVariable String id,@PathVariable String score){
+		BaseResp resp = new BaseResp();
+		resp.setCode("000000");
+		resp.setInfo("修改成功");
+		String isCanScore = configService.getConfigvalue(ChooseUtils.ADMIN_CHOOSE_THIRD_STATUS);
+		if(!("1".equals(isCanScore))){
+			resp.setCode("000005");
+			resp.setInfo("打分时间已过");
+			return resp;
+		}
+
+
+		int score_value=0;
+		try
+		{
+			score_value = Integer.parseInt(score);
+		}catch (Exception e){
+			resp.setCode("000002");
+			resp.setInfo("分数格式不正确");
+			return  resp;
+		}
+		UserScoreLog userScoreLog = userScoreLogService.queryById(id);
+		if(null==userScoreLog){
+			resp.setCode("000003");
+			resp.setInfo("没有评分记录");
+			return resp;
+		}
+
+		if(userScoreLog.getScore()!=score_value){
+			userScoreLog.setScore(score_value);
+			userScoreLog.setInsertTime(DateUtils.getStandardNowDateTime());
+			userScoreLogService.updateScoreAndTime(userScoreLog);
+		}else{
+			resp.setCode("000004");
+			resp.setInfo("没有更新");
+		}
+
+		return  resp;
 	}
 }

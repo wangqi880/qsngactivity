@@ -1,8 +1,10 @@
 package com.j.qsng.dao;
 
+import com.j.qsng.dto.UserScoreLogDto;
 import com.j.qsng.model.admin.UserScoreLog;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by Administrator on 2017/10/29.
@@ -22,5 +24,16 @@ public interface UserScoreLogMapper
 	public void deleteAll();
 
 	//查询用户打分的记录
-	
+
+	//查询总记录数
+	public int queryNumAll();
+
+	//查询每个用户的评分
+	public List<UserScoreLogDto> queryDetailByUsernameAndScoreIs(Map map);
+
+	//根据id查询
+	public UserScoreLog queryById(String id);
+
+	//更新分数和时间
+	public void updateScoreAndTime(UserScoreLog userScoreLog);
 }

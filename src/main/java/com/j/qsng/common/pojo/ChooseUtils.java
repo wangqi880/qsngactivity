@@ -37,7 +37,7 @@ public class ChooseUtils
 	//选择用户是否可以选择照片,第二期
 	public static final String ADMIN_CHOOSE_SENCOND_STATUS="admin_choose_sencond_status";
 
-	//选择用户是否可以选择照片,第三期
+	//选择用户是否可以打分,第三期
 	public static final String ADMIN_CHOOSE_THIRD_STATUS="admin_choose_third_status";
 
 

@@ -310,17 +310,30 @@ public class AdminController
 				resp.setCode("000002");
 				return resp;
 			}
+			//如果已经分配之后，就不能再次分配了
+			int allNum= userScoreLogService.queryNumAll();
+			if(0<allNum){
+				resp.setInfo("已经分配过");
+				resp.setCode("000003");
+				return resp;
+			}
+
 
 			List<ChooseLog> list = chooseLogService
 				.queryByPeriodAndIsChoose(ChooseUtils.SECOND_PERIOD, ChooseUtils.YES_CHOOSE);
+			//选择用户
+			List<AdminUser> adminUserList=adminUserService.queryChooseUsers();
 			for(ChooseLog chooseLog : list)
 			{
-				UserScoreLog usl = new UserScoreLog();
-				usl.setChooseLogId(chooseLog.getProdId());
-				usl.setChooseUsername(chooseLog.getUsername());
-				usl.setScore(0);
-				usl.setInsertTime(DateUtils.getStandardNowDateTime());
-				userScoreLogService.add(usl);
+				for(AdminUser adminUser:adminUserList){
+					UserScoreLog usl = new UserScoreLog();
+					usl.setChooseLogId(chooseLog.getId());
+					usl.setChooseUsername(adminUser.getUsername());
+					usl.setScore(0);
+					usl.setInsertTime(DateUtils.getStandardNowDateTime());
+					userScoreLogService.add(usl);
+				}
+
 			}
 		} catch (Exception e){
 			resp.setCode("000002");
