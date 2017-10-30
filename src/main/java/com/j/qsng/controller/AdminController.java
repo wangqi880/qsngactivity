@@ -126,8 +126,10 @@ public class AdminController
 		modelAndView.setViewName("/admin/startActivity");
 		int firstChoosedNum=chooseLogService.queryNumByPeriodAndChecked(ChooseUtils.FIRST_PERIOD,ChooseUtils.YES_CHOOSE);
 		int secondChoosedNum=chooseLogService.queryNumByPeriodAndChecked(ChooseUtils.SECOND_PERIOD,ChooseUtils.YES_CHOOSE);
+		int allNum=userPicService.queryByAllNum();
 		modelAndView.addObject("firstChoosedNum",firstChoosedNum);
 		modelAndView.addObject("secondChoosedNum",secondChoosedNum);
+		modelAndView.addObject("allNum",allNum);
 		return modelAndView;
 	}
 

@@ -40,5 +40,13 @@ public class ChooseUtils
 	//选择用户是否可以打分,第三期
 	public static final String ADMIN_CHOOSE_THIRD_STATUS="admin_choose_third_status";
 
+	//用户是否允许修改上传作品
+	public static final String USER_ALLOW_UPDATE="user_allow_update";
+
+	//用户是否允许添加作品
+	public static final String USER_ALLOW_ADD_USER_PIC="user_allow_add_user_pic";
+
+	//用户是否允许上传图片
+	public static final String USER_ALLOW_UPLOAD="user_allow_upload";
 
 }

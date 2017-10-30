@@ -47,11 +47,11 @@
 						${userpic.msisdn}
 				</td>
 				<td>
-					<img src="<%=request.getContextPath() %>/resources/upload/thumbnail/${userpic.newName}" alt="${userpic.imageName}">
-
+						${userpic.imageName}
 				</td>
 				<td>
-						图片${userpic.imageName}
+					<img src="<%=request.getContextPath() %>/resources/upload/thumbnail/${userpic.newName}" alt="${userpic.imageName}">
+
 				</td>
 				<td>
 					<!--没有选中-->

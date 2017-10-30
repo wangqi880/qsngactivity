@@ -1,6 +1,7 @@
 package com.j.qsng.controller;
 
 import com.j.qsng.common.pojo.BaseResp;
+import com.j.qsng.common.pojo.ChooseUtils;
 import com.j.qsng.common.pojo.SystemContext;
 import com.j.qsng.common.util.DateUtils;
 import com.j.qsng.common.util.IDUtils;
@@ -117,6 +118,14 @@ public class UserContoller
 	public ModelAndView addUserPics(UserPicDto userPicDto,HttpSession session){
 		ModelAndView mode = new ModelAndView();
 
+		//是否添加控制
+		String isAllow = configService.getConfigvalue(ChooseUtils.USER_ALLOW_ADD_USER_PIC);
+		if(!("1".equals(isAllow))){
+			mode.addObject("message","添加时间已经过了，不允许添加");
+			mode.setViewName("/common/message");
+			return mode;
+		}
+
 		//时间是否上传控制
 		boolean flag = ipUpdate();
 		if(!flag){
@@ -220,6 +229,13 @@ public class UserContoller
 		BaseResp resp  = new BaseResp();
 		resp.setCode("000000");
 		resp.setInfo("sccuess");
+		String isAllow = configService.getConfigvalue(ChooseUtils.USER_ALLOW_UPLOAD);
+		if(!("1".equals(isAllow))){
+			resp.setCode("666666");
+			resp.setInfo("上传时间已过，不允许上传");
+			return  resp;
+		}
+
 		List<Attachment> list = new ArrayList<Attachment>();
 
 		User u = (User) session.getAttribute("loginUser");
@@ -358,6 +374,15 @@ public class UserContoller
 		modelAndView.setViewName("redirect:/user/showproduct.html");
 		User u = (User) session.getAttribute("loginUser");
 
+		//判断是否允许修改
+		String isAllow = configService.getConfigvalue(ChooseUtils.USER_ALLOW_UPDATE);
+		if(!("1".equals(isAllow))){
+			modelAndView.addObject("message","修改时间已过，不允许修改");
+			modelAndView.setViewName("/common/message");
+			return  modelAndView;
+		}
+
+
 		//是否可以修改判断
 		boolean flag = ipUpdate();
 		if(!flag){
@@ -388,11 +413,19 @@ public class UserContoller
 	//删除用户上传记录
 	@RequestMapping("/user/deleteUserPic.do")
 	public ModelAndView deleteUserPic(@RequestParam String attachmentId,HttpSession session){
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.setViewName("redirect:/user/userInfo.html");
+		//判断是否允许修改
+		String isAllow = configService.getConfigvalue(ChooseUtils.USER_ALLOW_UPDATE);
+		if(!("1".equals(isAllow))){
+			modelAndView.addObject("message","修改时间已过，不允许修改");
+			modelAndView.setViewName("/common/message");
+			return  modelAndView;
+		}
 		User u = (User) session.getAttribute("loginUser");
 		String userId =String.valueOf(u.getId());
 		userPicService.delByUserIdAndAttachmentId(userId,attachmentId);
-		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.setViewName("redirect:/user/userInfo.html");
+
 		return modelAndView;
 	}
 

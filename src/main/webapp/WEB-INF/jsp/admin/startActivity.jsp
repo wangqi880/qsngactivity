@@ -48,7 +48,10 @@
 			<td>统计图片打分</td>
 			<td><input id="fourStartButton" type="button" value="开始" class="list_op delete"></td>
 		</tr>
-
+		<tr>
+			<td>简单统计:总上传作品数:${allNum}</td>
+			<td><a href="startActivity" class="list_op update">更新</a></td>
+		</tr>
 		</tbody>
 		<tfoot>
 		<tr>

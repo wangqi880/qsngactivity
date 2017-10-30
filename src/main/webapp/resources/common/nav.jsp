@@ -50,20 +50,8 @@ $(function(){
 		<a href="<%=request.getContextPath() %>/chooseUser/listUserPicture/3" target="content">第三次打分</a>
 	</li>
 </ul>
-<ul class="navMenu navSelected">
-	<h3 class="navTitle">
-		<span class="navTilteTxt">编辑管理</span>
-	</h3>
-	<li class="navChild">
-		<a href="<%=request.getContextPath() %>/admin/user/makeScorelist" target="content">自己的打分情况</a>
-	</li>
-	<c:if test="${isAdmin }">
-	<li class="navChild">
-		<a href="<%=request.getContextPath() %>/admin/log/makeScoreLog" target="content">责编打分情况</a>
-	</li>
-	</c:if>
-</ul>
 
+<%--
 <c:if test="${isAdmin }">
 <ul class="navMenu navSelected">
 	<h3 class="navTitle">
@@ -79,29 +67,7 @@ $(function(){
 		<a href="<%=request.getContextPath() %>/admin/comicScense/lists" target="content">场景管理</a>
 	</li>
 </ul>
-</c:if>
-	
-	<c:if test="${isAdmin }">
-	<ul class="navMenu navSelected">
-		<h3 class="navTitle">
-			<span class="navTilteTxt">画像元数据管理</span>
-		</h3>
-		<li class="navChild">
-			<a href="<%=request.getContextPath() %>/admin/comicCategory/lists" target="content">标签元数据管理</a>
-		</li>
-		
-		<li class="navChild">
-			<a href="<%=request.getContextPath() %>/admin/comicCategory/comicDimensionList" target="content">维度元数据管理</a>
-		</li>
-		
-		<li class="navChild">
-			<a href="<%=request.getContextPath() %>/admin/comicIndex/lists" target="content">指数元数据管理</a>
-		</li>
-		<%-- <li class="navChild">
-			<a href="<%=request.getContextPath() %>/admin/weightMetaData/weightManage" target="content">权重元数据管理</a>
-		</li> --%>
-	</ul>
-</c:if>
+</c:if>--%>
 		</div>
 </body>
 </html>
