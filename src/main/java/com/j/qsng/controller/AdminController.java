@@ -357,4 +357,29 @@ public class AdminController
 		modelAndView.addObject("choosedlist",choosedlist);
 		return modelAndView;
 	}
+
+	//统计最终得分
+	@RequestMapping("/admin/statisticalScore")
+	@ResponseBody
+	public Object statisticalScore(){
+		BaseResp resp = new BaseResp();
+		//查询出所有的第二期已经选的作品
+		resp.setCode("000000");
+		resp.setInfo("计算完成");
+		try
+		{
+			List<ChooseLog> chooseLogList = chooseLogService
+				.queryByPeriodAndIsChoose(ChooseUtils.SECOND_PERIOD, ChooseUtils.YES_CHOOSE);
+			for(ChooseLog chooseLog : chooseLogList)
+			{
+				double avgScore = userScoreLogService.excChooseLogIdAvg(chooseLog.getId());
+				chooseLog.setScore(avgScore);
+				chooseLogService.updateScore(chooseLog);
+			}
+		}catch (Exception e){
+			resp.setInfo("计算失败："+e.getMessage());
+			resp.setCode("000001");
+		}
+		return resp;
+	}
 }

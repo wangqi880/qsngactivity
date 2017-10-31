@@ -110,4 +110,9 @@ public class ChooseLogServiceImpl implements ChooseLogService
 	{
 		return chooseLogMapper.queryDetailByid(id);
 	}
+
+	public void updateScore(ChooseLog chooseLog)
+	{
+		chooseLogMapper.updateScore(chooseLog);
+	}
 }

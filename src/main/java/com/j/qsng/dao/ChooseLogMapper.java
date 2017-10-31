@@ -48,4 +48,7 @@ public interface ChooseLogMapper
 	public List<AdminuserChoosePeriodNum> queryStaticsByUserAndPeriodAndChoosed();
 	//根据id查询详细信息
 	public ChooseUserPicDto queryDetailByid(String id);
+
+	//更新分数
+	public void updateScore(ChooseLog chooseLog);
 }

@@ -158,4 +158,8 @@
                LEFT JOIN t_user m2 ON m1.userId = m2.id
                LEFT JOIN t_attachment m3 ON m1.attachmentId = m3.id
     </select>
+
+    <update id="updateScore" parameterType="com.j.qsng.model.admin.ChooseLog">
+        update t_choose_log set score=#{score} where id=#{id}
+    </update>
 </mapper>

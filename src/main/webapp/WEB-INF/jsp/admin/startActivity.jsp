@@ -141,5 +141,29 @@
                 return false;
             }
         })
+
+		//统计得分
+        $("#fourStartButton").click(function(){
+            if(window.confirm('确定统计得分？')){
+                $.ajax({
+                    type: "get",
+                    url: "<%=request.getContextPath() %>/admin/statisticalScore",
+                    contentType: false,
+                    processData: false,
+                }).success(function(data) {
+                    if (data.code=='000000') {
+                        alert("统计完成:"+data.info);
+                    } else {
+                        alert("统计失败:"+data.info);
+                    }
+
+                }).error(function(data) {
+                    alert("统计失败:"+data.info);
+                });
+                return true;
+            }else{
+                return false;
+            }
+        })
 	})
 </script>

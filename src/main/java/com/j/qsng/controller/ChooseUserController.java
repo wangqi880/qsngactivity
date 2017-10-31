@@ -184,4 +184,17 @@ public class ChooseUserController
 
 		return  resp;
 	}
+
+	//查看所有最后得分
+	@RequestMapping("/chooseUser/seeUserPicScore")
+	public ModelAndView seeUserPicScore(){
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.setViewName("/chooseUser/seeUserPicScore");
+
+		List<ChooseUserPicDto> chooseUserPicDtoList= chooseLogService.queryDetailByPeriodAndIsChoose(ChooseUtils.YES_CHOOSE,ChooseUtils.SECOND_PERIOD);
+		modelAndView.addObject("chooseUserPicDtoList",chooseUserPicDtoList);
+
+		return  modelAndView;
+	}
+
 }

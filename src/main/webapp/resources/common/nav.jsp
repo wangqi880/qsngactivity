@@ -49,6 +49,9 @@ $(function(){
 	<li class="navChild">
 		<a href="<%=request.getContextPath() %>/chooseUser/listUserPicture/3" target="content">第三次打分</a>
 	</li>
+	<li class="navChild">
+		<a href="<%=request.getContextPath() %>/chooseUser/seeUserPicScore" target="content">查看得分</a>
+	</li>
 </ul>
 
 <%--

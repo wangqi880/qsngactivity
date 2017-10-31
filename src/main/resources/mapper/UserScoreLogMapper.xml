@@ -32,7 +32,7 @@
     </select>
 
     <select id="excChooseLogIdAvg" parameterType="string" resultType="double">
-        select avg(t.score) from t_user_score_log t where t.chooseLogId=#{chooseLogId}  group by chooseLogId
+        select avg(t.score) from t_user_score_log t where t.chooseLogId=#{chooseLogId}  and t.score!=0  group by chooseLogId
     </select>
 
 
