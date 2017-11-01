@@ -97,4 +97,19 @@ public class UserPicServiceImpl implements  UserPicService
 	{
 		return userPicMapper.listAll();
 	}
+
+	public UserPicShowDto queryUserPicDtoById(String id) {
+
+			UserPicShowDto upsd  = new UserPicShowDto();
+			UserPic up=userPicMapper.queryById(id);
+			if(null==up){
+				return  null;
+			}
+			upsd.setUserPic(up);
+			Attachment attachment = attachmentMapper.load(up.getAttachmentId());
+			upsd.setAttachment(attachment);
+			upsd.setImageName(up.getImageName());
+			upsd.setIntro(up.getIntro());
+			return  upsd;
+	}
 }

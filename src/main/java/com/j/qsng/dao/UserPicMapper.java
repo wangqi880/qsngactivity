@@ -27,4 +27,7 @@ public interface UserPicMapper
 
 	//查询所有的作品
 	public List<UserPic> listAll();
+
+	//根据id查询
+	public  UserPic queryById(String id);
 }

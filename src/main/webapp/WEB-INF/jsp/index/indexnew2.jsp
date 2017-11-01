@@ -43,10 +43,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <div class="w_780 left" style="width: 800px">
                 <div class="title"><h2>
                     <span>
-                        <c:if test="${isAllow !='1'}">
-                            <a href="<%= path%>/index/indexnew.html?type=1"> 内部展示单元</a>
-                            |<a href="<%= path%>/index/indexnew.html?type=2" >参赛单元</a>
-                        </c:if>
+                    <c:if test="${isAllow !='1'}">
+                        <a href="<%= path%>/index/indexnew.html?type=1"> 内部展示单元</a>
+                        |<a href="<%= path%>/index/indexnew.html?type=2" >参赛单元</a>
+                    </c:if>
                           <c:if test="${isAllow ==1}">
                               <a href="<%= path%>/index/indexnew.html?type=2" >参赛单元</a>
                               |<a href="<%= path%>/index/indexnew.html?type=1"> 内部展示单元</a>
@@ -59,7 +59,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <c:forEach items="${page.datas}" var="item">
                     <div class="w_240 mar_r_30 left pos_r">
                         <p align="center">
-                            <a href="<%= path%>/index/show?id=${item.id}"><img src="<%= path%>/resources/upload/${item.newName}" width="215" height="170" /></a>
+                            <a href="<%= path%>/index/show2?id=${item.id}"><img src="<%= path%>/resources/upload/${item.newName}" width="215" height="170" /></a>
                         </p>
                         <ul>
                             <li>${item.imageName}</li>

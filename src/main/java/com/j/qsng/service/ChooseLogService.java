@@ -1,7 +1,9 @@
 package com.j.qsng.service;
 
+import com.j.qsng.common.pojo.Pager;
 import com.j.qsng.dto.AdminuserChoosePeriodNum;
 import com.j.qsng.dto.ChooseUserPicDto;
+import com.j.qsng.dto.UserPicScorePrizeDto;
 import com.j.qsng.model.admin.ChooseLog;
 
 import java.util.List;
@@ -51,5 +53,7 @@ public interface ChooseLogService
 	public ChooseUserPicDto queryDetailByid(String id);
 	//更新分数
 	public void updateScore(ChooseLog chooseLog);
+
+	public Pager<UserPicScorePrizeDto> queryPageDetailScorePrizeNum();
 
 }

@@ -1,9 +1,13 @@
 package com.j.qsng.service;
 
 import com.j.qsng.common.pojo.ChooseUtils;
+import com.j.qsng.common.pojo.Pager;
+import com.j.qsng.common.pojo.SystemContext;
 import com.j.qsng.dao.ChooseLogMapper;
+import com.j.qsng.dto.AdminUserPicDto;
 import com.j.qsng.dto.AdminuserChoosePeriodNum;
 import com.j.qsng.dto.ChooseUserPicDto;
+import com.j.qsng.dto.UserPicScorePrizeDto;
 import com.j.qsng.model.admin.ChooseLog;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -114,5 +118,24 @@ public class ChooseLogServiceImpl implements ChooseLogService
 	public void updateScore(ChooseLog chooseLog)
 	{
 		chooseLogMapper.updateScore(chooseLog);
+	}
+
+	public Pager<UserPicScorePrizeDto> queryPageDetailScorePrizeNum() {
+		Map map = new HashMap();
+		Integer pageSize = SystemContext.getPageSize();
+		Integer pageOffset = SystemContext.getPageOffset();
+		if(0==pageOffset){
+			pageOffset=1;
+		}
+		map.put("size",pageSize);
+		map.put("offset",(pageOffset-1)*pageSize);
+		Pager<UserPicScorePrizeDto> page = new Pager<UserPicScorePrizeDto>();
+		int totole = queryNumByPeriodAndChecked(ChooseUtils.SECOND_PERIOD,ChooseUtils.YES_CHOOSE);
+		page.setTotal(totole);
+		page.setSize(pageSize);
+		page.setOffset(pageOffset);
+		List<UserPicScorePrizeDto> list = chooseLogMapper.queryPageDetailScorePrizeNum(map);
+		page.setDatas(list);
+		return page;
 	}
 }

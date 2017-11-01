@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>欢迎使用可米酷后台管理程序</title>
+<title>欢迎使用青少年宫活动管理后台</title>
 </head>
 <frameset cols="*"  border="0" frameborder="0" frameSpacing="0" scrolling="false">
 	<frameset rows="110px,*" frameborder="0" noresize frameSpacing="0">

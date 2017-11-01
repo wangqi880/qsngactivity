@@ -162,4 +162,19 @@
     <update id="updateScore" parameterType="com.j.qsng.model.admin.ChooseLog">
         update t_choose_log set score=#{score} where id=#{id}
     </update>
+    <select id="queryPageDetailScorePrizeNum" parameterType="map" resultType="com.j.qsng.dto.UserPicScorePrizeDto">
+        select * from (
+            select  t2.id,t2.userId,t2.attachmentId,t2.imageName,t2.intro,t3.newName,case when t5.prizeNum is null then 0 else t5.prizeNum  end as prizeNum ,t1.score,t4.name,t4.username from (
+            select t.prodId,t.score from t_choose_log t where t.choosePeriod='2' and t.chooseIs='1')t1
+            left join  t_user_pic t2 on t1.prodId=t2.id
+            left join t_attachment t3
+            on t2.attachmentId=t3.id
+            left join t_user t4
+            on t2.userId=t4.id
+            left join t_userpic_prize t5
+            on t1.prodId = t5.prodId
+            )t
+        order by t.prizeNum desc limit #{offset},#{size}
+
+    </select>
 </mapper>

@@ -2,18 +2,18 @@ package com.j.qsng.controller;
 
 import com.github.pagehelper.Page;
 import com.j.qsng.common.pojo.BaseResp;
+import com.j.qsng.common.pojo.ChooseUtils;
 import com.j.qsng.common.pojo.Pager;
 import com.j.qsng.common.util.DateUtils;
 import com.j.qsng.common.util.IDUtils;
 import com.j.qsng.common.util.IdcardUtils;
 import com.j.qsng.dto.AdminUserPicDto;
+import com.j.qsng.dto.UserPicScorePrizeDto;
+import com.j.qsng.dto.UserPicShowDto;
 import com.j.qsng.model.User;
 import com.j.qsng.model.UserPrize;
 import com.j.qsng.model.admin.AdminUserPic;
-import com.j.qsng.service.AdminUserPicService;
-import com.j.qsng.service.ConfigService;
-import com.j.qsng.service.UserPrizeService;
-import com.j.qsng.service.UserService;
+import com.j.qsng.service.*;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpRequest;
@@ -41,7 +41,9 @@ public class IndexController
 
 	@Autowired ConfigService       configService;
 	@Autowired UserPrizeService    userPrizeService;
-
+	@Autowired
+	ChooseLogService chooseLogService;
+	@Autowired UserPicService userPicService;
 	final static String ADMINTYPE="1";
 	final static String USERTYPE="2";
 
@@ -54,14 +56,33 @@ public class IndexController
 	public ModelAndView indexnew(String type){
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("index/indexnew");
-		if(StringUtils.isEmpty(type) ||ADMINTYPE.equals(type) ){
-			Pager<AdminUserPicDto> page = adminUserPicService.queryByPage();
-			modelAndView.addObject("page",page);
 
+
+		String isAllow = configService.getConfigvalue(ChooseUtils.USER_ALLOW_SEE_USER_PIC_SCORE);
+		if(null==type){
+			if("1".equals(isAllow)){
+				type="2";
+			}else{
+				type="1";
+			}
 		}
-		if(USERTYPE.equals(type)){
-			//普通用户的
-			modelAndView.addObject("message","还没有数据");
+
+			modelAndView.addObject("isAllow",isAllow);
+			if(ADMINTYPE.equals(type) ){
+				Pager<AdminUserPicDto> page = adminUserPicService.queryByPage();
+				modelAndView.addObject("page",page);
+
+			}
+			if(USERTYPE.equals(type)){
+				//普通用户的
+				if(!("1".equals(isAllow))){
+					modelAndView.setViewName("common/message");
+					modelAndView.addObject("message","还没有到查看作品的时间");
+				}else{
+					modelAndView.setViewName("index/indexnew2");
+					Pager<UserPicScorePrizeDto> page = chooseLogService.queryPageDetailScorePrizeNum();
+					modelAndView.addObject("page",page);
+				}
 		}
 		return modelAndView;
 	}
@@ -141,5 +162,13 @@ public class IndexController
 		return modelAndView;
 	}
 
-
+	//展示图片详情
+	@RequestMapping("/show2")
+	public ModelAndView show2(String id,String type){
+		ModelAndView modelAndView = new ModelAndView();
+			modelAndView.setViewName("index/show2");
+			UserPicShowDto upsd = userPicService.queryUserPicDtoById(id);
+			modelAndView.addObject("updto",upsd);
+		return modelAndView;
+	}
 }

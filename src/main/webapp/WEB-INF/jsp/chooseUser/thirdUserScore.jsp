@@ -50,7 +50,7 @@
 						${userpicScore.msisdn}
 				</td>
 				<td>
-					<img src="<%=request.getContextPath() %>/resources/upload/thumbnail/${userpicScore.newName}" alt="${userpicScore.imageName}">
+					<img src="<%=request.getContextPath() %>/resources/upload/${userpicScore.newName}" alt="${userpicScore.imageName}" style="width: 200px;height: 160px">
 
 				</td>
 				<td>

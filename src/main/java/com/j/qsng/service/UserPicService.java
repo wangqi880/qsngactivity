@@ -30,4 +30,7 @@ public interface UserPicService//根据用户id查询记录
 	//查询所有的作品
 	public List<UserPic> listAll();
 
+	//根据作品id查询作品详细信息
+	public UserPicShowDto queryUserPicDtoById(String id);
+
 }

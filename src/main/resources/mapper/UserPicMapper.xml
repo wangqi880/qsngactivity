@@ -43,4 +43,8 @@
         select * from t_user_pic
     </select>
 
+    <select id="queryById" parameterType="string" resultMap="userPic">
+        select * from t_user_pic t where t.id=#{id}
+    </select>
+
 </mapper>

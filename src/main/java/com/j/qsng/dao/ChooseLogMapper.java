@@ -2,6 +2,7 @@ package com.j.qsng.dao;
 
 import com.j.qsng.dto.AdminuserChoosePeriodNum;
 import com.j.qsng.dto.ChooseUserPicDto;
+import com.j.qsng.dto.UserPicScorePrizeDto;
 import com.j.qsng.model.admin.ChooseLog;
 
 import java.util.List;
@@ -51,4 +52,7 @@ public interface ChooseLogMapper
 
 	//更新分数
 	public void updateScore(ChooseLog chooseLog);
+
+	//查询已经评分的用户作品的分数，点赞详细信息
+	public List<UserPicScorePrizeDto> queryPageDetailScorePrizeNum(Map map);
 }
