@@ -15,6 +15,12 @@
 .div2{ border-left:0 none; float:left; height:30px; width:60px;}
 </style>
 
+<!--图文-->
+	<!-- CSS -->
+<link href='<%=request.getContextPath() %>/picTextShow/css/styles.css' rel='stylesheet'>
+	<!-- JS -->
+<script src='<%=request.getContextPath() %>/picTextShow/js/intense.js'></script>
+
 </head>
 <body>
 <div id="content">
@@ -50,8 +56,9 @@
 						${userpic.imageName}
 				</td>
 				<td>
-					<img src="<%=request.getContextPath() %>/resources/upload/${userpic.newName}" alt="${userpic.imageName}" style="width: 200px;height: 160px">
-
+					<section class="demos">
+						<div style="width: 250px;height: 200px; background-image:url(<%=request.getContextPath() %>/resources/upload/${userpic.newName})" class="demo-image first" data-image="<%=request.getContextPath() %>/resources/upload/${userpic.newName}" data-title="${userpic.imageName}" data-caption="${userpic.intro}"></div>
+					</section>
 				</td>
 				<td>
 					<!--没有选中-->
@@ -81,6 +88,11 @@
 </body>
 </html>
 <script type="text/javascript">
+
+    window.onload = function() {
+        var elements = document.querySelectorAll( '.demo-image' );
+        Intense( elements );
+    }
 
     $(document).ready(function(){
         //选择
