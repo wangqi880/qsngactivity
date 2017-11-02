@@ -5,7 +5,9 @@ import com.j.qsng.model.admin.AdminUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by Administrator on 2017/10/28.
@@ -38,5 +40,12 @@ public class AdminUserServiceImpl implements AdminUserService
 	public List<AdminUser> queryChooseUsers()
 	{
 		return adminUserMapper.queryChooseUsers();
+	}
+
+	public AdminUser queryByLogin(String username, String password) {
+		Map map =new HashMap();
+		map.put("username",username);
+		map.put("password",password);
+		return adminUserMapper.queryByLogin(map);
 	}
 }

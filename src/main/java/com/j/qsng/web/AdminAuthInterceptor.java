@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-public class AuthInterceptor extends HandlerInterceptorAdapter {
+public class AdminAuthInterceptor extends HandlerInterceptorAdapter {
 	@SuppressWarnings("unchecked")
 	@Override
 	public boolean preHandle(HttpServletRequest request,
@@ -29,17 +29,19 @@ public class AuthInterceptor extends HandlerInterceptorAdapter {
 			String s = request.getContextPath();
 			response.sendRedirect(request.getContextPath()+"/login");
 		}
-		User user = (User)session.getAttribute("loginUser");
-		//AdminUser adminUser = (AdminUser)session.getAttribute("adminUser");
-
-		if(null==user) {
+		AdminUser user = (AdminUser)session.getAttribute("adminUser");
+		
+		if(user==null) {
 			String s = request.getContextPath();
 			response.sendRedirect(request.getContextPath()+"/login/login.html");
 			return false;
-		} else{
-			//判断是否有访问功能
-		}
+		} else {
+			/*boolean isAdmin = (Boolean)session.getAttribute("isAdmin");
+			if(!isAdmin) {
+				//不是超级管理人员，就需要判断是否有权限访问某些功能
 
+			}*/
+		}
 		return super.preHandle(request, response, handler);
 	}
 }

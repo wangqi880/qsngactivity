@@ -37,4 +37,8 @@
     <select id="queryChooseUsers" resultMap="adminUser">
          select * from t_admin_user t where t.role='2'
     </select>
+
+    <select id="queryByLogin" parameterType="map" resultMap="adminUser">
+        select * from t_admin_user where username=#{username} and password=#{password}
+    </select>
 </mapper>

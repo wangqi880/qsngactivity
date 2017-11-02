@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/qsng.activity.iml" filepath="$PROJECT_DIR$/qsng.activity.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/qsngactivity.iml" filepath="$PROJECT_DIR$/.idea/qsngactivity.iml" />
     </modules>
   </component>
 </project>

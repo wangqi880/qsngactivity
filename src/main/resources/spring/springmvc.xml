@@ -61,9 +61,28 @@
 	<!--拦截器 先不用，测试上传功能-->
 	<mvc:interceptors>
 		<mvc:interceptor>
-			<!--<mvc:mapping path="/admin/**"/>-->
 			<mvc:mapping path="/user/**"/>
+
+			<mvc:exclude-mapping path="/css/**"/>
+			<mvc:exclude-mapping path="/js/**"/>
+			<mvc:exclude-mapping path="/images/**"/>
+			<mvc:exclude-mapping path="/img/**"/>
+			<mvc:exclude-mapping path="/loginResource/**"/>
+			<mvc:exclude-mapping path="/resources/**"/>
+			<mvc:exclude-mapping path="/picTextShow/**"/>
 			<bean class="com.j.qsng.web.AuthInterceptor"/>
+		</mvc:interceptor>
+		<mvc:interceptor>
+			<mvc:mapping path="/admin/**"/>
+			<mvc:mapping path="/chooseUser/**"/>
+			<mvc:exclude-mapping path="/css/**"/>
+			<mvc:exclude-mapping path="/js/**"/>
+			<mvc:exclude-mapping path="/images/**"/>
+			<mvc:exclude-mapping path="/img/**"/>
+			<mvc:exclude-mapping path="/loginResource/**"/>
+			<mvc:exclude-mapping path="/resources/**"/>
+			<mvc:exclude-mapping path="/picTextShow/**"/>
+			<bean class="com.j.qsng.web.AdminAuthInterceptor"/>
 		</mvc:interceptor>
 	</mvc:interceptors>
 

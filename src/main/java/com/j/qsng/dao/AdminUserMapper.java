@@ -1,8 +1,10 @@
 package com.j.qsng.dao;
 
+import com.j.qsng.model.User;
 import com.j.qsng.model.admin.AdminUser;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by Administrator on 2017/10/28.
@@ -23,4 +25,7 @@ public interface AdminUserMapper
 
 	//查询所有的choose用户
 	public List<AdminUser> queryChooseUsers();
+
+	//根据用户密码登录验证
+	public AdminUser queryByLogin(Map map);
 }

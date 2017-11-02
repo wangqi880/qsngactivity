@@ -5,6 +5,8 @@ import com.j.qsng.common.util.DateUtils;
 import com.j.qsng.common.util.IDUtils;
 import com.j.qsng.common.util.IdcardUtils;
 import com.j.qsng.model.User;
+import com.j.qsng.model.admin.AdminUser;
+import com.j.qsng.service.AdminUserService;
 import com.j.qsng.service.UserService;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +26,8 @@ public class LoginController
 {
 	final static String SUCCESS="success";
 	@Autowired UserService userService;
+	@Autowired
+	AdminUserService adminUserService;
 	//用户提交注册
 	@RequestMapping (value = "/login/register",method= RequestMethod.POST)
 	@ResponseBody
@@ -88,15 +92,19 @@ public class LoginController
 		}
 		//判断用户是否用登录权限
 		User oldU = userService.queryByLogin(user.getUsername(),user.getUsername(),user.getUsername(),user.getPassword());
+		AdminUser adminUser =adminUserService.queryByLogin(user.getUsername(),user.getPassword());
 		if(null!=oldU)
 		{
 			modelAndView.setViewName("redirect:/index/indexnew.html");
 			session.setAttribute("loginUser", oldU);
+		}
+		else if(null!=adminUser){
+			modelAndView.setViewName("redirect:/admin");
+			session.setAttribute("adminUser", adminUser);
 		}else{
 			modelAndView.setViewName("/login/login");
 			modelAndView.addObject("message","账户或者密码不正确");
 		}
-
 		return modelAndView;
 	}
 
