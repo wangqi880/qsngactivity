@@ -52,7 +52,17 @@ $(function(){
 	<li class="navChild">
 		<a href="<%=request.getContextPath() %>/chooseUser/seeUserPicScore" target="content">查看得分</a>
 	</li>
+
 </ul>
+
+	<ul class="navMenu navSelected">
+		<h3 class="navTitle">
+			<span class="navTilteTxt">点赞查看</span>
+		</h3>
+		<li class="navChild">
+			<a href="<%=request.getContextPath() %>/chooseUser/showPrizeNum" target="content">查看点赞数</a>
+		</li>
+	</ul>
 
 <%--
 <c:if test="${isAdmin }">

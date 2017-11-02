@@ -4,7 +4,6 @@ import com.j.qsng.common.pojo.ChooseUtils;
 import com.j.qsng.common.pojo.Pager;
 import com.j.qsng.common.pojo.SystemContext;
 import com.j.qsng.dao.ChooseLogMapper;
-import com.j.qsng.dto.AdminUserPicDto;
 import com.j.qsng.dto.AdminuserChoosePeriodNum;
 import com.j.qsng.dto.ChooseUserPicDto;
 import com.j.qsng.dto.UserPicScorePrizeDto;

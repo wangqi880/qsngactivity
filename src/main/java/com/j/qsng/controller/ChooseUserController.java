@@ -2,8 +2,10 @@ package com.j.qsng.controller;
 
 import com.j.qsng.common.pojo.BaseResp;
 import com.j.qsng.common.pojo.ChooseUtils;
+import com.j.qsng.common.pojo.Pager;
 import com.j.qsng.common.util.DateUtils;
 import com.j.qsng.dto.ChooseUserPicDto;
+import com.j.qsng.dto.UserPicScorePrizeDto;
 import com.j.qsng.dto.UserScoreLogDto;
 import com.j.qsng.model.admin.ChooseLog;
 import com.j.qsng.model.admin.UserScoreLog;
@@ -197,4 +199,14 @@ public class ChooseUserController
 		return  modelAndView;
 	}
 
+	//查看点赞数
+	@RequestMapping("/chooseUser/showPrizeNum")
+	public ModelAndView showPrizeNum(){
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.setViewName("/chooseUser/showPrizeNum");
+		Pager<UserPicScorePrizeDto> page = chooseLogService.queryPageDetailScorePrizeNum();
+		modelAndView.addObject("page",page);
+		return modelAndView;
+
+	}
 }
