@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.j.qsng.dao.UserPicPrizeMapper" >
+
+    <resultMap id="userPicPrize" type="com.j.qsng.model.UserPicPrize" >
+        <id column="id" property="id" jdbcType="VARCHAR" />
+        <result column="prodId" property="prodId" jdbcType="VARCHAR" />
+        <result column="prizeNum" property="prizeNum" jdbcType="INTEGER" />
+    </resultMap>
+    <select id="queryByProdId" parameterType="string" resultMap="userPicPrize">
+        select  *  from t_userpic_prize t where prodId = #{prodId}
+    </select>
+
+    <select id="add" parameterType="com.j.qsng.model.UserPicPrize">
+      insert into t_userpic_prize(id,prodId,prizeNum) VALUES (#{id},#{prodId},#{prizeNum})
+    </select>
+    <update id="plusPrize" parameterType="string">
+        UPDATE t_userpic_prize SET  prizeNum=prizeNum+1 where prodId=#{prodId}
+    </update>
+
+
+</mapper>

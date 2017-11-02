@@ -137,7 +137,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
         function addPrize(which){
             var id = $(which).attr("id");
-            $.get("<%= path%>/index/add_prize",{"id":id},function (result) {
+            $.get("<%= path%>/index/user_add_prize",{"id":id},function (result) {
                 <!--可以操作,操作成功-->
                 if(result.code=="000000"){
                     /*alert(result.info);*/

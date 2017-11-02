@@ -1,8 +1,8 @@
-package com.j.qsng.dao;
+package com.j.qsng.service;
 
 import com.j.qsng.model.UserPicPrize;
 
-public interface UserPicPrizeMapper {
+public interface UserPicPrizeService {
 
     //根产品id查询点赞
     public UserPicPrize queryByProdId(String prodId);
@@ -11,6 +11,6 @@ public interface UserPicPrizeMapper {
     public void add(UserPicPrize userPicPrize);
 
     //增加1次点赞
-    public int plusPrize(String prodId);
+    public int plusUserPrize(String userId,String prodId);
 
 }

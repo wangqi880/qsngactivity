@@ -146,6 +146,7 @@ public class UserContoller
 
 		if(StringUtils.isNotEmpty(userPicDto.getAttachmentId1())){
 			UserPic userPic = new UserPic();
+			userPic.setId(String.valueOf(IDUtils.genItemId()));
 			userPic.setUserId(String.valueOf(userId));
 			userPic.setImageName(userPicDto.getImageName1());
 			userPic.setAttachmentId(userPicDto.getAttachmentId1());
@@ -154,7 +155,9 @@ public class UserContoller
 		}
 
 		if(StringUtils.isNotEmpty(userPicDto.getAttachmentId2())){
+
 			UserPic userPic = new UserPic();
+			userPic.setId(String.valueOf(IDUtils.genItemId()));
 			userPic.setUserId(String.valueOf(userId));
 			userPic.setImageName(userPicDto.getImageName2());
 			userPic.setAttachmentId(userPicDto.getAttachmentId2());

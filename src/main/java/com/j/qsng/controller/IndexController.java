@@ -11,6 +11,7 @@ import com.j.qsng.dto.AdminUserPicDto;
 import com.j.qsng.dto.UserPicScorePrizeDto;
 import com.j.qsng.dto.UserPicShowDto;
 import com.j.qsng.model.User;
+import com.j.qsng.model.UserPicPrize;
 import com.j.qsng.model.UserPrize;
 import com.j.qsng.model.admin.AdminUserPic;
 import com.j.qsng.service.*;
@@ -44,6 +45,8 @@ public class IndexController
 	@Autowired
 	ChooseLogService chooseLogService;
 	@Autowired UserPicService userPicService;
+	@Autowired
+	UserPicPrizeService userPicPrizeService;
 	final static String ADMINTYPE="1";
 	final static String USERTYPE="2";
 
@@ -170,5 +173,36 @@ public class IndexController
 			UserPicShowDto upsd = userPicService.queryUserPicDtoById(id);
 			modelAndView.addObject("updto",upsd);
 		return modelAndView;
+	}
+
+	//用户作品点赞
+	@RequestMapping("/user_add_prize")
+	@ResponseBody
+	public Object userAddPrizeNum(String id,HttpSession session){
+		//规则，每天每个作品可以点赞一次，点赞需要登录
+		//首先看一下今天,对该作品是否已经点过赞
+		BaseResp resp = new BaseResp();
+		String  nowDate = DateUtils.getShortNowDate();
+		User u = (User) session.getAttribute("loginUser");
+		if(null==u){
+			resp.setCode("000001");
+			resp.setInfo("登录之后继续操作!");
+			return resp;
+		}
+		String userId = String.valueOf(u.getId());
+		boolean isPrize=userPrizeService.isPrizeAdd(userId,id,nowDate);
+		//允许点赞
+		if(isPrize){
+			//更新id
+			userPicPrizeService.plusUserPrize(userId,id);
+			resp.setCode("000000");
+			resp.setInfo("操作成功");
+		}
+		else {
+			resp.setCode("000002");
+			resp.setInfo("今天对该作品操作次数已达上限");
+
+		}
+		return resp;
 	}
 }
