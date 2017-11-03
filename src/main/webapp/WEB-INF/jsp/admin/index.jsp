@@ -11,7 +11,7 @@
 		<frame name="top" src="<%=request.getContextPath() %>/resources/common/top.jsp" frameborder="0" frameSpacing="0"/>
 		<frameset cols="14%,*" frameborder="0" frameSpacing="0">
 			<frame name="nav" src="<%=request.getContextPath() %>/resources/common/nav.jsp" frameborder="0"/>
-			<frame name="content" src="<%=request.getContextPath() %>/admin/admin/01.html" frameborder="0"/>
+			<frame name="content" src="<%=request.getContextPath() %>/resources/common/01.html" frameborder="0"/>
 		</frameset>
 	</frameset>
 </frameset>

@@ -54,6 +54,14 @@ $(function(){
 	</li>
 
 </ul>
+	<ul class="navMenu navSelected">
+		<h3 class="navTitle">
+			<span class="navTilteTxt">用户账户管理</span>
+		</h3>
+		<li class="navChild">
+			<a href="<%=request.getContextPath() %>/chooseUser/showPrizeNum" target="content">查看用户</a>
+		</li>
+	</ul>
 
 	<ul class="navMenu navSelected">
 		<h3 class="navTitle">
