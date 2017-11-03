@@ -72,7 +72,7 @@
 			<mvc:exclude-mapping path="/picTextShow/**"/>
 			<bean class="com.j.qsng.web.AuthInterceptor"/>
 		</mvc:interceptor>
-		<mvc:interceptor>
+		<!--<mvc:interceptor>
 			<mvc:mapping path="/admin/**"/>
 			<mvc:mapping path="/chooseUser/**"/>
 			<mvc:exclude-mapping path="/css/**"/>
@@ -83,7 +83,7 @@
 			<mvc:exclude-mapping path="/resources/**"/>
 			<mvc:exclude-mapping path="/picTextShow/**"/>
 			<bean class="com.j.qsng.web.AdminAuthInterceptor"/>
-		</mvc:interceptor>
+		</mvc:interceptor>-->
 	</mvc:interceptors>
 
 </beans>

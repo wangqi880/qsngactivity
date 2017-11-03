@@ -7,4 +7,5 @@ public class RoleEum
 {
 	//选择用户
 	public static final String ROLE_CHOOSE = "2";
+	public static final String ROLE_ADMIN = "1";
 }

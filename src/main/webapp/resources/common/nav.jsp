@@ -59,7 +59,10 @@ $(function(){
 			<span class="navTilteTxt">用户账户管理</span>
 		</h3>
 		<li class="navChild">
-			<a href="<%=request.getContextPath() %>/chooseUser/showPrizeNum" target="content">查看用户</a>
+			<a href="<%=request.getContextPath() %>/adminUser/adminUserList" target="content">查看后台用户</a>
+		</li>
+		<li class="navChild">
+			<a href="<%=request.getContextPath() %>/adminUser/userList" target="content">查看普通用户</a>
 		</li>
 	</ul>
 

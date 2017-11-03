@@ -57,4 +57,11 @@
         WHERE (t.username = #{username} and t.password=#{password}) or (t.msisdn=#{msisdn} and t.password=#{password}) or (t.cardId=#{cardId} and t.password=#{password})
 
     </select>
+
+    <select id="queryPager" parameterType="map" resultMap="user">
+        select * from t_user t ORDER  by updateTime limit #{offset},#{size}
+    </select>
+    <select id="queryAllNum" resultType="java.lang.Integer">
+        select count(1) from t_user
+    </select>
 </mapper>

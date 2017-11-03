@@ -48,4 +48,12 @@ public class AdminUserServiceImpl implements AdminUserService
 		map.put("password",password);
 		return adminUserMapper.queryByLogin(map);
 	}
+
+	public List<AdminUser> queryAll() {
+		return adminUserMapper.queryAll();
+	}
+
+	public void delete(String id) {
+		adminUserMapper.delete(id);
+	}
 }

@@ -41,4 +41,10 @@
     <select id="queryByLogin" parameterType="map" resultMap="adminUser">
         select * from t_admin_user where username=#{username} and password=#{password}
     </select>
+    <select id="queryAll" resultMap="adminUser">
+        select * from t_admin_user;
+    </select>
+    <delete id="delete" parameterType="string">
+        delete from t_admin_user where id=#{id}
+    </delete>
 </mapper>

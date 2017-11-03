@@ -26,5 +26,13 @@ public interface AdminUserService
 
 	//根据用户密码登录验证
 	public AdminUser queryByLogin(String username,String password);
+	//查询所有用户
+	public List<AdminUser> queryAll();
+
+
+	//根据id删除用户
+	public void delete(String id);
+
+
 
 }
