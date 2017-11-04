@@ -186,24 +186,6 @@
             </div>
 
         </div>
-        <div class="right w_280">
-            <div class="title"><a href="javascript:if(confirm('http://pic.eol.cn/picture/lists?order_by=hot&shtype=all  \n\n�ļ���δ�� Teleport Pro ȡ�أ���Ϊ ���޷�ȡ�ã�������ȡ�غ������������Ŀֹͣ��̫�졣  \n\n��Ҫ�ӷ������ϴ�����'))window.location='http://pic.eol.cn/picture/lists?order_by=hot&shtype=all'" tppabs="http://pic.eol.cn/picture/lists?order_by=hot&shtype=all"><h3>人气榜</h3></a></div>
-            <table width="278" border="0" cellspacing="0" cellpadding="0" align="center" class="border mar_t_30 line_24 font_14">
-                <tr>
-                    <td width="38" height="30" align="center" valign="middle" bgcolor="#FB923F" class="white">排名</td>
-                    <td width="122" align="" valign="middle" bgcolor="#FB923F" class="white">作品名称</td>
-                    <td width="75" align="" valign="middle" bgcolor="#FB923F" class="white">作者</td>
-                    <td width="41" align="" valign="middle" bgcolor="#FB923F" class="white">票数</td>
-                </tr>
-                <tr>
-                    <td height="34" align="center" valign="middle" bgcolor="#F4F4F4"><em>20</em></td>
-                    <td align="" valign="middle" bgcolor="#F4F4F4"><a href="javascript:if(confirm('http://pic.eol.cn/picture/show?pid=281&shtype=2&order_by=hot  \n\n�ļ���δ�� Teleport Pro ȡ�أ���Ϊ ���޷�ȡ�ã�������ȡ�غ������������Ŀֹͣ��̫�졣  \n\n��Ҫ�ӷ������ϴ�����'))window.location='http://pic.eol.cn/picture/show?pid=281&shtype=2&order_by=hot#top'" tppabs="http://pic.eol.cn/picture/show?pid=281&shtype=2&order_by=hot#top">巴渝名校</a></td>
-                    <td align="" valign="middle" bgcolor="#F4F4F4">王世冲</td>
-                    <td align="" valign="middle" bgcolor="#F4F4F4"><i>18909</i></td>
-                </tr>
-            </table>
-        </div>
-
 
         <div class="no_way"></div>
     </div>
@@ -263,7 +245,7 @@
             $.ajax({
                 type: "POST",
                 data: formData,
-                url: "http://localhost:8080/qsngactivity/user/pic/upload",
+                url: "<%=path %>/user/pic/upload",
                 contentType: false,
                 processData: false,
             }).success(function(data) {

@@ -25,6 +25,7 @@
 			<div class="index-slide-nav">
 				<a href="login.html">登录</a>
 				<a href="register.html" class="active">注册</a>
+				<a href="<%=request.getContextPath() %>/index/indexnew.html"  target="_blank">网站首页</a>
 				<div class="slide-bar slide-bar1"></div>				
 			</div>
 		</div>

@@ -40,38 +40,41 @@
 		</tr>
 		</thead>
 		<tbody>
-		<c:forEach items="${chooseUserPicDtoList }" var="userpic">
-			<tr>
 
-				<td>
-					${userpic.username}
-				</td>
-				<td>
-						${userpic.name}
-				</td>
-				<td>
-						${userpic.msisdn}
-				</td>
-				<td>
-						${userpic.imageName}
-				</td>
-				<td>
-					<section class="demos">
-						<div style="width: 250px;height: 200px; background-image:url(<%=request.getContextPath() %>/resources/upload/${userpic.newName})" class="demo-image first" data-image="<%=request.getContextPath() %>/resources/upload/${userpic.newName}" data-title="${userpic.imageName}" data-caption="${userpic.intro}"></div>
-					</section>
-				</td>
-				<td>
-					<!--没有选中-->
-					<c:if test="${userpic.chooseIs eq 0 }">
-						<input id="${userpic.id}" name="id" type="checkbox" value="${userpic.id}" />
-					</c:if>
-					<!--选中-->
-					<c:if test="${userpic.chooseIs eq 1 }">
-						<input id="${userpic.id}" name="id" type="checkbox" value="${userpic.id}"  checked="checked"  />
-					</c:if>
-				</td>
-			</tr>
-		</c:forEach>
+			<c:forEach items="${chooseUserPicDtoList }" var="userpic">
+				<tr>
+
+					<td>
+							${userpic.username}
+					</td>
+					<td>
+							${userpic.name}
+					</td>
+					<td>
+							${userpic.msisdn}
+					</td>
+					<td>
+							${userpic.imageName}
+					</td>
+					<td>
+						<section class="demos">
+							<div style="width: 250px;height: 200px; background-image:url(<%=request.getContextPath() %>/resources/upload/${userpic.newName})" class="demo-image first" data-image="<%=request.getContextPath() %>/resources/upload/${userpic.newName}" data-title="${userpic.imageName}" data-caption="${userpic.intro}"></div>
+						</section>
+					</td>
+					<td>
+						<!--没有选中-->
+						<c:if test="${userpic.chooseIs eq 0 }">
+							<input id="${userpic.id}" name="id" type="checkbox" value="${userpic.id}" />
+						</c:if>
+						<!--选中-->
+						<c:if test="${userpic.chooseIs eq 1 }">
+							<input id="${userpic.id}" name="id" type="checkbox" value="${userpic.id}"  checked="checked"  />
+						</c:if>
+					</td>
+				</tr>
+			</c:forEach>
+
+
 		</tbody>
 		<tfoot>
 		<tr>

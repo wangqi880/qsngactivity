@@ -63,7 +63,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                 <a href="<%= path%>/index/show2?id=${item.id}"><img src="<%= path%>/resources/indexPic/${item.newName}" width="215" height="170" /></a>
                             </c:if>
                             <c:if test="${type eq 2}">
-                                <a href="<%= path%>/index/show2?id=${item.id}"><img src="<%= path%>/resources/upload/${item.newName}" width="215" height="170" /></a>
+                                <a href="<%= path%>/index/show2?id=${item.id}"><img src="<%= path%>/resources/upload/thumbnail/${item.newName}" width="215" height="170" /></a>
                             </c:if>
                         </p>
                         <ul>

@@ -118,8 +118,8 @@
                                     <td width="660" align="left">
                                         <select name="sex" class="select_240" id="provinceid_1">
 
-                                            <option value="1" >男 </option>
-                                            <option value="2" >女</option>
+                                            <option value="1"  ${user.sex==1?"selected='selected'":''}>男 </option>
+                                            <option value="2" ${user.sex==2?"selected='selected'":''} >女</option>
 
                                         </select></td>
                                 </tr>
@@ -275,7 +275,7 @@
             $.ajax({
                 type: "POST",
                 data: formData,
-                url: "http://localhost:8080/qsngactivity/user/pic/upload",
+                url: "<%=path %>/user/pic/upload",
                 contentType: false,
                 processData: false,
             }).success(function(data) {
@@ -326,7 +326,7 @@
             $.ajax({
                 type: "POST",
                 data: formData,
-                url: "http://localhost:8080/qsngactivity/user/pic/upload",
+                url: "<%=path %>/user/pic/upload",
                 contentType: false,
                 processData: false,
             }).success(function(data) {

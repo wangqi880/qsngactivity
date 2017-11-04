@@ -47,7 +47,8 @@ public class ChooseUserController
 		}
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("/chooseUser/listUserPicture");
-		String adminUsername = "admin";
+		AdminUser adminUser = (AdminUser) session.getAttribute("adminUser");
+		String adminUsername = adminUser.getUsername();
 		if(ChooseUtils.FIRST_PERIOD.equals(period) || ChooseUtils.SECOND_PERIOD.equals(period)){
 			//从session获取admin登录用户名
 			List<ChooseUserPicDto> chooseUserPicDtoList = chooseLogService.queryByUsernameAndPeriod(adminUsername,period);
