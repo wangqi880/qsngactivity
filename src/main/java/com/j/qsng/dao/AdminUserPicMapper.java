@@ -24,4 +24,6 @@ public interface AdminUserPicMapper
 
 	//查询根据id
 	public AdminUserPicDto load(String id);
+	//根据id删除
+	public  void delete(String id);
 }

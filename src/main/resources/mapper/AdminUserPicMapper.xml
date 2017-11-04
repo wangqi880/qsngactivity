@@ -11,6 +11,7 @@
         <result column="prize_num" property="prizeNum" jdbcType="DOUBLE" />
         <result column="newName" property="newName" jdbcType="VARCHAR" />
         <result column="score" property="score" jdbcType="INTEGER" />
+        <result column="status" property="status" jdbcType="INTEGER" />
     </resultMap>
 
     <resultMap id="adminUserPicDto" type="com.j.qsng.dto.AdminUserPicDto" >
@@ -72,5 +73,8 @@
         prize_num =prize_num+1
         WHERE  id=#{id}
     </update>
+    <delete id="delete" parameterType="string">
+        delete from t_admin_user_pic where id=#{id}
+    </delete>
 
 </mapper>

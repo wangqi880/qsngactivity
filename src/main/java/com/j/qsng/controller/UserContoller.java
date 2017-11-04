@@ -5,6 +5,7 @@ import com.j.qsng.common.pojo.ChooseUtils;
 import com.j.qsng.common.pojo.SystemContext;
 import com.j.qsng.common.util.DateUtils;
 import com.j.qsng.common.util.IDUtils;
+import com.j.qsng.common.util.PictureUtils;
 import com.j.qsng.dto.UserPicDto;
 import com.j.qsng.dto.UserPicShowDto;
 import com.j.qsng.model.Attachment;
@@ -46,7 +47,7 @@ import java.util.Map;
 public class UserContoller
 {
 	//控制上传图片格式
-	private final static List<String> imgTypes = Arrays.asList("jpg","jpeg","gif","png","JPEG","JPG");
+	private final static List<String> imgTypes = PictureUtils.imgTypes;
 
 	private final static String  UPLOADPAH="/resources/upload/";
 	private final static String  UPLOADTHUMPAH="/resources/upload/thumbnail/";
@@ -272,7 +273,7 @@ public class UserContoller
 				long id = IDUtils.genItemId();
 				att.setId(id);
 				/*att.setUserId(u.getId());*/
-				att.setUserId(110);
+				att.setUserId(u.getId());
 				att.setNewName(String.valueOf(new Date().getTime()) + "." + ext);
 				att.setOldName(FilenameUtils.getBaseName(attach.getOriginalFilename()));
 				att.setSuffix(ext);

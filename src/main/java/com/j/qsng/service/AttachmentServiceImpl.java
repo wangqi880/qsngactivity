@@ -26,7 +26,6 @@ public class AttachmentServiceImpl implements AttachmentService
 	public final static int IMG_WIDTH = 900;
 	public final static int THUMBNAIL_WIDTH = 150;
 	public final static int THUMBNAIL_HEIGHT = 110;
-	public final static String UPLOAD_PATH="/upload/";
 
 	public void add(Attachment a, InputStream is) throws IOException
 	{
@@ -46,6 +45,12 @@ public class AttachmentServiceImpl implements AttachmentService
 	public void add(Attachment a){
 		attachmentMapper.add(a);
 	}
+
+	public void add(Attachment a, InputStream is, String path) throws IOException {
+		attachmentMapper.add(a);
+		addFile(a,is,path);
+	}
+
 	public void clearNoUseAttachment()
 	{
 	}
@@ -83,6 +88,28 @@ public class AttachmentServiceImpl implements AttachmentService
 			Thumbnails.of(tbi).scale(1.0f)
 				.sourceRegion(Positions.CENTER, THUMBNAIL_WIDTH, THUMBNAIL_HEIGHT)
 				.toFile(thumbPath);
+		}
+	}
+	public void addFile(Attachment a, InputStream is,String path) throws IOException
+	{
+		//进行文件的存储
+		File fp = new File(path);
+		if(!fp.exists()) fp.mkdirs();
+		path = path+a.getNewName();
+		if(a.getIsImg()==1) {
+			BufferedImage oldBi = ImageIO.read(is);
+			int width = oldBi.getWidth();
+			Thumbnails.Builder<BufferedImage> bf = Thumbnails.of(oldBi);
+			if(width>IMG_WIDTH) {
+				bf.scale((double)IMG_WIDTH/(double)width);
+			} else {
+				bf.scale(1.0f);
+			}
+			bf.toFile(path);
+			//缩略图的处理
+			//1、将原图进行压缩
+			BufferedImage tbi = Thumbnails.of(oldBi)
+					.scale((THUMBNAIL_WIDTH*1.2)/width).asBufferedImage();
 		}
 	}
 }

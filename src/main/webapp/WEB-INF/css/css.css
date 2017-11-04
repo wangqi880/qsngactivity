@@ -6,10 +6,10 @@ form, img, p{margin: 0px auto;border:0px;}
 ul, li,ol,dl,dt,dd{margin:0px auto;padding:0px;list-style:none;list-style-position:outside;}
 a:link, a:visited {color: #333333;text-decoration: none;}
 a:hover{color:#FF0000;text-decoration: underline;}
-
+.title_class{margin-top: 6px}
 em,i{ font-style:normal;}
 .left{float: left;}
-.right{float: right;}
+.right{float: right; margin-right: 5%}
 .clear{clear:both;}
 .no_way{clear:both;display:block;overflow:hidden;height:0px;margin:0px;padding:0px;line-height:0; font-size:0;}
 h1,h2,h3,h4{margin:0 auto; padding:0;}

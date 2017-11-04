@@ -69,7 +69,7 @@ public class IndexController
 				type="1";
 			}
 		}
-
+			modelAndView.addObject("type",type);
 			modelAndView.addObject("isAllow",isAllow);
 			if(ADMINTYPE.equals(type) ){
 				Pager<AdminUserPicDto> page = adminUserPicService.queryByPage();

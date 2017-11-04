@@ -59,7 +59,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <c:forEach items="${page.datas}" var="item">
                     <div class="w_240 mar_r_30 left pos_r">
                         <p align="center">
-                            <a href="<%= path%>/index/show2?id=${item.id}"><img src="<%= path%>/resources/upload/${item.newName}" width="215" height="170" /></a>
+                            <c:if test="${type eq 1}">
+                                <a href="<%= path%>/index/show2?id=${item.id}"><img src="<%= path%>/resources/indexPic/${item.newName}" width="215" height="170" /></a>
+                            </c:if>
+                            <c:if test="${type eq 2}">
+                                <a href="<%= path%>/index/show2?id=${item.id}"><img src="<%= path%>/resources/upload/${item.newName}" width="215" height="170" /></a>
+                            </c:if>
                         </p>
                         <ul>
                             <li>${item.imageName}</li>
@@ -101,7 +106,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         elem:$('#page2'),		//指定的元素
                         callback:function(n){	//回调函数
                             //这里修改分页之后重新调用首页(带分页参数)
-                            location.replace("<%= path%>/index/indexnew.html?pager.offset="+n);
+                            location.replace("<%= path%>/index/indexnew.html?type=2&&pager.offset="+n);
 
                         }
                     });

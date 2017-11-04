@@ -75,6 +75,15 @@ $(function(){
 		</li>
 	</ul>
 
+	<ul class="navMenu navSelected">
+		<h3 class="navTitle">
+			<span class="navTilteTxt">首页作品控住</span>
+		</h3>
+		<li class="navChild">
+			<a href="<%=request.getContextPath() %>/admin/adminUserPicList" target="content">查看首页图片</a>
+		</li>
+	</ul>
+
 <%--
 <c:if test="${isAdmin }">
 <ul class="navMenu navSelected">

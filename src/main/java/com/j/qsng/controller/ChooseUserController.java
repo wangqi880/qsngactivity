@@ -7,6 +7,7 @@ import com.j.qsng.common.util.DateUtils;
 import com.j.qsng.dto.ChooseUserPicDto;
 import com.j.qsng.dto.UserPicScorePrizeDto;
 import com.j.qsng.dto.UserScoreLogDto;
+import com.j.qsng.model.admin.AdminUser;
 import com.j.qsng.model.admin.ChooseLog;
 import com.j.qsng.model.admin.UserScoreLog;
 import com.j.qsng.service.ChooseLogService;
@@ -75,8 +76,8 @@ public class ChooseUserController
 		}
 		ChooseLog chooseLog = chooseLogService.queryById(id);
 		String period = chooseLog.getChoosePeriod();
-		//TODO 需要修改为从sessio中获取
-		String username="admin";
+		AdminUser adminUser = (AdminUser) session.getAttribute("adminUser");
+		String username=adminUser.getUsername();
 
 		//第一期
 		if(ChooseUtils.FIRST_PERIOD.equals(period)){

@@ -57,4 +57,12 @@ public class AdminUserPicServiceImple implements AdminUserPicService
 	{
 		return adminUserPicMapper.load(id);
 	}
+
+	public void add(AdminUserPic adminUserPic) {
+		adminUserPicMapper.add(adminUserPic);
+	}
+
+	public void delete(String id) {
+			adminUserPicMapper.delete(id);
+	}
 }

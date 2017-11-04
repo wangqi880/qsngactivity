@@ -21,4 +21,6 @@ public interface AttachmentService
 
 	public void add(Attachment a);
 
+	//增加附件指定路径
+	public  void add(Attachment a,InputStream is,String path) throws IOException;
 }
