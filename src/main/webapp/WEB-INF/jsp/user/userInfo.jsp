@@ -13,6 +13,7 @@
     <link rel="stylesheet"  href="<%= path%>/css/zoom.css" media="all" />
 
     <script type="text/javascript" src="<%= path%>/js/jquery-1.9.1.min.js" ></script>
+    <link type="text/css" rel="stylesheet" href="<%= path%>/resources/prodShowPic/css/style.css">
 
 </head>
 
@@ -21,15 +22,16 @@
 <!--banner+导航-->
 <%@include file="/WEB-INF/jsp/common/banner.jsp" %>
 <div class="nav_i">
-    <div class="main">
+    <div class="main juzhong">
         <ul>
             <li><a href="<%= path%>/index/indexnew.html">首 页</a></li>
             <li><a href="<%= path%>/index/act_info.html">活动介绍</a></li>
             <li><a href="<%= path%>/index/act_rule.html">参赛规则</a></li>
             <li><a href="<%= path%>/index/prize_info.html" >奖项设置</a></li>
-            <li><a href="<%= path%>/user/showproduct.html">作品展示</a></li>
             <li><a href="<%= path%>/user/upload.html">上传作品</a></li>
-            <li class="bg_ii">修改信息</li>
+<%--
+            <li class="bg_ii">个人信息</li>
+--%>
         </ul>
     </div>
 </div>
@@ -49,36 +51,42 @@
                             <table width="760" border="0" align="center" cellpadding="5" cellspacing="0">
                                 <tr>
                                     <td width="100" height="40" align="right"><span class="red">*</span>&nbsp;手机号：</td>
-
                                     <td align="left">
                                         <input name="msisdn", class="select_240" value="${user.msisdn}" >
                                     </td>
                                 </tr>
                                 <tr>
+                                    <td width="100" height="40" align="right"><span class="red">*</span>&nbsp;用户名：</td>
+                                    <td align="left">
+                                        ${user.username}
+                                    </td>
+                                </tr>
+                                <tr>
                                     <td width="100" height="40" align="right"><span class="red">*</span>&nbsp;姓名：</td>
                                     <td align="left">
-                                        <input name="name", class="select_240" value="${user.name}"  disabled="true">
+                                        ${user.name}
                                     </td>
                                 </tr>
                                 <tr>
                                     <td height="40" align="right"><span class="red">*</span>&nbsp;身份证号：</td>
                                     <td align="left">
-                                       <input name="cardId", class="select_240" value="${user.cardId}" disabled="true">
+                                        ${user.cardId}
+                                      <%-- <input name="cardId", class="select_240" value="${user.cardId}" disabled="true">--%>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td height="40" align="right"><span class="red">*</span>&nbsp;年龄：</td>
                                     <td align="left">
-                                        <input name="age", class="select_240" value="${user.age}">
+                                        ${user.age}
+                                        <%--<input name="age", class="select_240" value="${user.age}">--%>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td width="80" height="40" align="right"><span class="red">*</span>&nbsp;性别：　</td>
                                     <td width="660" align="left">
-                                        <select name="sex" class="select_240" id="provinceid_1" disabled="true">
-                                                <option value="1" ${user.sex==1?"selected='selected'":''}>男 </option>
-                                                <option value="2" ${user.sex==2?"selected='selected'":''}>女 </option>
-                                        </select></td>
+                                        <c:if test="${user.sex eq 1}">男</c:if>
+                                        <c:if test="${user.sex eq 2}">女</c:if>
+                                      </td>
                                 </tr>
                                 <tr>
                                     <td width="80" height="40" align="right"></td>
@@ -93,7 +101,7 @@
                                         <td>${userPicShowDto.imageName}</td>
                                         <td><img src="<%= path%>/resources/upload/thumbnail/${userPicShowDto.attachment.newName}"></td>
                                         <td><a href="<%= path%>/user/updateUserPic/${userPicShowDto.attachment.id}">修改</a></td>
-                                        <td><a href="<%= path%>/user/deleteUserPic.do?attachmentId=${userPicShowDto.attachment.id}">删除</a></td>
+                                        <td><a  href="javascript:if(confirm('确认删除'))location='<%= path%>/user/deleteUserPic.do?attachmentId=${userPicShowDto.attachment.id}'">删除</a></td>
                                     </tr>
                                 </c:forEach>
 
@@ -254,4 +262,4 @@
 
 </script>
 
-
+<script type="text/javascript" src="<%=path%>/resources/js/prodShowPic/index.js"></script>
