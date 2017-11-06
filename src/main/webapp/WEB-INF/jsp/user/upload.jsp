@@ -18,7 +18,7 @@
 
     <style type="text/css">
         *{margin:0;padding:0;list-style-type:none;}
-        body{overflow-y:scroll;font-family:"HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, sans-serif;background:#f4f4f4;padding:0;margin:0;}
+        body{overflow-y:scroll;font-family:"HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, sans-serif;padding:0;margin:0;}
         a,a:hover{border:none;text-decoration:none;}
         img,a img{border:none;}
         .clear{clear:both;}
@@ -26,7 +26,7 @@
         /* gallery */
         .zoomed > .gallery{-webkit-filter:blur(3px);filter:blur(3px);}
         .gallery{width:800px;margin:20px auto;}
-        .gallery li{float:left;margin:10px; width:80px; height:80px;}
+        .gallery li{float:left;margin:10px; width:250px; height:200px;}
         .gallery li:nth-child(6n){padding-right:0;}
         .gallery li a,.gallery li img{float:left;}
     </style>
@@ -60,7 +60,7 @@
 <!--banner+导航-->
 <%@include file="/WEB-INF/jsp/common/banner.jsp" %>
 <div class="nav_i">
-    <div class="main">
+    <div class="main juzhong">
         <ul>
             <li><a href="<%= path%>/index/indexnew.html" tppabs="http://pic.eol.cn/picture/index">首 页</a></li>
             <li><a href="<%= path%>/index/act_info.html" tppabs="http://pic.eol.cn/picture/act_info">活动介绍</a></li>
@@ -68,7 +68,9 @@
             <li><a href="<%= path%>/index/prize_info.html" tppabs="http://pic.eol.cn/picture/prize_info">奖项设置</a></li>
             <li><a href="<%= path%>/user/showproduct.html" tppabs="http://pic.eol.cn/picture/take_in">作品展示</a></li>
             <li class="bg_ii">上传作品</li>
+<%--
             <li><a href="<%= path%>/user/userInfo.html">修改信息</a></li>
+--%>
         </ul>
     </div>
 </div>
@@ -80,66 +82,24 @@
     <div class="main mar_t_20" >
         <div class="w_780 left">
             <div class="title"><h2>作品上传入口</h2></div>
-            <div id="Tabs_01"><div class="tag_01_title left">晒出精彩</div>
-                <div class="no_way"></div>
+            <div id="Tabs_01">
                 <div class='box font_14'>
                     <div class='content' >
                         <input type="hidden" value="1"  name="shtype" id="shtype">
                         <form action="<%= path%>/user/addUserPics" method="post" enctype="multipart/form-data" name="form_action" id="form_1">
                             <input type="hidden" value="1"  name="shtype" />
-                            <table width="760" border="0" align="center" cellpadding="5" cellspacing="0">
-                                <tr>
-                                    <td width="100" height="40" align="right"><span class="red">*</span>&nbsp;手机号：</td>
 
-                                    <td align="left">
-                                        <input name="msisdn", class="select_240" value="${user.msisdn}" >
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td width="100" height="40" align="right"><span class="red">*</span>&nbsp;姓名：</td>
-                                    <td align="left">
-                                        <input name="name", class="select_240" value="${user.name}" >
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td height="40" align="right"><span class="red">*</span>&nbsp;身份证号：</td>
-                                    <td align="left">
-                                       <input name="cardId", class="select_240" value="${user.cardId}">
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td height="40" align="right"><span class="red">*</span>&nbsp;年龄：</td>
-                                    <td align="left">
-                                        <input name="age", class="select_240" value="${user.age}">
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td width="80" height="40" align="right"><span class="red">*</span>&nbsp;性别：　</td>
-                                    <td width="660" align="left">
-                                        <select name="sex" class="select_240" id="provinceid_1">
-
-                                            <option value="1"  ${user.sex==1?"selected='selected'":''}>男 </option>
-                                            <option value="2" ${user.sex==2?"selected='selected'":''} >女</option>
-
-                                        </select></td>
-                                </tr>
-                                <tr>
-                                    <td width="80" align="left"><button type="button" id="addImage" value="add">添加照片</button></td>
-                                </tr>
-                            </table>
-                            <div class="dashed"></div>
                             <table width="780" border="0" align="center" cellpadding="5" cellspacing="0">
                                 <tr>
-                                    <td width="29" align="left"><em>1.</em></td>
-                                    <td width="74" height="40" align="right">作品名称：</td>
-                                    <td width="647" align="left">
-                                        <input type="text" name="imageName1"   class="iput_240" value="我是作品名称" />必填</td>
+                                    <td ><em>1.</em></td>
+                                    <td><div style="width: 80px">作品名称：</div></td>
+                                    <td>
+                                        <input type="text" name="imageName1"   class="iput_240" value="作者+作品名" /><span style="color:red">*</span></td>
                                 </tr>
                                 <tr>
-                                    <td align="left"></td>
-                                    <td height="40" align="right">作品图：</td>
-
-                                    <td align="left">
+                                    <td></td>
+                                    <td>作品图：</td>
+                                    <td>
                                           <form id="frm_identityA" action="" enctype="multipart/form-data">
                                                 <span>
                                                     <input id="fileupload" name="attachs" accept="image/jpg"  type="file" value="" />
@@ -149,26 +109,47 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td align="left"></td>
-                                    <td align="right" valign="top">作品介绍：</td>
-                                    <td align="left">
-                                        <textarea name="intro1"  cols="45" rows="5" class="textarea"></textarea></td>
+                                    <td></td>
+                                    <td>作品描述：</td>
+                                    <td>
+                                        <textarea name="intro1"  cols="45" rows="5" class="textarea"></textarea>
+                                    </td>
+                                </tr>
+
+                                    <tr id="firstPreview"  style="display: none">
+                                        <td></td>
+                                        <td>预览：</td>
+                                        <td>
+                                            <div class="gallery" >
+                                                <!--显示图片-->
+                                                <ul>
+                                                    <li>
+                                                        <a id="image1_a"> <img  style="width: auto;  height: auto; max-width: 100%;  max-height: 100%; " name="imageName" id="image1" width="100%" height="100%"></a>
+                                                    </li>
+                                                </ul>
+                                                <div class="clear"></div>
+                                            </div>
+                                        </td>
+
+                                    </tr>
+                                <tr>
+                                    <td></td>
+                                    <td width="80" align="left"><button type="button" id="addImage" value="add">添加照片</button></td>
                                 </tr>
                             </table>
-                                <div class="dashed"></div>
                             <!--第二张图片-->
                             <table width="780" id="second_image" border="0" align="center" cellpadding="5" cellspacing="0" style="display: none">
                                 <tr>
-                                    <td width="29" align="left"><em>2.</em></td>
-                                    <td width="74" height="40" align="right">作品名称：</td>
-                                    <td width="647" align="left">
-                                        <input type="text" name="imageName2"   class="iput_240" value="我是作品名称" />必填</td>
+                                    <td ><em>2.</em></td>
+                                    <td><div style="width: 80px">作品名称：</div></td>
+                                    <td >
+                                        <input type="text" name="imageName2"   class="iput_240" value="作者+作品名" /><span style="color: red">*</span></td>
                                 </tr>
                                 <tr>
-                                    <td align="left"></td>
-                                    <td height="40" align="right">作品图：</td>
+                                    <td ></td>
+                                    <td >作品图：</td>
 
-                                    <td align="left">
+                                    <td >
                                         <form id="frm_identityB" action="" enctype="multipart/form-data">
                                                 <span>
                                                     <input id="fileuploadB" name="attachs" accept="image/jpg" type="file" value="" />
@@ -177,26 +158,37 @@
                                         </form>
                                     </td>
                                 </tr>
+
+                                <tr >
+                                        <td ></td>
+                                        <td >作品描述：</td>
+                                        <td >
+                                            <textarea name="intro2"  cols="45" rows="5" class="textarea"></textarea>
+                                        </td>
+                                </tr>
+                                <tr id="secondPreview"  style="display: none">
+                                    <td></td>
+                                    <td>预览：</td>
+                                    <td>
+                                        <div class="gallery" >
+                                            <!--显示图片-->
+                                            <ul>
+                                                <li>
+                                                    <a id="image2_b"> <img  style="width: auto;  height: auto; max-width: 100%;  max-height: 100%; " name="imageName" id="image2" width="100%" height="100%"></a>
+                                                </li>
+                                            </ul>
+                                            <div class="clear"></div>
+                                        </div>
+                                    </td>
+
+                                </tr>
                                 <tr>
-                                    <td align="left"></td>
-                                    <td align="right" valign="top">作品介绍：</td>
-                                    <td align="left">
-                                        <textarea name="intro2"  cols="45" rows="5" class="textarea"></textarea></td>
+                                    <td></td>
+                                    <td width="80" align="left"><button type="button" id="delButton" value="add">删除</button></td>
                                 </tr>
                             </table>
 
-                            <div class="gallery" >
-                                <!--显示图片-->
-                                <ul>
-                                    <li>
-                                        <a id="image1_a"> <img  name="imageName" id="image1" width="100%" height="100%"></a>
-                                    </li>
-                                    <li>
-                                        <a id="image2_b"> <img  name="imageName" id="image2" width="100%" height="100%"></a>
-                                    </li>
-                                </ul>
-                                <div class="clear"></div>
-                            </div>
+
                             <script type="text/javascript" src="<%= path%>/js/zoom.min.js"></script>
                             <input type="hidden"   name="attachmentId1" id="attachmentId1">
                             <input type="hidden"   name="attachmentId2" id="attachmentId2">
@@ -244,6 +236,12 @@
             $("#second_image").show();
             var v = $("#addImage").val();
         })
+        $("#delButton").click(function(){
+            $("#second_image").hide();
+            $("#attachmentId2").val("");
+
+        })
+
 
         <!--上传第一张照片-->
         $("#btnImportOK").click(function () {
@@ -280,6 +278,8 @@
                 processData: false,
             }).success(function(data) {
                 if (data.code=='000000') {
+                    alert("上传成功");
+                    $("#firstPreview").show();
                     $("#image1").attr('src',"<%= path%>"+data.data[0].filePath);
                     $("#image1_a").attr('href',"<%= path%>"+data.data[0].filePath);
                     $("#attachmentId1").val(data.data[0].id);
@@ -331,6 +331,8 @@
                 processData: false,
             }).success(function(data) {
                 if (data.code=='000000') {
+                    alert("上传成功");
+                    $("#secondPreview").show();
                     $("#image2").attr('src',"<%= path%>"+data.data[0].filePath);
                     $("#image2_b").attr('href',"<%= path%>"+data.data[0].filePath);
                     $("#attachmentId2").val(data.data[0].id);
@@ -354,7 +356,7 @@
     function formSubmit(){
         var attachmentId2 = $("input[name='attachmentId2']").val();
         var attachmentId1 = $("input[name='attachmentId1']").val();
-        if((attachmentId2==null||attachmentId2=="") && (attachmentId1==null||attachmentId1=="")){
+        if((attachmentId1==null||attachmentId1=="")){
             alert("上传图片不能为空");
             return ;
         }
@@ -370,7 +372,37 @@
                 alert("描述不能为空");
                 return ;
             }
+            if(intro1.length<15 || intro1.length>100){
+                alert("描述字数在15-100之间");
+                return ;
+            }
         }
+
+        var second_is_hidden= $("#second_image").is(":hidden");
+        if(!second_is_hidden){
+            if(attachmentId2==null||attachmentId2==""){
+                alert("上传图片不能为空");
+                return;
+            }
+            if(attachmentId2!=null && attachmentId2!=""){
+                var imageName2= $("input[name='imageName2']").val();
+                var intro2 = $("textarea[name='intro2']").val();
+                if(imageName2==null||imageName2==""){
+                    alert("作品名称不能为空");
+                    return ;
+                }
+
+                if(intro2==null||intro2==""){
+                    alert("描述不能为空");
+                    return ;
+                }
+                if(intro2.length<15 || intro2.length>100){
+                    alert("描述字数在15-100之间");
+                    return ;
+                }
+            }
+        }
+
 
     $.get("<%= path%>/user/isUploadPermission",function(result){
         if(result.code=="000000"){

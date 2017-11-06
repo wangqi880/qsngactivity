@@ -11,6 +11,10 @@
 	<title>注册 - 青少年宫摄影活动</title>
 	<meta author="wq">
 	<link rel="stylesheet" type="text/css" href="<%= path%>/loginResource/style/register-login.css">
+	<style type="text/css">
+		.div-inline{ display:inline}
+
+	</style>
 </head>
 <body>
 <div id="box"></div>
@@ -25,7 +29,7 @@
 			<div class="index-slide-nav">
 				<a href="login.html">登录</a>
 				<a href="register.html" class="active">注册</a>
-				<a href="<%=request.getContextPath() %>/index/indexnew.html"  target="_blank">网站首页</a>
+				<a href="<%=request.getContextPath() %>/index/indexnew.html" target="_self">网站首页</a>
 				<div class="slide-bar slide-bar1"></div>				
 			</div>
 		</div>
@@ -35,36 +39,38 @@
 
 			<div class="group">
 
+
 				<div class="group-ipt user">
-					<input type="email" name="username" id="username" class="ipt" placeholder="用户名" required>
+					<div><div class="div-inline" style="float:left;margin-top: 10px">用户名:</div><div class="div-inline" style="float:left"><input type="text" name="username" id="username" class="ipt" placeholder="用户名" required style="border-bottom: 1px solid #e8e8e8;"></div></div>
 				</div>
 				<div class="group-ipt password">
-					<input type="password" name="password" id="password" class="ipt" placeholder="设置登录密码" required>
+					<div><div class="div-inline" style="float:left;margin-top: 10px">密码:</div><div class="div-inline" style="float:left"><input type="password" name="password" id="password" class="ipt" placeholder="设置登录密码" required></div></div>
 				</div>
 				<div class="group-ipt email">
-					<input type="password" name="password1" id="password1" class="ipt" placeholder="重复密码" required>
+					<div><div class="div-inline" style="float:left;margin-top: 10px">重复密码：</div><div class="div-inline" style="float:left"><input type="password" name="password1" id="password1" class="ipt" placeholder="重复密码" required></div></div>
 				</div>
 				<div class="group-ipt user">
-					<input type="email" name="cardId" id="cardId" class="ipt" placeholder="身份证号码" required>
+					<div><div class="div-inline" style="float:left;margin-top: 10px">身份证号码：</div><div class="div-inline" style="float:left"><input type="text" name="cardId" id="cardId" class="ipt" placeholder="身份证号码" required></div></div>
 				</div>
 				<div class="group-ipt user">
-					<input type="email" name="name" id="name" class="ipt" placeholder="姓名" required>
+					<div><div class="div-inline" style="float:left;margin-top: 10px">姓名:</div><div class="div-inline" style="float:left"><input type="text" name="name" id="name" class="ipt" placeholder="姓名" required></div></div>
 				</div>
 
 				<div class="group-ipt password">
-					<input type="email" name="msisdn" id="msisdn" class="ipt" placeholder="电话" required>
-				</div>
-				<div class="group-ipt user">
-					<input type="email" name="age" id="age" class="ipt" placeholder="年龄" required>
+					<div><div class="div-inline" style="float:left;margin-top: 10px">电话：</div><div class="div-inline" style="float:left">
+						<input type="text" name="msisdn" id="msisdn" class="ipt" placeholder="电话" required></div></div>
 				</div>
 				<div class="group-ipt password">
+					<div><div class="div-inline" style="float:left;margin-top: 10px">性别：</div><div class="div-inline" style="float:left">
 					<select name="sex" id="sex" class="ipt">
 
 						<option value="1" >男 </option>
 						<option value="2" >女</option>
 
 					</select></td>
+					</div></div>
 				</div>
+
 			</div>
 			</form>
 		</div>
@@ -94,21 +100,31 @@
             var cardId = $("input[name='cardId']").val();
             var name = $("input[name='name']").val();
             var msisdn = $("input[name='msisdn']").val();
-            var age =$("input[name='age']").val();
             var sex=$("select[name='sex']").val();
 
             if(username==null||username==""){
                 alert("账户名不能为空");
                 return ;
             }
+            if(username.length<6){
+                alert("账户名不能小于6位数");
+                return ;
+			}
 
             if(password==null||password==""){
                 alert("密码不能为空");
                 return ;
             }
-
+            if(password.length<6){
+                alert("密码不能小于6位数");
+                return ;
+            }
             if(password1==null||password1==""){
                 alert("密码不能为空");
+                return ;
+            }
+            if(password1.length<6){
+                alert("密码不能小于6位数");
                 return ;
             }
             if(password1!=password){
@@ -140,21 +156,11 @@
                 alert("手机号格式不对");
                 return ;
             }
-            if(age==null||age==""){
-                alert("年龄不能为空");
-                return ;
-            }
-
-            if(age<0||age>100){
-                alert("年龄格式不对");
-                return ;
-            }
             registerSubmit();
 		})
 
 
         function registerSubmit(){
-            alert("我提交了");
             var userdata = $("#form_1").serialize();
             $.ajax({
                 type:"post",
@@ -163,6 +169,7 @@
                 dataType:"json",
                 success:function(result){
 					if("000000"==result.code){
+					    alert("注册成功!")
 						location.href="<%= path%>/login/login.html";
 					}else{
 					    alert(result.info);

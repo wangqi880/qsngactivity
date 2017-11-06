@@ -163,7 +163,8 @@
 		}
 
 		#password,#verify,#user,#password1,#cardId,#name,#msisdn,#age,#sex{
-			border-top: 1px solid #e8e8e8;
+			/*border-top: 1px solid #e8e8e8;*/
+			border-bottom: 1px solid #e8e8e8;
 		}
 		.imgcode{
 			width: 95px;

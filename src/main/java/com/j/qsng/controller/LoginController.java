@@ -4,6 +4,7 @@ import com.j.qsng.common.pojo.BaseResp;
 import com.j.qsng.common.util.DateUtils;
 import com.j.qsng.common.util.IDUtils;
 import com.j.qsng.common.util.IdcardUtils;
+import com.j.qsng.dto.IdCardDto;
 import com.j.qsng.model.User;
 import com.j.qsng.model.admin.AdminUser;
 import com.j.qsng.service.AdminUserService;
@@ -53,6 +54,8 @@ public class LoginController
 			resp.setInfo(isRepeat);
 			return resp;
 		}
+		IdCardDto idCardDto = IdcardUtils.parseCertificateNo(user.getCardId());
+		user.setAge(idCardDto.getAge());
 		user.setId(IDUtils.genItemId());
 		user.setInsertTime(DateUtils.getStandardNowDateTime());
 		user.setUpdateTime(DateUtils.getStandardNowDateTime());
@@ -130,9 +133,7 @@ public class LoginController
 		if(StringUtils.isEmpty(u.getMsisdn())){
 			return "电话号码为null";
 		}
-		if(0>=u.getAge() || 100<u.getAge() ){
-			return "年龄格式不对";
-		}
+
 		if(StringUtils.isEmpty(u.getUsername())){
 			return "用户名为null";
 		}
@@ -166,4 +167,6 @@ public class LoginController
 
 		return SUCCESS;
 	}
+
+
 }

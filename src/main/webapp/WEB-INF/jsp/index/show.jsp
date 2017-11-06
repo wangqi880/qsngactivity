@@ -9,19 +9,7 @@
 <head>
     <!--meta引入-->
     <%@include file="/WEB-INF/jsp/common/meta.jsp" %>
-    <div class="nav_i">
-        <div class="main">
-            <ul>
-                <li><a href="<%= path%>/index/indexnew.html">首 页</a></li>
-                <li><a href="<%= path%>/index/act_info.html" >活动介绍</a></li>
-                <li><a href="<%= path%>/index/act_rule.html" >参赛规则</a></li>
-                <li><a href="<%= path%>/index/prize_info.html" >奖项设置</a></li>
-                <li><a href="<%= path%>/user/showproduct.html" >作品展示</a></li>
-                <li><a href="<%= path%>/user/upload.html">上传作品</a></li>
-                <li><a href="<%= path%>/user/userInfo.html">修改信息</a></li>
-            </ul>
-        </div>
-    </div>
+
   <link href="<%= path%>/css/glb1311_utf.css" rel="stylesheet" rev="stylesheet" type="text/css" media="all" ignoreapd="false">
   <link href="<%= path%>/css/css.css"  rel="stylesheet" type="text/css" />
     <script>
@@ -35,23 +23,40 @@
 <body>
 <!--banner+导航-->
 <%@include file="/WEB-INF/jsp/common/banner.jsp" %>
-
-
+<div class="nav_i">
+    <div class="main juzhong">
+        <ul>
+            <li><a href="<%= path%>/index/indexnew.html">首 页</a></li>
+            <li><a href="<%= path%>/index/act_info.html" >活动介绍</a></li>
+            <li><a href="<%= path%>/index/act_rule.html" >参赛规则</a></li>
+            <li><a href="<%= path%>/index/prize_info.html" >奖项设置</a></li>
+            <li><a href="<%= path%>/user/upload.html">上传作品</a></li>
+            <%--
+                            <li><a href="<%= path%>/user/userInfo.html">修改信息</a></li>
+            --%>
+        </ul>
+    </div>
+</div>
 <div class="bg_gary ">
     <div class="main mar_t_20" >
         <div class="w_780 left">
             <div class="title"><h2>${updto.imageName}</h2></div>
             <div class="jp_l">
-                <h2>作品描述</h2>
+                <h2 class="mar_t_20" style="padding-left:30px;"><div  class="title_class"><span>1作品描述：</span></div></h2>
+
+
                 <table width="360" border="0" align="center" cellpadding="10" cellspacing="0" class="font_18">
                     <div class="line_24 font_14 mar_f_20">
                         <%--<textarea  disabled="true" cols="45" rows="5" class="textarea"></textarea>--%>
                             &nbsp; &nbsp; &nbsp; &nbsp; ${updto.intro}
                     </div>
                 </table>
-                <h2 class="mar_t_20">作品展：</h2>
+                <div calss="title_class" >
+                    <h2 class="mar_t_20" style="padding-left:30px;"><div  class="title_class"><span>2作品展示：</span></div></h2>
+
+                </div>
                 <div>
-                    <img src="<%= path%>/resources/upload/${updto.newName}">
+                    <img src="<%= path%>/resources/indexPic/${updto.newName}">
                 </div>
             </div>
 

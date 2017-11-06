@@ -24,22 +24,23 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <!--banner+导航-->
     <%@include file="/WEB-INF/jsp/common/banner.jsp" %>
     <div class="nav_i">
-        <div class="main">
-            <ul>
+        <div class="main juzhong">
+            <ul style="display: block;width: 100px;margin: 0 auto;position: relative;">
                 <li class="bg_ii">首 页</li>
                 <li><a href="<%= path%>/index/act_info.html" >活动介绍</a></li>
                 <li><a href="<%= path%>/index/act_rule.html" >参赛规则</a></li>
                 <li><a href="<%= path%>/index/prize_info.html">奖项设置</a></li>
-                <li><a href="<%= path%>/user/showproduct.html" >作品展示</a></li>
                 <li><a href="<%= path%>/user/upload.html" >上传作品</a></li>
+<%--
                 <li><a href="<%= path%>/user/userInfo.html">修改信息</a></li>
+--%>
             </ul>
         </div>
 
     </div>
 
 <div class="top_b">
-        <div class="main">
+        <div>
             <div class="w_780 left" style="width: 800px">
                 <div class="title"><h2>
                     <span>
@@ -76,7 +77,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         </ul>
                         <div class="like pos_a">
                             <p>
-                                <img id="${item.id}" src="<%= path%>/images/like.png" width="70" height="25" onclick="addPrize(this)"/>
+                                <img id="${item.id}" src="<%= path%>/images/like.png" style="width: auto;  height: auto; max-width: 100%;  max-height: 100%; " onclick="addPrize(this)"/>
                             </p>
 
                         </div>

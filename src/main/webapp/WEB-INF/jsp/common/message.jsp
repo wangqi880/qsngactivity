@@ -36,7 +36,6 @@
             <li><a href="<%= path%>/index/act_info.html" tppabs="http://pic.eol.cn/picture/act_info">活动介绍</a></li>
             <li><a href="<%= path%>/index/act_rule.html" >参赛规则</a></li>
             <li><a href="<%= path%>/index/prize_info.html" tppabs="http://pic.eol.cn/picture/prize_info">奖项设置</a></li>
-            <li><a href="<%= path%>/user/showproduct.html" tppabs="http://pic.eol.cn/picture/take_in">作品展示</a></li>
             <li><a href="<%= path%>/user/upload.html" tppabs="http://pic.eol.cn/picture/upload">上传作品</a></li>
             <li><a href="<%= path%>/user/userInfo.html">修改信息</a></li>
 
@@ -49,10 +48,8 @@
 	<div class="w_780 left">
    	  <div class="title"><h2>消息提示</h2></div>
   	  <div class="jp_l">
-       <h2 class="mar_t_20" style="padding-left:30px;"></h2>
-      <div class="line_24 font_14 mar_f_20">
-
-       ${message}
+      <div class="line_24 font_14 mar_f_20" style="margin-top: 20px">
+          <div> <span style="color: red">${message}</span></div>
         </div>
 
       </div>

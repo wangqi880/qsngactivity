@@ -29,15 +29,16 @@
 <!--banner+导航-->
 <%@include file="/WEB-INF/jsp/common/banner.jsp" %>
 <div class="nav_i">
-    <div class="main">
+    <div class="main juzhong">
         <ul>
             <li><a href="<%= path%>/index/indexnew.html" tppabs="http://pic.eol.cn/picture/index">首 页</a></li>
             <li class="bg_ii">活动介绍</li>
             <li><a href="<%= path%>/index/act_rule.html" tppabs="http://pic.eol.cn/picture/act_rule">参赛规则</a></li>
             <li><a href="<%= path%>/index/prize_info.html" tppabs="http://pic.eol.cn/picture/prize_info">奖项设置</a></li>
-            <li><a href="<%= path%>/user/showproduct.html" tppabs="http://pic.eol.cn/picture/take_in">作品展示</a></li>
             <li><a href="<%= path%>/user/upload.html" tppabs="http://pic.eol.cn/picture/upload">上传作品</a></li>
+<%--
             <li><a href="<%= path%>/user/userInfo.html">修改信息</a></li>
+--%>
 
         </ul>
     </div>

@@ -5,7 +5,9 @@ import com.j.qsng.common.pojo.ChooseUtils;
 import com.j.qsng.common.pojo.SystemContext;
 import com.j.qsng.common.util.DateUtils;
 import com.j.qsng.common.util.IDUtils;
+import com.j.qsng.common.util.IdcardUtils;
 import com.j.qsng.common.util.PictureUtils;
+import com.j.qsng.dto.IdCardDto;
 import com.j.qsng.dto.UserPicDto;
 import com.j.qsng.dto.UserPicShowDto;
 import com.j.qsng.model.Attachment;
@@ -29,6 +31,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -111,7 +114,9 @@ public class UserContoller
 		}
 
 		mode.addObject("userPicShowDtoList",userPicShowDtoList);
-		mode.addObject("message","你已经提交过作品");
+		if(UPLOADLIMITNUM>=userPicShowDtoList.size()){
+			mode.addObject("message","提交作品数："+UPLOADLIMITNUM);
+		}
 		return mode;
 	}
 
@@ -168,58 +173,6 @@ public class UserContoller
 		mode.setViewName("redirect:/user/showproduct.html");
 		mode.addObject("message","欢迎提交作品");
 		return mode;
-
-		/*ModelAndView mode = new ModelAndView();
-		mode.setViewName("/user/showproduct");
-		userActivity.setId(IDUtils.genItemId());
-		UserActivity oldUa = userActivityService.querybyMsisdn(userActivity.getMsisdn());
-
-		String realPath= SystemContext.getRealPath();
-
-		String path = realPath+UPLOADPAH;
-		String thumbPath = realPath+UPLOADTHUMPAH;
-		if(StringUtils.isEmpty(userActivity.getAttachIds())){
-			//为null,那么进入异常界面
-		}
-		if(oldUa!=null){
-			UserActivityDto uadto = userActivityService.queryDtobyMsisdn(userActivity.getMsisdn());
-			String attIds = uadto.getAttachIds();
-			String [] arryAttIds=StringUtils.split(attIds,",");
-			List<Attachment> list = new ArrayList<Attachment>();
-			for(String aid :arryAttIds){
-				Attachment ament = attachmentService.load(aid);
-				ament.setFilePath(path+""+ament.getNewName());
-				ament.setThumFilePath(thumbPath+""+ament.getNewName());
-				list.add(ament);
-
-			}
-			uadto.setAttachList(list);
-			mode.setViewName("redirect:/user/showproduct.html");
-			mode.addObject("uadto",uadto);
-			mode.addObject("message","你已经提交过作品");
-			return mode;
-		}
-		userActivity.setInsertTime(DateUtils.getStandardNowDateTime());
-		userActivityService.add(userActivity);
-		UserActivityDto uadto = new UserActivityDto();
-		BeanUtils.copyProperties(userActivity,uadto);
-
-		String attIds = userActivity.getAttachIds();
-		String [] arryAttIds=StringUtils.split(attIds,",");
-		List<Attachment> list = new ArrayList<Attachment>();
-		for(String aid :arryAttIds){
-			Attachment ament = attachmentService.load(aid);
-			ament.setFilePath(path+""+ament.getNewName());
-			ament.setThumFilePath(thumbPath+""+ament.getNewName());
-			list.add(ament);
-
-		}
-		uadto.setAttachList(list);
-		mode.addObject("uadto",uadto);
-		mode.addObject("message","欢迎提交作品");
-		mode.setViewName("redirect:/user/showproduct.html");
-
-		return mode;*/
 	}
 
 
@@ -259,7 +212,7 @@ public class UserContoller
 				if(!imgTypes.contains(ext))
 				{
 					resp.setCode("000001");
-					resp.setInfo("只支持图片上传请上传图片");
+					resp.setInfo("只支持图片上传,请上传图片");
 					return resp;
 				}else{
 					att.setIsImg(1);
@@ -301,6 +254,12 @@ public class UserContoller
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("user/upload");
 		User user = (User)session.getAttribute("loginUser");
+		List<UserPic> oldUp = userPicService.queryByUserId(user.getId()+"");
+		//已经达到作品数量限制，跳转到展示界面
+		if(oldUp.size()>=UPLOADLIMITNUM){
+			modelAndView.setViewName("redirect:/user/showproduct.html");
+			modelAndView.addObject("message","以达到作品数量上限");
+		}
 		modelAndView.addObject("user",user);
 		return modelAndView;
 	}
@@ -323,32 +282,47 @@ public class UserContoller
 	}
 
 	@RequestMapping("/user/userInfo.html")
-	public ModelAndView userInfo(HttpSession session){
+	public ModelAndView userInfo(String messageType,HttpSession session){
 		ModelAndView modelAndView = new ModelAndView();
 
 		modelAndView.setViewName("user/userInfo");
 		User u = (User) session.getAttribute("loginUser");
 		String userId=String.valueOf(u.getId());
-		modelAndView.addObject("user",u);
+		User user = userService.queryById(userId);
+		modelAndView.addObject("user",user);
 		List<UserPicShowDto> list = userPicService.queryUserPicDtoByUserId(userId);
 		modelAndView.addObject("userPicShowList",list);
+		if("1".equals(messageType)){
+			modelAndView.addObject("message","请填写正确的身份证");
+		}
+
 		return modelAndView;
 	}
 
 	//修改用户信息
 	@RequestMapping(value = "/user/updateUserInfo.do",method =RequestMethod.POST)
 	public ModelAndView updateUserInfo(User user){
-
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("redirect:/user/userInfo.html");
 		User oldU = userService.queryById(String.valueOf(user.getId()));
-		if(!oldU.getMsisdn().equals(user.getMsisdn()) || oldU.getAge()!=user.getAge()){
-			//更新msisdn和age
+		IdCardDto idCardDto = IdcardUtils.parseCertificateNo(user.getCardId());
+		if(!IdcardUtils.validateCard(user.getCardId().trim())){
+			//身份证格式问题
+			modelAndView.addObject("message","身份证格式问题");
+			modelAndView.setViewName("redirect:/user/userInfo.html?messageType=1");
+
+			return modelAndView;
+		}
+
+		//更新msisdn和age
 			oldU.setMsisdn(user.getMsisdn());
-			oldU.setAge(user.getAge());
+			oldU.setCardId(user.getCardId().trim());
+			oldU.setName(user.getName().trim());
+			oldU.setSex(user.getSex());
+			oldU.setAge(idCardDto.getAge());
 			oldU.setUpdateTime(DateUtils.getStandardNowDateTime());
 			userService.update(oldU);
-		}
+
 		return  modelAndView;
 	}
 
@@ -395,8 +369,7 @@ public class UserContoller
 			return modelAndView;
 		}
 		String userId=String.valueOf(u.getId());
-		if(!oldAttachmentId.equals(userPic.getAttachmentId())){
-			//如果不想等，那么就是重新上传了,那么必须删除重新传
+		if((StringUtils.isNotEmpty(userPic.getAttachmentId())) && (!oldAttachmentId.equals(userPic.getAttachmentId()))){
 			userPic.setId(String.valueOf(IDUtils.genItemId()));
 			userPic.setUserId(userId);
 			userPicService.updateUserPic(userPic,oldAttachmentId);
@@ -453,7 +426,7 @@ public class UserContoller
 		List<UserPic> oldUp = userPicService.queryByUserId(userId+"");
 		if(!CollectionUtils.isEmpty(oldUp) && oldUp.size()>=UPLOADLIMITNUM){
 			resp.setCode("000001");
-			resp.setInfo("已经达到上传上线，不可上传");
+			resp.setInfo("已经达到上传上限，不可上传");
 			resp.setData(false);
 		}else {
 			resp.setCode("000000");
@@ -546,5 +519,14 @@ public class UserContoller
 
 		}
 		return true;
+	}
+
+//普通用户退出
+	@RequestMapping("/user/logout")
+	public ModelAndView userLogout(HttpSession session){
+		session.removeAttribute("loginUser");
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.setViewName("redirect:/index/indexnew.html");
+		return modelAndView;
 	}
 }

@@ -13,7 +13,7 @@
     <link rel="stylesheet"  href="<%= path%>/css/zoom.css" media="all" />
 
     <script type="text/javascript" src="<%= path%>/js/jquery-1.9.1.min.js" ></script>
-    <link type="text/css" rel="stylesheet" href="<%= path%>/resources/prodShowPic/css/style.css">
+    <link type="text/css" rel="stylesheet" href="<%= path%>/resources/userProPic/css/style.css">
 
 </head>
 
@@ -50,28 +50,9 @@
                             <input type="hidden" value="${user.id}"  name="id" />
                             <table width="760" border="0" align="center" cellpadding="5" cellspacing="0">
                                 <tr>
-                                    <td width="100" height="40" align="right"><span class="red">*</span>&nbsp;手机号：</td>
-                                    <td align="left">
-                                        <input name="msisdn", class="select_240" value="${user.msisdn}" >
-                                    </td>
-                                </tr>
-                                <tr>
                                     <td width="100" height="40" align="right"><span class="red">*</span>&nbsp;用户名：</td>
                                     <td align="left">
                                         ${user.username}
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td width="100" height="40" align="right"><span class="red">*</span>&nbsp;姓名：</td>
-                                    <td align="left">
-                                        ${user.name}
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td height="40" align="right"><span class="red">*</span>&nbsp;身份证号：</td>
-                                    <td align="left">
-                                        ${user.cardId}
-                                      <%-- <input name="cardId", class="select_240" value="${user.cardId}" disabled="true">--%>
                                     </td>
                                 </tr>
                                 <tr>
@@ -81,11 +62,36 @@
                                         <%--<input name="age", class="select_240" value="${user.age}">--%>
                                     </td>
                                 </tr>
+
+                                <tr>
+                                    <td width="100" height="40" align="right"><span class="red">*</span>&nbsp;手机号：</td>
+                                    <td align="left">
+                                        <input name="msisdn", class="select_240" value="${user.msisdn}" >
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td width="100" height="40" align="right"><span class="red">*</span>&nbsp;姓名：</td>
+                                    <td align="left">
+                                        <input name="name", class="select_240" value="${user.name}" >
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td height="40" align="right"><span class="red">*</span>&nbsp;身份证号：</td>
+                                    <td align="left">
+                                        <input name="cardId", class="select_240" value="${user.cardId}" ><span style="color: red">${message}</span>
+                                      <%-- <input name="cardId", class="select_240" value="${user.cardId}" disabled="true">--%>
+                                    </td>
+                                </tr>
+
                                 <tr>
                                     <td width="80" height="40" align="right"><span class="red">*</span>&nbsp;性别：　</td>
                                     <td width="660" align="left">
-                                        <c:if test="${user.sex eq 1}">男</c:if>
-                                        <c:if test="${user.sex eq 2}">女</c:if>
+                                        <select name="sex" class="select_240" id="provinceid_1">
+                                            <option value="1" ${user.sex==1?"selected='selected'":''}>男 </option>
+                                            <option value="2" ${user.sex==2?"selected='selected'":''}>女 </option>
+                                        </select></td>
                                       </td>
                                 </tr>
                                 <tr>
@@ -95,7 +101,24 @@
 
                             </table>
                             <div class="dashed"></div>
-                            <table>
+                            <div class="container">
+                                <c:forEach items="${userPicShowList}" var="userPicShowDto">
+                                    <div class="single-member effect-2">
+                                        <div class="member-image">
+                                            <img src="<%= path%>/resources/upload/${userPicShowDto.attachment.newName}">
+                                        </div>
+                                        <div class="member-info">
+                                            <h3>${userPicShowDto.imageName}</h3>
+                                            <p>${userPicShowDto.intro}</p>
+                                            <div class="social-touch">
+                                                <a class="fb-touch" href="<%= path%>/user/updateUserPic/${userPicShowDto.attachment.id}">更新</a>
+                                                <a class="tweet-touch" href="javascript:if(confirm('确认删除'))location='<%= path%>/user/deleteUserPic.do?attachmentId=${userPicShowDto.attachment.id}'">删除</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </c:forEach>
+                            </div>
+                            <%--<table>
                                 <c:forEach items="${userPicShowList}" var="userPicShowDto">
                                     <tr>
                                         <td>${userPicShowDto.imageName}</td>
@@ -105,7 +128,7 @@
                                     </tr>
                                 </c:forEach>
 
-                            </table>
+                            </table>--%>
 
                         </form>
                     </div>
@@ -120,118 +143,11 @@
 <%@include file="/WEB-INF/jsp/common/footer.jsp" %>
 </body>
 </html>
-<%--
-<script type="text/javascript" src="<%= path%>/js/activity/vote.js" tppabs="http://pic.eol.cn/app/static/script/vote.js" ignoreapd="false"></script>
---%>
 
 <script type="text/javascript">
 
     $(document).ready(function(){
-        <!--添加照片-->
-        $("#addImage").click(function(){
-            $("#second_image").show();
-            var v = $("#addImage").val();
-        })
 
-        <!--上传第一张照片-->
-        $("#btnImportOK").click(function () {
-          /*  var formData = new FormData($("#frm_identityA")[0]);*/
-            var paths = document.getElementById("fileupload").files;
-
-            if(paths.length==0)
-            {
-                alert("请选择文件");
-                return;
-            }
-            var formData = new FormData();
-            for (var i = 0; i < paths.length; i++) {
-                var file = paths[i];
-              /*  alert(file.type);*/
-                //用正则表达式判断文件的类型是否是图片，这里大家可以自由发挥
-                if (!new RegExp("image/jpeg").test(file.type)) {
-                    alert("请注意，上传的文件一定要是图片文件(jpg)");
-                    return;
-                }
-            }
-            //我们可以预先定义一个FormData对象
-            var formData=new FormData();
-            for(var i=0;i<paths.length;i++)
-            {
-                //将每个文件设置一个string类型的名字，放入到formData中，这里类似于setAttribute("",Object)
-                formData.append(paths[i].name,paths[i]);
-            }
-            $.ajax({
-                type: "POST",
-                data: formData,
-                url: "http://localhost:8080/qsngactivity/user/pic/upload",
-                contentType: false,
-                processData: false,
-            }).success(function(data) {
-                if (data.code=='000000') {
-                    $("#image1").attr('src',"<%= path%>"+data.data[0].filePath);
-                    $("#image1_a").attr('href',"<%= path%>"+data.data[0].filePath);
-                    $("#attachmentId1").val(data.data[0].id);
-                } else {
-                    alert("上传失败"+data.info);
-                    console.log(data.info);
-                }
-
-            }).error(function(data) {
-                alert("上传失败"+data.info);
-                console.log(data);
-            });
-        });
-
-
-
-        <!--上传第二张照片-->
-        $("#btnImportOKB").click(function () {
-            /*  var formData = new FormData($("#frm_identityA")[0]);*/
-            var paths = document.getElementById("fileuploadB").files;
-
-            if(paths.length==0)
-            {
-                alert("请选择文件");
-                return;
-            }
-            var formData = new FormData();
-            for (var i = 0; i < paths.length; i++) {
-                var file = paths[i];
-                /*  alert(file.type);*/
-                //用正则表达式判断文件的类型是否是图片，这里大家可以自由发挥
-                if (!new RegExp("image/jpeg").test(file.type)) {
-                    alert("请注意，上传的文件一定要是图片文件(jpg)");
-                    return;
-                }
-            }
-            //我们可以预先定义一个FormData对象
-            var formData=new FormData();
-            for(var i=0;i<paths.length;i++)
-            {
-                //将每个文件设置一个string类型的名字，放入到formData中，这里类似于setAttribute("",Object)
-                formData.append(paths[i].name,paths[i]);
-            }
-            $.ajax({
-                type: "POST",
-                data: formData,
-                url: "http://localhost:8080/qsngactivity/user/pic/upload",
-                contentType: false,
-                processData: false,
-            }).success(function(data) {
-                if (data.code=='000000') {
-                    $("#image2").attr('src',"<%= path%>"+data.data[0].filePath);
-                    $("#image2_b").attr('href',"<%= path%>"+data.data[0].filePath);
-                    $("#attachmentId2").val(data.data[0].id);
-                } else {
-                    alert(上传失败+data.info);
-                    console.log(data.info);
-                }
-
-            }).error(function(data) {
-                alert(上传失败+data.info);
-                console.log(data);
-            });
-        });
 
 
     });
@@ -241,25 +157,33 @@
 
     function formSubmit(){
         var msisdn = $("input[name='msisdn']").val();
+        var cardId = $("input[name='cardId']").val();
+        var name =$("input[name='name']").val();
         if(msisdn==null||msisdn==""){
             alert("手机号不能为空");
             return ;
         }
+        if(name==null||name==""){
+            alert("姓名不能为空");
+            return ;
+        }
+
+        if(cardId==null||cardId==""){
+            alert("身份证不能为空");
+            return ;
+        }
+
         var msisdn_pattern = /^1[34578]\d{9}$/;
         if(!msisdn_pattern.test(msisdn)){
             alert("手机号格式不对");
             return ;
         }
-        var age =$("input[name='age']").val();
-        if(age<0||age>100){
-            alert("年龄格式不对");
+        var cardId_pattern = /(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/;
+        if(!cardId_pattern.test(cardId)){
+            alert("身份证格式不对");
             return ;
         }
         $('#form_1').submit();
     }
 
-
-
 </script>
-
-<script type="text/javascript" src="<%=path%>/resources/js/prodShowPic/index.js"></script>

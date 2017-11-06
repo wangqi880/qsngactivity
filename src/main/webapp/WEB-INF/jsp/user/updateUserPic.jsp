@@ -60,15 +60,16 @@
 <!--banner+导航-->
 <%@include file="/WEB-INF/jsp/common/banner.jsp" %>
 <div class="nav_i">
-    <div class="main">
+    <div class="main juzhong">
         <ul>
             <li><a href="<%= path%>/index/indexnew.html" tppabs="http://pic.eol.cn/picture/index">首 页</a></li>
             <li><a href="<%= path%>/index/act_info.html" tppabs="http://pic.eol.cn/picture/act_info">活动介绍</a></li>
             <li><a href="<%= path%>/index/act_rule.html" tppabs="http://pic.eol.cn/picture/act_rule">参赛规则</a></li>
             <li><a href="<%= path%>/index/prize_info.html" tppabs="http://pic.eol.cn/picture/prize_info">奖项设置</a></li>
-            <li><a href="<%= path%>/user/showproduct.html" tppabs="http://pic.eol.cn/picture/take_in">作品展示</a></li>
             <li class="bg_ii">上传作品</li>
+<%--
             <li><a href="<%= path%>/user/userInfo.html">修改信息</a></li>
+--%>
         </ul>
     </div>
 </div>
@@ -85,7 +86,7 @@
                         <form action="<%= path%>/user/updateUserPicOne" method="post" enctype="multipart/form-data" name="form_action" id="form_1">
                             <input type="hidden" value="1"  name="shtype" />
                             <input type="hidden" value="${upsd.attachment.id}"  name="oldAttachmentId" />
-                            <table width="760" border="0" align="center" cellpadding="5" cellspacing="0">
+                           <%-- <table width="760" border="0" align="center" cellpadding="5" cellspacing="0">
                                 <tr>
                                     <td width="100" height="40" align="right"><span class="red">*</span>&nbsp;手机号：</td>
 
@@ -121,7 +122,8 @@
 
                                         </select></td>
                                 </tr>
-                            </table>
+                            </table>--%>
+                            <input type="hidden" name="id" value="${upsd.userPic.id}">
                             <div class="dashed"></div>
                             <table width="780" border="0" align="center" cellpadding="5" cellspacing="0">
                                 <tr>
@@ -156,7 +158,7 @@
                                 <!--显示图片-->
                                 <ul>
                                     <li>
-                                        <a id="image1_a" href="<%= path%>/resources/upload/${upsd.attachment.newName}"> <img src="<%= path%>/resources/upload/${upsd.attachment.newName}"  id="image1" width="100%" height="100%"></a>
+                                        <a id="image1_a" href="<%= path%>/resources/upload/${upsd.attachment.newName}"> <img src="<%= path%>/resources/upload/${upsd.attachment.newName}"  id="image1" width="215" height="170" ></a>
                                     </li>
                                     <li>
                                         <a id="image2_b"> <img></a>
@@ -250,6 +252,7 @@
                 processData: false,
             }).success(function(data) {
                 if (data.code=='000000') {
+                    alert("上传成功!");
                     $("#image1").attr('src',"<%= path%>"+data.data[0].filePath);
                     $("#image1_a").attr('href',"<%= path%>"+data.data[0].filePath);
                     $("#attachmentId").val(data.data[0].id);
@@ -275,11 +278,10 @@
 
     function formSubmit(){
         var attachmentId = $("input[name='attachmentId']").val();
-        if((attachmentId==null||attachmentId=="")){
+      /*  if((attachmentId==null||attachmentId=="")){
             alert("上传图片不能为空");
             return ;
-        }
-        if(attachmentId!=null && attachmentId!=""){
+        }*/
             var imageName= $("input[name='imageName']").val();
             var intro = $("textarea[name='intro']").val();
             if(imageName==null||imageName==""){
@@ -291,7 +293,6 @@
                 alert("描述不能为空");
                 return ;
             }
-        }
 
         $.get("<%= path%>/user/updateUserPicDateLimit",function(resutl){
             if(resutl.code=="000000"){
