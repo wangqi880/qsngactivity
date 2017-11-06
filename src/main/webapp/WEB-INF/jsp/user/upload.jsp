@@ -18,7 +18,7 @@
 
     <style type="text/css">
         *{margin:0;padding:0;list-style-type:none;}
-        body{overflow-y:scroll;font-family:"HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, sans-serif;padding:0;margin:0;}
+        body{overflow-y:scroll;padding:0;margin:0;}
         a,a:hover{border:none;text-decoration:none;}
         img,a img{border:none;}
         .clear{clear:both;}
@@ -31,21 +31,6 @@
         .gallery li a,.gallery li img{float:left;}
     </style>
     <link rel="stylesheet"  href="<%= path%>/css/zoom.css" media="all" />
-    <%--<script type="text/javascript" src="<%= path%>/js/activity/jQuery_latest.min.js" ></script>--%>
-
-   <%-- <script type="text/javascript" src="<%= path%>/js/activity/jQuery_tabs.js" tppabs="http://www.eol.cn/js/global/jQuery_tabs.js" ignoreapd="false"></script>
-    <script type="text/javascript" src="<%= path%>/js/activity/jQuery_picFocus.js" tppabs="http://www.eol.cn/js/global/jQuery_picFocus.js" ignoreapd="false" charset="utf-8"></script>
-    <script type="text/javascript" src="<%= path%>/js/activity/ctrl.js" tppabs="http://pic.eol.cn/app/static/script/ctrl.js" ignoreapd="false"></script>--%>
-    <!--上传js-->
-  <%--  <script type="text/javascript"  src="<%= path%>/js/uploadify/js/vendor/jquery.ui.widget.js"></script>
-    <script type="text/javascript"  src="<%= path%>/js/uploadify/js/jquery.fileupload.js"></script>
-    <script type="text/javascript"  src="<%= path%>/js/uploadify/js/jquery.fileupload-jquery-ui.js"></script>
-    <script type="text/javascript"  src="<%= path%>/js/uploadify/js/jquery.fileupload-process.js"></script>
-    <script type="text/javascript"  src="<%= path%>/js/uploadify/js/jquery.fileupload-ui.js"></script>
-    <script type="text/javascript"  src="<%= path%>/js/uploadify/js/jquery.fileupload-validate.js"></script>
-    <script type="text/javascript"  src="<%= path%>/js/uploadify/js/jquery.iframe-transport.js"></script>--%>
-
-    <!--图片变大js-->
 
 
     <script type="text/javascript" src="<%= path%>/js/jquery-1.9.1.min.js" ></script>
@@ -66,7 +51,6 @@
             <li><a href="<%= path%>/index/act_info.html" tppabs="http://pic.eol.cn/picture/act_info">活动介绍</a></li>
             <li><a href="<%= path%>/index/act_rule.html" tppabs="http://pic.eol.cn/picture/act_rule">参赛规则</a></li>
             <li><a href="<%= path%>/index/prize_info.html" tppabs="http://pic.eol.cn/picture/prize_info">奖项设置</a></li>
-            <li><a href="<%= path%>/user/showproduct.html" tppabs="http://pic.eol.cn/picture/take_in">作品展示</a></li>
             <li class="bg_ii">上传作品</li>
 <%--
             <li><a href="<%= path%>/user/userInfo.html">修改信息</a></li>
@@ -81,8 +65,8 @@
 <div class="bg_gary ">
     <div class="main mar_t_20" >
         <div class="w_780 left">
-            <div class="title"><h2>作品上传入口</h2></div>
-            <div id="Tabs_01">
+            <div class="title"><h2>作品上传入口（<a href="<%= path%>/user/showproduct.html" tppabs="http://pic.eol.cn/picture/take_in">作品展示</a>）</h2></div>
+            <div id="Tabs_01" >
                 <div class='box font_14'>
                     <div class='content' >
                         <input type="hidden" value="1"  name="shtype" id="shtype">
@@ -101,10 +85,12 @@
                                     <td>作品图：</td>
                                     <td>
                                           <form id="frm_identityA" action="" enctype="multipart/form-data">
-                                                <span>
-                                                    <input id="fileupload" name="attachs" accept="image/jpg"  type="file" value="" />
-                                                </span>
-                                              <input id="btnImportOK" type="button" value="上传" />
+                                                <div class="file" style="float:left"><div style="margin-top: 10px">选择文件</div>
+                                                    <input id="fileupload" name="attachs" accept="image/jpg"  type="file" value=""/>
+                                                </div>
+                                              <div style="float:left;margin-left: 20px"><div style="margin-top: 10px" id="showFileName1"></div></div>
+                                              <div style="float:left;margin-left: 20px"><input id="btnImportOK" type="button" value="上传"  class="button_upload"/></div>
+
                                           </form>
                                     </td>
                                 </tr>
@@ -134,7 +120,7 @@
                                     </tr>
                                 <tr>
                                     <td></td>
-                                    <td width="80" align="left"><button type="button" id="addImage" value="add">添加照片</button></td>
+                                    <td width="80" align="left"><button type="button" id="addImage" value="add" class="button_upload">添加照片</button></td>
                                 </tr>
                             </table>
                             <!--第二张图片-->
@@ -151,10 +137,16 @@
 
                                     <td >
                                         <form id="frm_identityB" action="" enctype="multipart/form-data">
-                                                <span>
+                                            <div class="file" style="float:left"><div style="margin-top: 10px">选择文件</div>
+                                                <input id="fileuploadB" name="attachs" accept="image/jpg"  type="file" value=""/>
+                                            </div>
+                                            <div style="float:left;margin-left: 20px"><div style="margin-top: 10px" id="showFileName2"></div></div>
+                                            <div style="float:left;margin-left: 20px"><input id="btnImportOKB" type="button" value="上传"  class="button_upload"/></div>
+
+                                        <%-- <span>
                                                     <input id="fileuploadB" name="attachs" accept="image/jpg" type="file" value="" />
                                                 </span>
-                                            <input id="btnImportOKB" type="button" value="上传" />
+                                            <input id="btnImportOKB" type="button" value="上传" />--%>
                                         </form>
                                     </td>
                                 </tr>
@@ -184,10 +176,10 @@
                                 </tr>
                                 <tr>
                                     <td></td>
-                                    <td width="80" align="left"><button type="button" id="delButton" value="add">删除</button></td>
+                                    <td width="80" align="left"><button type="button" id="delButton" value="add" class="button_upload">删除</button></td>
                                 </tr>
                             </table>
-
+                            <div><input type="checkbox" name="readme" id="readme">作品请勿重复上传，否则将取消资格。</div>
 
                             <script type="text/javascript" src="<%= path%>/js/zoom.min.js"></script>
                             <input type="hidden"   name="attachmentId1" id="attachmentId1">
@@ -229,8 +221,6 @@
 <script type="text/javascript">
 
     $(document).ready(function(){
-
-
         <!--添加照片-->
         $("#addImage").click(function(){
             $("#second_image").show();
@@ -242,12 +232,29 @@
 
         })
 
+        //第一张上传图片改变，文字
+        $('#fileupload').change(function(){
+            var filePath=$('#fileupload').val();
+            var arr=filePath.split('\\');
+            var fileName=arr[arr.length-1];
+            $('#showFileName1').text(fileName);
+        })
+        //第二张照片改变
+        $('#fileuploadB').change(function(){
+            var filePath=$('#fileuploadB').val();
+            var arr=filePath.split('\\');
+            var fileName=arr[arr.length-1];
+            $('#showFileName2').text(fileName);
+        })
 
         <!--上传第一张照片-->
         $("#btnImportOK").click(function () {
           /*  var formData = new FormData($("#frm_identityA")[0]);*/
             var paths = document.getElementById("fileupload").files;
-
+            if(!($('#readme').is(':checked'))) {
+                alert("请勾选阅读事项");
+                return;
+            }
             if(paths.length==0)
             {
                 alert("请选择文件");
@@ -299,6 +306,10 @@
         <!--上传第二张照片-->
         $("#btnImportOKB").click(function () {
             /*  var formData = new FormData($("#frm_identityA")[0]);*/
+            if(!($('#readme').is(':checked'))) {
+                alert("请勾选阅读事项");
+                return;
+            }
             var paths = document.getElementById("fileuploadB").files;
 
             if(paths.length==0)

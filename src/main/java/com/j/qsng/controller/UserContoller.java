@@ -114,9 +114,7 @@ public class UserContoller
 		}
 
 		mode.addObject("userPicShowDtoList",userPicShowDtoList);
-		if(UPLOADLIMITNUM>=userPicShowDtoList.size()){
-			mode.addObject("message","提交作品数："+UPLOADLIMITNUM);
-		}
+			mode.addObject("message","提交作品数："+userPicShowDtoList.size());
 		return mode;
 	}
 

@@ -86,43 +86,6 @@
                         <form action="<%= path%>/user/updateUserPicOne" method="post" enctype="multipart/form-data" name="form_action" id="form_1">
                             <input type="hidden" value="1"  name="shtype" />
                             <input type="hidden" value="${upsd.attachment.id}"  name="oldAttachmentId" />
-                           <%-- <table width="760" border="0" align="center" cellpadding="5" cellspacing="0">
-                                <tr>
-                                    <td width="100" height="40" align="right"><span class="red">*</span>&nbsp;手机号：</td>
-
-                                    <td align="left">
-                                        <input name="msisdn", class="select_240" value="${user.msisdn}" >
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td width="100" height="40" align="right"><span class="red">*</span>&nbsp;姓名：</td>
-                                    <td align="left">
-                                        <input name="name", class="select_240" value="${user.name}" >
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td height="40" align="right"><span class="red">*</span>&nbsp;身份证号：</td>
-                                    <td align="left">
-                                       <input name="cardId", class="select_240" value="${user.cardId}">
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td height="40" align="right"><span class="red">*</span>&nbsp;年龄：</td>
-                                    <td align="left">
-                                        <input name="age", class="select_240" value="${user.age}">
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td width="80" height="40" align="right"><span class="red">*</span>&nbsp;性别：　</td>
-                                    <td width="660" align="left">
-                                        <select name="sex" class="select_240" id="provinceid_1">
-
-                                            <option value="1" >男 </option>
-                                            <option value="2" >女</option>
-
-                                        </select></td>
-                                </tr>
-                            </table>--%>
                             <input type="hidden" name="id" value="${upsd.userPic.id}">
                             <div class="dashed"></div>
                             <table width="780" border="0" align="center" cellpadding="5" cellspacing="0">
@@ -138,10 +101,13 @@
 
                                     <td align="left">
                                           <form id="frm_identityA" action="" enctype="multipart/form-data">
-                                                <span>
-                                                    <input id="fileupload" name="attachs" accept="image/jpg"  type="file" value="" />
-                                                </span>
-                                              <input id="btnImportOK" type="button" value="上传" />
+                                              <div class="file" style="float:left"><div style="margin-top: 10px">选择文件</div>
+                                                  <input id="fileupload" name="attachs" accept="image/jpg"  type="file" value=""/>
+                                              </div>
+                                              <div style="float:left;margin-left: 20px"><div style="margin-top: 10px" id="showFileName1"></div></div>
+                                              <div style="float:left;margin-left: 20px"><input id="btnImportOK" type="button" value="上传"  class="button_upload"/></div>
+
+
                                           </form>
                                     </td>
                                 </tr>
@@ -210,6 +176,14 @@
         if(message!=""){
             alert(message);
         }
+
+        //第一张上传图片改变，文字
+        $('#fileupload').change(function(){
+            var filePath=$('#fileupload').val();
+            var arr=filePath.split('\\');
+            var fileName=arr[arr.length-1];
+            $('#showFileName1').text(fileName);
+        })
 
         <!--添加照片-->
         $("#addImage").click(function(){

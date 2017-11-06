@@ -36,14 +36,12 @@
     </div>
 </div>
 
-<%--
-<script type="text/javascript" src="<%= path%>/js/activity/jquery.selectseach.min.js" tppabs="http://pic.eol.cn/app/static/script/jquery.selectseach.min.js"></script>
---%>
+
 <div class="bg_gary ">
     <div class="main mar_t_20" >
         <div class="w_780 left">
             <div class="title"><h2>用户信息</h2></div>
-                <div class="no_way"></div>
+            <div id="Tabs_01" >
                 <div class='box font_14'>
                     <div class='content' >
                         <form action="<%= path%>/user/updateUserInfo.do" method="post" enctype="multipart/form-data" name="form_action" id="form_1">
@@ -118,21 +116,11 @@
                                     </div>
                                 </c:forEach>
                             </div>
-                            <%--<table>
-                                <c:forEach items="${userPicShowList}" var="userPicShowDto">
-                                    <tr>
-                                        <td>${userPicShowDto.imageName}</td>
-                                        <td><img src="<%= path%>/resources/upload/thumbnail/${userPicShowDto.attachment.newName}"></td>
-                                        <td><a href="<%= path%>/user/updateUserPic/${userPicShowDto.attachment.id}">修改</a></td>
-                                        <td><a  href="javascript:if(confirm('确认删除'))location='<%= path%>/user/deleteUserPic.do?attachmentId=${userPicShowDto.attachment.id}'">删除</a></td>
-                                    </tr>
-                                </c:forEach>
-
-                            </table>--%>
 
                         </form>
                     </div>
                 </div>
+            </div>
             </div>
 
         </div>

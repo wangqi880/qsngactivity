@@ -17,7 +17,7 @@
     <!--图片-->
     <style type="text/css">
         *{margin:0;padding:0;list-style-type:none;}
-        body{overflow-y:scroll;font-family:"HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, sans-serif;padding:0;margin:0;}
+        body{overflow-y:scroll;padding:0;margin:0;}
         a,a:hover{border:none;text-decoration:none;}
         img,a img{border:none;}
         .clear{clear:both;}
@@ -64,6 +64,8 @@
                                                 <ul>
                                                     <li>
                                                         <a id="image1_a" href="<%= path%>/resources/upload/${imginfo.attachment.newName}"> <img src="<%=path %>/resources/upload/${imginfo.attachment.newName}" style="width: auto;  height: auto; max-width: 100%;  max-height: 100%; " name="imageName" id="image1"></a>
+                                                        <a ></a>
+
                                                     </li>
                                                 </ul>
                                                 <div class="clear"></div>
