@@ -30,6 +30,7 @@
 			<td>姓名</td>
 			<td>电话</td>
 			<td>作品名</td>
+			<td>作品描述</td>
 			<td>图片</td>
 			<td>得分</td>
 			<td>修改</td>
@@ -38,24 +39,25 @@
 		<tbody>
 		<c:forEach items="${everyUserScorelist }" var="userpicScore">
 			<tr>
-				<td> ${userpicScore.userScoreId}</td>
+				<td width="8%"> ${userpicScore.userScoreId}</td>
 
-				<td>
+				<td width="8%">
 					${userpicScore.username}
 				</td>
-				<td>
+				<td width="8%">
 						${userpicScore.name}
 				</td>
-				<td>
+				<td width="8%">
 						${userpicScore.msisdn}
 				</td>
-				<td>
-					<img src="<%=request.getContextPath() %>/resources/upload/${userpicScore.newName}" alt="${userpicScore.imageName}" style="width: 200px;height: 160px">
+				<td width="8%">
+					${userpicScore.imageName}
+				</td>
+				<td width="20%">${userpicScore.intro}</td>
+				<td width="48%">
+					<a href="<%=request.getContextPath() %>/resources/upload/${userpicScore.newName}" target="_blank"><img src="<%=request.getContextPath() %>/resources/upload/${userpicScore.newName}" alt="${userpicScore.imageName}" style="width: 200px;height: 160px"></a>
+				</td>
 
-				</td>
-				<td>
-						图片${userpicScore.imageName}
-				</td>
 				<td><input type="text" value="${userpicScore.score}" name="name_${userpicScore.userScoreId}" id="id_${userpicScore.userScoreId}" size="1"></td>
 				<td><input type="button" value="打分" id="${userpicScore.userScoreId}" onclick="doScore(this)" ></td>
 

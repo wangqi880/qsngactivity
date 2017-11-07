@@ -17,9 +17,9 @@
 
 <!--图文-->
 	<!-- CSS -->
-<link href='<%=request.getContextPath() %>/picTextShow/css/styles.css' rel='stylesheet'>
+<%--<link href='<%=request.getContextPath() %>/picTextShow/css/styles.css' rel='stylesheet'>
 	<!-- JS -->
-<script src='<%=request.getContextPath() %>/picTextShow/js/intense.js'></script>
+<script src='<%=request.getContextPath() %>/picTextShow/js/intense.js'></script>--%>
 
 </head>
 <body>
@@ -35,6 +35,7 @@
 			<td>姓名</td>
 			<td>电话</td>
 			<td>作品名</td>
+			<td>图片描述</td>
 			<td>图片</td>
 			<td>是否选中</td>
 		</tr>
@@ -44,24 +45,28 @@
 			<c:forEach items="${chooseUserPicDtoList }" var="userpic">
 				<tr>
 
-					<td>
-							${userpic.username}
+					<td width="8%">
+						<span>${userpic.username}</span>
 					</td>
-					<td>
+					<td width="8%">
 							${userpic.name}
 					</td>
-					<td>
+					<td width="8%">
 							${userpic.msisdn}
 					</td>
-					<td>
+					<td width="8%">
 							${userpic.imageName}
 					</td>
-					<td>
-						<section class="demos">
-							<div style="width: 250px;height: 200px; background-image:url(<%=request.getContextPath() %>/resources/upload/${userpic.newName})" class="demo-image first" data-image="<%=request.getContextPath() %>/resources/upload/${userpic.newName}" data-title="${userpic.imageName}" data-caption="${userpic.intro}"></div>
-						</section>
+					<td width="20%">
+							${userpic.intro}
 					</td>
-					<td>
+					<td  width="46%">
+						<%--<section class="demos">
+							<div style="width: 250px;height: 200px; background-image:url(<%=request.getContextPath() %>/resources/upload/${userpic.newName})" class="demo-image first" data-image="<%=request.getContextPath() %>/resources/upload/${userpic.newName}" data-title="${userpic.imageName}" data-caption="${userpic.intro}"></div>
+						</section>--%>
+						<div><a href="<%=request.getContextPath() %>/resources/upload/${userpic.newName}" target="_blank"> <img src="<%=request.getContextPath() %>/resources/upload/${userpic.newName}"  style="display:block;width:40%;"  alt=""></a></div>
+					</td>
+					<td  width="20%">
 						<!--没有选中-->
 						<c:if test="${userpic.chooseIs eq 0 }">
 							<input id="${userpic.id}" name="id" type="checkbox" value="${userpic.id}" />
@@ -91,12 +96,6 @@
 </body>
 </html>
 <script type="text/javascript">
-
-    window.onload = function() {
-        var elements = document.querySelectorAll( '.demo-image' );
-        Intense( elements );
-    }
-
     $(document).ready(function(){
         //选择
         $('input:checkbox').click(function () {
@@ -115,10 +114,12 @@
 
                     } else {
                         alert("选择失败:"+data.info);
+                        $('#'+id).attr('checked',false);
                     }
 
                 }).error(function(data) {
                     alert("选择失败:"+data.info);
+                    $('#'+id).attr('checked',false);
                 });
 
 			}else{
@@ -132,10 +133,12 @@
 
                     } else {
                         alert("取消失败:"+data.info);
+                        $('#'+id).attr('checked',true);
                     }
 
                 }).error(function(data) {
                     alert("取消失败:"+data.info);
+                    $('#'+id).attr('checked',true);
                 });
 			}
         });

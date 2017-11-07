@@ -153,13 +153,14 @@ h3.admin_link_bar span a {
 		padding: 1px 7px;
 	}
 	#listTable tbody tr td{
-		padding-left:7%;
+
 	} 
 
 #content table thead td{
 	background:#336d9b;
 	color:#fff;
 	margin:0px;
+	text-align: center;
 }
 
 .textAreasize{
