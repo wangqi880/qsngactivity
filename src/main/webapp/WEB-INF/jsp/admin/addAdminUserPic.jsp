@@ -20,7 +20,7 @@ $(function(){
 <body>
 <div id="content">
 	<h3 class="admin_link_bar">
-		<jsp:include page="inc.jsp"></jsp:include>
+		<jsp:include page="adminUserPicInc.jsp"></jsp:include>
 	</h3>
 	<form method="post" action="<%= request.getContextPath()%>/admin/addAdminUserPic" id="addForm">
 	<table width="800" cellspacing="0" cellPadding="0">
@@ -50,7 +50,7 @@ $(function(){
 		<tr>
 			<ul>
 				<li>
-					<a id="image1_a"> <img  name="imageName" id="image1" width="80%" height="80%"></a>
+					<a id="image1_a" target="_blank"> <img  name="imageName" id="image1" width="80%" height="80%"></a>
 				</li>
 				<input type="hidden"   name="attachmentId" id="attachmentId1">
 			</ul>

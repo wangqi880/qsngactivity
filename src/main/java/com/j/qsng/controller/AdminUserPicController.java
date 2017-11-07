@@ -125,8 +125,7 @@ public class AdminUserPicController {
 
                 long id = IDUtils.genItemId();
                 att.setId(id);
-               att.setUserId(Integer.parseInt(adminUser.getId()));
-                att.setUserId(110);
+                att.setUserId(Long.parseLong(adminUser.getId()));
                 att.setNewName(String.valueOf(new Date().getTime()) + "." + ext);
                 att.setOldName(FilenameUtils.getBaseName(attach.getOriginalFilename()));
                 att.setSuffix(ext);

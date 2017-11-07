@@ -67,7 +67,7 @@
       <table width="580" border="0" align="center" cellpadding="10" cellspacing="0">
   <tr>
     <td height="160" align="center" valign="middle"></td>
-    <td align="center" valign="bottom"><a href="<%= path%>/user/upload.html" tppabs="http://pic.eol.cn/picture/upload"><img src="<%= path%>/images/up.png" tppabs="http://pic.eol.cn/app/static/images/up.png" width="130" height="150" style="margin-bottom:20px;" /><br />
+    <td align="center" valign="bottom"><a href="<%= path%>/user/upload.html" tppabs="http://pic.eol.cn/picture/upload"><img src="<%= path%>/images/up.png" tppabs="http://pic.eol.cn/app/static/images/up.png" width="200" height="200" style="margin-bottom:20px;" /><br />
 <em>我要上传</em></a></td>
   </tr>
   

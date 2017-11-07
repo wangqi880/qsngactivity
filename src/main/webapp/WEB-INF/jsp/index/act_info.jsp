@@ -76,7 +76,7 @@
 
   <tr>
     <td width="319" height="160" align="center" valign="middle"></td>
-    <td width="221" align="center" valign="bottom"><a href="<%= path%>/user/upload.html"><img src="<%= path%>/images/up.png"  width="130" height="150" style="margin-bottom:20px;" /><br />
+    <td width="221" align="center" valign="bottom"><a href="<%= path%>/user/upload.html"><img src="<%= path%>/images/up.png"  width="200" height="200" style="margin-bottom:20px;" /><br />
 <em>我要上传</em></a></td>
   </tr>
   

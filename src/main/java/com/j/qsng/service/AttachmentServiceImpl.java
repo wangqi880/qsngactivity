@@ -23,7 +23,7 @@ public class AttachmentServiceImpl implements AttachmentService
 {
 	@SuppressWarnings ("SpringJavaAutowiringInspection") @Autowired AttachmentMapper attachmentMapper;
 
-	public final static int IMG_WIDTH = 900;
+	public final static int IMG_WIDTH = 1500;
 	public final static int THUMBNAIL_WIDTH = 150;
 	public final static int THUMBNAIL_HEIGHT = 110;
 
@@ -100,16 +100,19 @@ public class AttachmentServiceImpl implements AttachmentService
 			BufferedImage oldBi = ImageIO.read(is);
 			int width = oldBi.getWidth();
 			Thumbnails.Builder<BufferedImage> bf = Thumbnails.of(oldBi);
-			if(width>IMG_WIDTH) {
+			/*if(width>IMG_WIDTH) {
 				bf.scale((double)IMG_WIDTH/(double)width);
 			} else {
 				bf.scale(1.0f);
-			}
+			}*/
+			bf.scale(1.0f);
 			bf.toFile(path);
 			//缩略图的处理
-			//1、将原图进行压缩
+			/*//1、将原图进行压缩
 			BufferedImage tbi = Thumbnails.of(oldBi)
-					.scale((THUMBNAIL_WIDTH*1.2)/width).asBufferedImage();
+					.scale((THUMBNAIL_WIDTH*1.2)/width).asBufferedImage();*/
+			//不进行压缩
+			/*BufferedImage tbi = Thumbnails.of(oldBi).asBufferedImage();*/
 		}
 	}
 }

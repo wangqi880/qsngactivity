@@ -85,7 +85,7 @@
                                     <td>作品图：</td>
                                     <td>
                                           <form id="frm_identityA" action="" enctype="multipart/form-data">
-                                                <div class="file" style="float:left"><div style="margin-top: 10px">选择文件</div>
+                                                <div class="file" style="float:left"><div style="margin-top: 10px;font-size: 14px">选择文件</div>
                                                     <input id="fileupload" name="attachs" accept="image/jpg"  type="file" value=""/>
                                                 </div>
                                               <div style="float:left;margin-left: 20px"><div style="margin-top: 10px" id="showFileName1"></div></div>
@@ -137,7 +137,7 @@
 
                                     <td >
                                         <form id="frm_identityB" action="" enctype="multipart/form-data">
-                                            <div class="file" style="float:left"><div style="margin-top: 10px">选择文件</div>
+                                            <div class="file" style="float:left"><div style="margin-top: 10px;font-size: 14px">选择文件</div>
                                                 <input id="fileuploadB" name="attachs" accept="image/jpg"  type="file" value=""/>
                                             </div>
                                             <div style="float:left;margin-left: 20px"><div style="margin-top: 10px" id="showFileName2"></div></div>

@@ -150,6 +150,7 @@ h1,h2,h3,h4{margin:0 auto; padding:0;}
     -webkit-animation: mypraise 0.5s ;	/* Safari 和 Chrome */
     -o-animation: mypraise 0.5s ;	/* Opera */
     font-style:normal;
+    font-family:Arial, Verdana, Helvetica,"微软雅黑", "宋体","ff-tisa-web-pro-1","ff-tisa-web-pro-2","Lucida Grande","Hiragino Sans GB","Hiragino Sans GB W3",sans-serif"
 }
 .praise .hover , .add-num .add-animation.hover , #praise-txt.hover{
     color: #EB4F38;
@@ -273,10 +274,11 @@ h1,h2,h3,h4{margin:0 auto; padding:0;}
 }
 .file input {
     position: absolute;
-    font-size: 100px;
+    font-size: 14px;
     right: 0;
     top: 0;
     opacity: 0;
+
 }
 .file:hover {
     background: #2fa2f7;
