@@ -1,7 +1,7 @@
 /*整体的字体、间距、列表*/
 *{margin:0px; padding:0px;}
-html { overflow-x:hidden;  height: 100%; width: 100% ; margin:0px ;padding:0px; }
-body{overflow-x:hidden;font-family: Arial, Verdana, Helvetica,"微软雅黑", "宋体","ff-tisa-web-pro-1","ff-tisa-web-pro-2","Lucida Grande","Hiragino Sans GB","Hiragino Sans GB W3",sans-serif
+html { /*overflow-x:hidden; */ height: 100%; width: 100% ; margin:0px ;padding:0px; }
+body{/*overflow-x:hidden;*/font-family: Arial, Verdana, Helvetica,"微软雅黑", "宋体","ff-tisa-web-pro-1","ff-tisa-web-pro-2","Lucida Grande","Hiragino Sans GB","Hiragino Sans GB W3",sans-serif
 ;margin:0px ;padding:0px;font-size:12px;color: #333;  text-align:left; height: 100%; width: 100%;}
 form, img, p{margin: 0px auto;border:0px;}
 ul, li,ol,dl,dt,dd{margin:0px auto;padding:0px;list-style:none;list-style-position:outside;}

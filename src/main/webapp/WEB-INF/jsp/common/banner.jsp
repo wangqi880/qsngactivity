@@ -14,6 +14,13 @@
     function userExitSystem() {
         window.parent.location.href = "<%=request.getContextPath() %>/user/logout";
     }
+    $(function(){
+        document.getElementsByTagName('html')[0].style.width= window.innerWidth+'px';
+        window.onresize = function(){
+            document.getElementsByTagName('html')[0].style.width= window.innerWidth+'px';
+        };
+    })
+
 </script>
 
 <div class="top_i" style="background:url(<%= path%>/images/top_i.jpg) no-repeat center top;text-align: right">
