@@ -261,7 +261,7 @@ public class AdminController
 				}else{
 					flag=false;
 				}
-				if(j>=userList.size()){
+				if(j<userList.size()-1){
 					continue;
 				}
 
@@ -275,7 +275,7 @@ public class AdminController
 			cl.setInsertTime(DateUtils.getStandardNowDateTime());
 			chooseLogService.add(cl);
 			j++;
-			if(0==j%userList.size()){
+			if(0==j%userList.size()-1){
 				j=0;
 			}
 		}
