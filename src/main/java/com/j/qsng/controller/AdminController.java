@@ -3,13 +3,11 @@ package com.j.qsng.controller;
 import com.j.qsng.common.pojo.BaseResp;
 import com.j.qsng.common.pojo.ChooseUtils;
 import com.j.qsng.common.util.DateUtils;
+import com.j.qsng.common.util.IDUtils;
 import com.j.qsng.dto.AdminuserChoosePeriodNum;
 import com.j.qsng.model.CongfigPojo;
 import com.j.qsng.model.UserPic;
-import com.j.qsng.model.admin.ActivityStatus;
-import com.j.qsng.model.admin.AdminUser;
-import com.j.qsng.model.admin.ChooseLog;
-import com.j.qsng.model.admin.UserScoreLog;
+import com.j.qsng.model.admin.*;
 import com.j.qsng.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -37,6 +35,7 @@ public class AdminController
 	@Autowired ConfigService         configService;
 	@Autowired ActivityStatusService activityStatusService;
 	@Autowired UserScoreLogService   userScoreLogService;
+	@Autowired ChooseUserConfigService chooseUserConfigService;
 	@RequestMapping("/admin")
 	public ModelAndView adminIdex(HttpSession session){
 		ModelAndView modelAndView = new ModelAndView();
@@ -120,10 +119,47 @@ public class AdminController
 		int firstChoosedNum=chooseLogService.queryNumByPeriodAndChecked(ChooseUtils.FIRST_PERIOD,ChooseUtils.YES_CHOOSE);
 		int secondChoosedNum=chooseLogService.queryNumByPeriodAndChecked(ChooseUtils.SECOND_PERIOD,ChooseUtils.YES_CHOOSE);
 		int allNum=userPicService.queryByAllNum();
+		List<String> firtstChooseUserIds = chooseUserConfigService.queryIdsByPeriod(ChooseUtils.FIRST_PERIOD);
+		List<String> secondChooseUserIds = chooseUserConfigService.queryIdsByPeriod(ChooseUtils.SECOND_PERIOD);
+		List<String> thirdChooseUserIds = chooseUserConfigService.queryIdsByPeriod(ChooseUtils.THIRD_PERIOD);
+		List<AdminUser> allChooseUserList = adminUserService.queryChooseUsers();
+		modelAndView.addObject("firtstChooseUserIds",firtstChooseUserIds);
+		modelAndView.addObject("secondChooseUserIds",secondChooseUserIds);
+		modelAndView.addObject("thirdChooseUserIds",thirdChooseUserIds);
+		modelAndView.addObject("allChooseUserList",allChooseUserList);
+
 		modelAndView.addObject("firstChoosedNum",firstChoosedNum);
 		modelAndView.addObject("secondChoosedNum",secondChoosedNum);
 		modelAndView.addObject("allNum",allNum);
 		return modelAndView;
+	}
+
+	//手动筛选老师
+	@RequestMapping("/admin/chooseChooseUser/{period}/{userId}/{type}")
+	@ResponseBody
+	public Object chooseChooseUser(@PathVariable String  period,@PathVariable String userId,@PathVariable String type){
+		BaseResp resp = new BaseResp();
+		resp.setCode("000000");
+		resp.setInfo("success");
+		try {
+			if ("1".equals(type)) {
+				//1表示添加
+				ChooseUserConfig chooseUserConfig = new ChooseUserConfig();
+				chooseUserConfig.setId(String.valueOf(IDUtils.genItemId()));
+				chooseUserConfig.setPeriod(period);
+				chooseUserConfig.setUserId(userId);
+				chooseUserConfigService.add(chooseUserConfig);
+			} else if ("0".equals(type)) {
+				//先删除
+				chooseUserConfigService.deleteByUserIdAndPeriod(userId, period);
+			}
+		} catch (Exception e) {
+			System.out.println(e);
+			resp.setCode("000001");
+			resp.setInfo("error");
+			return resp;
+		}
+		return  resp;
 	}
 
 	//进入活动状态查询
@@ -190,8 +226,11 @@ public class AdminController
 			//一共有多少个作品
 			int allNum = userPicService.queryByAllNum();
 			//选择评委老师人数
-			int choosePerson = adminUserService.chooseUserNum();
-			List<AdminUser> userList = adminUserService.queryChooseUsers();
+			/*int choosePerson = adminUserService.chooseUserNum();
+			List<AdminUser> userList = adminUserService.queryChooseUsers();*/
+			//更新为可以手动配置选择选择用户
+			int choosePerson =chooseUserConfigService.queryNumByPeriod(ChooseUtils.FIRST_PERIOD);
+			List<AdminUser> userList =chooseUserConfigService.queryAdminUserByPeriod(ChooseUtils.FIRST_PERIOD);
 			//所有的作品
 			List<UserPic> userPicList = userPicService.listAll();
 			//给每个照片选择分配照片
@@ -226,7 +265,8 @@ public class AdminController
 	@ResponseBody
 	public Object secondChooseConfig(){
 		BaseResp resp = new BaseResp();
-		List<AdminUser> userList=adminUserService.queryChooseUsers();
+		/*List<AdminUser> userList=adminUserService.queryChooseUsers();*/
+		List<AdminUser> userList =chooseUserConfigService.queryAdminUserByPeriod(ChooseUtils.SECOND_PERIOD);
 		//第一次已经选中照片
 		List<ChooseLog> firstChoosedList =chooseLogService.queryByPeriodAndIsChoose(ChooseUtils.FIRST_PERIOD,ChooseUtils.YES_CHOOSE);
 		if(CollectionUtils.isEmpty(firstChoosedList)){
@@ -275,7 +315,7 @@ public class AdminController
 			cl.setInsertTime(DateUtils.getStandardNowDateTime());
 			chooseLogService.add(cl);
 			j++;
-			if(0==j%userList.size()-1){
+			if(0==j%userList.size()){
 				j=0;
 			}
 		}
@@ -317,7 +357,8 @@ public class AdminController
 			List<ChooseLog> list = chooseLogService
 				.queryByPeriodAndIsChoose(ChooseUtils.SECOND_PERIOD, ChooseUtils.YES_CHOOSE);
 			//选择用户
-			List<AdminUser> adminUserList=adminUserService.queryChooseUsers();
+			/*List<AdminUser> adminUserList=adminUserService.queryChooseUsers();*/
+			List<AdminUser> adminUserList=chooseUserConfigService.queryAdminUserByPeriod(ChooseUtils.THIRD_PERIOD);
 			for(ChooseLog chooseLog : list)
 			{
 				for(AdminUser adminUser:adminUserList){
@@ -376,4 +417,12 @@ public class AdminController
 		return resp;
 	}
 
+	@RequestMapping("/admin/logout")
+	public  ModelAndView logout(HttpSession session){
+		ModelAndView modelAndView  =new ModelAndView();
+		session.removeAttribute("adminUser");
+		modelAndView.setViewName("redirect:/admin");
+
+		return modelAndView;
+	}
 }

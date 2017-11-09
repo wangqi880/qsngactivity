@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.j.qsng.dao.ChooseUserConfigMapper" >
+
+    <resultMap id="adminUser" type="com.j.qsng.model.admin.AdminUser" >
+        <id column="id" property="id" jdbcType="VARCHAR" />
+        <result column="username" property="username" jdbcType="VARCHAR" />
+        <result column="password" property="password" jdbcType="VARCHAR" />
+        <result column="name" property="name" jdbcType="VARCHAR" />
+        <result column="msisdn" property="msisdn" jdbcType="VARCHAR" />
+        <result column="insertTime" property="insertTime" jdbcType="VARCHAR" />
+        <result column="updateTime" property="updateTime" jdbcType="VARCHAR" />
+        <result column="role" property="role" jdbcType="VARCHAR" />
+    </resultMap>
+
+    <select id="load" parameterType="string" resultType="com.j.qsng.model.admin.ChooseUserConfig">
+      select * from t_chooseUser_config where id=#{t_chooseUser_config}
+    </select>
+    <select id="queryByPeriod" parameterType="string" resultType="com.j.qsng.model.admin.ChooseUserConfig">
+        select * from t_chooseUser_config  t where period=#{period}
+    </select>
+    <delete id="delete" parameterType="string">
+        delete from t_chooseUser_config where id=#{id}
+    </delete>
+    <insert id="add" parameterType="com.j.qsng.model.admin.ChooseUserConfig">
+        insert into t_chooseUser_config(id,userId,period) values(#{id},#{userId},#{period})
+    </insert>
+    <select id="queryIdsByPeriod" parameterType="string" resultType="string">
+        select userId from t_chooseUser_config where period=#{period}
+    </select>
+
+    <delete id="deleteByUserIdAndPeriod" parameterType="map">
+                delete from t_chooseUser_config where userId=#{userId} and period=#{period}
+    </delete>
+    <select id="queryNumByPeriod" parameterType="string" resultType="int">
+        select count(1) from t_chooseUser_config where period=#{period}
+    </select>
+    <select id="queryAdminUserByPeriod" parameterType="string" resultMap="adminUser">
+select t1.* from t_admin_user t1, t_chooseUser_config t2 where t1.id = t2.userId and  t2.period=#{period}
+    </select>
+</mapper>

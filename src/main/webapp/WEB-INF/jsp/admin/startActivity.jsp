@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -13,6 +14,9 @@
 <style type="text/css">
 .div1{ float:left; height:30px; width:100px; border-right:8px}
 .div2{ border-left:0 none; float:left; height:30px; width:60px;}
+	.chooseUserClass{
+		margin-top: 5px;
+	}
 </style>
 
 </head>
@@ -31,16 +35,39 @@
 		</thead>
 		<tbody>
 		<tr>
-			<td>开始第一次选图片(已选作品数：${firstChoosedNum})</td>
+			<td>
+				<div>开始第一次选图片(已选作品数：${firstChoosedNum})</div>
+				<div class="chooseUserClass">
+					<c:forEach items="${allChooseUserList }" var="chooseUser">
+						<input type="checkbox" id="${chooseUser.id }_1"  value="${chooseUser.id }_1" <c:if test="${fn:contains(firtstChooseUserIds,chooseUser.id)}">checked="checked"</c:if>>${chooseUser.username }
+
+					</c:forEach>
+
+				</div>
+			</td>
 			<td><input id="firstActivityButton" type="button" value="开始" class="list_op delete"></td>
 		</tr>
 		<tr>
-			<td>开始第二次选图片(已选作品数：${secondChoosedNum})</td>
+			<td>
+				<div>开始第二次选图片(已选作品数：${secondChoosedNum})</div>
+				<div>
+					<c:forEach items="${allChooseUserList }" var="chooseUser">
+						<input type="checkbox" id="${chooseUser.id }_2" value="${chooseUser.id }_2" <c:if test="${fn:contains(secondChooseUserIds,chooseUser.id)}">checked="checked"</c:if>>${chooseUser.username }
+					</c:forEach>
+				</div>
+			</td>
 			<td><input id="secondStartButton" type="button" value="开始" class="list_op delete"></td>
 		</tr>
 
 		<tr>
-			<td>开始第三次已选图片打分</td>
+			<td>
+				<div>开始第三次已选图片打分</div>
+				<div>
+					<c:forEach items="${allChooseUserList }" var="chooseUser">
+						<input type="checkbox" id="${chooseUser.id }_3"  value="${chooseUser.id }_3" <c:if test="${fn:contains(thirdChooseUserIds,chooseUser.id)}">checked="checked"</c:if>>${chooseUser.username }
+					</c:forEach>
+				</div>
+			</td>
 			<td><input id="thirdStartButton" type="button" value="开始" class="list_op delete"></td>
 		</tr>
 
@@ -69,6 +96,59 @@
 </html>
 <script type="text/javascript">
     $(document).ready(function(){
+
+        //勾选选择用户
+        $('input:checkbox').click(function () {
+            this.blur();
+            this.focus();
+            var value =this.value;
+            var strs= new Array();
+            strs=value.split("_");
+            var userId = strs[0];
+            var period = strs[1];
+            var isCheck=$("#"+value).attr('checked');
+            if(isCheck){
+                //选中
+                $.ajax({
+                    type: "get",
+                    url: "<%=request.getContextPath() %>/admin/chooseChooseUser/"+period+"/"+userId+"/1",
+                    contentType: false,
+                    processData: false,
+                }).success(function(data) {
+                    if (data.code=='000000') {
+
+                    } else {
+                        alert("选择失败:"+data.info);
+                        $("#"+value).attr('checked',false);
+                    }
+
+                }).error(function(data) {
+                    alert("选择失败:"+data.info);
+                    $("#"+value).attr('checked',false);
+                });
+			}else{
+				//取消选中
+                $.ajax({
+                    type: "get",
+                    url: "<%=request.getContextPath() %>/admin/chooseChooseUser/"+period+"/"+userId+"/0",
+                    contentType: false,
+                    processData: false,
+                }).success(function(data) {
+                    if (data.code=='000000') {
+
+                    } else {
+                        alert("选择失败:"+data.info);
+                        $("#"+value).attr('checked',false);
+                    }
+
+                }).error(function(data) {
+                    alert("选择失败:"+data.info);
+                    $("#"+value).attr('checked',false);
+                });
+			}
+
+        });
+
 
         <!--开始第一次活动-->
         $("#firstActivityButton").click(function(){
