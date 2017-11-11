@@ -1,8 +1,10 @@
 package com.j.qsng.dao;
 
+import com.github.pagehelper.Page;
 import com.j.qsng.dto.AdminuserChoosePeriodNum;
 import com.j.qsng.dto.ChooseUserPicDto;
 import com.j.qsng.dto.UserPicScorePrizeDto;
+import com.j.qsng.dto.UserScoreLogDto;
 import com.j.qsng.model.admin.ChooseLog;
 
 import java.util.List;
@@ -14,7 +16,7 @@ import java.util.Map;
 public interface ChooseLogMapper
 {
 	//根据用户名和期间查询
-	public int queryByusernameAndPeriod(Map map);
+	public int queryNumByUsernameAndPeriod(Map map);
 
 	//插入选择日志
 	public void add(ChooseLog chooseLog);
@@ -55,4 +57,9 @@ public interface ChooseLogMapper
 
 	//查询已经评分的用户作品的分数，点赞详细信息
 	public List<UserPicScorePrizeDto> queryPageDetailScorePrizeNum(Map map);
+
+	//根据用户期数分页显示
+	List<ChooseUserPicDto> queryPageByUsernameAndPeriod(Map map);
+
+
 }

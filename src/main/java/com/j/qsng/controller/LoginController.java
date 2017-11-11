@@ -103,6 +103,7 @@ public class LoginController
 		}
 		else if(null!=adminUser){
 			modelAndView.setViewName("redirect:/admin");
+			session.setAttribute("role",adminUser.getRole());
 			session.setAttribute("adminUser", adminUser);
 		}else{
 			modelAndView.setViewName("/login/login");

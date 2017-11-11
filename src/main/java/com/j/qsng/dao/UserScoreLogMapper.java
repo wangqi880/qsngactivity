@@ -36,4 +36,7 @@ public interface UserScoreLogMapper
 
 	//更新分数和时间
 	public void updateScoreAndTime(UserScoreLog userScoreLog);
+	public List<UserScoreLogDto> queryPageDetailByUsernameAndScoreIs(Map map);
+	//根据用户查询所有记录
+	public int queryNumByChooseusername(String  chooseusername);
 }

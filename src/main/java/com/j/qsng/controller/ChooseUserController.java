@@ -1,5 +1,6 @@
 package com.j.qsng.controller;
 
+import com.github.pagehelper.Page;
 import com.j.qsng.common.pojo.BaseResp;
 import com.j.qsng.common.pojo.ChooseUtils;
 import com.j.qsng.common.pojo.Pager;
@@ -51,12 +52,19 @@ public class ChooseUserController
 		String adminUsername = adminUser.getUsername();
 		if(ChooseUtils.FIRST_PERIOD.equals(period) || ChooseUtils.SECOND_PERIOD.equals(period)){
 			//从session获取admin登录用户名
-			List<ChooseUserPicDto> chooseUserPicDtoList = chooseLogService.queryByUsernameAndPeriod(adminUsername,period);
+			/*List<ChooseUserPicDto> chooseUserPicDtoList = chooseLogService.queryByUsernameAndPeriod(adminUsername,period);
 			modelAndView.addObject("chooseUserPicDtoList",chooseUserPicDtoList);
+			*/
+			Pager<ChooseUserPicDto> page=chooseLogService.queryPageByUsernameAndPeriod(adminUsername,period);
+			modelAndView.addObject("page",page);
+			modelAndView.addObject("period",period);
 		}else if(ChooseUtils.THIRD_PERIOD.equals(period)){
 			//第三期为，period=2，已选中,已经放在user_score表
-			 List<UserScoreLogDto> everyUserScorelist = userScoreLogService.queryDetailByUsernameAndScoreIs(adminUsername,null);
-			modelAndView.addObject("everyUserScorelist",everyUserScorelist);
+			 /*List<UserScoreLogDto> everyUserScorelist = userScoreLogService.queryDetailByUsernameAndScoreIs(adminUsername,null);
+			modelAndView.addObject("everyUserScorelist",everyUserScorelist);*/
+			Pager<UserScoreLogDto> page = userScoreLogService.queryPageDetailByUsernameAndScoreIs(adminUsername,null);
+			modelAndView.addObject("page",page);
+			modelAndView.addObject("period",period);
 			modelAndView.setViewName("/chooseUser/thirdUserScore");
 		}
 		return  modelAndView;

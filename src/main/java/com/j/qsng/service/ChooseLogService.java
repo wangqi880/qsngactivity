@@ -56,4 +56,7 @@ public interface ChooseLogService
 
 	public Pager<UserPicScorePrizeDto> queryPageDetailScorePrizeNum();
 
+	//根据用户期数分页显示
+	Pager<ChooseUserPicDto> queryPageByUsernameAndPeriod(String username,String period );
+
 }

@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <input type="hidden" id="contextPath" value="<%=request.getContextPath()%>"/>
 <div id="top">
 	<div id="topIntro">
@@ -10,7 +12,9 @@
 		</span>
 	</div>
 	<div id="remind">
-		<span id="showDate">欢迎[${adminUser.username }]光临${baseInfo.name}后台管理程序
+		<span id="showDate">欢迎[${adminUser.username }]光临后台管理程序。你的身份是
+			<c:if test="${role eq 1}">管理员</c:if>
+			<c:if test="${role eq 2}">评委</c:if>
 		</span>
 	</div>
 </div>

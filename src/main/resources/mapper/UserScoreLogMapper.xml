@@ -100,4 +100,58 @@
          update t_user_score_log set score=#{score},insertTime=#{insertTime}
            where id=#{id}
     </update>
+
+    <select id="queryPageDetailByUsernameAndScoreIs" parameterType="map" resultType="com.j.qsng.dto.UserScoreLogDto">
+        SELECT m1.userScoreId,
+        m1.id,
+        m1.prodId,
+        m1.userId,
+        m1.attachmentId,
+        m1.chooseIs,
+        m1.imageName,
+        m1.intro,
+        m2.username,
+        m2.name,
+        m2.msisdn,
+        m2.sex,
+        m3.newName,
+        m1.score
+        FROM (SELECT t1.userScoreId,
+        t1.id,
+        t2.userId,
+        t2.id AS prodId,
+        t2.attachmentId,
+        t1.chooseIs,
+        t2.imageName,
+        t2.intro,
+        t1.score
+        FROM (SELECT t1.id AS userScoreId,
+        t1.chooseUsername,
+        t1.chooseLogId,
+        t1.score,
+        t2.id,
+        t2.username,
+        t2.prodId,
+        t2.choosePeriod,
+        t2.chooseIs
+        FROM (SELECT *
+        FROM t_user_score_log
+        WHERE chooseusername = #{chooseusername}
+        <if test="score==1">
+            and score>0
+        </if>
+        <if test="score==0">
+            and score=0
+        </if>
+        ) t1
+        LEFT JOIN t_choose_log t2 ON t1.chooseLogId = t2.id)
+        t1
+        LEFT JOIN t_user_pic t2 ON t1.prodId = t2.id) m1
+        LEFT JOIN t_user m2 ON m1.userId = m2.id
+        LEFT JOIN t_attachment m3 ON m1.attachmentId = m3.id order by m1.score ASC limit  #{offset},#{size}
+    </select>
+
+    <select id="queryNumByChooseusername" parameterType="string" resultType="int">
+        select count(1) from t_user_score_log WHERE chooseusername =#{chooseusername}
+    </select>
 </mapper>

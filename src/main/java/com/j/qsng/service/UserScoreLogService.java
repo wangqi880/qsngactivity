@@ -1,10 +1,10 @@
 package com.j.qsng.service;
 
+import com.j.qsng.common.pojo.Pager;
 import com.j.qsng.dto.UserScoreLogDto;
 import com.j.qsng.model.admin.UserScoreLog;
 
 import java.util.List;
-import java.util.Map;
 
 /**
  * Created by Administrator on 2017/10/29.
@@ -31,5 +31,7 @@ public interface UserScoreLogService
 	//更新分数和时间
 	public void updateScoreAndTime(UserScoreLog userScoreLog);
 
+	//分页查询每个用户的评分,score=0表示没有打分，score表示1表示已经打分，其他表示，打分和没有打分都查询
+	public Pager<UserScoreLogDto> queryPageDetailByUsernameAndScoreIs(String chooseusername, String score);
 
 }

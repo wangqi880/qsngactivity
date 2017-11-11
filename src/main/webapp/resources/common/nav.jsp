@@ -17,7 +17,7 @@ $(function(){
 </head>
 <body>
 <div id="left">
-<c:if test="${isAdmin }">
+<c:if test="${role eq 1 }">
 <ul class="navMenu navSelected">
 	<h3 class="navTitle">
 		<span class="navTilteTxt">管理员管理</span>
@@ -36,6 +36,7 @@ $(function(){
 	</li>
 </ul>
 </c:if>
+<c:if test="${role eq 2 }">
 <ul class="navMenu navSelected">
 	<h3 class="navTitle">
 		<span class="navTilteTxt">作品管理</span>
@@ -54,6 +55,8 @@ $(function(){
 	</li>
 
 </ul>
+</c:if>
+<c:if test="${role eq 1 }">
 	<ul class="navMenu navSelected">
 		<h3 class="navTitle">
 			<span class="navTilteTxt">用户账户管理</span>
@@ -65,7 +68,8 @@ $(function(){
 			<a href="<%=request.getContextPath() %>/adminUser/userList" target="content">查看普通用户</a>
 		</li>
 	</ul>
-
+</c:if>
+<c:if test="${role eq 1 }">
 	<ul class="navMenu navSelected">
 		<h3 class="navTitle">
 			<span class="navTilteTxt">点赞查看</span>
@@ -74,7 +78,8 @@ $(function(){
 			<a href="<%=request.getContextPath() %>/chooseUser/showPrizeNum" target="content">查看点赞数</a>
 		</li>
 	</ul>
-
+</c:if>
+<c:if test="${role eq 1 }">
 	<ul class="navMenu navSelected">
 		<h3 class="navTitle">
 			<span class="navTilteTxt">首页作品控住</span>
@@ -83,6 +88,7 @@ $(function(){
 			<a href="<%=request.getContextPath() %>/admin/adminUserPicList" target="content">查看首页图片</a>
 		</li>
 	</ul>
+</c:if>
 
 <%--
 <c:if test="${isAdmin }">

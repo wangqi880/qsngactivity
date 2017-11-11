@@ -28,7 +28,7 @@ public class ChooseLogServiceImpl implements ChooseLogService
 		Map map =new HashMap();
 		map.put("username",username);
 		map.put("choosePeriod",choosePeriod);
-		return chooseLogMapper.queryByusernameAndPeriod(map);
+		return chooseLogMapper.queryNumByUsernameAndPeriod(map);
 	}
 	public void add(ChooseLog chooseLog)
 	{
@@ -134,6 +134,28 @@ public class ChooseLogServiceImpl implements ChooseLogService
 		page.setSize(pageSize);
 		page.setOffset(pageOffset);
 		List<UserPicScorePrizeDto> list = chooseLogMapper.queryPageDetailScorePrizeNum(map);
+		page.setDatas(list);
+		return page;
+	}
+
+	public Pager<ChooseUserPicDto> queryPageByUsernameAndPeriod(String username, String period) {
+		Map map = new HashMap();
+		Integer pageSize = SystemContext.getPageSize();
+
+		Integer pageOffset = SystemContext.getPageOffset();
+		if(0==pageOffset){
+			pageOffset=1;
+		}
+		map.put("size",pageSize);
+		map.put("offset",(pageOffset-1)*pageSize);
+		map.put("username",username);
+		map.put("period",period);
+		Pager<ChooseUserPicDto> page = new Pager<ChooseUserPicDto>();
+		int totole = queryNumByUsernameAndPeriod(username,period);
+		page.setTotal(totole);
+		page.setSize(pageSize);
+		page.setOffset(pageOffset);
+		List<ChooseUserPicDto> list=chooseLogMapper.queryPageByUsernameAndPeriod(map);
 		page.setDatas(list);
 		return page;
 	}

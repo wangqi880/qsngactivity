@@ -9,11 +9,13 @@
 <script type="text/javascript" src="<%=request.getContextPath() %>/admin/js/jquery-1.7.2.min.js"></script>
 <script type="text/javascript" src="<%=request.getContextPath() %>/admin/js/core/jquery.cms.core.js"></script>
 <script type="text/javascript" src="<%=request.getContextPath() %>/admin/js/admin/main.js"></script>
+	<script src="<%=request.getContextPath() %>/js/pager/pager.js"></script>
+	<link rel="stylesheet" href="<%=request.getContextPath() %>/css/pager/pager.css"/>
 
-<style type="text/css">
-.div1{ float:left; height:30px; width:100px; border-right:8px}
-.div2{ border-left:0 none; float:left; height:30px; width:60px;}
-</style>
+	<style type="text/css">
+		.div1{ float:left; height:30px; width:100px; border-right:8px}
+		.div2{ border-left:0 none; float:left; height:30px; width:60px;}
+	</style>
 
 <!--图文-->
 	<!-- CSS -->
@@ -42,7 +44,7 @@
 		</thead>
 		<tbody>
 
-			<c:forEach items="${chooseUserPicDtoList }" var="userpic">
+			<c:forEach items="${page.datas }" var="userpic">
 				<tr>
 
 					<td width="8%">
@@ -92,6 +94,32 @@
 		</tr>
 		</tfoot>
 	</table>
+	<!--分页-->
+	<div>
+		<ul class="pagination" id="page2">
+		</ul>
+		<div class="pageJump">
+			<span>跳转到</span>
+			<input type="text"/>
+			<span>页</span>
+			<button type="button" class="button">确定</button>
+		</div>
+	</div>
+	<!--分页结束-->
+	<script>
+        var total = ${page.total};
+        var pageSize=${page.size};
+        var totalPage = Math.ceil(total/pageSize);
+        Page({
+            num:totalPage,					//页码数
+            startnum:${page.offset},				//指定页码
+            elem:$('#page2'),		//指定的元素
+            callback:function(n){	//回调函数
+                //这里修改分页之后重新调用首页(带分页参数)
+                location.replace("<%= request.getContextPath()%>/chooseUser/listUserPicture/${period}?pager.offset="+n);
+            }
+        });
+	</script>
 </div>
 </body>
 </html>

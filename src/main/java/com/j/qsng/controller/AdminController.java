@@ -40,7 +40,6 @@ public class AdminController
 	public ModelAndView adminIdex(HttpSession session){
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("admin/index");
-		session.setAttribute("isAdmin",true);
 		return modelAndView;
 	}
 

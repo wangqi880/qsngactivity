@@ -1,5 +1,7 @@
 package com.j.qsng.service;
 
+import com.j.qsng.common.pojo.Pager;
+import com.j.qsng.common.pojo.SystemContext;
 import com.j.qsng.dao.UserScoreLogMapper;
 import com.j.qsng.dto.UserScoreLogDto;
 import com.j.qsng.model.admin.UserScoreLog;
@@ -63,5 +65,26 @@ public class UserScoreLogServiceImpl implements UserScoreLogService
 	public void updateScoreAndTime(UserScoreLog userScoreLog)
 	{
 		userScoreLogMapper.updateScoreAndTime(userScoreLog);
+	}
+
+	public Pager<UserScoreLogDto> queryPageDetailByUsernameAndScoreIs(String chooseusername, String score) {
+		Map map = new HashMap();
+		Integer pageSize = SystemContext.getPageSize();
+		Integer pageOffset = SystemContext.getPageOffset();
+		if(0==pageOffset){
+			pageOffset=1;
+		}
+		map.put("size",pageSize);
+		map.put("offset",(pageOffset-1)*pageSize);
+		map.put("chooseusername",chooseusername);
+		map.put("score",score);
+		Pager<UserScoreLogDto> page = new Pager<UserScoreLogDto>();
+		int totole = userScoreLogMapper.queryNumByChooseusername(chooseusername);
+		page.setTotal(totole);
+		page.setSize(pageSize);
+		page.setOffset(pageOffset);
+		List<UserScoreLogDto> list=userScoreLogMapper.queryPageDetailByUsernameAndScoreIs(map);
+		page.setDatas(list);
+		return  page;
 	}
 }
