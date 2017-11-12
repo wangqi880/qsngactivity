@@ -30,4 +30,7 @@ public interface UserPicMapper
 
 	//根据id查询
 	public  UserPic queryById(String id);
+
+	//根据用户id查询用户上传的作品数量
+	public int queryNumByUserId(String userId);
 }

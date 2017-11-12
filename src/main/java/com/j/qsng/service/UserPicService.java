@@ -32,5 +32,8 @@ public interface UserPicService//根据用户id查询记录
 
 	//根据作品id查询作品详细信息
 	public UserPicShowDto queryUserPicDtoById(String id);
+	//根据用户id查询用户上传的作品数量
+	public int queryNumByUserId(String userId);
+
 
 }

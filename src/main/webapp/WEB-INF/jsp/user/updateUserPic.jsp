@@ -101,7 +101,7 @@
 
                                     <td align="left">
                                           <form id="frm_identityA" action="" enctype="multipart/form-data">
-                                              <div class="file" style="float:left"><div style="margin-top: 10px">选择文件</div>
+                                              <div class="file" ><div >选择文件</div>
                                                   <input id="fileupload" name="attachs" accept="image/jpg"  type="file" value=""/>
                                               </div>
                                               <div style="float:left;margin-left: 20px"><div style="margin-top: 10px" id="showFileName1"></div></div>
@@ -134,7 +134,6 @@
                             </div>
                             <script type="text/javascript" src="<%= path%>/js/zoom.min.js"></script>
                             <input type="hidden"   name="attachmentId" id="attachmentId">
-                            <div class="dashed"></div>
 
 
                             </table>

@@ -78,14 +78,14 @@
                                     <td ><em>1.</em></td>
                                     <td><div style="width: 80px">作品名称：</div></td>
                                     <td>
-                                        <input type="text" name="imageName1"   class="iput_240" value="作者+作品名" /><span style="color:red">*</span></td>
+                                        <input id="id_imageName1" type="text" name="imageName1"   class="iput_240" value="作者+作品名" /><span style="color:red">*</span></td>
                                 </tr>
                                 <tr>
                                     <td></td>
                                     <td>作品图：</td>
                                     <td>
                                           <form id="frm_identityA" action="" enctype="multipart/form-data">
-                                                <div class="file" style="float:left"><div style="margin-top: 10px;font-size: 14px">选择文件</div>
+                                              <div class="file"><div style="font-size: 14px"><span>选择文件</span></div>
                                                     <input id="fileupload" name="attachs" accept="image/jpg"  type="file" value=""/>
                                                 </div>
                                               <div style="float:left;margin-left: 20px"><div style="margin-top: 10px" id="showFileName1"></div></div>
@@ -98,7 +98,7 @@
                                     <td></td>
                                     <td>作品描述：</td>
                                     <td>
-                                        <textarea name="intro1"  cols="45" rows="5" class="textarea"></textarea>
+                                        <textarea id="id_intro1" name="intro1"  cols="45" rows="5" class="textarea">字数不超过15-100</textarea>
                                     </td>
                                 </tr>
 
@@ -129,7 +129,7 @@
                                     <td ><em>2.</em></td>
                                     <td><div style="width: 80px">作品名称：</div></td>
                                     <td >
-                                        <input type="text" name="imageName2"   class="iput_240" value="作者+作品名" /><span style="color: red">*</span></td>
+                                        <input id="id_imageName2" type="text" name="imageName2"   class="iput_240" value="作者+作品名" /><span style="color: red">*</span></td>
                                 </tr>
                                 <tr>
                                     <td ></td>
@@ -137,7 +137,7 @@
 
                                     <td >
                                         <form id="frm_identityB" action="" enctype="multipart/form-data">
-                                            <div class="file" style="float:left"><div style="margin-top: 10px;font-size: 14px">选择文件</div>
+                                            <div class="file"><div style="font-size: 14px">选择文件</div>
                                                 <input id="fileuploadB" name="attachs" accept="image/jpg"  type="file" value=""/>
                                             </div>
                                             <div style="float:left;margin-left: 20px"><div style="margin-top: 10px" id="showFileName2"></div></div>
@@ -155,7 +155,7 @@
                                         <td ></td>
                                         <td >作品描述：</td>
                                         <td >
-                                            <textarea name="intro2"  cols="45" rows="5" class="textarea"></textarea>
+                                            <textarea id="id_intro2" name="intro2"  cols="45" rows="5" class="textarea"> 字数不超过15-100</textarea>
                                         </td>
                                 </tr>
                                 <tr id="secondPreview"  style="display: none">
@@ -223,8 +223,27 @@
     $(document).ready(function(){
         <!--添加照片-->
         $("#addImage").click(function(){
-            $("#second_image").show();
-            var v = $("#addImage").val();
+            //查看是否允许添加照片
+            $.ajax({
+                type: "get",
+                url: "<%=path %>/user/isAddUserpic?userId=${loginUser.id}",
+                contentType: false,
+                processData: false,
+            }).success(function(data) {
+                if (data.code=='000000') {
+                    $("#second_image").show();
+                    var v = $("#addImage").val();
+                } else {
+                    alert("不允许添加"+data.info);
+
+                }
+
+            }).error(function(data) {
+                alert("不允许添加"+data.info);
+                /*console.log(data);*/
+            });
+
+
         })
         $("#delButton").click(function(){
             $("#second_image").hide();
@@ -363,6 +382,29 @@
 </script>
 
 <script type="text/javascript">
+
+    $("#id_intro1").focus(function(){
+        if(this.value == this.defaultValue) {
+            this.value='';
+        }
+    });
+    $("#id_intro2").focus(function(){
+        if(this.value == this.defaultValue) {
+            this.value='';
+        }
+    });
+
+    $("#id_imageName1").focus(function(){
+        if(this.value == this.defaultValue) {
+            this.value='';
+        }
+    });
+
+    $("#id_imageName2").focus(function(){
+        if(this.value == this.defaultValue) {
+            this.value='';
+        }
+    });
 
     function formSubmit(){
         var attachmentId2 = $("input[name='attachmentId2']").val();

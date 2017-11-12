@@ -112,4 +112,8 @@ public class UserPicServiceImpl implements  UserPicService
 			upsd.setIntro(up.getIntro());
 			return  upsd;
 	}
+
+	public int queryNumByUserId(String userId) {
+		return userPicMapper.queryNumByUserId(userId);
+	}
 }

@@ -74,8 +74,8 @@
       <table width="580" border="0" align="center" cellpadding="10" cellspacing="0">
 
   <tr>
-    <td width="319" height="160" align="center" valign="middle"></td>
-    <td width="221" align="center" valign="bottom"><a href="<%= path%>/user/upload.html"><img src="<%= path%>/images/up.png"  width="200" height="200" style="margin-bottom:20px;" /><br />
+      <td width="319" height="160" align="center" valign="middle"></td>
+      <td width="221" align="center" valign="bottom"><a href="<%= path%>/user/upload.html"><img src="<%= path%>/images/up.png"  width="200" height="200" style="margin-bottom:20px;" /><br />
 <em>我要上传</em></a></td>
   </tr>
   

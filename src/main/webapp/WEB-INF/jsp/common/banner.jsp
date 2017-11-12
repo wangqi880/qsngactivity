@@ -26,8 +26,9 @@
 <div class="top_i" style="background:url(<%= path%>/images/top_i.jpg) no-repeat center top;text-align: right">
     <c:if test="${ not empty loginUser.username}">
         <div class="user_operator">
-            <a href="<%=request.getContextPath() %>/user/userInfo.html">
-              <span style="color: white;background-color: #64b3ee">[${loginUser.username}]个人信息</span></a>
-            |<a href="javascript:userExitSystem()"><span style="color: white;background-color: #64b3ee">退出登录</a></div>
+                <a href="<%=request.getContextPath() %>/user/userInfo.html">
+                    <span style="color: white;background-color: #64b3ee;opacity: 0.5">[${loginUser.username}]个人信息</span></a>
+                |<a href="javascript:userExitSystem()"><span style="color: white;background-color: #64b3ee;opacity: 0.5">退出登录</a>
+            </div>
     </c:if>
 </div>

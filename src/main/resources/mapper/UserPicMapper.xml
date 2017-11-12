@@ -46,5 +46,7 @@
     <select id="queryById" parameterType="string" resultMap="userPic">
         select * from t_user_pic t where t.id=#{id}
     </select>
-
+    <select id="queryNumByUserId" parameterType="string" resultType="int">
+        select count(1) from t_user_pic t where t.userId=#{userId}
+    </select>
 </mapper>

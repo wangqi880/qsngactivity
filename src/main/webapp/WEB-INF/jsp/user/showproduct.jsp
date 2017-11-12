@@ -24,10 +24,13 @@
 
         /* gallery */
         .zoomed > .gallery{-webkit-filter:blur(3px);filter:blur(3px);}
-        .gallery{width:800px;margin:20px auto;}
+        .gallery{width:400px;margin:20px auto;}
         .gallery li{float:left;margin:5px; width:250px; height:200px;}
         .gallery li:nth-child(6n){padding-right:0;}
         .gallery li a,.gallery li img{float:left;}
+
+        .showTextarea{ width:260px; height:145px; background:#F7F7F7; color:#999; border:1px solid #CCC; line-height:26px; padding-left:5px; padding-top:5px;}
+
     </style>
     <link rel="stylesheet"  href="<%= path%>/css/zoom.css" media="all" />
     <script type="text/javascript" src="<%= path%>/js/jquery-1.9.1.min.js" ></script>
@@ -56,10 +59,10 @@
             <div class="w_780 left">
             <div class="title"><h2>${user.name}参赛作品<c:if test="${ not empty message}">(${message})</c:if></h2></div>
                             <c:forEach items="${userPicShowDtoList}" var="imginfo">
-                                    <div class="jp_l">
+                                    <div class="jp_l" style="float: left">
                                         <h2 class="mar_t_20" style="padding-left:30px;"><div  class="title_class"><span>${imginfo.imageName}</span></div></h2>
                                         <div class="line_24 font_14 mar_f_20">
-                                            <div class="gallery" >
+                                            <div class="gallery"  style="margin: 0 0">
                                                 <!--显示图片-->
                                                 <ul>
                                                     <li>
@@ -72,7 +75,9 @@
                                             </div>
 
                                         </div>
-                                        <div><p>${imginfo.intro}</p></div>
+                                        <div>
+                                            <textarea  disabled="disabled" cols="20" rows="6" class="showTextarea"> ${imginfo.intro}</textarea>
+                                        </div>
                                     </div>
                              </c:forEach>
             <script type="text/javascript" src="<%= path%>/js/zoom.min.js"></script>

@@ -527,4 +527,18 @@ public class UserContoller
 		modelAndView.setViewName("redirect:/index/indexnew.html");
 		return modelAndView;
 	}
+	//查看用户是否允许添加照片
+	@RequestMapping("/user/isAddUserpic")
+	@ResponseBody
+	public  Object isAddUserpic(String userId){
+		BaseResp resp = new BaseResp();
+		resp.setCode("000000");
+		resp.setInfo("成功");
+		int num=userPicService.queryNumByUserId(userId);
+		if(1==num){
+			resp.setCode("000001");
+			resp.setInfo("已经上传1个作品，不允许在添加");
+		}
+		return resp;
+	}
 }

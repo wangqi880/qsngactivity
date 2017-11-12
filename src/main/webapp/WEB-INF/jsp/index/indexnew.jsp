@@ -116,7 +116,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 </script>
             </div>
             <div class="right w_280">
-    <div class="title"><a href=""><h3>人气榜</h3></a></div>
+    <div class="title"><h3>人气榜</h3></div>
     <table width="278" border="0" cellspacing="0" cellpadding="0" align="center" class="border mar_t_30 line_24 font_14">
   <tr>
     <td width="38" height="30" align="center" valign="middle" bgcolor="#64b3ee" class="white">排名</td>
