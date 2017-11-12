@@ -23,5 +23,7 @@ public interface UserService
 
 	//查询所有记录
 	public int queryAllNum();
+	//根据手机，姓名，身份证号查询名字
+	public String queryPassword(String name,String msisdn,String cardId);
 
 }

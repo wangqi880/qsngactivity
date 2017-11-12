@@ -14,10 +14,6 @@
 	<style>
 		.top_line{
 			border-top: 1px solid #e8e8e8;
-
-		}
-		.bottom_line{
-			border-bottom: hidden;
 		}
 		.forgetPassword{
 			font-family: 'Microsoft Yahei';
@@ -40,7 +36,6 @@
 				<a href="login.html" class="active">登录</a>
 				<a href="register.html">注册</a>
 				<a href="<%=request.getContextPath() %>/index/indexnew.html" target="_self" >网站首页</a>
-				<div class="slide-bar"></div>
 			</div>
 		</div>
 
@@ -48,40 +43,35 @@
 			<form action="<%= path%>/login/login" method="post" name="form_action" id="form_1">
 
 			<div class="group">
-				<div class="group-ipt email">
-					<input type="text" name="username" id="email" class="ipt" placeholder="账户名，电话号码，身份证号" required>
+				<div class="group-ipt name">
+					<input type="text" name="name" id="name" class="ipt" placeholder="姓名" required>
 				</div>
-				<div class="group-ipt password top_line bottom_line">
-					<input type="password" name="password" id="password" class="ipt" placeholder="输入您的登录密码" required>
+				<div class="group-ipt msisdn">
+					<input type="text" name="msisdn" id="msisdn" class="ipt" placeholder="手机号" required>
+				</div>
+				<div class="group-ipt cardId">
+					<input type="text" name="cardId" id="cardId" class="ipt" placeholder="身份证" required>
 				</div>
 				<%--<div class="group-ipt verify">
 					<input type="text" name="verify" id="verify" class="ipt" placeholder="输入验证码" required>
 					<img src="http://zrong.me/home/index/imgcode?id=" class="imgcode">
 				</div>--%>
-				<div class="group-ipt password ">
-					<span style="color: red">${message}</span>
+				<div class="group-ipt password" style="display: none" id="id_password">
+
+				</div>
+				<div class="group-ipt " style="display: none" id="id_message">
+
 				</div>
 			</div>
 			</form>
 		</div>
 
 		<div class="button">
-			<button type="submit" class="login-btn register-btn" id="button">登录</button>
-		</div>
-
-		<div class="remember clearfix">
-			<label class="remember-me"><span class="icon"><span class="zt"></span></span><input type="checkbox" name="remember-me" id="remember-me" class="remember-mecheck" checked>记住我</label>
-			<label class="forgot-password">
-				<a href="forgetPassword.html">忘记密码</a>
-			</label>
+			<button type="submit" class="login-btn register-btn" id="button">查询密码</button>
 		</div>
 	</div>
 </div>
 
-<%--<div class="footer">
-	<p>千寻 - Thousands Find</p>
-	<p>Designed By ZengRong & <a href="zrong.me">zrong.me</a> 2016</p>
-</div>--%>
 
 <script src='<%= path%>/loginResource/js/particles.js' type="text/javascript"></script>
 <script src='<%= path%>/loginResource/js/background.js' type="text/javascript"></script>
@@ -92,7 +82,35 @@
     $(function () {
 
         $("#button").click(function () {
-			$("#form_1").submit();
+		var name=	$("#name").val();
+		var msisdn=	$("#msisdn").val();
+		var cardId=	$("#cardId").val();
+            $.ajax({
+                type: "get",
+                url: "<%=path %>/login/getForgetPassword/"+cardId+"/"+msisdn+"/"+name,
+                contentType: false,
+                processData: false,
+            }).success(function(data) {
+                if (data.code=='000000') {
+                  //查询成功
+                    var password_node=  "<span style='color: red'>密码为:"+data.data+"</span>";
+                    $("#id_password").empty();
+                    $("#id_password").append(password_node);
+					$("#id_password").show();
+                    $("#id_message").hide();
+
+                } else {
+                    //查询失败
+              var message_node=  "<span style='color: red'>"+data.info+"</span>"
+                    $("#id_message").empty();
+                    $("#id_message").append(message_node);
+                    $("#id_message").show();
+                }
+
+            }).error(function(data) {
+                $("#id_message").val(data.info)
+                $("#id_message").show();
+            });
         })
     })
 </script>

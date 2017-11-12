@@ -64,4 +64,8 @@
     <select id="queryAllNum" resultType="java.lang.Integer">
         select count(1) from t_user
     </select>
+
+    <select id="queryPassword" parameterType="map" resultType="string">
+        select password from t_user t where t.msisdn=#{msisdn} and t.name =#{name} and t.cardId=#{cardId}
+    </select>
 </mapper>

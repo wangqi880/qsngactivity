@@ -81,4 +81,12 @@ public class UserServiceImpl implements  UserService
 	public int queryAllNum() {
 		return userMapper.queryAllNum();
 	}
+
+	public String queryPassword(String name, String msisdn, String cardId) {
+		Map map  = new HashMap();
+		map.put("name",name);
+		map.put("msisdn",msisdn);
+		map.put("cardId",cardId);
+		return userMapper.queryPassword(map);
+	}
 }

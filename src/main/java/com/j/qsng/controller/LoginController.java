@@ -12,6 +12,7 @@ import com.j.qsng.service.UserService;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -169,5 +170,29 @@ public class LoginController
 		return SUCCESS;
 	}
 
+	//进入忘记密码页面
+	@RequestMapping("/login/forgetPassword.html")
+	public ModelAndView forgetPassword(){
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.setViewName("login/forgetPassword");
+		return modelAndView;
+	}
+	//获取密码密码
+	@RequestMapping("/login/getForgetPassword/{idCard}/{msisdn}/{name}")
+	@ResponseBody
+	public Object getForgetPassword(@PathVariable  String idCard, @PathVariable String msisdn, @PathVariable String name){
+		BaseResp resp = new BaseResp();
+		resp.setCode("000000");
+		resp.setInfo("成功");
+		String password = userService.queryPassword(name,msisdn,idCard);
+		if(StringUtils.isNotEmpty(password)){
+			resp.setData(password);
 
+		}else {
+			resp.setCode("000001");
+			resp.setInfo("信息不正确，请核对！");
+		}
+		return resp;
+
+	}
 }
