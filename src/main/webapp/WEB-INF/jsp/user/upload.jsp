@@ -36,6 +36,8 @@
     <script type="text/javascript" src="<%= path%>/js/jquery-1.9.1.min.js" ></script>
     <script type="text/javascript" src="<%= path%>/js/zoom.min.js"></script>
 
+    <!--弹出层-->
+    <script src="<%= path%>/resources/layer/layer.js"></script>
     <!--
     <base  target="_blank"/>
     -->
@@ -179,7 +181,7 @@
                                     <td width="80" align="left"><button type="button" id="delButton" value="add" class="button_upload">删除</button></td>
                                 </tr>
                             </table>
-                            <div><input type="checkbox" name="readme" id="readme">作品请勿重复上传，否则将取消资格。</div>
+                            <div><input type="checkbox" name="readme" id="readme"><a href="javascript:readNotice()">作品请勿重复上传，否则将取消资格。</a></div>
 
                             <script type="text/javascript" src="<%= path%>/js/zoom.min.js"></script>
                             <input type="hidden"   name="attachmentId1" id="attachmentId1">
@@ -219,7 +221,30 @@
 --%>
 
 <script type="text/javascript">
-
+    //弹出层
+    function readNotice(){
+        layer.ready(function(){
+            layer.open({
+                type: 1,
+                title: '注意事项',
+                maxmin: true,
+                area: ['800px', '500px'],
+                content: '<div style="padding:50px;">1. 本次摄影大赛-感动殿堂专业赛区不设团体奖项，请参赛者本人以个人名义投稿参赛。<br/>\n' +
+                '2. 参赛者只限于合法居住在中华人民共和国大陆地区的居民。*（不含香港特别行政区、澳门特别行政区、台湾地区的居民）\n' +
+                '*包括居住在大陆地区的外籍人士和港澳台同胞。<br/>\n' +
+                '3. 参赛者填报信息和提交参赛作品之行为，应视为该参赛者充分理解本规程之内容，并承诺接受本规程约束。<br/>\n' +
+                '4. 参赛照片须为本人独立完成的作品，不得抄袭、拷贝、仿冒，不得提交参赛者参加主办方以往组织的各种摄影比赛的获奖作品或其他国际摄影赛事、国内顶级摄影赛事优秀奖以上的获奖作品（*判定其他赛事级别以本大赛评委团决定为准）。评审后如被检举参赛作品不符合本规程要求的，主办方有权取消其获奖资格，取消之奖项不再替补。如已领取奖项者，主办方有权追回奖项。<br/>\n' +
+                '5. 参赛者同意主办方在中国大陆境内与本大赛的相关活动和其他主办方产品新闻发布会、促销活动中公布和免费使用参赛作品、作者姓名和其他必要信息。并同意主办方在公布和使用参赛作品前对其进行必要的修改、编辑和剪辑，且主办方无须就此类修改、编辑和剪辑通知参赛者。本大赛的相关活动包括但不限于：大赛宣传活动、获奖公告、作品集、作品展以及大赛广告等。参赛者同意主办方在本规程所涉网站上展示、公示或发布参赛作品、作者姓名和其他必要信息时不受上述地区、用途、时间限制<br/>。\n' +
+                '6. 所有参赛者上传的照片和文字不得违反中华人民共和国法律法规、违背公共秩序和善良风俗以及道德标准之内容，不得上传具有色情、暴力以及出现灾难、血腥等等不健康内容的照片和文字，以及任何主办方认为含有不当内容的照片和文字，一经发现，主办方将不予上传并有权提交公安机关处理。凡是以销售、促销为目的拍摄的作品，直接、间接为营利活动所拍摄的作品，均不能参赛，一经发现，主办方有权立即取消其参赛和获奖资格。<br/>\n' +
+                '7. 参赛者同意主办方对此次摄影大赛参赛者提交的个人信息可在处理本规程相关事宜的必要范围内使用。除本规程约定事项及以下情形外，主办方在没有取得参赛者同意的前提下，不会向第三人公开、提供相关个人信息。\n' +
+                '8. 本次大赛官方活动网站注册信息中，参赛者确认同意接收主办方发送的相关活动以及产品促销信息的，主办方将向参赛者注册的联系方式中发送上述信息。<br/>\n' +
+                '9. 获奖者因获奖发生的个人所得税将由主办方承担。\n</div>',
+                end: function(){
+                    layer.tips('Hi', '#about', {tips: 1})
+                }
+            });
+        });
+    }
     $(document).ready(function(){
         <!--添加照片-->
         $("#addImage").click(function(){
