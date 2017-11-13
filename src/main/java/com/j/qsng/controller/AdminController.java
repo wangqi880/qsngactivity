@@ -427,7 +427,7 @@ public class AdminController
 		return modelAndView;
 	}
 
-
+	//每个评委的每一期的选择作品数
 	@RequestMapping("/admin/chooseUserDetail/{username}/{period}")
 	public ModelAndView chooseUserDetail(@PathVariable String username,@PathVariable String period){
 		ModelAndView modelAndView  =new ModelAndView();
@@ -436,6 +436,25 @@ public class AdminController
 		modelAndView.addObject("username",username);
 		modelAndView.addObject("period",period);
 		modelAndView.addObject("page",page);
+		return modelAndView;
+	}
+
+
+
+	//查看第几期总共选择了那些作品
+	@RequestMapping("/admin/periodChooseDetail/{period}")
+	public ModelAndView periodChooseDetail(@PathVariable String period){
+		ModelAndView modelAndView  =new ModelAndView();
+		List<ChooseUserPicDto> chooseUserPicDtoList = null;
+		if(ChooseUtils.SECOND_PERIOD.equals(period)){
+			chooseUserPicDtoList =chooseLogService.queryDetailByPeriodAndIsChoose(ChooseUtils.YES_CHOOSE,ChooseUtils.SECOND_PERIOD);
+		}
+		else if(ChooseUtils.FIRST_PERIOD.equals(period)){
+			chooseUserPicDtoList= chooseLogService.queryDetailByPeriodAndIsChoose(ChooseUtils.YES_CHOOSE,ChooseUtils.FIRST_PERIOD);
+
+		}
+		modelAndView.addObject("chooseUserPicDtoList",chooseUserPicDtoList);
+		modelAndView.setViewName("admin/periodChooseDetail");
 		return modelAndView;
 	}
 }

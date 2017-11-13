@@ -19,39 +19,46 @@
 <body>
 <div id="content">
 	<h3 class="admin_link_bar">
-		<jsp:include page="inc.jsp"></jsp:include>
 	</h3>
 	
-	<table width="96%" cellspacing="0" cellPadding="0" id="listTable">
+	<table width="90%" cellspacing="0" cellPadding="0" id="listTable">
 		<thead>
 		<tr>
-
-			<td>期数</td>
-			<td>描述</td>
-			<td>操作</td>
+			<td>用户名</td>
+			<td>姓名</td>
+			<td>电话</td>
+			<td>作品名</td>
+			<td>图片</td>
 		</tr>
 		</thead>
 		<tbody>
-		<c:forEach items="${activityStatus }" var="activity">
+		<c:forEach items="${chooseUserPicDtoList }" var="userpic">
 			<tr>
 
+				<td>
+					${userpic.username}
+				</td>
+				<td>
+						${userpic.name}
+				</td>
+				<td>
+						${userpic.msisdn}
+				</td>
+				<td>
+						${userpic.imageName}
+				</td>
+				<td>
+					<div>
+						<a href="<%=request.getContextPath() %>/resources/upload/${userpic.newName}" target="_blank">
+							<img src="<%=request.getContextPath() %>/resources/upload/${userpic.newName}" alt="${userpic.imageName}" style="width: 200px;height: 160px">
+						</a>
+					</div>
 
-				<td> ${activity.activityPeriod}</td>
-				<td> ${activity.activityDesc}</td>
-					<td>
-                        <c:if test="${activity.status eq 0 }">
-                            <span class="emp"><a href="javascript:if(confirm('修改会清除第${activity.activityPeriod}期选择图片或者评分数据，请慎重?'))location='updateActivityStatus/${activity.id }'" class="list_op">停止</a></span>
-                        </c:if>
-                        <c:if test="${activity.status eq 1 }">
-                            <span><a href="updateActivityStatus/${activity.id }" class="list_op">开启</a></span>
-                        </c:if>
-						<c:if test="${activity.activityPeriod !=3 }">
-							<span><a href="periodChooseDetail/${activity.activityPeriod }" class="list_op">查看详情</a></span>
-						</c:if>
-                    </td>
+
+				</td>
+
 			</tr>
 		</c:forEach>
-
 		</tbody>
 		<tfoot>
 		<tr>
@@ -68,8 +75,7 @@
 </body>
 </html>
 <script type="text/javascript">
+
     $(document).ready(function(){
-
-
-	})
+    })
 </script>
