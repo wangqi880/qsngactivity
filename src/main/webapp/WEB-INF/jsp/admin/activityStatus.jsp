@@ -19,6 +19,7 @@
 <body>
 <div id="content">
 	<h3 class="admin_link_bar">
+		活动状态
 	<%--	<jsp:include page="inc.jsp"></jsp:include>--%>
 	</h3>
 	

@@ -22,6 +22,7 @@
 <body>
 <div id="content">
 	<h3 class="admin_link_bar">
+		得分查看
 	</h3>
 	
 	<table width="90%" cellspacing="0" cellPadding="0" id="listTable">
