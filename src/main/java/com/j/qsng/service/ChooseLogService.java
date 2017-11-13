@@ -58,5 +58,8 @@ public interface ChooseLogService
 
 	//根据用户期数分页显示
 	Pager<ChooseUserPicDto> queryPageByUsernameAndPeriod(String username,String period );
+	//根据用户名，期数，是否已经选项查询数据
+	//WHERE t1.chooseIs = #{chooseIs} AND t1.choosePeriod = #{period} and username=#{username}) m1
+	Pager<ChooseUserPicDto> queryDetailByUsernamePeriodAndIsChoose(String username,String period,String  chooseIs);
 
 }

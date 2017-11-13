@@ -72,10 +72,10 @@ $(function(){
 <c:if test="${role eq 1 }">
 	<ul class="navMenu navSelected">
 		<h3 class="navTitle">
-			<span class="navTilteTxt">点赞查看</span>
+			<span class="navTilteTxt">得分与点赞</span>
 		</h3>
 		<li class="navChild">
-			<a href="<%=request.getContextPath() %>/chooseUser/showPrizeNum" target="content">查看点赞数</a>
+			<a href="<%=request.getContextPath() %>/chooseUser/showPrizeNum" target="content">得分与点赞查看</a>
 		</li>
 	</ul>
 </c:if>

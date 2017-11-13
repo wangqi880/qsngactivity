@@ -49,7 +49,7 @@
 	<div class="w_780 left">
    	  <div class="title"><h2>《我爱少年宫》主题摄影大赛活动介绍</h2></div>
   	  <div class="jp_l">
-      	<h2><div  class="title_class"><span>一奖项设置</span></div></h2>
+      	<h2><div  class="title_class"><span>一、奖项设置</span></div></h2>
           <div class="line_24 font_14 mar_f_20">
 
             <p> 1、一等奖5名，奖金600元人民币、证书一份</p>
@@ -58,7 +58,7 @@
             <p>4、佳作奖50名，奖金100元人民币、证书一份</p>
             <p>5、最受欢迎奖5名</p>
           </div>
-        <h2 class="mar_t_20" style="padding-left:30px;"><div  class="title_class"><span>二须知</span></div></h2>
+        <h2 class="mar_t_20" style="padding-left:30px;"><div  class="title_class"><span>二、须知</span></div></h2>
         <div class="line_24 font_14 mar_f_20">
 
           <p>1、一等奖\二等奖\三等奖\佳作奖及最受欢迎奖确认方式:大赛办将与获奖者联络，届时获奖者需于指定日期内提供与入围佳作时信息一致的身份证复印件作为领奖证明。无法按时提供有效证明的，或提交的个人信息与原始信息不符的，不符合本规程规则要求的，或照片是合成的，视为无效作品，主办方有权取消该作品获奖资格。</p>

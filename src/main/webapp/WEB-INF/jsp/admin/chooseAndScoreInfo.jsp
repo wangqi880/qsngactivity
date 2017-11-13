@@ -29,6 +29,7 @@
 			<td>选择期数</td>
 			<td>选择作品数</td>
 			<td>总共分配作品数</td>
+			<td>查看详情</td>
 		</tr>
 		</thead>
 		<tbody>
@@ -42,6 +43,7 @@
 						${choosed.choosedNum }&nbsp;
 				</td>
 				<td>${choosed.allNum}</td>
+				<td><a href="<%=request.getContextPath() %>/admin/chooseUserDetail/${choosed.username}/${choosed.choosePeriod }" class="list_op">查看详情</a></td>
 			</tr>
 		</c:forEach>
 		</tbody>

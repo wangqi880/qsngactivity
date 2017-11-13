@@ -159,4 +159,28 @@ public class ChooseLogServiceImpl implements ChooseLogService
 		page.setDatas(list);
 		return page;
 	}
+
+	public Pager<ChooseUserPicDto> queryDetailByUsernamePeriodAndIsChoose(String username, String period, String chooseIs) {
+		Map map = new HashMap();
+		Integer pageSize = SystemContext.getPageSize();
+		Integer pageOffset = SystemContext.getPageOffset();
+		if(0==pageOffset){
+			pageOffset=1;
+		}
+		map.put("size",pageSize);
+		map.put("offset",(pageOffset-1)*pageSize);
+		map.put("username",username);
+		map.put("period",period);
+		map.put("chooseIs",chooseIs);
+		Pager<ChooseUserPicDto> page = new Pager<ChooseUserPicDto>();
+		int totole = queryNumByUserAndPeriodAndChoosed(username, period, chooseIs);
+		page.setTotal(totole);
+		page.setSize(pageSize);
+		page.setOffset(pageOffset);
+		List<ChooseUserPicDto> data=chooseLogMapper.queryDetailByUsernamePeriodAndIsChoose(map);
+		page.setDatas(data);
+		return page;
+	}
+
+
 }

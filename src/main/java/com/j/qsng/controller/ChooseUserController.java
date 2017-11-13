@@ -56,6 +56,12 @@ public class ChooseUserController
 			modelAndView.addObject("chooseUserPicDtoList",chooseUserPicDtoList);
 			*/
 			Pager<ChooseUserPicDto> page=chooseLogService.queryPageByUsernameAndPeriod(adminUsername,period);
+			//选择情况，已经选择数量，总共数量，未选数量
+			//已经选择
+			int chooseNum =chooseLogService.queryNumByUserAndPeriodAndChoosed(adminUsername,period,ChooseUtils.YES_CHOOSE);
+			modelAndView.addObject("chooseNum",chooseNum);
+			modelAndView.addObject("allNum",page.getTotal());
+			modelAndView.addObject("unChooseNum",page.getTotal()-chooseNum);
 			modelAndView.addObject("page",page);
 			modelAndView.addObject("period",period);
 		}else if(ChooseUtils.THIRD_PERIOD.equals(period)){
@@ -63,6 +69,10 @@ public class ChooseUserController
 			 /*List<UserScoreLogDto> everyUserScorelist = userScoreLogService.queryDetailByUsernameAndScoreIs(adminUsername,null);
 			modelAndView.addObject("everyUserScorelist",everyUserScorelist);*/
 			Pager<UserScoreLogDto> page = userScoreLogService.queryPageDetailByUsernameAndScoreIs(adminUsername,null);
+			int chooseNum = userScoreLogService.queryNumByChooseusernameAndScoreIs(adminUsername,"1");
+			modelAndView.addObject("chooseNum",chooseNum);
+			modelAndView.addObject("allNum",page.getTotal());
+			modelAndView.addObject("unChooseNum",page.getTotal()-chooseNum);
 			modelAndView.addObject("page",page);
 			modelAndView.addObject("period",period);
 			modelAndView.setViewName("/chooseUser/thirdUserScore");
@@ -161,6 +171,17 @@ public class ChooseUserController
 		BaseResp resp = new BaseResp();
 		resp.setCode("000000");
 		resp.setInfo("修改成功");
+		String scoreType = configService.getConfigvalue("score_type");
+		int maxScore=10;
+		try{
+			maxScore = Integer.parseInt(scoreType);
+		}catch (Exception e){
+			System.out.println("转换得分错误");
+			maxScore=10;
+		}
+
+
+
 		String isCanScore = configService.getConfigvalue(ChooseUtils.ADMIN_CHOOSE_THIRD_STATUS);
 		if(!("1".equals(isCanScore))){
 			resp.setCode("000005");
@@ -176,6 +197,11 @@ public class ChooseUserController
 		}catch (Exception e){
 			resp.setCode("000002");
 			resp.setInfo("分数格式不正确");
+			return  resp;
+		}
+		if(score_value<0 || score_value>maxScore){
+			resp.setCode("000005");
+			resp.setInfo("打分不符合格式，分制为："+maxScore);
 			return  resp;
 		}
 		UserScoreLog userScoreLog = userScoreLogService.queryById(id);

@@ -87,4 +87,11 @@ public class UserScoreLogServiceImpl implements UserScoreLogService
 		page.setDatas(list);
 		return  page;
 	}
+
+	public int queryNumByChooseusernameAndScoreIs(String chooseusername, String isScore) {
+		Map map = new HashMap();
+		map.put("chooseusername",chooseusername);
+		map.put("isScore",isScore);
+		return userScoreLogMapper.queryNumByChooseusernameAndScoreIs(map);
+	}
 }

@@ -39,7 +39,7 @@
 			<td>作品名</td>
 			<td>图片描述</td>
 			<td>图片</td>
-			<td>是否选中</td>
+			<%--<td>是否选中</td>--%>
 		</tr>
 		</thead>
 		<tbody>
@@ -68,7 +68,7 @@
 						</section>--%>
 						<div><a href="<%=request.getContextPath() %>/resources/upload/${userpic.newName}" target="_blank"> <img src="<%=request.getContextPath() %>/resources/upload/${userpic.newName}"  style="display:block;width:40%;"  alt=""></a></div>
 					</td>
-					<td  width="20%">
+					<%--<td  width="20%">
 						<!--没有选中-->
 						<c:if test="${userpic.chooseIs eq 0 }">
 							<input id="${userpic.id}" name="id" type="checkbox" value="${userpic.id}" />
@@ -77,7 +77,7 @@
 						<c:if test="${userpic.chooseIs eq 1 }">
 							<input id="${userpic.id}" name="id" type="checkbox" value="${userpic.id}"  checked="checked"  />
 						</c:if>
-					</td>
+					</td>--%>
 				</tr>
 			</c:forEach>
 
@@ -108,7 +108,7 @@
             elem:$('#page2'),		//指定的元素
             callback:function(n){	//回调函数
                 //这里修改分页之后重新调用首页(带分页参数)
-                location.replace("<%= request.getContextPath()%>/chooseUser/listUserPicture/${period}?pager.offset="+n);
+                location.replace("<%= request.getContextPath()%>/admin/chooseUserDetail/${username}/${period}?pager.offset="+n);
             }
         });
 	</script>

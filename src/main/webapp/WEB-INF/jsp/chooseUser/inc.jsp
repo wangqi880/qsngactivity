@@ -1,8 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-<span>
-<a href="<%=request.getContextPath() %>/admin/addSysconfig" class="admin_link">添加配置</a>
-<a href="<%=request.getContextPath() %>/admin/sysConifList" class="admin_link">配置列表</a>
+<div style="float: right">
+        <div id="unChooseNum" class="admin_link" style="float:right;margin-right: 50px">未选择数量:${unChooseNum}</div>
+        <div id="chooseNum" class="admin_link" style="float:right;margin-right: 20px">已经选择数量:${chooseNum}</div>
+        <div id="allNum" class="admin_link" style="float:right;margin-right: 20px">总共数量:${allNum}</div>
 
-</span>
+
+</div>

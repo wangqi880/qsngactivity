@@ -2,9 +2,11 @@ package com.j.qsng.controller;
 
 import com.j.qsng.common.pojo.BaseResp;
 import com.j.qsng.common.pojo.ChooseUtils;
+import com.j.qsng.common.pojo.Pager;
 import com.j.qsng.common.util.DateUtils;
 import com.j.qsng.common.util.IDUtils;
 import com.j.qsng.dto.AdminuserChoosePeriodNum;
+import com.j.qsng.dto.ChooseUserPicDto;
 import com.j.qsng.model.CongfigPojo;
 import com.j.qsng.model.UserPic;
 import com.j.qsng.model.admin.*;
@@ -422,6 +424,18 @@ public class AdminController
 		session.removeAttribute("adminUser");
 		modelAndView.setViewName("redirect:/admin");
 
+		return modelAndView;
+	}
+
+
+	@RequestMapping("/admin/chooseUserDetail/{username}/{period}")
+	public ModelAndView chooseUserDetail(@PathVariable String username,@PathVariable String period){
+		ModelAndView modelAndView  =new ModelAndView();
+		modelAndView.setViewName("admin/userChooseDetail");
+		Pager<ChooseUserPicDto> page= chooseLogService.queryDetailByUsernamePeriodAndIsChoose(username,period,"1");
+		modelAndView.addObject("username",username);
+		modelAndView.addObject("period",period);
+		modelAndView.addObject("page",page);
 		return modelAndView;
 	}
 }

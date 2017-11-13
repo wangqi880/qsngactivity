@@ -39,4 +39,7 @@ public interface UserScoreLogMapper
 	public List<UserScoreLogDto> queryPageDetailByUsernameAndScoreIs(Map map);
 	//根据用户查询所有记录
 	public int queryNumByChooseusername(String  chooseusername);
+
+	//查询用户已选记录
+	public int queryNumByChooseusernameAndScoreIs(Map map);
 }

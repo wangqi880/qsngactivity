@@ -154,4 +154,11 @@
     <select id="queryNumByChooseusername" parameterType="string" resultType="int">
         select count(1) from t_user_score_log WHERE chooseusername =#{chooseusername}
     </select>
+
+    <select id="queryNumByChooseusernameAndScoreIs" parameterType="map" resultType="int">
+        select count(1) from t_user_score_log WHERE chooseusername =#{chooseusername}
+        <if test="isScore == '1'">
+            and score>0
+        </if>
+    </select>
 </mapper>

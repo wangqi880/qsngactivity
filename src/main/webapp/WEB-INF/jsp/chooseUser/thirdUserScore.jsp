@@ -20,13 +20,13 @@
 <body>
 <div id="content">
 	<h3 class="admin_link_bar">
-		<jsp:include page="inc.jsp"></jsp:include>
+		<jsp:include page="scroeInc.jsp"></jsp:include>
 	</h3>
 	
 	<table width="90%" cellspacing="0" cellPadding="0" id="listTable">
 		<thead>
 		<tr>
-			<td>评分id</td>
+
 			<td>用户名</td>
 			<td>姓名</td>
 			<td>电话</td>
@@ -40,8 +40,6 @@
 		<tbody>
 		<c:forEach items="${page.datas }" var="userpicScore">
 			<tr>
-				<td width="8%"> ${userpicScore.userScoreId}</td>
-
 				<td width="8%">
 					${userpicScore.username}
 				</td>
@@ -58,7 +56,7 @@
 				<td width="48%">
 					<a href="<%=request.getContextPath() %>/resources/upload/${userpicScore.newName}" target="_blank"><img src="<%=request.getContextPath() %>/resources/upload/${userpicScore.newName}" alt="${userpicScore.imageName}" style="width: 200px;height: 160px"></a>
 				</td>
-
+				<input type="hidden" value="${userpicScore.score}" id="id_oldvalue_${userpicScore.userScoreId}">
 				<td><input type="text" value="${userpicScore.score}" name="name_${userpicScore.userScoreId}" id="id_${userpicScore.userScoreId}" size="1"></td>
 				<td><input type="button" value="打分" id="${userpicScore.userScoreId}" onclick="doScore(this)" ></td>
 
@@ -66,14 +64,7 @@
 		</c:forEach>
 		</tbody>
 		<tfoot>
-		<tr>
-			<td colspan="8" style="text-align:right;margin-right:10px;">
-			<%--<jsp:include page="/jsp/pager.jsp">
-				<jsp:param value="${datas.total }" name="totalRecord"/>
-				<jsp:param value="lists" name="url"/>
-			</jsp:include>--%>
-			</td>
-		</tr>
+
 		</tfoot>
 	</table>
 	<!--分页-->
@@ -110,6 +101,7 @@
     //打分
     function doScore(that) {
         var myId = "id_"+that.id;
+        var oldScore = $("#id_oldvalue_"+that.id).val();
         var score = $("#"+myId).val();
         $.ajax({
             type: "get",
@@ -118,13 +110,17 @@
             processData: false,
         }).success(function(data) {
             if (data.code=='000000') {
-
+				alert("打分成功");
             } else {
+                $("#"+myId).val(oldScore);
                 alert("打分失败:"+data.info);
+
             }
 
         }).error(function(data) {
+            $("#"+myId).val(oldScore);
             alert("打分失败:"+data.info);
+
         });
 
 

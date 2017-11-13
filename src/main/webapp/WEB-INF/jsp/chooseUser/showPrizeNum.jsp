@@ -27,7 +27,6 @@
 	<table width="90%" cellspacing="0" cellPadding="0" id="listTable">
 		<thead>
 		<tr>
-			<td>作品id</td>
 			<td>姓名</td>
 			<td>电话</td>
 			<td>作品名</td>
@@ -39,7 +38,6 @@
 		<tbody>
 		<c:forEach items="${page.datas }" var="item">
 			<tr>
-				<td> ${item.id}</td>
 
 				<td>
 						${item.name}

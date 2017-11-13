@@ -61,5 +61,7 @@ public interface ChooseLogMapper
 	//根据用户期数分页显示
 	List<ChooseUserPicDto> queryPageByUsernameAndPeriod(Map map);
 
+	//根据用户名，期数，是否已经选项查询数据
+	List<ChooseUserPicDto> queryDetailByUsernamePeriodAndIsChoose(Map map);
 
 }
