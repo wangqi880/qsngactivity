@@ -18,9 +18,7 @@
 </head>
 <body>
 <div id="content">
-	<h3 class="admin_link_bar">
-		<jsp:include page="inc.jsp"></jsp:include>
-	</h3>
+
 	<div><h3>选择详情</h3></div>
 	<table width="96%" cellspacing="0" cellPadding="0" id="listTable">
 		<thead>

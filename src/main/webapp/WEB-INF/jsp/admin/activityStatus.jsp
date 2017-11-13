@@ -19,7 +19,7 @@
 <body>
 <div id="content">
 	<h3 class="admin_link_bar">
-		<jsp:include page="inc.jsp"></jsp:include>
+	<%--	<jsp:include page="inc.jsp"></jsp:include>--%>
 	</h3>
 	
 	<table width="96%" cellspacing="0" cellPadding="0" id="listTable">
