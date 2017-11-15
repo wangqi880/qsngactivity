@@ -111,7 +111,8 @@
                                             <p>${userPicShowDto.intro}</p>
                                             <div class="social-touch">
                                                 <a class="fb-touch" href="<%= path%>/user/updateUserPic/${userPicShowDto.attachment.id}">更新</a>
-                                                <a class="tweet-touch" href="javascript:if(confirm('确认删除'))location='<%= path%>/user/deleteUserPic.do?attachmentId=${userPicShowDto.attachment.id}'">删除</a>
+                                                <%--<a class="tweet-touch" href="javascript:if(confirm('确认删除'))location='<%= path%>/user/deleteUserPic.do?attachmentId=${userPicShowDto.attachment.id}'">删除</a>--%>
+                                                    <a class="tweet-touch" onclick="deleUserPic(${userPicShowDto.attachment.id})">删除</a>
                                             </div>
                                         </div>
                                     </div>
@@ -144,6 +145,13 @@
 
 <script type="text/javascript">
 
+    //删除照片
+    function deleUserPic(data){
+        layer.confirm("是否确认删除", function () {
+            window.location.href="<%= path%>/user/deleteUserPic.do?attachmentId="+data;
+        }, function () {
+        });
+    }
     function formSubmit(){
         var msisdn = $("input[name='msisdn']").val();
         var cardId = $("input[name='cardId']").val();

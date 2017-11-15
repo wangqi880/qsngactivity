@@ -24,7 +24,7 @@
 
 </script>
 
-<div class="top_i" style="background:url(<%= path%>/images/top_i.jpg) no-repeat center top;text-align: right">
+<div class="top_i" style="background:url(<%= path%>/images/top_i.jpg) no-repeat center top;text-align: right;background-color: white">
     <c:if test="${ not empty loginUser.username}">
         <div class="float_div">
             <div style="float: left;margin-left: 30px;margin-top:6px;">

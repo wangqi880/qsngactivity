@@ -18,7 +18,7 @@ h1,h2,h3,h4{margin:0 auto; padding:0;}
 .hide {display:none;}
 .border{ border:1px solid #E6E6E6;}
 
-.top_i{ clear: both ;width:100%; height:535px; margin:0 auto; background-size: 80%; background:url(../images/top_i.jpg) no-repeat center top;}
+.top_i{ clear: both ;width:100%; height:424px; margin:0 auto; background-size: 80%; background:url(../images/top_i.jpg) no-repeat center top; }
 .user_out{background:url(../images/out.png)}
 .nav_i{ background:#64b3ee; height:60px; margin:0 auto; width:100%; line-height:60px; vertical-align:middle;}
 .nav_i li{ float:left; margin-right:40px;}
@@ -156,7 +156,7 @@ h1,h2,h3,h4{margin:0 auto; padding:0;}
     color: #EB4F38;
 }
 
-.bot_i{ background:white url(../images/foot.jpg) no-repeat center top; /*height:490px;*/ padding-top:100px; width:100%;height: 400px ; margin:20px auto 0}
+.bot_i{ background:white url(../images/foot.jpg) no-repeat center top; /*height:490px;*/ padding-top:100px; width:100%; margin:20px auto 0;background-color: white}
 
 .w_650{ width:610px; margin:50px auto 20px;}
 .w_650 .w_260{ width:260px;}
