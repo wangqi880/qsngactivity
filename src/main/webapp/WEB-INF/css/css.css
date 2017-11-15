@@ -19,7 +19,7 @@ h1,h2,h3,h4{margin:0 auto; padding:0;}
 .border{ border:1px solid #E6E6E6;}
 
 .top_i{ clear: both ;width:100%; height:535px; margin:0 auto; background-size: 80%; background:url(../images/top_i.jpg) no-repeat center top;}
-
+.user_out{background:url(../images/out.png)}
 .nav_i{ background:#64b3ee; height:60px; margin:0 auto; width:100%; line-height:60px; vertical-align:middle;}
 .nav_i li{ float:left; margin-right:40px;}
 

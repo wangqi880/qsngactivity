@@ -112,7 +112,7 @@
                                                 <!--显示图片-->
                                                 <ul>
                                                     <li>
-                                                        <a id="image1_a"> <img  style="width: auto;  height: auto; max-width: 100%;  max-height: 100%; " name="imageName" id="image1" width="100%" height="100%"></a>
+                                                        <a id="image1_a"> <img  style="width: auto;  height: auto; max-width: 100%;  max-height: 200px; " name="imageName" id="image1" width="100%" height="100%"></a>
                                                     </li>
                                                 </ul>
                                                 <div class="clear"></div>
@@ -168,7 +168,7 @@
                                             <!--显示图片-->
                                             <ul>
                                                 <li>
-                                                    <a id="image2_b"> <img  style="width: auto;  height: auto; max-width: 100%;  max-height: 100%; " name="imageName" id="image2" width="100%" height="100%"></a>
+                                                    <a id="image2_b"> <img  style="width: auto;  height: auto; max-width: 100%;  max-height: 200px; " name="imageName" id="image2" width="100%" height="100%"></a>
                                                 </li>
                                             </ul>
                                             <div class="clear"></div>
@@ -181,7 +181,7 @@
                                     <td width="80" align="left"><button type="button" id="delButton" value="add" class="button_upload">删除</button></td>
                                 </tr>
                             </table>
-                            <div><input type="checkbox" name="readme" id="readme"><a href="javascript:readNotice()">作品请勿重复上传，否则将取消资格。</a></div>
+                            <div><input type="checkbox" name="readme" id="readme">作品请勿重复上传，否则将取消资格。<a href="javascript:readNotice()"><span style="color:blue;text-decoration:underline">并已经确定注意事项</span></a></div>
 
                             <script type="text/javascript" src="<%= path%>/js/zoom.min.js"></script>
                             <input type="hidden"   name="attachmentId1" id="attachmentId1">
