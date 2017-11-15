@@ -21,9 +21,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <style type="text/css">
             *{margin: 0;padding: 0;}
         </style>
-    </head>
-    <body>
-    <!--banner+导航-->
+        <!--弹出层-->
+        <script src="<%= path%>/resources/layer/layer.js"></script>
+        </head>
+        <body>
+        <!--banner+导航-->
     <%@include file="/WEB-INF/jsp/common/banner.jsp" %>
     <div class="nav_i">
         <div class="main juzhong">
@@ -143,12 +145,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     </body>
     <script>
 
+
         function addPrize(which){
             var id = $(which).attr("id");
             $.get("<%= path%>/index/add_prize",{"id":id},function (result) {
                 <!--可以操作,操作成功-->
                 if(result.code=="000000"){
-                    /*alert(result.info);*/
                     var text_box = $("#add-num-"+id);
                     var praise_txt = $("#praise-txt-"+id);
                     var num=parseInt(praise_txt.text());
@@ -162,13 +164,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 }
                 <!--未登录-->
                 if(result.code=="000001"){
-                    alert(result.info);
+                layer.confirm(result.info+",进入登录页面", function () {
                     window.location.href="/qsngactivity/login/login.html";
+                }, function () {
+               });
                     return;
                 }
                 <!--今天已经操作-->
                 if(result.code=="000002"){
-                    alert(result.info);
+                    layer.msg(result.info);
                     return;
                 }
 

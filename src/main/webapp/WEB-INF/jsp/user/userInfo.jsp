@@ -14,7 +14,8 @@
 
     <script type="text/javascript" src="<%= path%>/js/jquery-1.9.1.min.js" ></script>
     <link type="text/css" rel="stylesheet" href="<%= path%>/resources/userProPic/css/style.css">
-
+    <!--弹出层-->
+    <script src="<%= path%>/resources/layer/layer.js"></script>
 </head>
 
 <body>
@@ -148,27 +149,28 @@
         var cardId = $("input[name='cardId']").val();
         var name =$("input[name='name']").val();
         if(msisdn==null||msisdn==""){
-            alert("手机号不能为空");
+
+            layer.msg("手机号不能为空");
             return ;
         }
         if(name==null||name==""){
-            alert("姓名不能为空");
+            layer.msg("姓名不能为空");
             return ;
         }
 
         if(cardId==null||cardId==""){
-            alert("身份证不能为空");
+            layer.msg("身份证不能为空");
             return ;
         }
 
         var msisdn_pattern = /^1[34578]\d{9}$/;
         if(!msisdn_pattern.test(msisdn)){
-            alert("手机号格式不对");
+            layer.msg("手机号格式不对");
             return ;
         }
         var cardId_pattern = /(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/;
         if(!cardId_pattern.test(cardId)){
-            alert("身份证格式不对");
+            layer.msg("身份证格式不对");
             return ;
         }
         $('#form_1').submit();

@@ -259,13 +259,11 @@
                     $("#second_image").show();
                     var v = $("#addImage").val();
                 } else {
-                    alert("不允许添加"+data.info);
-
+                    layer.msg("不允许添加"+data.info);
                 }
 
             }).error(function(data) {
-                alert("不允许添加"+data.info);
-                /*console.log(data);*/
+                layer.msg("不允许添加"+data.info);
             });
 
 
@@ -296,21 +294,20 @@
           /*  var formData = new FormData($("#frm_identityA")[0]);*/
             var paths = document.getElementById("fileupload").files;
             if(!($('#readme').is(':checked'))) {
-                alert("请勾选阅读事项");
+                layer.msg("请勾选阅读事项");
                 return;
             }
             if(paths.length==0)
             {
-                alert("请选择文件");
+                layer.msg("请选择文件");
                 return;
             }
             var formData = new FormData();
             for (var i = 0; i < paths.length; i++) {
                 var file = paths[i];
-              /*  alert(file.type);*/
                 //用正则表达式判断文件的类型是否是图片，这里大家可以自由发挥
                 if (!new RegExp("image/jpeg").test(file.type)) {
-                    alert("请注意，上传的文件一定要是图片文件(jpg)");
+                    layer.msg("请注意，上传的文件一定要是图片文件(jpg)");
                     return;
                 }
             }
@@ -329,19 +326,17 @@
                 processData: false,
             }).success(function(data) {
                 if (data.code=='000000') {
-                    alert("上传成功");
+                    layer.msg("上传成功");
                     $("#firstPreview").show();
                     $("#image1").attr('src',"<%= path%>"+data.data[0].filePath);
                     $("#image1_a").attr('href',"<%= path%>"+data.data[0].filePath);
                     $("#attachmentId1").val(data.data[0].id);
                 } else {
-                    alert("上传失败"+data.info);
-                    /*console.log(data.info);*/
+                    layer.msg("上传失败"+data.info);
                 }
 
             }).error(function(data) {
-                alert("上传失败"+data.info);
-                /*console.log(data);*/
+                layer.msg("上传失败"+data.info);
             });
         });
 
@@ -351,23 +346,22 @@
         $("#btnImportOKB").click(function () {
             /*  var formData = new FormData($("#frm_identityA")[0]);*/
             if(!($('#readme').is(':checked'))) {
-                alert("请勾选阅读事项");
+                layer.msg("请勾选阅读事项");
                 return;
             }
             var paths = document.getElementById("fileuploadB").files;
 
             if(paths.length==0)
             {
-                alert("请选择文件");
+                layer.msg("请选择文件");
                 return;
             }
             var formData = new FormData();
             for (var i = 0; i < paths.length; i++) {
                 var file = paths[i];
-                /*  alert(file.type);*/
                 //用正则表达式判断文件的类型是否是图片，这里大家可以自由发挥
                 if (!new RegExp("image/jpeg").test(file.type)) {
-                    alert("请注意，上传的文件一定要是图片文件(jpg)");
+                    layer.msg("请注意，上传的文件一定要是图片文件(jpg)");
                     return;
                 }
             }
@@ -386,19 +380,18 @@
                 processData: false,
             }).success(function(data) {
                 if (data.code=='000000') {
-                    alert("上传成功");
+                    layer.msg("上传成功");
                     $("#secondPreview").show();
                     $("#image2").attr('src',"<%= path%>"+data.data[0].filePath);
                     $("#image2_b").attr('href',"<%= path%>"+data.data[0].filePath);
                     $("#attachmentId2").val(data.data[0].id);
                 } else {
-                    alert(上传失败+data.info);
-                    console.log(data.info);
+                    layer.msg("上传失败:"+data.info);
+
                 }
 
             }).error(function(data) {
-                alert("上传失败:"+data.info);
-                console.log(data);
+                layer.msg("上传失败:"+data.info);
             });
         });
 
@@ -435,23 +428,23 @@
         var attachmentId2 = $("input[name='attachmentId2']").val();
         var attachmentId1 = $("input[name='attachmentId1']").val();
         if((attachmentId1==null||attachmentId1=="")){
-            alert("上传图片不能为空");
+            layer.msg("上传图片不能为空");
             return ;
         }
         if(attachmentId1!=null && attachmentId1!=""){
             var imageName1= $("input[name='imageName1']").val();
             var intro1 = $("textarea[name='intro1']").val();
             if(imageName1==null||imageName1==""){
-                alert("作品名称不能为空");
+                layer.msg("作品名称不能为空");
                 return ;
             }
 
             if(intro1==null||intro1==""){
-                alert("描述不能为空");
+                layer.msg("描述不能为空");
                 return ;
             }
             if(intro1.length<15 || intro1.length>100){
-                alert("描述字数在15-100之间");
+                layer.msg("描述字数在15-100之间");
                 return ;
             }
         }
@@ -459,23 +452,23 @@
         var second_is_hidden= $("#second_image").is(":hidden");
         if(!second_is_hidden){
             if(attachmentId2==null||attachmentId2==""){
-                alert("上传图片不能为空");
+                layer.msg("上传图片不能为空");
                 return;
             }
             if(attachmentId2!=null && attachmentId2!=""){
                 var imageName2= $("input[name='imageName2']").val();
                 var intro2 = $("textarea[name='intro2']").val();
                 if(imageName2==null||imageName2==""){
-                    alert("作品名称不能为空");
+                    layer.msg("作品名称不能为空");
                     return ;
                 }
 
                 if(intro2==null||intro2==""){
-                    alert("描述不能为空");
+                    layer.msg("描述不能为空");
                     return ;
                 }
                 if(intro2.length<15 || intro2.length>100){
-                    alert("描述字数在15-100之间");
+                    layer.msg("描述字数在15-100之间");
                     return ;
                 }
             }
@@ -486,7 +479,7 @@
         if(result.code=="000000"){
             $('#form_1').submit();
         }else{
-            alert(result.info);
+            layer.msg(result.info);
             return;
         }
     })

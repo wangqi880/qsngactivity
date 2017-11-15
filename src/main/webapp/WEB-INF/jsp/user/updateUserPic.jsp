@@ -50,7 +50,8 @@
 
     <script type="text/javascript" src="<%= path%>/js/jquery-1.9.1.min.js" ></script>
     <script type="text/javascript" src="<%= path%>/js/zoom.min.js"></script>
-
+    <!--弹出层-->
+    <script src="<%= path%>/resources/layer/layer.js"></script>
     <!--
     <base  target="_blank"/>
     -->
@@ -173,7 +174,8 @@
 
         var message = "${message}";
         if(message!=""){
-            alert(message);
+            layer.msg(message);
+
         }
 
         //第一张上传图片改变，文字
@@ -197,16 +199,15 @@
 
             if(paths.length==0)
             {
-                alert("请选择文件");
+                layer.msg("请选择文件");
                 return;
             }
             var formData = new FormData();
             for (var i = 0; i < paths.length; i++) {
                 var file = paths[i];
-              /*  alert(file.type);*/
                 //用正则表达式判断文件的类型是否是图片，这里大家可以自由发挥
                 if (!new RegExp("image/jpeg").test(file.type)) {
-                    alert("请注意，上传的文件一定要是图片文件(jpg)");
+                    layer.msg("请注意，上传的文件一定要是图片文件(jpg)");
                     return;
                 }
             }
@@ -225,18 +226,16 @@
                 processData: false,
             }).success(function(data) {
                 if (data.code=='000000') {
-                    alert("上传成功!");
+                    layer.msg("上传成功");
                     $("#image1").attr('src',"<%= path%>"+data.data[0].filePath);
                     $("#image1_a").attr('href',"<%= path%>"+data.data[0].filePath);
                     $("#attachmentId").val(data.data[0].id);
                 } else {
-                    alert("上传失败"+data.info);
-                    console.log(data.info);
+                    layer.msg("上传失败"+data.info);
                 }
 
             }).error(function(data) {
-                alert("上传失败"+data.info);
-                console.log(data);
+                layer.msg("上传失败"+data.info);
             });
         });
 
@@ -258,12 +257,12 @@
             var imageName= $("input[name='imageName']").val();
             var intro = $("textarea[name='intro']").val();
             if(imageName==null||imageName==""){
-                alert("作品名称不能为空");
+                layer.msg("作品名称不能为空");
                 return ;
             }
 
             if(intro==null||intro==""){
-                alert("描述不能为空");
+                layer.msg("描述不能为空");
                 return ;
             }
 
@@ -271,7 +270,7 @@
             if(resutl.code=="000000"){
                 $('#form_1').submit();
             }else{
-                alert("修改时间已过，不能修改");
+                layer.msg("修改时间已过，不能修改");
                 return;
             }
         })

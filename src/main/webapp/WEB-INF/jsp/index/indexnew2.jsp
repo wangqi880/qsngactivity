@@ -21,6 +21,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <style type="text/css">
             *{margin: 0;padding: 0;}
         </style>
+        <!--弹出层-->
+        <script src="<%= path%>/resources/layer/layer.js"></script>
+
     </head>
     <body>
     <!--banner+导航-->
@@ -148,7 +151,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             $.get("<%= path%>/index/user_add_prize",{"id":id},function (result) {
                 <!--可以操作,操作成功-->
                 if(result.code=="000000"){
-                    /*alert(result.info);*/
                     var text_box = $("#add-num-"+id);
                     var praise_txt = $("#praise-txt-"+id);
                     var num=parseInt(praise_txt.text());
@@ -162,13 +164,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 }
                 <!--未登录-->
                 if(result.code=="000001"){
-                    alert(result.info);
-                    window.location.href="/qsngactivity/login/login.html";
+                    layer.confirm(result.info+",进入登录页面", function () {
+                        window.location.href="/qsngactivity/login/login.html";
+                    }, function () {
+                    });
                     return;
                 }
                 <!--今天已经操作-->
                 if(result.code=="000002"){
-                    alert(result.info);
+                    layer.msg(result.info);
                     return;
                 }
 
