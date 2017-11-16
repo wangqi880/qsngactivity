@@ -76,7 +76,7 @@
 
                                         </div>
                                         <div>
-                                            <textarea  disabled="disabled" cols="20" rows="6" class="showTextarea"> ${imginfo.intro}</textarea>
+                                            <textarea  style="resize: none" disabled="disabled" cols="20" rows="6" class="showTextarea"> ${imginfo.intro}</textarea>
                                         </div>
                                     </div>
                              </c:forEach>

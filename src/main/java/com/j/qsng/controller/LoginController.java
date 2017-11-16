@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
+import java.io.UnsupportedEncodingException;
 
 /**
  * Created by Administrator on 2017/10/17.
@@ -184,6 +185,12 @@ public class LoginController
 		BaseResp resp = new BaseResp();
 		resp.setCode("000000");
 		resp.setInfo("成功");
+		try {
+			name = new String(name.getBytes("ISO-8859-1"), "utf8");
+		} catch (UnsupportedEncodingException e) {
+			resp.setCode("000002");
+			resp.setInfo("转码失败");
+		}
 		String password = userService.queryPassword(name,msisdn,idCard);
 		if(StringUtils.isNotEmpty(password)){
 			resp.setData(password);

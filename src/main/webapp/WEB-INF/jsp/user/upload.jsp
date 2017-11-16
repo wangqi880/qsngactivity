@@ -100,7 +100,7 @@
                                     <td></td>
                                     <td>作品描述：</td>
                                     <td>
-                                        <textarea id="id_intro1" name="intro1"  cols="45" rows="5" class="textarea">字数不超过15-100</textarea>
+                                        <textarea style="resize: none" id="id_intro1" name="intro1"  cols="45" rows="5" class="textarea">字数不超过15-100</textarea>
                                     </td>
                                 </tr>
 
@@ -157,7 +157,7 @@
                                         <td ></td>
                                         <td >作品描述：</td>
                                         <td >
-                                            <textarea id="id_intro2" name="intro2"  cols="45" rows="5" class="textarea"> 字数不超过15-100</textarea>
+                                            <textarea style="resize: none" id="id_intro2" name="intro2"  cols="45" rows="5" class="textarea"> 字数不超过15-100</textarea>
                                         </td>
                                 </tr>
                                 <tr id="secondPreview"  style="display: none">
