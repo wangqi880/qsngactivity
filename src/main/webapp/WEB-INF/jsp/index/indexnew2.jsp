@@ -50,12 +50,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <div class="title"><h2>
                     <span>
                     <c:if test="${isAllow !='1'}">
-                        <a href="<%= path%>/index/indexnew.html?type=1"> 内部展示单元</a>
-                        |<a href="<%= path%>/index/indexnew.html?type=2" >参赛单元</a>
+                        <a href="<%= path%>/index/indexnew.html?type=1"> 示范作品</a>
+                        |<a href="<%= path%>/index/indexnew.html?type=2" >参赛作品</a>
                     </c:if>
                           <c:if test="${isAllow ==1}">
-                              <a href="<%= path%>/index/indexnew.html?type=2" >参赛单元</a>
-                              |<a href="<%= path%>/index/indexnew.html?type=1"> 内部展示单元</a>
+                              <a href="<%= path%>/index/indexnew.html?type=2" >参赛作品</a>
+                              |<a href="<%= path%>/index/indexnew.html?type=1"> 示范作品</a>
                           </c:if>
                 </span>
                     <a href="<%= path%>/user/upload.html">我要上传</a></h2>

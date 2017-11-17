@@ -259,6 +259,7 @@ public class UserContoller
 			modelAndView.addObject("message","以达到作品数量上限");
 		}
 		modelAndView.addObject("user",user);
+		modelAndView.addObject("num",oldUp.size());
 		return modelAndView;
 	}
 

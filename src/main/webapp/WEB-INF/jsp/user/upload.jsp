@@ -67,7 +67,11 @@
 <div class="bg_gary ">
     <div class="main mar_t_20" >
         <div class="w_780 left">
-            <div class="title"><h2>作品上传入口（<a href="<%= path%>/user/showproduct.html" tppabs="http://pic.eol.cn/picture/take_in">作品展示</a>）</h2></div>
+            <div class="title"><h2>作品上传入口
+                <c:if test="${num ne 0}">
+                    （<a href="<%= path%>/user/showproduct.html" tppabs="http://pic.eol.cn/picture/take_in">${num}张</a>）
+                </c:if>
+            </h2></div>
             <div id="Tabs_01" >
                 <div class='box font_14'>
                     <div class='content' >
@@ -100,7 +104,7 @@
                                     <td></td>
                                     <td>作品描述：</td>
                                     <td>
-                                        <textarea style="resize: none" id="id_intro1" name="intro1"  cols="45" rows="5" class="textarea">字数不超过15-100</textarea>
+                                        <textarea style="resize: none" id="id_intro1" name="intro1"  cols="45" rows="5" class="textarea">字数不超过15-100</textarea><span style="color: red">*</span>
                                     </td>
                                 </tr>
 
@@ -122,7 +126,7 @@
                                     </tr>
                                 <tr>
                                     <td></td>
-                                    <td width="80" align="left"><button type="button" id="addImage" value="add" class="button_upload">添加照片</button></td>
+                                    <td width="80" align="left"><button type="button" id="addImage" value="add" class="button_upload">添加作品</button></td>
                                 </tr>
                             </table>
                             <!--第二张图片-->
@@ -157,7 +161,7 @@
                                         <td ></td>
                                         <td >作品描述：</td>
                                         <td >
-                                            <textarea style="resize: none" id="id_intro2" name="intro2"  cols="45" rows="5" class="textarea"> 字数不超过15-100</textarea>
+                                            <textarea style="resize: none" id="id_intro2" name="intro2"  cols="45" rows="5" class="textarea"> 字数不超过15-100</textarea><span style="color: red">*</span>
                                         </td>
                                 </tr>
                                 <tr id="secondPreview"  style="display: none">

@@ -106,8 +106,8 @@
                 alert("账户名不能为空");
                 return ;
             }
-            if(username.length<6){
-                alert("账户名不能小于6位数");
+            if(username.length<4){
+                alert("账户名不能小于4位");
                 return ;
 			}
 
