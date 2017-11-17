@@ -165,7 +165,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <!--未登录-->
                 if(result.code=="000001"){
                     layer.confirm(result.info+",进入登录页面", function () {
-                        window.location.href="/qsngactivity/login/login.html";
+                        window.location.href="<%=path %>/login/login.html";
                     }, function () {
                     });
                     return;

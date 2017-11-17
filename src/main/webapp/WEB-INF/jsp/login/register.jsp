@@ -15,6 +15,8 @@
 		.div-inline{ display:inline}
 
 	</style>
+	<!--弹出层-->
+	<script src="<%= path%>/resources/layer/layer.js"></script>
 </head>
 <body>
 <div id="box"></div>
@@ -103,57 +105,57 @@
             var sex=$("select[name='sex']").val();
 
             if(username==null||username==""){
-                alert("账户名不能为空");
+                layer.msg("账户名不能为空");
                 return ;
             }
             if(username.length<4){
-                alert("账户名不能小于4位");
+                layer.msg("账户名不能小于4位");
                 return ;
 			}
 
             if(password==null||password==""){
-                alert("密码不能为空");
+                layer.msg("密码不能为空");
                 return ;
             }
             if(password.length<6){
-                alert("密码不能小于6位数");
+                layer.msg("密码不能小于6位数");
                 return ;
             }
             if(password1==null||password1==""){
-                alert("密码不能为空");
+                layer.msg("密码不能为空");
                 return ;
             }
             if(password1.length<6){
-                alert("密码不能小于6位数");
+                layer.msg("密码不能小于6位数");
                 return ;
             }
             if(password1!=password){
-                alert("密码输入不匹配");
+                layer.msg("密码输入不匹配");
                 return ;
 			}
 
             if(cardId==null||cardId==""){
-                alert("身份证号码为空");
+                layer.msg("身份证号码为空");
                 return ;
             }
             var cardId_pattern = /(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/;
             if(!cardId_pattern.test(cardId)){
-                alert("身份证格式不对");
+                layer.msg("身份证格式不对");
                 return ;
             }
 
             if(name==null||name==""){
-                alert("姓名不能为空");
+                layer.msg("姓名不能为空");
                 return ;
             }
 
             if(msisdn==null||msisdn==""){
-                alert("手机号不能为空");
+                layer.msg("手机号不能为空");
                 return ;
             }
             var msisdn_pattern = /^1[34578]\d{9}$/;
             if(!msisdn_pattern.test(msisdn)){
-                alert("手机号格式不对");
+                layer.msg("手机号格式不对");
                 return ;
             }
             registerSubmit();
@@ -169,10 +171,14 @@
                 dataType:"json",
                 success:function(result){
 					if("000000"==result.code){
-					    alert("注册成功!")
-						location.href="<%= path%>/login/login.html";
+                        layer.confirm("注册成功，是否进入首页", function () {
+                            window.location.href="<%= path%>/index/indexnew.html";
+                        }, function () {
+                        });
+
+
 					}else{
-					    alert(result.info);
+                        layer.msg(result.info);
 					}
                     /*console.log(result);*/
                     //注册成功跳转登陆界面
