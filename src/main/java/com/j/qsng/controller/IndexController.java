@@ -4,10 +4,12 @@ import com.github.pagehelper.Page;
 import com.j.qsng.common.pojo.BaseResp;
 import com.j.qsng.common.pojo.ChooseUtils;
 import com.j.qsng.common.pojo.Pager;
+import com.j.qsng.common.pojo.SystemContext;
 import com.j.qsng.common.util.DateUtils;
 import com.j.qsng.common.util.IDUtils;
 import com.j.qsng.common.util.IdcardUtils;
 import com.j.qsng.dto.AdminUserPicDto;
+import com.j.qsng.dto.ChooseUserPicDto;
 import com.j.qsng.dto.UserPicScorePrizeDto;
 import com.j.qsng.dto.UserPicShowDto;
 import com.j.qsng.model.User;
@@ -19,6 +21,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -80,6 +83,7 @@ public class IndexController
 				//普通用户的
 				if(!("1".equals(isAllow))){
 					modelAndView.setViewName("common/message");
+					modelAndView.setViewName("index/indexnew2");
 					modelAndView.addObject("message","还没有到查看作品的时间");
 				}else{
 					modelAndView.setViewName("index/indexnew2");
@@ -204,5 +208,51 @@ public class IndexController
 
 		}
 		return resp;
+	}
+
+	//查看所有通过初赛的照片
+	@RequestMapping("/theFirstChoose.html")
+	public ModelAndView theFirstChoose(String from ,HttpSession session){
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.setViewName("index/theFirstChoose");
+		String isAllow=configService.getConfigvalue(ChooseUtils.IS_ALLOWD_FIRST_SHOW);
+		if("1".equals(isAllow)){
+			User user = (User) session.getAttribute("loginUser");
+			//如果来登录跳转过来，那么使用用户自己的作品替换
+			Integer pageOffset = SystemContext.getPageOffset();
+			if(null!=user){
+				//这里查询是要排除用户id的记录
+				Pager<ChooseUserPicDto> pager= chooseLogService.queryPagerDetailByPeriodAndIsChoose(String.valueOf(user.getId()),ChooseUtils.YES_CHOOSE,ChooseUtils.FIRST_PERIOD);
+				List<ChooseUserPicDto> userList = chooseLogService.queryUserIdAndPeriod(String.valueOf(user.getId()),ChooseUtils.FIRST_PERIOD,ChooseUtils.YES_CHOOSE);
+				if(0==pageOffset || 1==pageOffset){
+					replace(pager,userList);
+				}
+
+				modelAndView.addObject("page",pager);
+
+			}else{
+				Pager<ChooseUserPicDto> pager= chooseLogService.queryPagerDetailByPeriodAndIsChoose(null,ChooseUtils.YES_CHOOSE,ChooseUtils.FIRST_PERIOD);
+				modelAndView.addObject("page",pager);
+
+			}
+		}else {
+			modelAndView.addObject("message","初赛还没结束，敬请期待！");
+		}
+		return modelAndView;
+	}
+
+	//替换
+	private void replace(Pager<ChooseUserPicDto> pager,List<ChooseUserPicDto> userList){
+		if(null==pager || CollectionUtils.isEmpty(pager.getDatas())){
+			return;
+		}
+		if(CollectionUtils.isEmpty(userList)){
+			return;
+		}
+		int num = userList.size();
+		for(int i=0;i<num;i++){
+			pager.getDatas().remove(i);
+			pager.getDatas().add(i,userList.get(i));
+		}
 	}
 }

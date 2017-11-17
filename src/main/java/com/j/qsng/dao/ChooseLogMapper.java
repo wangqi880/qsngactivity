@@ -64,4 +64,9 @@ public interface ChooseLogMapper
 	//根据用户名，期数，是否已经选项查询数据
 	List<ChooseUserPicDto> queryDetailByUsernamePeriodAndIsChoose(Map map);
 
+	//根据期数和是否选中查询详细信息(分页)
+	List<ChooseUserPicDto> queryPagerDetailByPeriodAndIsChoose(Map map);
+
+	//根据前段用户的id和期数,是否已选中，来查询该用户已经是否被选的详情
+	List<ChooseUserPicDto> queryUserIdAndPeriod(Map map);
 }

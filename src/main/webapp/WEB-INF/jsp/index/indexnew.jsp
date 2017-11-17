@@ -35,9 +35,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <li><a href="<%= path%>/index/act_rule.html" >参赛规则</a></li>
                 <li><a href="<%= path%>/index/prize_info.html">奖项设置</a></li>
                 <li><a href="<%= path%>/user/upload.html" >上传作品</a></li>
-<%--
-                <li><a href="<%= path%>/user/userInfo.html">修改信息</a></li>
---%>
             </ul>
         </div>
 
@@ -51,10 +48,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         <c:if test="${isAllow !='1'}">
                             <a href="<%= path%>/index/indexnew.html?type=1"> 示范作品</a>
                             |<a href="<%= path%>/index/indexnew.html?type=2" >参赛作品</a>
+                            |<a href="<%= path%>/index/theFirstChoose.html" >全部</a>
                         </c:if>
                           <c:if test="${isAllow ==1}">
                               <a href="<%= path%>/index/indexnew.html?type=2" >参赛作品</a>
                               |<a href="<%= path%>/index/indexnew.html?type=1"> 示范作品</a>
+                              |<a href="<%= path%>/index/theFirstChoose.html"> 全部</a>
                           </c:if>
                 </span>
                     <a href="<%= path%>/user/upload.html">我要上传</a></h2>

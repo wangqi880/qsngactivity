@@ -52,4 +52,6 @@ public class ChooseUtils
 	//是否允许用户查看评分之后的作品
 	public  static  final  String USER_ALLOW_SEE_USER_PIC_SCORE= "user_allow_see_user_pic_score";
 
+	//是否允许线网用户查看第一次筛选
+	public  static  final  String IS_ALLOWD_FIRST_SHOW= "is_allowd_first_show";
 }

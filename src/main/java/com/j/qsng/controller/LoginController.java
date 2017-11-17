@@ -1,6 +1,7 @@
 package com.j.qsng.controller;
 
 import com.j.qsng.common.pojo.BaseResp;
+import com.j.qsng.common.pojo.ChooseUtils;
 import com.j.qsng.common.util.DateUtils;
 import com.j.qsng.common.util.IDUtils;
 import com.j.qsng.common.util.IdcardUtils;
@@ -8,6 +9,8 @@ import com.j.qsng.dto.IdCardDto;
 import com.j.qsng.model.User;
 import com.j.qsng.model.admin.AdminUser;
 import com.j.qsng.service.AdminUserService;
+import com.j.qsng.service.ConfigService;
+import com.j.qsng.service.UserPicService;
 import com.j.qsng.service.UserService;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,6 +34,12 @@ public class LoginController
 	@Autowired UserService userService;
 	@Autowired
 	AdminUserService adminUserService;
+
+	@Autowired
+	UserPicService userPicService;
+
+	@Autowired
+	ConfigService configService;
 	//用户提交注册
 	@RequestMapping (value = "/login/register",method= RequestMethod.POST)
 	@ResponseBody
@@ -100,7 +109,16 @@ public class LoginController
 		AdminUser adminUser =adminUserService.queryByLogin(user.getUsername(),user.getPassword());
 		if(null!=oldU)
 		{
-			modelAndView.setViewName("redirect:/index/indexnew.html");
+			//如果是普通用户，那么它已经上传作品之后并且可以展示，直接跳入全部展示接口
+			int num =userPicService.queryNumByUserId(String.valueOf(oldU.getId()));
+			String isAllowFirstShow=configService.getConfigvalue(ChooseUtils.IS_ALLOWD_FIRST_SHOW);
+			if(1<=num && "1".equals(isAllowFirstShow)){
+				modelAndView.setViewName("redirect:/index/theFirstChoose.html?from=login");
+
+			} else {
+				modelAndView.setViewName("redirect:/index/indexnew.html");
+			}
+
 			session.setAttribute("loginUser", oldU);
 		}
 		else if(null!=adminUser){
