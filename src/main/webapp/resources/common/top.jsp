@@ -12,6 +12,7 @@ function exitSystem() {
 	//alert($("#contextPath").val()+"/admin/logout");
 	window.parent.location.href = $("#contextPath").val()+"/admin/logout";
 }
+
 </script>
 </head>
 <body>

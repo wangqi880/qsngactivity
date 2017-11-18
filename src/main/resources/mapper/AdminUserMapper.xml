@@ -47,4 +47,12 @@
     <delete id="delete" parameterType="string">
         delete from t_admin_user where id=#{id}
     </delete>
+
+    <update id="updatePassword" parameterType="map">
+        UPDATE t_admin_user
+            SET
+            `password` = #{password}
+        WHERE id = #{userId}
+    </update>
+
 </mapper>

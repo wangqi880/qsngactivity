@@ -34,4 +34,6 @@ public interface AdminUserMapper
 
 	//根据id删除用户
 	public void delete(String id);
+	//更加id修改密码
+	public  void updatePassword(Map map);
 }

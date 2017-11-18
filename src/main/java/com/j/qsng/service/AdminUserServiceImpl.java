@@ -56,4 +56,11 @@ public class AdminUserServiceImpl implements AdminUserService
 	public void delete(String id) {
 		adminUserMapper.delete(id);
 	}
+
+	public void updatePassword(String userId, String password) {
+		Map map = new HashMap();
+		map.put("userId",userId);
+		map.put("password",password);
+		adminUserMapper.updatePassword(map);
+	}
 }

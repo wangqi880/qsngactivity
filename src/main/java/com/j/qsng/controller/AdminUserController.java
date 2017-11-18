@@ -1,5 +1,6 @@
 package com.j.qsng.controller;
 
+import com.j.qsng.common.pojo.BaseResp;
 import com.j.qsng.common.pojo.Pager;
 import com.j.qsng.common.util.DateUtils;
 import com.j.qsng.common.util.IDUtils;
@@ -7,13 +8,17 @@ import com.j.qsng.model.User;
 import com.j.qsng.model.admin.AdminUser;
 import com.j.qsng.service.AdminUserService;
 import com.j.qsng.service.UserService;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+import sun.misc.resources.Messages_pt_BR;
 
+import javax.servlet.http.HttpSession;
 import java.util.Date;
 import java.util.List;
 
@@ -89,4 +94,42 @@ public class AdminUserController {
         return  modelAndView;
     }
 
+
+    //进入修改密码界面
+    @RequestMapping("/adminUser/updatePassword.html")
+    private  ModelAndView updatePassword(){
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("adminUser/updatePassword");
+        return modelAndView;
+    }
+
+    //修改密码
+    @RequestMapping(value = "/adminUser/updatePassword")
+    @ResponseBody
+    private  Object updatePassword2(String oldPassword,String newPassword1,String newPassword2,HttpSession session){
+        BaseResp resp = new BaseResp();
+        AdminUser user = (AdminUser)session.getAttribute("adminUser");
+
+        resp.setCode("000000");
+        resp.setInfo("修改成功");
+
+       if(StringUtils.isEmpty(oldPassword) || StringUtils.isEmpty(newPassword1) ||  StringUtils.isEmpty(newPassword2)){
+           resp.setCode("000001");
+           resp.setInfo("密码不能为空");
+           return resp;
+       }
+       if(!newPassword1.equals(newPassword2)){
+           resp.setCode("000002");
+           resp.setInfo("两次密码不一致");
+           return resp;
+       }
+
+       if(!oldPassword.equals(user.getPassword())){
+           resp.setCode("000003");
+           resp.setInfo("以前的密码输入不正确");
+           return resp;
+       }
+       adminUserService.updatePassword(user.getId(),newPassword1);
+       return  resp;
+    }
 }

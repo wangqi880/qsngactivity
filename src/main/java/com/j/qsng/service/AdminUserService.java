@@ -32,6 +32,8 @@ public interface AdminUserService
 
 	//根据id删除用户
 	public void delete(String id);
+	//更加id修改密码
+	public  void updatePassword(String userId,String password);
 
 
 
