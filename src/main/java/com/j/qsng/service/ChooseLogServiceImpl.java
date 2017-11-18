@@ -182,13 +182,17 @@ public class ChooseLogServiceImpl implements ChooseLogService
 		return page;
 	}
 
-	public Pager<ChooseUserPicDto> queryPagerDetailByPeriodAndIsChoose(String userId,String chooseIs, String period) {
+	public Pager<ChooseUserPicDto> queryPagerDetailByPeriodAndIsChoose(String userId,String chooseIs, String period,Integer pageOffsetIndex) {
 		Map map = new HashMap();
 		/*Integer pageSize = SystemContext.getPageSize();*/
+
 		Integer pageSize=2;
 		Integer pageOffset = SystemContext.getPageOffset();
 		if(0==pageOffset){
 			pageOffset=1;
+		}
+		if(null!=pageOffsetIndex){
+			pageOffset=pageOffsetIndex;
 		}
 		map.put("size",pageSize);
 		map.put("offset",(pageOffset-1)*pageSize);
@@ -211,6 +215,14 @@ public class ChooseLogServiceImpl implements ChooseLogService
 		map.put("period",period);
 		map.put("chooseIs",chooseIs);
 		return chooseLogMapper.queryUserIdAndPeriod(map);
+	}
+
+	public int queryNumByPeriodAndCheckedAndUserid(String userId, String period, String chooseIs) {
+		Map map  = new HashMap();
+		map.put("userId",userId);
+		map.put("period",period);
+		map.put("chooseIs",chooseIs);
+		return chooseLogMapper.queryNumByPeriodAndCheckedAndUserid(map);
 	}
 
 

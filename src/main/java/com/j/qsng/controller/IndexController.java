@@ -222,16 +222,23 @@ public class IndexController
 			Integer pageOffset = SystemContext.getPageOffset();
 			if(null!=user){
 				//这里查询是要排除用户id的记录
-				Pager<ChooseUserPicDto> pager= chooseLogService.queryPagerDetailByPeriodAndIsChoose(String.valueOf(user.getId()),ChooseUtils.YES_CHOOSE,ChooseUtils.FIRST_PERIOD);
+				Pager<ChooseUserPicDto> pager= chooseLogService.queryPagerDetailByPeriodAndIsChoose(String.valueOf(user.getId()),ChooseUtils.YES_CHOOSE,ChooseUtils.FIRST_PERIOD,null);
 				List<ChooseUserPicDto> userList = chooseLogService.queryUserIdAndPeriod(String.valueOf(user.getId()),ChooseUtils.FIRST_PERIOD,ChooseUtils.YES_CHOOSE);
 				if(0==pageOffset || 1==pageOffset){
 					replace(pager,userList);
+					modelAndView.addObject("page",pager);
+				}else{
+					Pager<ChooseUserPicDto> pager1= chooseLogService.queryPagerDetailByPeriodAndIsChoose(null,ChooseUtils.YES_CHOOSE,ChooseUtils.FIRST_PERIOD,pageOffset-1);
+					modelAndView.addObject("page",pager1);
+					pager1.setOffset(pageOffset);
+
+
+
 				}
 
-				modelAndView.addObject("page",pager);
 
 			}else{
-				Pager<ChooseUserPicDto> pager= chooseLogService.queryPagerDetailByPeriodAndIsChoose(null,ChooseUtils.YES_CHOOSE,ChooseUtils.FIRST_PERIOD);
+				Pager<ChooseUserPicDto> pager= chooseLogService.queryPagerDetailByPeriodAndIsChoose(null,ChooseUtils.YES_CHOOSE,ChooseUtils.FIRST_PERIOD,null);
 				modelAndView.addObject("page",pager);
 
 			}

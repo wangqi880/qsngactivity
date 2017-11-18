@@ -267,7 +267,7 @@
         t1.score
         FROM t_choose_log t1 LEFT JOIN t_user_pic t2 ON t1.prodId = t2.id
         WHERE t1.chooseIs = #{chooseIs} AND t1.choosePeriod = #{period}) m1
-        LEFT JOIN t_user m2 ON m1.userId = m2.id
+         JOIN t_user m2 ON m1.userId = m2.id
         <if test="userId!=null and userId!=''">
             and m2.id!=#{userId}
         </if>
@@ -303,5 +303,12 @@
         WHERE t1.chooseIs = #{chooseIs} AND t1.choosePeriod = #{period}) m1
          JOIN t_user m2 ON m1.userId = m2.id and m1.userId=#{userId}
         LEFT JOIN t_attachment m3 ON m1.attachmentId = m3.id
+    </select>
+
+    <select id="queryNumByPeriodAndCheckedAndUserid" parameterType="map" resultType="int">
+        select count(1) from t_choose_log t,t_user_pic t1  where t.chooseIs=#{chooseIs} and t.choosePeriod=#{period} and t.prodId=t1.id
+        <if test="userId!=null and userId!=''">
+            and t1.userId!=#{userId}
+        </if>
     </select>
 </mapper>

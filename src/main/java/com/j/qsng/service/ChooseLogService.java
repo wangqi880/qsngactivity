@@ -63,8 +63,11 @@ public interface ChooseLogService
 	Pager<ChooseUserPicDto> queryDetailByUsernamePeriodAndIsChoose(String username,String period,String  chooseIs);
 
 	//根据期数和是否选中查询详细信息(分页)
-	Pager<ChooseUserPicDto> queryPagerDetailByPeriodAndIsChoose(String userId,String chooseIs,String period);
+	Pager<ChooseUserPicDto> queryPagerDetailByPeriodAndIsChoose(String userId,String chooseIs,String period,Integer pageOffset);
 
 	//根据前段用户的id和期数,是否已选中，来查询该用户已经是否被选的详情,该用户id是全网用户id
 	List<ChooseUserPicDto> queryUserIdAndPeriod(String userId,String period,String chooseIs);
+
+	//获取该期和是否选中的数量
+	public int queryNumByPeriodAndCheckedAndUserid(String userId,String period,String chooseIs);
 }

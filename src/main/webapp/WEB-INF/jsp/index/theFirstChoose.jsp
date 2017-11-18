@@ -72,8 +72,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                           <a href="<%= path%>/index/show2?id=${item.id}"><img src="<%= path%>/resources/indexPic/${item.newName}" width="215" height="170" /></a>
                         </p>
                         <ul>
-                            <li>${item.imageName}</li>
-                           <li>${item.name}</li>
+
+                            <c:if test="${item.userId == loginUser.id}">
+                                <li style="color: red">${item.imageName}</li>
+                            </c:if>
+                            <c:if test="${item.userId != loginUser.id}">
+                                <li>${item.imageName}</li>
+                            </c:if>
+                            <c:if test="${item.userId == loginUser.id}">
+                                <li  style="color: red">${item.name}</li>
+                            </c:if>
+                            <c:if test="${item.userId != loginUser.id}">
+                                <li>${item.name}</li>
+                            </c:if>
+
+
 
                             <span id="add-num-${item.id}" class="add-num" ><em>+1</em></span>
                         </ul>

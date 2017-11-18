@@ -44,6 +44,9 @@ public interface ChooseLogMapper
 	//获取该期和是否选中的数量
 	public int queryNumByPeriodAndChecked(Map map);
 
+	//获取该期和是否选中的数量
+	public int queryNumByPeriodAndCheckedAndUserid(Map map);
+
 	//查询该用户，第几期，已经选择了多少照片
 	public int queryNumByUserAndPeriodAndChoosed(Map map);
 
