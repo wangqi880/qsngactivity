@@ -51,14 +51,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     <span>
                     <c:if test="${isAllow !='1'}">
                         <a href="<%= path%>/index/indexnew.html?type=1"> 示范作品</a>
-                        |<a href="<%= path%>/index/indexnew.html?type=2" >参赛作品</a>
-                        |<a href="<%= path%>/index/theFirstChoose.html" >全部</a>
+                        |<a href="<%= path%>/index/indexnew.html?type=2" >获奖作品</a>
+                        |<a href="<%= path%>/index/theFirstChoose.html" >参赛作品</a>
 
                     </c:if>
                           <c:if test="${isAllow ==1}">
-                              <a href="<%= path%>/index/indexnew.html?type=2" >参赛作品</a>
+                              <a href="<%= path%>/index/indexnew.html?type=2" >获奖作品</a>
                               |<a href="<%= path%>/index/indexnew.html?type=1"> 示范作品</a>
-                              |<a href="<%= path%>/index/theFirstChoose.html" >全部</a>
+                              |<a href="<%= path%>/index/theFirstChoose.html" >参赛作品</a>
 
                           </c:if>
                 </span>
@@ -69,7 +69,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <c:forEach items="${page.datas}" var="item">
                     <div class="w_240 mar_r_30 left pos_r">
                         <p align="center">
-                          <a href="<%= path%>/index/show2?id=${item.id}"><img src="<%= path%>/resources/upload/${item.newName}" width="215" height="170" /></a>
+                          <a href="<%= path%>/index/show2?id=${item.prodId}"><img src="<%= path%>/resources/upload/${item.newName}" width="215" height="170" /></a>
                         </p>
                         <ul>
 
@@ -85,11 +85,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             <c:if test="${item.userId != loginUser.id}">
                                 <li>${item.name}</li>
                             </c:if>
-
-
-
-                            <span id="add-num-${item.id}" class="add-num" ><em>+1</em></span>
+                            <li>票数：
+                                <span id="praise-txt-${item.prodId}" style="color: red">${item.prizeNum}</span>
+                            </li>
+                            <span id="add-num-${item.prodId}" class="add-num" ><em>+1</em></span>
                         </ul>
+                        <div class="like pos_a">
+                            <p>
+                                <img id="${item.prodId}" src="<%= path%>/images/like.png" style="width: auto;  height: auto; max-width: 100%;  max-height: 100%; " onclick="addPrize(this)"/>
+                            </p>
+
+                        </div>
                         <%--<div class="like pos_a">
                             <p>
                                 <img id="${item.id}" src="<%= path%>/images/like.png" style="width: auto;  height: auto; max-width: 100%;  max-height: 100%; " onclick="addPrize(this)"/>
@@ -100,8 +106,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
                 </c:forEach>
                 <div class="no_way"></div>
-                <div class="right w_280">
-                </div>
                 <!--分页-->
                 <div>
                     <ul class="pagination" id="page2">
@@ -130,6 +134,26 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     });
                 </script>
             </div>
+
+    <div class="right w_280">
+    <div class="title"><h3>人气榜</h3></div>
+            <table width="278" border="0" cellspacing="0" cellpadding="0" align="center" class="border mar_t_30 line_24 font_14">
+                <tr>
+                    <td width="38" height="30" align="center" valign="middle" bgcolor="#64b3ee" class="white">排名</td>
+                    <td width="122" align="" valign="middle" bgcolor="#64b3ee" class="white">作品名称</td>
+                    <td width="75" align="" valign="middle" bgcolor="#64b3ee" class="white">作者</td>
+                    <td width="41" align="" valign="middle" bgcolor="#64b3ee" class="white">票数</td>
+                </tr>
+                <c:forEach items="${renqi.datas}" var="item" varStatus="status">
+                    <tr>
+                        <td height="34" align="center" valign="middle" bgcolor="#F4F4F4"><em>${status.index+1}</em></td>
+                        <td align="" valign="middle" bgcolor="#F4F4F4"><a href="">${item.imageName}</a></td>
+                        <td align="" valign="middle" bgcolor="#F4F4F4">${item.name}</td>
+                        <td align="" valign="middle" bgcolor="#F4F4F4"><i>${item.prizeNum}</i></td>
+                    </tr>
+                </c:forEach>
+            </table>
+        </div>
 
         </div>
         </div>

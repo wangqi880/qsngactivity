@@ -27,6 +27,7 @@
         <result column="sex" property="sex" jdbcType="VARCHAR" />
         <result column="newName" property="newName" jdbcType="VARCHAR" />
         <result column="score" property="score" jdbcType="DOUBLE" />
+        <result column="prizeNum" property="prizeNum" jdbcType="INTEGER" />
     </resultMap>
 
     <select id="queryNumByUsernameAndPeriod" parameterType="map" resultType="java.lang.Integer">
@@ -255,7 +256,8 @@
         m2.msisdn,
         m2.sex,
         m3.newName,
-        m1.score
+        m1.score,
+        m4.prizeNum
         FROM (SELECT
         t1.id,
         t2.userId,
@@ -271,7 +273,9 @@
         <if test="userId!=null and userId!=''">
             and m2.id!=#{userId}
         </if>
-        LEFT JOIN t_attachment m3 ON m1.attachmentId = m3.id order by m1.id  limit #{offset},#{size}
+        LEFT JOIN t_attachment m3 ON m1.attachmentId = m3.id
+        left join t_userpic_prize m4 on m1.prodId=m4.prodId
+        order by m4.prizeNum  desc limit #{offset},#{size}
     </select>
 
 

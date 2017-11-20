@@ -231,12 +231,7 @@ public class IndexController
 					Pager<ChooseUserPicDto> pager1= chooseLogService.queryPagerDetailByPeriodAndIsChoose(null,ChooseUtils.YES_CHOOSE,ChooseUtils.FIRST_PERIOD,pageOffset-1);
 					modelAndView.addObject("page",pager1);
 					pager1.setOffset(pageOffset);
-
-
-
 				}
-
-
 			}else{
 				Pager<ChooseUserPicDto> pager= chooseLogService.queryPagerDetailByPeriodAndIsChoose(null,ChooseUtils.YES_CHOOSE,ChooseUtils.FIRST_PERIOD,null);
 				modelAndView.addObject("page",pager);
@@ -245,6 +240,9 @@ public class IndexController
 		}else {
 			modelAndView.addObject("message","初赛还没结束，敬请期待！");
 		}
+		//人气榜
+		Pager<ChooseUserPicDto> renqibang= chooseLogService.queryPagerDetailByPeriodAndIsChoose(null,ChooseUtils.YES_CHOOSE,ChooseUtils.FIRST_PERIOD,1);
+		modelAndView.addObject("renqi",renqibang);
 		return modelAndView;
 	}
 

@@ -22,5 +22,6 @@ public class ChooseUserPicDto
 	String sex;
 	String newName;
 	double score;
+	int prizeNum;
 
 }

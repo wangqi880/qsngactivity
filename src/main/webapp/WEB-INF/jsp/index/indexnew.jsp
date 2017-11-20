@@ -42,63 +42,66 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 <div class="top_b">
         <div class="main mar_t_20">
-            <div class="w_780 left" style="width: 800px">
+            <div class="w_780 left">
                 <div class="title"><h2>
                     <span>
                         <c:if test="${isAllow !='1'}">
                             <a href="<%= path%>/index/indexnew.html?type=1"> 示范作品</a>
-                            |<a href="<%= path%>/index/indexnew.html?type=2" >参赛作品</a>
-                            |<a href="<%= path%>/index/theFirstChoose.html" >全部</a>
+                            |<a href="<%= path%>/index/indexnew.html?type=2" >获奖作品</a>
+                            |<a href="<%= path%>/index/theFirstChoose.html" >参赛作品</a>
                         </c:if>
                           <c:if test="${isAllow ==1}">
-                              <a href="<%= path%>/index/indexnew.html?type=2" >参赛作品</a>
+                              <a href="<%= path%>/index/indexnew.html?type=2" >获奖作品</a>
                               |<a href="<%= path%>/index/indexnew.html?type=1"> 示范作品</a>
-                              |<a href="<%= path%>/index/theFirstChoose.html"> 全部</a>
+                              |<a href="<%= path%>/index/theFirstChoose.html"> 参赛作品</a>
                           </c:if>
                 </span>
                     <a href="<%= path%>/user/upload.html">我要上传</a></h2>
 
                 </div>
                 <div>${message}</div>
-                <c:forEach items="${page.datas}" var="item">
-                    <div class="w_240 mar_r_30 left pos_r">
-                        <p align="center">
-                            <c:if test="${type eq 1}">
-                                <a href="<%= path%>/index/show?id=${item.id}"><img src="<%= path%>/resources/indexPic/${item.newName}"  width="215" height="170" /></a>
-                            </c:if>
-                            <c:if test="${type eq 2}">
-                                <a href="<%= path%>/index/show?id=${item.id}"><img src="<%= path%>/resources/upload/${item.newName}" width="215" height="170" /></a>
-                            </c:if>
-                        </p>
-                        <ul>
-                            <li>${item.imageName}</li>
-                           <li>${item.name}</li>
-                            <li>票数：
-                                <span id="praise-txt-${item.id}" style="color: red">${item.prizeNum}</span>
-                            </li>
-                            <span id="add-num-${item.id}" class="add-num" ><em>+1</em></span>
-                        </ul>
-                        <div class="like pos_a">
-                            <p>
-                                <img id="${item.id}" src="<%= path%>/images/like.png"  style="width: auto;  height: auto; max-width: 100%;  max-height: 100%; " onclick="addPrize(this)"/>
+                <div style="margin-left: 13%">
+                    <c:forEach items="${page.datas}" var="item">
+                        <div class="w_240 mar_r_30 left pos_r">
+                            <p align="center">
+                                <c:if test="${type eq 1}">
+                                    <a href="<%= path%>/index/show?id=${item.id}"><img src="<%= path%>/resources/indexPic/${item.newName}"  width="215" height="170" /></a>
+                                </c:if>
+                                <c:if test="${type eq 2}">
+                                    <a href="<%= path%>/index/show?id=${item.id}"><img src="<%= path%>/resources/upload/${item.newName}" width="215" height="170" /></a>
+                                </c:if>
                             </p>
+                            <ul>
+                                <li>${item.imageName}</li>
+                               <li>${item.name}</li>
+                               <%-- <li>票数：
+                                    <span id="praise-txt-${item.id}" style="color: red">${item.prizeNum}</span>
+                                </li>--%>
+                                <span id="add-num-${item.id}" class="add-num" ><em>+1</em></span>
+                            </ul>
+                            <%--<div class="like pos_a">
+                                <p>
+                                    <img id="${item.id}" src="<%= path%>/images/like.png"  style="width: auto;  height: auto; max-width: 100%;  max-height: 100%; " onclick="addPrize(this)"/>
+                                </p>
 
+                            </div>--%>
+                        </div>
+
+                    </c:forEach>
+                    <div>
+                        <ul class="pagination" id="page2">
+                        </ul>
+                        <div class="pageJump">
+                            <span>跳转到</span>
+                            <input type="text"/>
+                            <span>页</span>
+                            <button type="button" class="button">确定</button>
                         </div>
                     </div>
-
-                </c:forEach>
+                </div>
                 <div class="no_way"></div>
                 <!--分页-->
-                <div>
-                    <ul class="pagination" id="page2">
-                    </ul>
-                    <div class="pageJump">
-                        <span>跳转到</span>
-                        <input type="text"/>
-                        <span>页</span>
-                        <button type="button" class="button">确定</button>
-                    </div>
-                </div>
+
                 <!--分页结束-->
                 <script>
                     var total = ${page.total};
@@ -116,25 +119,25 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     });
                 </script>
             </div>
-            <div class="right w_280">
-    <div class="title"><h3>人气榜</h3></div>
-    <table width="278" border="0" cellspacing="0" cellpadding="0" align="center" class="border mar_t_30 line_24 font_14">
-  <tr>
-    <td width="38" height="30" align="center" valign="middle" bgcolor="#64b3ee" class="white">排名</td>
-    <td width="122" align="" valign="middle" bgcolor="#64b3ee" class="white">作品名称</td>
-    <td width="75" align="" valign="middle" bgcolor="#64b3ee" class="white">作者</td>
-    <td width="41" align="" valign="middle" bgcolor="#64b3ee" class="white">票数</td>
-  </tr>
-<c:forEach items="${page.datas}" var="item" varStatus="status">
-    <tr>
-        <td height="34" align="center" valign="middle" bgcolor="#F4F4F4"><em>${status.index+1}</em></td>
-        <td align="" valign="middle" bgcolor="#F4F4F4"><a href="">${item.imageName}</a></td>
-        <td align="" valign="middle" bgcolor="#F4F4F4">${item.name}</td>
-        <td align="" valign="middle" bgcolor="#F4F4F4"><i>${item.prizeNum}</i></td>
-    </tr>
-</c:forEach>
-    </table>
-</div>
+             <%--<div class="right w_280">
+                <div class="title"><h3>人气榜</h3></div>
+                <table width="278" border="0" cellspacing="0" cellpadding="0" align="center" class="border mar_t_30 line_24 font_14">
+              <tr>
+                <td width="38" height="30" align="center" valign="middle" bgcolor="#64b3ee" class="white">排名</td>
+                <td width="122" align="" valign="middle" bgcolor="#64b3ee" class="white">作品名称</td>
+                <td width="75" align="" valign="middle" bgcolor="#64b3ee" class="white">作者</td>
+                <td width="41" align="" valign="middle" bgcolor="#64b3ee" class="white">票数</td>
+              </tr>
+            <c:forEach items="${page.datas}" var="item" varStatus="status">
+                <tr>
+                    <td height="34" align="center" valign="middle" bgcolor="#F4F4F4"><em>${status.index+1}</em></td>
+                    <td align="" valign="middle" bgcolor="#F4F4F4"><a href="">${item.imageName}</a></td>
+                    <td align="" valign="middle" bgcolor="#F4F4F4">${item.name}</td>
+                    <td align="" valign="middle" bgcolor="#F4F4F4"><i>${item.prizeNum}</i></td>
+                </tr>
+            </c:forEach>
+                </table>
+            </div>--%>
         </div>
         </div>
         <div class="no_way"></div>
@@ -177,8 +180,5 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
             })
         }
-
-        $(function(){
-        })
     </script>
 </html>
