@@ -11,7 +11,7 @@ public class UserPicScorePrizeDto {
     String intro;
     String newName;
     int prizeNum;
-    int score;
+    double score;
     String name;
     String username;
     String msisdn;

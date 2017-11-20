@@ -302,9 +302,13 @@ public class AdminController
 				}else{
 					flag=false;
 				}
-				if(j<userList.size()-1){
+				if(0==j%userList.size()){
+					j=0;
 					continue;
 				}
+				/*if(j<userList.size()-1){
+					continue;
+				}*/
 
 			}
 

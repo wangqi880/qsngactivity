@@ -184,9 +184,7 @@ public class ChooseLogServiceImpl implements ChooseLogService
 
 	public Pager<ChooseUserPicDto> queryPagerDetailByPeriodAndIsChoose(String userId,String chooseIs, String period,Integer pageOffsetIndex) {
 		Map map = new HashMap();
-		/*Integer pageSize = SystemContext.getPageSize();*/
-
-		Integer pageSize=2;
+		Integer pageSize = SystemContext.getPageSize();
 		Integer pageOffset = SystemContext.getPageOffset();
 		if(0==pageOffset){
 			pageOffset=1;

@@ -22,8 +22,8 @@
 <div id="box"></div>
 <div class="cent-box register-box">
 	<div class="cent-box-header">
-		<h1 class="main-title hide">摄影</h1>
-		<h2 class="sub-title">生活热爱分享 - 少年宫</h2>
+		<h1 class="main-title hide">成都市青少年宫</h1>
+		<h2 class="sub-title">迎春摄影图片展</h2>
 	</div>
 
 	<div class="cont-main clearfix">
