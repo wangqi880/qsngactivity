@@ -74,10 +74,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         <ul>
 
                             <c:if test="${item.userId == loginUser.id}">
-                                <li style="color: red">${item.imageName}</li>
+                                <li style="color: red">${item.imageName}<span style="margin-left: 45px">编号:${item.prodId}</span></li>
                             </c:if>
                             <c:if test="${item.userId != loginUser.id}">
-                                <li>${item.imageName}</li>
+                                <li>${item.imageName}<span style="margin-left: 45px">编号:${item.prodId}</span></li>
                             </c:if>
                             <c:if test="${item.userId == loginUser.id}">
                                 <li  style="color: red">${item.name}</li>

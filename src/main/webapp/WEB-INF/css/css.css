@@ -286,3 +286,6 @@ h1,h2,h3,h4{margin:0 auto; padding:0;}
     border-color: #2fa2f7;
     text-decoration: none;
 }
+.pic_info{background-color: #cfe7f1;border-radius: 40px;width: 800px;margin-top: 50px;text-align: left}
+.pic_info_text_pre{margin-left: 20px;margin-right: 20px;}
+.pic_info_text{margin: 20px 20px 20px 20px; color: #71c4f3;font-size: 20px}

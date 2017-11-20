@@ -11,7 +11,7 @@
     </resultMap>
 
 <insert id="add" parameterType="com.j.qsng.model.UserPic">
-    INSERT INTO `t_user_pic` (id,`userId`, `attachmentId`,imageName,intro) VALUES (#{id},#{userId}, #{attachmentId},#{imageName},#{intro});
+    INSERT INTO `t_user_pic` (`userId`, `attachmentId`,imageName,intro) VALUES (#{userId}, #{attachmentId},#{imageName},#{intro});
 </insert>
 
     <select id="queryByUserId"  parameterType="string" resultMap="userPic" >
