@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -75,7 +76,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                 </c:if>
                             </p>
                             <ul>
-                                <li>${item.imageName}</li>
+                                <li>${fn:substring(item.imageName, 0, 10)}</li>
+                                <c:if test="${item.imageName.length()>10}">...</c:if>
+                                </li>
                                <li>${item.name}</li>
                                 <%--<li>票数：
                                     <span id="praise-txt-${item.id}" style="color: red">${item.prizeNum}</span>

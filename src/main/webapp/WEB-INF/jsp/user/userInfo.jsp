@@ -41,7 +41,10 @@
 <div class="bg_gary ">
     <div class="main mar_t_20" >
         <div class="w_780 left">
-            <div class="title"><h2>用户信息</h2></div>
+            <div class="title">
+                <h2>用户信息</h2>
+
+            </div>
             <div id="Tabs_01" >
                 <div class='box font_14'>
                     <div class='content' >
@@ -100,8 +103,19 @@
 
                             </table>
                             <div class="dashed"></div>
+                            <div >
+                                <span style="color: red">
+                                    ${stage_message}
+                                    <c:if test="${dataList.size()>0}">
+                                        <c:forEach items="${dataList}" var="item">
+                                            ,《${item.imageName}》编号:${item.id}
+                                        </c:forEach>
+                                    </c:if>
+                                </span></div>
+                            <div class="dashed"></div>
                             <div class="container">
                                 <c:forEach items="${userPicShowList}" var="userPicShowDto">
+
                                     <div class="single-member effect-2">
                                         <div class="member-image">
                                             <img src="<%= path%>/resources/upload/${userPicShowDto.attachment.newName}">

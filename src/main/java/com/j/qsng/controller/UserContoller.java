@@ -7,17 +7,14 @@ import com.j.qsng.common.util.DateUtils;
 import com.j.qsng.common.util.IDUtils;
 import com.j.qsng.common.util.IdcardUtils;
 import com.j.qsng.common.util.PictureUtils;
+import com.j.qsng.dto.ChooseUserPicDto;
 import com.j.qsng.dto.IdCardDto;
 import com.j.qsng.dto.UserPicDto;
 import com.j.qsng.dto.UserPicShowDto;
 import com.j.qsng.model.Attachment;
 import com.j.qsng.model.User;
 import com.j.qsng.model.UserPic;
-import com.j.qsng.service.AdminUserPicService;
-import com.j.qsng.service.AttachmentService;
-import com.j.qsng.service.ConfigService;
-import com.j.qsng.service.UserPicService;
-import com.j.qsng.service.UserService;
+import com.j.qsng.service.*;
 import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -69,6 +66,8 @@ public class UserContoller
 	@Autowired AdminUserPicService adminUserPicService;
 	@Autowired ConfigService       configService;
 
+	@Autowired
+	ChooseLogService chooseLogService;
 	//进入活动上传也，需要登录之后
 	@RequestMapping("/user/joinActivity.html")
 	public ModelAndView getJoinActivity(HttpServletRequest request){
@@ -297,6 +296,21 @@ public class UserContoller
 		modelAndView.addObject("userPicShowList",list);
 		if("1".equals(messageType)){
 			modelAndView.addObject("message","请填写正确的身份证");
+		}
+		//查看该用户在那个阶段
+		List<ChooseUserPicDto>  userDataList= chooseLogService.queryUserIdAndPeriod(userId,ChooseUtils.FIRST_PERIOD,ChooseUtils.NO_CHOOSE);
+		List<ChooseUserPicDto>  first= chooseLogService.queryUserIdAndPeriod(userId,ChooseUtils.FIRST_PERIOD,ChooseUtils.YES_CHOOSE);
+		List<ChooseUserPicDto>  second= chooseLogService.queryUserIdAndPeriod(userId,ChooseUtils.SECOND_PERIOD,ChooseUtils.YES_CHOOSE);
+		if(!CollectionUtils.isEmpty(second)){
+			modelAndView.addObject("dataList",second);
+			modelAndView.addObject("stage_message","恭喜您进入复赛");
+			modelAndView.addObject("dataList",second);
+		}else if(!CollectionUtils.isEmpty(first)){
+			modelAndView.addObject("dataList",first);
+			modelAndView.addObject("stage_message","恭喜您进入初赛，可在首页参赛作品中进行点赞");
+			modelAndView.addObject("dataList",first);
+		}else if(!CollectionUtils.isEmpty(userDataList)){
+			modelAndView.addObject("stage_message","对不起您未进入初赛");
 		}
 
 		return modelAndView;

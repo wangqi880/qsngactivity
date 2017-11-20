@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -74,10 +75,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         <ul>
 
                             <c:if test="${item.userId == loginUser.id}">
-                                <li style="color: red">${item.imageName}<span style="margin-left: 45px">编号:${item.prodId}</span></li>
+                                <li  style="color: red">${fn:substring(item.imageName, 0, 10)}
+                                    <c:if test="${item.imageName.length()>10}">...
+                                    </c:if>
+                                    <span style="margin-left: 10px">编号:${item.prodId}</span>
+                                </li>
                             </c:if>
                             <c:if test="${item.userId != loginUser.id}">
-                                <li>${item.imageName}<span style="margin-left: 45px">编号:${item.prodId}</span></li>
+                                <li>
+                                        ${fn:substring(item.imageName, 0, 10)}
+                                            <c:if test="${item.imageName.length()>10}">...
+                                            </c:if>
+                                    <span style="margin-left: 10px">编号:${item.prodId}</span>
+                                </li>
                             </c:if>
                             <c:if test="${item.userId == loginUser.id}">
                                 <li  style="color: red">${item.name}</li>
@@ -85,6 +95,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             <c:if test="${item.userId != loginUser.id}">
                                 <li>${item.name}</li>
                             </c:if>
+                            <li></li>
                             <li>票数：
                                 <span id="praise-txt-${item.prodId}" style="color: red">${item.prizeNum}</span>
                             </li>
