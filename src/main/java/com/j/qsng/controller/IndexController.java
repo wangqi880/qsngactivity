@@ -260,4 +260,11 @@ public class IndexController
 			pager.getDatas().add(i,userList.get(i));
 		}
 	}
+	//进入奖励界面
+	@RequestMapping("/rewardList")
+	public ModelAndView reward_list(String type){
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.setViewName("index/rewardList");
+		return modelAndView;
+	}
 }
