@@ -204,7 +204,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                     layer.msg(result.info);
                     return;
                 }
-
+                <!--不能点赞-->
+                if(result.code=="000003"){
+                    layer.msg(result.info);
+                    return;
+                }
             })
         }
 

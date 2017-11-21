@@ -191,6 +191,13 @@ public class IndexController
 			return resp;
 		}
 		String userId = String.valueOf(u.getId());
+
+		int LIMITNUM= Integer.parseInt(configService.getConfigvalue("day_prize_num"));
+		if(0==LIMITNUM){
+			resp.setCode("000003");
+			resp.setInfo("点赞已经结束，谢谢参与");
+			return  resp;
+		}
 		boolean isPrize=userPrizeService.isPrizeAdd(userId,id,nowDate);
 		//允许点赞
 		if(isPrize){
@@ -262,6 +269,10 @@ public class IndexController
 	public ModelAndView reward_list(String type){
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("index/rewardList");
+		String is_allowd_prize_show =configService.getConfigvalue(ChooseUtils.IS_ALLOWD_PRIZE_SHOW);
+		if(!("1".equals(is_allowd_prize_show))){
+			return modelAndView;
+		}
 		if(StringUtils.isEmpty(type)){
 			type="1";
 		}

@@ -16,19 +16,7 @@ public class UserPrizeServiceImpl implements UserPrizeService
 	@Autowired
 	ConfigService     configService ;
 	@SuppressWarnings ("SpringJavaAutowiringInspection") @Autowired UserIsPrizeMapper userIsPrizeMapper;
-	private int LIMITNUM =1;
 
-
-	//初始化
-	@PostConstruct
-	public void init(){
-		try{
-		LIMITNUM= Integer.parseInt(configService.getConfigvalue("day_prize_num"));
-		}catch (Exception e){
-			System.out.println(e);
-		}
-
-	}
 
 	public boolean isPrizeAdd(String userId, String adminUserPicId, String dayDate)
 	{
@@ -39,6 +27,8 @@ public class UserPrizeServiceImpl implements UserPrizeService
 		up.setAdminUserPicId(adminUserPicId);
 		up.setDayDate(dayDate);
 		int num = userIsPrizeMapper.prizeAddIs(up);
+		int LIMITNUM= Integer.parseInt(configService.getConfigvalue("day_prize_num"));
+
 		if(num>=LIMITNUM) return false;
 		else return true;
 	}

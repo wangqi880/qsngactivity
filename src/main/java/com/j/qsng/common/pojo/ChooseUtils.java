@@ -54,4 +54,8 @@ public class ChooseUtils
 
 	//是否允许线网用户查看第一次筛选
 	public  static  final  String IS_ALLOWD_FIRST_SHOW= "is_allowd_first_show";
+	//是否允许展示领奖信息
+	public  static  final  String IS_ALLOWD_PRIZE_SHOW= "is_allowd_prize_show";
+
+
 }
