@@ -70,4 +70,6 @@ public interface ChooseLogService
 
 	//获取该期和是否选中的数量
 	public int queryNumByPeriodAndCheckedAndUserid(String userId,String period,String chooseIs);
+	//查询奖励用户
+	List<ChooseUserPicDto> queryPrizeInfo(String period,int offset,int size);
 }

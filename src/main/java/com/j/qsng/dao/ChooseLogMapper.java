@@ -72,4 +72,7 @@ public interface ChooseLogMapper
 
 	//根据前段用户的id和期数,是否已选中，来查询该用户已经是否被选的详情
 	List<ChooseUserPicDto> queryUserIdAndPeriod(Map map);
+
+	//查询奖励用户
+	List<ChooseUserPicDto> queryPrizeInfo(Map map);
 }

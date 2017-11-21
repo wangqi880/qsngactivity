@@ -25,6 +25,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <!--弹出层-->
         <script src="<%= path%>/resources/layer/layer.js"></script>
 
+        <link rel="stylesheet" href="<%= path%>/resources/layui/css/layui.css?t=1510786361436"  media="all">
+        <script src="<%= path%>/resources/layui/layui.js?t=1510786361436" charset="utf-8"></script>
+
     </head>
     <body>
     <!--banner+导航-->
@@ -32,7 +35,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <div class="nav_i">
         <div class="main juzhong">
             <ul>
-                <li class="bg_ii">首 页</li>
+                <li><a href="<%= path%>/index/indexnew.html" >首 页</a></li>
                 <li><a href="<%= path%>/index/act_info.html" >活动介绍</a></li>
                 <li><a href="<%= path%>/index/act_rule.html" >参赛规则</a></li>
                 <li><a href="<%= path%>/index/prize_info.html">奖项设置</a></li>
@@ -44,20 +47,61 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 <div class="top_b">
         <div class="main mar_t_20">
-            <div class="w_780 left" style="width: 800px">
-                <div class="title"><h2>
-                    <span>
-                              <a href="<%= path%>/index/indexnew.html?type=2" >获奖作品</a>
-                              |<a href="<%= path%>/index/indexnew.html?type=1"> 示范作品</a>
-                              |<a href="<%= path%>/index/theFirstChoose.html" >参赛作品</a>
-
-                </span>
-                    <a href="<%= path%>/user/upload.html">我要上传</a></h2>
-
+            <div class="w_780 left">
+                <div class="title" style="text-align: center">
+                    <div>
+                        <button value="1" class="layui-btn layui-btn-normal" onclick="getRewardList(this)">一等奖</button>
+                        <button value="2" class="layui-btn layui-btn-normal" onclick="getRewardList(this)">二等奖</button>
+                        <button value="3" class="layui-btn layui-btn-normal" onclick="getRewardList(this)">三等奖</button>
+                        <button value="4" class="layui-btn layui-btn-normal" onclick="getRewardList(this)">佳作奖</button>
+                        <button value="5" class="layui-btn layui-btn-normal" onclick="getRewardList(this)">最受欢迎奖</button>
+                    </div>
                 </div>
                 <div>${message}</div>
                 <div style="margin-left: 5%">
-                    <c:forEach items="${page.datas}" var="item">
+                    <div class="layui-form">
+                        <table class="layui-table">
+                            <colgroup>
+                                <col width="150">
+                                <col width="150">
+                                <col width="200">
+                                <col>
+                            </colgroup>
+                            <thead>
+                            <tr>
+                                <th>账户</th>
+                                <th>姓名</th>
+                                <th>电话号码</th>
+                                <th>作品名</th>
+                                <c:if test="${type == '5'}">
+                                    <th>点赞</th>
+                                </c:if>
+                                <c:if test="${type != '5'}">
+                                    <th>得分</th>
+                                </c:if>
+                            </tr>
+                            </thead>
+                            <tbody>
+
+                                <c:forEach items="${data}" var="item">
+                                <tr>
+                                    <td>${item.username}</td>
+                                    <td>${item.name}</td>
+                                    <td>${item.msisdn}</td>
+                                    <td>${item.imageName}</td>
+                                    <c:if test="${type == '5'}">
+                                        <td>${item.prizeNum}</td>
+                                    </c:if>
+                                    <c:if test="${type != '5'}">
+                                        <td>${item.score}</td>
+                                    </c:if>
+                                </tr>
+                                </c:forEach>
+
+                            </tbody>
+                        </table>
+                    </div>
+                    <%--<c:forEach items="${page.datas}" var="item">
                         <div class="w_240 mar_r_30 left pos_r">
                             <p align="center">
                                 <c:if test="${type eq 1}">
@@ -72,22 +116,22 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                 <c:if test="${item.imageName.length()>10}">...</c:if>
                                 </li>
                                <li>${item.name}</li>
-                                <%--<li>票数：
+                                &lt;%&ndash;<li>票数：
                                     <span id="praise-txt-${item.id}" style="color: red">${item.prizeNum}</span>
                                 </li>
-                                <span id="add-num-${item.id}" class="add-num" ><em>+1</em></span>--%>
+                                <span id="add-num-${item.id}" class="add-num" ><em>+1</em></span>&ndash;%&gt;
                             </ul>
-                          <%--  <div class="like pos_a">
+                          &lt;%&ndash;  <div class="like pos_a">
                                 <p>
                                     <img id="${item.id}" src="<%= path%>/images/like.png" style="width: auto;  height: auto; max-width: 100%;  max-height: 100%; " onclick="addPrize(this)"/>
                                 </p>
 
-                            </div>--%>
+                            </div>&ndash;%&gt;
                         </div>
 
-                    </c:forEach>
+                    </c:forEach>--%>
                     <!--分页-->
-                    <div>
+                   <%-- <div>
                         <ul class="pagination" id="page2">
                         </ul>
                         <div class="pageJump">
@@ -96,12 +140,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             <span>页</span>
                             <button type="button" class="button">确定</button>
                         </div>
-                    </div>
+                    </div>--%>
                 </div>
                 <div class="no_way"></div>
 
                 <!--分页结束-->
-                <script>
+               <%-- <script>
                     var total = ${page.total};
                     var pageSize=${page.size};
                     var totalPage = Math.ceil(total/pageSize);
@@ -115,69 +159,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
                         }
                     });
-                </script>
+                </script>--%>
             </div>
-                            <%--<div class="right w_280">
-                    <div class="title"><h3>人气榜</h3></div>
-                    <table width="278" border="0" cellspacing="0" cellpadding="0" align="center" class="border mar_t_30 line_24 font_14">
-                  <tr>
-                    <td width="38" height="30" align="center" valign="middle" bgcolor="#64b3ee" class="white">排名</td>
-                    <td width="122" align="" valign="middle" bgcolor="#64b3ee" class="white">作品名称</td>
-                    <td width="75" align="" valign="middle" bgcolor="#64b3ee" class="white">作者</td>
-                    <td width="41" align="" valign="middle" bgcolor="#64b3ee" class="white">票数</td>
-                  </tr>
-                <c:forEach items="${page.datas}" var="item" varStatus="status">
-                    <tr>
-                        <td height="34" align="center" valign="middle" bgcolor="#F4F4F4"><em>${status.index+1}</em></td>
-                        <td align="" valign="middle" bgcolor="#F4F4F4"><a href="">${item.imageName}</a></td>
-                        <td align="" valign="middle" bgcolor="#F4F4F4">${item.name}</td>
-                        <td align="" valign="middle" bgcolor="#F4F4F4"><i>${item.prizeNum}</i></td>
-                    </tr>
-                </c:forEach>
-                    </table>
-                </div>--%>
+
         </div>
         </div>
         <div class="no_way"></div>
         <!--footer-->
     <%@include file="/WEB-INF/jsp/common/footer.jsp" %>
-
     </body>
     <script>
-
-        function addPrize(which){
-            var id = $(which).attr("id");
-            $.get("<%= path%>/index/user_add_prize",{"id":id},function (result) {
-                <!--可以操作,操作成功-->
-                if(result.code=="000000"){
-                    var text_box = $("#add-num-"+id);
-                    var praise_txt = $("#praise-txt-"+id);
-                    var num=parseInt(praise_txt.text());
-
-                    praise_txt.addClass("hover");
-                    text_box.show().html("<em class='add-animation'>+1</em>");
-                    $(".add-animation").addClass("hover");
-                    num +=1;
-                    praise_txt.text(num)
-                    return;
-                }
-                <!--未登录-->
-                if(result.code=="000001"){
-                    layer.confirm(result.info+",进入登录页面", function () {
-                        window.location.href="<%=path %>/login/login.html";
-                    }, function () {
-                    });
-                    return;
-                }
-                <!--今天已经操作-->
-                if(result.code=="000002"){
-                    layer.msg(result.info);
-                    return;
-                }
-
-            })
+        function getRewardList(that) {
+            window.location.href="<%= path%>/index/rewardList?type="+that.value;
         }
-
         $(function(){
         })
     </script>

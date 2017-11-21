@@ -1,10 +1,7 @@
 package com.j.qsng.controller;
 
 import com.github.pagehelper.Page;
-import com.j.qsng.common.pojo.BaseResp;
-import com.j.qsng.common.pojo.ChooseUtils;
-import com.j.qsng.common.pojo.Pager;
-import com.j.qsng.common.pojo.SystemContext;
+import com.j.qsng.common.pojo.*;
 import com.j.qsng.common.util.DateUtils;
 import com.j.qsng.common.util.IDUtils;
 import com.j.qsng.common.util.IdcardUtils;
@@ -265,6 +262,38 @@ public class IndexController
 	public ModelAndView reward_list(String type){
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("index/rewardList");
+		if(StringUtils.isEmpty(type)){
+			type="1";
+		}
+		int offset=0;
+		int size=0;
+		if(RewardType.FIRTST_PRIZE.equals(type)){
+			 offset=0;
+			 size=5;
+			List<ChooseUserPicDto>  dataList= chooseLogService.queryPrizeInfo(ChooseUtils.SECOND_PERIOD,offset,size);
+			modelAndView.addObject("data",dataList);
+		}else if(RewardType.SECONDE_PRIZE.equals(type)){
+			offset=6;
+			size=15;
+			List<ChooseUserPicDto>  dataList= chooseLogService.queryPrizeInfo(ChooseUtils.SECOND_PERIOD,offset,size);
+			modelAndView.addObject("data",dataList);
+		}else if(RewardType.THIRD_PRIZE.equals(type)){
+			offset=16;
+			size=45;
+			List<ChooseUserPicDto>  dataList= chooseLogService.queryPrizeInfo(ChooseUtils.SECOND_PERIOD,offset,size);
+			modelAndView.addObject("data",dataList);
+		}else if(RewardType.EXCELLENT_PRIZE.equals(type)){
+			offset=46;
+			size=95;
+			List<ChooseUserPicDto>  dataList= chooseLogService.queryPrizeInfo(ChooseUtils.SECOND_PERIOD,offset,size);
+			modelAndView.addObject("data",dataList);
+		}else if(RewardType.POPULAR_PRIZE.equals(type)){
+			offset=0;
+			size=5;
+			List<ChooseUserPicDto>  dataList= chooseLogService.queryPrizeInfo(ChooseUtils.FIRST_PERIOD,offset,size);
+			modelAndView.addObject("data",dataList);
+		}
+		modelAndView.addObject("type",type);
 		return modelAndView;
 	}
 }

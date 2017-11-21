@@ -223,5 +223,13 @@ public class ChooseLogServiceImpl implements ChooseLogService
 		return chooseLogMapper.queryNumByPeriodAndCheckedAndUserid(map);
 	}
 
+	public List<ChooseUserPicDto> queryPrizeInfo(String period,int offset, int size) {
+		Map map = new HashMap();
+		map.put("period",period);
+		map.put("offset",offset);
+		map.put("size",size);
+		return chooseLogMapper.queryPrizeInfo(map);
+	}
+
 
 }
