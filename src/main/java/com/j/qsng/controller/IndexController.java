@@ -223,7 +223,7 @@ public class IndexController
 		if("1".equals(isAllow)){
 			User user = (User) session.getAttribute("loginUser");
 			//如果来登录跳转过来，那么使用用户自己的作品替换
-			if(null!=user){
+			if(null!=user && "login".equals(from)){
 				//这里查询是要排除用户id的记录
 				/*Pager<ChooseUserPicDto> pager= chooseLogService.queryPagerDetailByPeriodAndIsChoose(null,ChooseUtils.YES_CHOOSE,ChooseUtils.FIRST_PERIOD,null);
 				List<ChooseUserPicDto> userList = chooseLogService.queryUserIdAndPeriod(String.valueOf(user.getId()),ChooseUtils.FIRST_PERIOD,ChooseUtils.YES_CHOOSE);
@@ -237,6 +237,7 @@ public class IndexController
 				}*/
 
 				//定位，在确定页数，再查数据
+
 				String userId= String.valueOf(user.getId());
 				//先查询所有数据不分页
 				List<ChooseUserPicDto>  allcup =	chooseLogService.queryALLDetailByPeriodAndIsChoose(ChooseUtils.FIRST_PERIOD,ChooseUtils.YES_CHOOSE);
