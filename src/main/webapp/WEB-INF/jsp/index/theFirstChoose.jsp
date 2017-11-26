@@ -84,8 +84,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             <c:if test="${item.userId != loginUser.id}">
                                 <li>
                                         ${fn:substring(item.imageName, 0, 10)}
-                                            <c:if test="${item.imageName.length()>10}">...
-                                            </c:if>
+                                            <c:if test="${item.imageName.length()>10}">...</c:if>
                                     <span style="margin-left: 10px">编号:${item.prodId}</span>
                                 </li>
                             </c:if>

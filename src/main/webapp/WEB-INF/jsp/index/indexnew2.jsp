@@ -44,7 +44,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 <div class="top_b">
         <div class="main mar_t_20">
-            <div class="w_780 left" style="width: 800px">
+            <div class="w_780 left">
                 <div class="title"><h2>
                     <span>
                     <c:if test="${isAllow !='1'}">
@@ -64,7 +64,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
                 </div>
                 <div>${message}</div>
-                <div style="margin-left: 5%">
+                <div style="margin-left: 13%">
                     <c:forEach items="${page.datas}" var="item">
                         <div class="w_240 mar_r_30 left pos_r">
                             <p align="center">
@@ -72,12 +72,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                     <a href="<%= path%>/index/show2?id=${item.id}"><img src="<%= path%>/resources/indexPic/${item.newName}" width="215" height="170" /></a>
                                 </c:if>
                                 <c:if test="${type eq 2}">
-                                    <a href="<%= path%>/index/show2?id=${item.id}"><img src="<%= path%>/resources/upload/thumbnail/${item.newName}" width="215" height="170" /></a>
+                                    <a href="<%= path%>/index/show2?id=${item.id}"><img src="<%= path%>/resources/upload/${item.newName}" width="215" height="170" /></a>
                                 </c:if>
                             </p>
                             <ul>
-                                <li>${fn:substring(item.imageName, 0, 10)}</li>
-                                <c:if test="${item.imageName.length()>10}">...</c:if>
+                                <li>${fn:substring(item.imageName, 0, 10)}<c:if test="${item.imageName.length()>10}">...</c:if></li>
+
                                 </li>
                                <li>${item.name}</li>
                                 <%--<li>票数：
