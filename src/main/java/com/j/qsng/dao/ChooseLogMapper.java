@@ -75,4 +75,7 @@ public interface ChooseLogMapper
 
 	//查询奖励用户
 	List<ChooseUserPicDto> queryPrizeInfo(Map map);
+
+	//为了定位查询所有详情信息
+	List<ChooseUserPicDto> queryALLDetailByPeriodAndIsChoose(Map map);
 }

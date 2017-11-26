@@ -223,10 +223,9 @@ public class IndexController
 		if("1".equals(isAllow)){
 			User user = (User) session.getAttribute("loginUser");
 			//如果来登录跳转过来，那么使用用户自己的作品替换
-			Integer pageOffset = SystemContext.getPageOffset();
 			if(null!=user){
 				//这里查询是要排除用户id的记录
-				Pager<ChooseUserPicDto> pager= chooseLogService.queryPagerDetailByPeriodAndIsChoose(String.valueOf(user.getId()),ChooseUtils.YES_CHOOSE,ChooseUtils.FIRST_PERIOD,null);
+				/*Pager<ChooseUserPicDto> pager= chooseLogService.queryPagerDetailByPeriodAndIsChoose(null,ChooseUtils.YES_CHOOSE,ChooseUtils.FIRST_PERIOD,null);
 				List<ChooseUserPicDto> userList = chooseLogService.queryUserIdAndPeriod(String.valueOf(user.getId()),ChooseUtils.FIRST_PERIOD,ChooseUtils.YES_CHOOSE);
 				if(0==pageOffset || 1==pageOffset){
 					replace(pager,userList);
@@ -235,18 +234,40 @@ public class IndexController
 					Pager<ChooseUserPicDto> pager1= chooseLogService.queryPagerDetailByPeriodAndIsChoose(null,ChooseUtils.YES_CHOOSE,ChooseUtils.FIRST_PERIOD,pageOffset-1);
 					modelAndView.addObject("page",pager1);
 					pager1.setOffset(pageOffset);
+				}*/
+
+				//定位，在确定页数，再查数据
+				String userId= String.valueOf(user.getId());
+				//先查询所有数据不分页
+				List<ChooseUserPicDto>  allcup =	chooseLogService.queryALLDetailByPeriodAndIsChoose(ChooseUtils.FIRST_PERIOD,ChooseUtils.YES_CHOOSE);
+				int i;
+				for(i=0;i<allcup.size();i++){
+					if(userId.equals(allcup.get(i).getUserId())){
+						break;
+					}
 				}
+				if(i<allcup.size()){
+					Integer pageSize = SystemContext.getPageSize();
+					Integer pageOffset = i/pageSize;
+					Pager<ChooseUserPicDto> pager= chooseLogService.queryPagerDetailByPeriodAndIsChoose(null,ChooseUtils.YES_CHOOSE,ChooseUtils.FIRST_PERIOD,pageOffset+1);
+					modelAndView.addObject("page",pager);
+				}else {
+					Pager<ChooseUserPicDto> pager= chooseLogService.queryPagerDetailByPeriodAndIsChoose(null,ChooseUtils.YES_CHOOSE,ChooseUtils.FIRST_PERIOD,null);
+					modelAndView.addObject("page",pager);
+				}
+
 			}else{
 				Pager<ChooseUserPicDto> pager= chooseLogService.queryPagerDetailByPeriodAndIsChoose(null,ChooseUtils.YES_CHOOSE,ChooseUtils.FIRST_PERIOD,null);
 				modelAndView.addObject("page",pager);
 
 			}
+			//人气榜
+			Pager<ChooseUserPicDto> renqibang= chooseLogService.queryPagerDetailByPeriodAndIsChoose(null,ChooseUtils.YES_CHOOSE,ChooseUtils.FIRST_PERIOD,1);
+			modelAndView.addObject("renqi",renqibang);
 		}else {
 			modelAndView.addObject("message","初赛还没结束，敬请期待！");
 		}
-		//人气榜
-		Pager<ChooseUserPicDto> renqibang= chooseLogService.queryPagerDetailByPeriodAndIsChoose(null,ChooseUtils.YES_CHOOSE,ChooseUtils.FIRST_PERIOD,1);
-		modelAndView.addObject("renqi",renqibang);
+
 		return modelAndView;
 	}
 

@@ -72,4 +72,7 @@ public interface ChooseLogService
 	public int queryNumByPeriodAndCheckedAndUserid(String userId,String period,String chooseIs);
 	//查询奖励用户
 	List<ChooseUserPicDto> queryPrizeInfo(String period,int offset,int size);
+
+	//为了定位查询所有详情信息
+	List<ChooseUserPicDto> queryALLDetailByPeriodAndIsChoose(String period, String chooseIs);
 }

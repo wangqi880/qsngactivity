@@ -108,7 +108,7 @@
                                     ${stage_message}
                                     <c:if test="${dataList.size()>0}">
                                         <c:forEach items="${dataList}" var="item">
-                                            ,《${item.imageName}》编号:${item.id}
+                                            ,《${item.imageName}》编号:${item.prodId}
                                         </c:forEach>
                                     </c:if>
                                 </span></div>

@@ -231,5 +231,12 @@ public class ChooseLogServiceImpl implements ChooseLogService
 		return chooseLogMapper.queryPrizeInfo(map);
 	}
 
+	//为了定位查询所有详情信息
+	public List<ChooseUserPicDto> queryALLDetailByPeriodAndIsChoose(String period, String chooseIs){
+		Map map = new HashMap();
+		map.put("period",period);
+		map.put("chooseIs",chooseIs);
+		return  chooseLogMapper.queryALLDetailByPeriodAndIsChoose(map);
+	}
 
 }

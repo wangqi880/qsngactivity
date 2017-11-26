@@ -131,6 +131,17 @@
                     processData: false,
                 }).success(function(data) {
                     if (data.code=='000000') {
+                        //这里是勾选
+						var val_unChooseNum= $("#val_unChooseNum").val();
+						var new_val_unChooseNum=parseInt(val_unChooseNum)-1
+
+                       var  val_chooseNum= $("#val_chooseNum").val();
+						var new_val_chooseNum=parseInt(val_chooseNum)+1;
+
+                        $("#div_unChooseNum").html("未选择数量:"+new_val_unChooseNum);
+                        $("#div_chooseNum").html("已经选择数量:"+new_val_chooseNum);
+                        $("#val_unChooseNum").val(new_val_unChooseNum);
+                        $("#val_chooseNum").val(new_val_chooseNum);
 
                     } else {
                         alert("选择失败:"+data.info);
@@ -150,7 +161,16 @@
                     processData: false,
                 }).success(function(data) {
                     if (data.code=='000000') {
+						//这里是取消勾选
+                        var val_unChooseNum= $("#val_unChooseNum").val();
+                      var new_val_unChooseNum=  parseInt(val_unChooseNum)+1
+                        var  val_chooseNum= $("#val_chooseNum").val();
+                      var new_val_chooseNum=parseInt(val_chooseNum)-1;
 
+                        $("#div_unChooseNum").html("未选择数量:"+new_val_unChooseNum);
+                        $("#div_chooseNum").html("已经选择数量:"+new_val_chooseNum);
+                        $("#val_unChooseNum").val(new_val_unChooseNum);
+                        $("#val_chooseNum").val(new_val_chooseNum);
                     } else {
                         alert("取消失败:"+data.info);
                         $('#'+id).attr('checked',true);

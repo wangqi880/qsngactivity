@@ -357,4 +357,36 @@
         </if>
          limit #{offset},#{size}
     </select>
+    <select id="queryALLDetailByPeriodAndIsChoose" parameterType="map" resultMap="chooseUserPicDto">
+        SELECT
+        m1.id,
+        m1.prodId,
+        m1.userId,
+        m1.attachmentId,
+        m1.chooseIs,
+        m1.imageName,
+        m1.intro,
+        m2.username,
+        m2.name,
+        m2.msisdn,
+        m2.sex,
+        m3.newName,
+        m1.score,
+        m4.prizeNum
+        FROM (SELECT
+        t1.id,
+        t2.userId,
+        t2.id as prodId,
+        t2.attachmentId,
+        t1.chooseIs,
+        t2.imageName,
+        t2.intro,
+        t1.score
+        FROM t_choose_log t1 LEFT JOIN t_user_pic t2 ON t1.prodId = t2.id
+        WHERE t1.chooseIs = #{chooseIs} AND t1.choosePeriod = #{period}) m1
+         JOIN t_user m2 ON m1.userId = m2.id
+        LEFT JOIN t_attachment m3 ON m1.attachmentId = m3.id
+        left join t_userpic_prize m4 on m1.prodId=m4.prodId
+        order by m4.prizeNum  desc
+    </select>
 </mapper>
