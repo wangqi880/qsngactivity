@@ -37,6 +37,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <li><a href="<%= path%>/index/act_rule.html" >参赛规则</a></li>
                 <li><a href="<%= path%>/index/prize_info.html" >奖项设置</a></li>
                 <li><a href="<%= path%>/user/upload.html">上传作品</a></li>
+                <li  class="bg_ii">获奖情况</li>
 <%--
                 <li><a href="<%= path%>/user/userInfo.html">修改信息</a></li>
 --%>

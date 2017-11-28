@@ -40,6 +40,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <li><a href="<%= path%>/index/act_rule.html" >参赛规则</a></li>
                 <li><a href="<%= path%>/index/prize_info.html">奖项设置</a></li>
                 <li><a href="<%= path%>/user/upload.html" >上传作品</a></li>
+                <li><a href="<%= path%>/index/rewardList" >获奖情况</a></li>
             </ul>
         </div>
 
@@ -61,12 +62,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <div style="margin-left: 5%">
                     <div class="layui-form">
                         <table class="layui-table">
-                            <colgroup>
-                                <col width="150">
-                                <col width="150">
-                                <col width="200">
-                                <col>
-                            </colgroup>
+                            <col width="100">
+                            <col width="100">
+                            <col width="100">
+                            <col width="100">
+                            <col width="50">
+                            <col>
                             <thead>
                             <tr>
                                 <th>账户</th>
@@ -79,6 +80,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                 <c:if test="${type != '5'}">
                                     <th>得分</th>
                                 </c:if>
+                                <th>作品</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -95,7 +97,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                     <c:if test="${type != '5'}">
                                         <td>${item.score}</td>
                                     </c:if>
-                                </tr>
+                                    <td><a href="<%= path%>/index/show2?id=${item.prodId}"><img src="<%= path%>/resources/upload/${item.newName}" /></a></td></tr>
                                 </c:forEach>
 
                             </tbody>

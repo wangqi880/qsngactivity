@@ -36,6 +36,7 @@
             <li><a href="<%= path%>/index/act_rule.html" tppabs="http://pic.eol.cn/picture/act_rule">参赛规则</a></li>
             <li><a href="<%= path%>/index/prize_info.html" tppabs="http://pic.eol.cn/picture/prize_info">奖项设置</a></li>
             <li><a href="<%= path%>/user/upload.html" tppabs="http://pic.eol.cn/picture/upload">上传作品</a></li>
+            <li><a href="<%= path%>/index/rewardList" >获奖情况</a></li>
 <%--
             <li><a href="<%= path%>/user/userInfo.html">修改信息</a></li>
 --%>
