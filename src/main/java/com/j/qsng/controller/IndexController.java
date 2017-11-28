@@ -9,6 +9,7 @@ import com.j.qsng.dto.AdminUserPicDto;
 import com.j.qsng.dto.ChooseUserPicDto;
 import com.j.qsng.dto.UserPicScorePrizeDto;
 import com.j.qsng.dto.UserPicShowDto;
+import com.j.qsng.model.ColumnContent;
 import com.j.qsng.model.User;
 import com.j.qsng.model.UserPicPrize;
 import com.j.qsng.model.UserPrize;
@@ -49,6 +50,9 @@ public class IndexController
 	UserPicPrizeService userPicPrizeService;
 	final static String ADMINTYPE="1";
 	final static String USERTYPE="2";
+
+	@Autowired
+	ColumnInfoContentService columnInfoContentService;
 
 	@RequestMapping("/test.html")
 	public String test(){
@@ -96,6 +100,11 @@ public class IndexController
 	public  ModelAndView actInfo(){
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("index/act_info");
+		List<ColumnContent> dataList = columnInfoContentService.getByType(ColumnUtils.ACT_INFO);
+		for(ColumnContent columnContent:dataList){
+			columnContent.setInfo(Text2Html(columnContent.getInfo()));
+		}
+		modelAndView.addObject("data",dataList);
 		return modelAndView;
 	}
 	//活动规则界面
@@ -103,6 +112,11 @@ public class IndexController
 	public ModelAndView act_rule(){
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("index/act_rule");
+		List<ColumnContent> dataList = columnInfoContentService.getByType(ColumnUtils.ACT_RULE);
+		for(ColumnContent columnContent:dataList){
+			columnContent.setInfo(Text2Html(columnContent.getInfo()));
+		}
+		modelAndView.addObject("data",dataList);
 		return modelAndView;
 	}
 
@@ -112,6 +126,11 @@ public class IndexController
 	public ModelAndView prize_info(){
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("index/prize_info");
+		List<ColumnContent> dataList = columnInfoContentService.getByType(ColumnUtils.PRIZE_INFO);
+		for(ColumnContent columnContent:dataList){
+			columnContent.setInfo(Text2Html(columnContent.getInfo()));
+		}
+		modelAndView.addObject("data",dataList);
 		return modelAndView;
 	}
 
@@ -328,5 +347,17 @@ public class IndexController
 		}
 		modelAndView.addObject("type",type);
 		return modelAndView;
+	}
+	public static String Text2Html(String str) {
+		if (str == null) {
+			return "";
+		} else if (str.length() == 0) {
+			return "";
+		}
+		str = str.replaceAll("\n", "<br />");
+/*
+		str = str.replaceAll("\r", "<br />");
+*/
+		return str;
 	}
 }

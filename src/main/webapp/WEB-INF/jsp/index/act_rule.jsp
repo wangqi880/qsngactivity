@@ -53,7 +53,7 @@
        <h2 class="mar_t_20" style="padding-left:30px;"><div  class="title_class"><span>参赛规则</span></div></h2>
       <div class="line_24 font_14 mar_f_20">
 
-          <p> 1、大赛面向所有摄影爱好者开放，年龄、国家不限，使用手机、相机拍摄均可。</p>
+          <%--<p> 1、大赛面向所有摄影爱好者开放，年龄、国家不限，使用手机、相机拍摄均可。</p>
 
           <p>  2、参展作品内容不限，须保证原创，使用手机和相机拍摄不限。可展现成都市青少年宫的发展历程、建设新貌，也可体现丰富多彩的培训课程和校外活动等。
           </p>
@@ -69,6 +69,13 @@
           <p>  8、成都市青少年宫有权对所有参展作品在成都市青少年宫网站和微信公众平台及线下大型摄影展览中长期展示，进行宣传推广（不收取作品所有人的任何费用）。
           </p>
           <p> 9、成都市青少年宫将邀请专业人士组成评委组对作品进行评分，根据评分结果选出优秀作品并颁奖。
+          </p>--%>
+          <p>
+              <c:forEach items="${data}" var="item">
+                  <c:if test="${item.position eq '1'}">
+                      ${item.info}
+                  </c:if>
+              </c:forEach>
           </p>
         </div>
       <table width="580" border="0" align="center" cellpadding="10" cellspacing="0">
