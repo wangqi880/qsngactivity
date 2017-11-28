@@ -90,6 +90,23 @@ $(function(){
 	</ul>
 </c:if>
 
+	<c:if test="${role eq 1 }">
+		<ul class="navMenu navSelected">
+			<h3 class="navTitle">
+				<span class="navTilteTxt">首页内容控制</span>
+			</h3>
+			<li class="navChild">
+				<a href="<%=request.getContextPath() %>/adminIndex/content?type=1" target="content">活动介绍</a>
+			</li>
+			<li class="navChild">
+				<a href="<%=request.getContextPath() %>/adminIndex/content?type=2" target="content">参赛规则</a>
+			</li>
+			<li class="navChild">
+				<a href="<%=request.getContextPath() %>/adminIndex/content?type=3" target="content">奖项设置</a>
+			</li>
+		</ul>
+	</c:if>
+
 <%--
 <c:if test="${isAdmin }">
 <ul class="navMenu navSelected">
