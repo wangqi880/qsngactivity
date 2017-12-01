@@ -50,7 +50,7 @@
 <div class="top_b">
 <div class="main mar_t_20" >
 	<div class="w_780 ">
-   	  <div class="title"><h2>《我爱少年宫》主题摄影大赛活动介绍</h2></div>
+   	  <div class="title"><h2>“童梦飞扬新时代”2018年迎春主题摄影公益活动</h2></div>
   	  <div class="jp_l">
   	  <div class="line_24 font_14 mar_f_20">
           <p>

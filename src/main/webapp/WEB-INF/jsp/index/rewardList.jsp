@@ -71,32 +71,29 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             <thead>
                             <tr>
                                 <th>账户</th>
-                                <th>姓名</th>
                                 <th>电话号码</th>
                                 <th>作品名</th>
                                 <c:if test="${type == '5'}">
                                     <th>点赞</th>
                                 </c:if>
-                                <c:if test="${type != '5'}">
+                                <%--<c:if test="${type != '5'}">
                                     <th>得分</th>
-                                </c:if>
+                                </c:if>--%>
                                 <th>作品</th>
                             </tr>
                             </thead>
                             <tbody>
-
                                 <c:forEach items="${data}" var="item">
                                 <tr>
                                     <td>${item.username}</td>
-                                    <td>${item.name}</td>
-                                    <td>${item.msisdn}</td>
+                                    <td>*****${fn:substring(item.msisdn, 7, 11)}</td>
                                     <td>${item.imageName}</td>
                                     <c:if test="${type == '5'}">
                                         <td>${item.prizeNum}</td>
                                     </c:if>
-                                    <c:if test="${type != '5'}">
+                                   <%-- <c:if test="${type != '5'}">
                                         <td>${item.score}</td>
-                                    </c:if>
+                                    </c:if>--%>
                                     <td><a href="<%= path%>/index/show2?id=${item.prodId}"><img src="<%= path%>/resources/upload/${item.newName}" /></a></td></tr>
                                 </c:forEach>
 

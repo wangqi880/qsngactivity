@@ -37,7 +37,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <li><a href="<%= path%>/index/act_rule.html" >参赛规则</a></li>
                 <li><a href="<%= path%>/index/prize_info.html" >奖项设置</a></li>
                 <li><a href="<%= path%>/user/upload.html">上传作品</a></li>
-                <li  class="bg_ii">获奖情况</li>
+                <li><a href="<%= path%>/index/rewardList" >获奖情况</a></li>
 <%--
                 <li><a href="<%= path%>/user/userInfo.html">修改信息</a></li>
 --%>
@@ -89,13 +89,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                     <span style="margin-left: 10px">编号:${item.prodId}</span>
                                 </li>
                             </c:if>
-                            <c:if test="${item.userId == loginUser.id}">
+                           <%-- <c:if test="${item.userId == loginUser.id}">
                                 <li  style="color: red">${item.name}</li>
                             </c:if>
                             <c:if test="${item.userId != loginUser.id}">
                                 <li>${item.name}</li>
-                            </c:if>
-                            <li></li>
+                            </c:if>--%>
+
                             <li>票数：
                                 <span id="praise-txt-${item.prodId}" style="color: red">${item.prizeNum}</span>
                             </li>
@@ -148,12 +148,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
     <div class="right w_280">
     <div class="title"><h3>人气榜</h3></div>
-            <table width="278" border="0" cellspacing="0" cellpadding="0" align="center" class="border mar_t_30 line_24 font_14">
+            <table width="320" border="0" cellspacing="0" cellpadding="0" align="center" class="border mar_t_30 line_24 font_14">
                 <tr>
-                    <td width="38" height="30" align="center" valign="middle" bgcolor="#64b3ee" class="white">排名</td>
+                    <td width="100" height="30" align="center" valign="middle" bgcolor="#64b3ee" class="white">排名</td>
                     <td width="122" align="" valign="middle" bgcolor="#64b3ee" class="white">作品名称</td>
                     <td width="75" align="" valign="middle" bgcolor="#64b3ee" class="white">作者</td>
-                    <td width="41" align="" valign="middle" bgcolor="#64b3ee" class="white">票数</td>
+                    <td width="100" align="" valign="middle" bgcolor="#64b3ee" class="white">票数</td>
+                    <td width="100" align="" valign="middle" bgcolor="#64b3ee" class="white">编号</td>
                 </tr>
                 <c:forEach items="${renqi.datas}" var="item" varStatus="status">
                     <tr>
@@ -161,6 +162,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         <td align="" valign="middle" bgcolor="#F4F4F4"><a href="">${item.imageName}</a></td>
                         <td align="" valign="middle" bgcolor="#F4F4F4">${item.name}</td>
                         <td align="" valign="middle" bgcolor="#F4F4F4"><i>${item.prizeNum}</i></td>
+                        <td align="" valign="middle" bgcolor="#F4F4F4">${item.prodId}</td>
                     </tr>
                 </c:forEach>
             </table>

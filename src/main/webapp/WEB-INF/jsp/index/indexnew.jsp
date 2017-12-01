@@ -77,7 +77,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                             <ul>
                                 <li> ${fn:substring(item.imageName, 0, 10)}<c:if test="${item.imageName.length()>10}">...</c:if></li>
 
-                               <li>${item.name}</li>
+                               <%--<li>${item.name}</li>--%>
+                                <li>宫宣</li>
                                <%-- <li>票数：
                                     <span id="praise-txt-${item.id}" style="color: red">${item.prizeNum}</span>
                                 </li>--%>

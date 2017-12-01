@@ -263,11 +263,11 @@
                     $("#second_image").show();
                     var v = $("#addImage").val();
                 } else {
-                    layer.msg("不允许添加"+data.info);
+                    layer.msg(data.info);
                 }
 
             }).error(function(data) {
-                layer.msg("不允许添加"+data.info);
+                layer.msg(data.info);
             });
 
 

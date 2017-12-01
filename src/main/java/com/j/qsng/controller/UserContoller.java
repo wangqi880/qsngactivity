@@ -56,7 +56,7 @@ public class UserContoller
 	//上传图片最小大小
 	private final static  int PICTURE_MIN=1000000;
 	//上传图片最大大小
-	private final static  int PICTURE_MAX=5000000;
+	private final static  int PICTURE_MAX=20000000;
 
 	@Autowired AttachmentService   attachmentService;
 
@@ -556,7 +556,7 @@ public class UserContoller
 		int num=userPicService.queryNumByUserId(userId);
 		if(1==num){
 			resp.setCode("000001");
-			resp.setInfo("已经上传1个作品，不允许在添加");
+			resp.setInfo("每人参赛作品不能超过2张");
 		}
 		return resp;
 	}
