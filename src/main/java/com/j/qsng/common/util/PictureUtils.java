@@ -8,6 +8,6 @@ public class PictureUtils {
     //上传图片最小大小
     public final static  int PICTURE_MIN=1000000;
     //上传图片最大大小
-    public final static  int PICTURE_MAX=5000000;
+    public final static  int PICTURE_MAX=20000000;
 
 }

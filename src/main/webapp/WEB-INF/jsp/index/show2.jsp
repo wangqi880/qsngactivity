@@ -54,8 +54,8 @@
                 </div>
             </div>
 
-            <div style="margin-top: 30px">
-                <img src="<%= path%>/resources/upload/${updto.attachment.newName}">
+            <div style="margin-top: 30px;">
+                <img style="display:block;width:100%;" src="<%= path%>/resources/upload/${updto.attachment.newName}">
             </div>
 
             <%--<div class="jp_l">

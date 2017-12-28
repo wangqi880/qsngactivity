@@ -95,20 +95,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         </div>
 
                     </c:forEach>
-                    <!--分页-->
-                    <div>
-                        <ul class="pagination" id="page2">
-                        </ul>
-                        <div class="pageJump">
-                            <span>跳转到</span>
-                            <input type="text"/>
-                            <span>页</span>
-                            <button type="button" class="button">确定</button>
-                        </div>
-                    </div>
+
                 </div>
                 <div class="no_way"></div>
-
+                <!--分页-->
+                <div>
+                    <ul class="pagination" id="page2">
+                    </ul>
+                    <div class="pageJump">
+                        <span>跳转到</span>
+                        <input type="text"/>
+                        <span>页</span>
+                        <button type="button" class="button">确定</button>
+                    </div>
+                </div>
                 <!--分页结束-->
                 <script>
                     var total = ${page.total};

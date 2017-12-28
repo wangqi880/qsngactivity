@@ -220,7 +220,7 @@ public class UserContoller
 				}
 				if(attach.getSize()<PICTURE_MIN || attach.getSize()>PICTURE_MAX){
 					resp.setCode("000002");
-					resp.setInfo("图片只能1MB以上，5MB以下");
+					resp.setInfo("图片只能1MB以上，20MB以下");
 					return resp;
 				}
 

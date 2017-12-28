@@ -54,7 +54,7 @@
             </div>
 
             <div style="margin-top: 30px">
-                <img src="<%= path%>/resources/indexPic/${updto.newName}">
+                <img style="display:block;width:100%;" src="<%= path%>/resources/indexPic/${updto.newName}">
             </div>
 
         </div>

@@ -119,7 +119,7 @@ public class AdminUserPicController {
                 }
                 if(attach.getSize()<PictureUtils.PICTURE_MIN || attach.getSize()>PictureUtils.PICTURE_MAX){
                     resp.setCode("000002");
-                    resp.setInfo("图片只能1MB以上，5MB以下");
+                    resp.setInfo("图片只能1MB以上，20MB以下");
                     return resp;
                 }
 

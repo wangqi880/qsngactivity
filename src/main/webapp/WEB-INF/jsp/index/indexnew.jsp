@@ -78,7 +78,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                 <li> ${fn:substring(item.imageName, 0, 10)}<c:if test="${item.imageName.length()>10}">...</c:if></li>
 
                                <%--<li>${item.name}</li>--%>
-                                <li>宫宣</li>
+                                <li>成宫宣</li>
                                <%-- <li>票数：
                                     <span id="praise-txt-${item.id}" style="color: red">${item.prizeNum}</span>
                                 </li>--%>
@@ -93,18 +93,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         </div>
 
                     </c:forEach>
-                    <div>
-                        <ul class="pagination" id="page2">
-                        </ul>
-                        <div class="pageJump">
-                            <span>跳转到</span>
-                            <input type="text"/>
-                            <span>页</span>
-                            <button type="button" class="button">确定</button>
-                        </div>
-                    </div>
+
                 </div>
                 <div class="no_way"></div>
+                <div>
+                    <ul class="pagination" id="page2">
+                    </ul>
+                    <div class="pageJump">
+                        <span>跳转到</span>
+                        <input type="text"/>
+                        <span>页</span>
+                        <button type="button" class="button">确定</button>
+                    </div>
+                </div>
                 <!--分页-->
 
                 <!--分页结束-->
