@@ -8,10 +8,12 @@
         <result column="attachmentId" property="attachmentId" jdbcType="VARCHAR" />
         <result column="imageName" property="imageName" jdbcType="VARCHAR" />
         <result column="intro" property="intro" jdbcType="VARCHAR" />
+        <result column="creationDate" property="creationDate" jdbcType="VARCHAR" />
+
     </resultMap>
 
 <insert id="add" parameterType="com.j.qsng.model.UserPic">
-    INSERT INTO `t_user_pic` (`userId`, `attachmentId`,imageName,intro) VALUES (#{userId}, #{attachmentId},#{imageName},#{intro});
+    INSERT INTO `t_user_pic` (`userId`, `attachmentId`,imageName,intro,creationDate) VALUES (#{userId}, #{attachmentId},#{imageName},#{intro},#{creationDate});
 </insert>
 
     <select id="queryByUserId"  parameterType="string" resultMap="userPic" >
@@ -31,7 +33,8 @@
         UPDATE `t_user_pic`
             SET
             `imageName` = #{imageName},
-            `intro` = #{intro}
+            `intro` = #{intro},
+            `creationDate`=#{creationDate}
         WHERE `userId` = #{userId} and attachmentId=#{attachmentId}
 
     </update>

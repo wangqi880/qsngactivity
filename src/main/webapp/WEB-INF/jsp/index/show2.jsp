@@ -47,7 +47,12 @@
 <div class="bg_gary ">
     <div class="main mar_t_20" >
         <div class="w_780 left">
-            <div class="title"><h2>${updto.imageName}</h2></div>
+            <div class="title">
+                <h2>
+                   <div style="display:inline">${updto.imageName}</div>
+                    <div style="font-size:18px;margin-top: 20px;margin-right: 30%;display:inline">创作时间:${updto.userPic.creationDate}</div>
+                </h2>
+            </div>
             <div class="pic_info">
                 <div class="pic_info_text_pre">
                     <span class="pic_info_text">${updto.intro}</span>

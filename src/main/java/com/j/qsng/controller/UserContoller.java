@@ -111,9 +111,17 @@ public class UserContoller
 			upsd.setIntro(up.getIntro());
 			userPicShowDtoList.add(upsd);
 		}
-
+		int myNum=userPicShowDtoList.size();
 		mode.addObject("userPicShowDtoList",userPicShowDtoList);
-			mode.addObject("message","提交作品数："+userPicShowDtoList.size());
+			mode.addObject("message","已提交"+myNum);
+		mode.addObject("myNum",myNum);
+		mode.addObject("uploadLimitNum",UPLOADLIMITNUM);
+		String isToUpload="0";
+		if(myNum<UPLOADLIMITNUM){
+			isToUpload="1";
+		}
+		mode.addObject("isToUpload",isToUpload);
+		mode.addObject("num",UPLOADLIMITNUM-myNum);
 		return mode;
 	}
 
@@ -128,7 +136,6 @@ public class UserContoller
 			mode.setViewName("/common/message");
 			return mode;
 		}
-
 		//时间是否上传控制
 		boolean flag = ipUpdate();
 		if(!flag){
@@ -145,30 +152,13 @@ public class UserContoller
 			mode.addObject("message","你已经提交过作品并且已经大于"+UPLOADLIMITNUM);
 			return mode;
 		}
-
-
 		if(StringUtils.isNotEmpty(userPicDto.getAttachmentId1())){
 			UserPic userPic = new UserPic();
-/*
-			userPic.setId(String.valueOf(IDUtils.genItemId()));
-*/
 			userPic.setUserId(String.valueOf(userId));
 			userPic.setImageName(userPicDto.getImageName1());
 			userPic.setAttachmentId(userPicDto.getAttachmentId1());
 			userPic.setIntro(userPicDto.getIntro1());
-			userPicService.add(userPic);
-		}
-
-		if(StringUtils.isNotEmpty(userPicDto.getAttachmentId2())){
-
-			UserPic userPic = new UserPic();
-/*
-			userPic.setId(String.valueOf(IDUtils.genItemId()));
-*/
-			userPic.setUserId(String.valueOf(userId));
-			userPic.setImageName(userPicDto.getImageName2());
-			userPic.setAttachmentId(userPicDto.getAttachmentId2());
-			userPic.setIntro(userPicDto.getIntro2());
+			userPic.setCreationDate(userPicDto.getCreationDate());
 			userPicService.add(userPic);
 		}
 		mode.setViewName("redirect:/user/showproduct.html");
@@ -263,6 +253,7 @@ public class UserContoller
 		}
 		modelAndView.addObject("user",user);
 		modelAndView.addObject("num",oldUp.size());
+		modelAndView.addObject("canupNum",UPLOADLIMITNUM-oldUp.size());
 		return modelAndView;
 	}
 
@@ -397,6 +388,7 @@ public class UserContoller
 				oldUserPic.setImageName(userPic.getImageName());
 			}
 			oldUserPic.setIntro(userPic.getIntro());
+			oldUserPic.setCreationDate(userPic.getCreationDate());
 			userPicService.updateNameAndInfo(oldUserPic);
 		}
 		return modelAndView;

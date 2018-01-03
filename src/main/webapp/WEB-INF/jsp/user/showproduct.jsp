@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%
   String path = request.getContextPath();
   String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -58,10 +59,20 @@
     <div class="bg_gary ">
         <div class="main mar_t_20" >
             <div class="w_780 left">
-            <div class="title"><h2>${user.name}参赛作品<c:if test="${ not empty message}">(${message})</c:if></h2></div>
+            <div class="title">
+                <h2>
+                    ${user.name}参赛作品<c:if test="${ not empty message}">(${message})</c:if>
+                        <c:if test="${ isToUpload eq '1'}"><a href="<%= path%>/user/upload.html" style="text-decoration:underline">可提交作品数${num}</a></c:if>
+                </h2>
+
+            </div>
                             <c:forEach items="${userPicShowDtoList}" var="imginfo">
                                     <div class="jp_l" style="float: left">
-                                        <h2 class="mar_t_20" style="padding-left:30px;"><div  class="title_class"><span>${imginfo.imageName}</span></div></h2>
+                                        <h2 class="mar_t_20" style="padding-left:30px;">
+                                            <div  class="title_class">
+                                                <span>${fn:substring(imginfo.imageName, 0, 10)}</span>
+                                            </div>
+                                        </h2>
                                         <div class="line_24 font_14 mar_f_20">
                                             <div class="gallery"  style="margin: 0 0">
                                                 <!--显示图片-->

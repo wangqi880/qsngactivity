@@ -12,7 +12,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
         <%@include file="/WEB-INF/jsp/common/meta.jsp" %>
 
         <link href="<%= path%>/css/glb1311_utf.css"  rel="stylesheet" rev="stylesheet" type="text/css" media="all" ignoreapd="false">
-        <link href="<%= path%>/css/css.css" rel="stylesheet" type="text/css" />
         <link rel="stylesheet" href="<%= path%>/css/pager/pager.css"/>
         <script type="text/javascript" src="<%= path%>/js/jquery-1.9.1.min.js" tppabs="http://www.eol.cn/js/global/jQuery_latest.min.js" ignoreapd="false"></script>
             <script type="text/javascript" src="<%= path%>/js/activity/jQuery_tabs.js" tppabs="http://www.eol.cn/js/global/jQuery_tabs.js" ignoreapd="false"></script>
@@ -27,6 +26,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
         <link rel="stylesheet" href="<%= path%>/resources/layui/css/layui.css?t=1510786361436"  media="all">
         <script src="<%= path%>/resources/layui/layui.js?t=1510786361436" charset="utf-8"></script>
+        <link href="<%= path%>/css/css.css" rel="stylesheet" type="text/css" />
 
     </head>
     <body>

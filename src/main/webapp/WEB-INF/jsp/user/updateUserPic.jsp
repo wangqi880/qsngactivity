@@ -92,10 +92,10 @@
                             <div class="dashed"></div>
                             <table width="780" border="0" align="center" cellpadding="5" cellspacing="0">
                                 <tr>
-                                    <td width="29" align="left"><em>1.</em></td>
+                                    <td width="29" align="left"></td>
                                     <td width="74" height="40" align="right">作品名称：</td>
                                     <td width="647" align="left">
-                                        <input type="text" name="imageName"   class="iput_240" value="${upsd.userPic.imageName}" />必填</td>
+                                        <input type="text" name="imageName"   class="iput_240" value="${upsd.userPic.imageName}" /><span style="color:red">*</span></td>
                                 </tr>
                                 <tr>
                                     <td align="left"></td>
@@ -117,7 +117,21 @@
                                     <td align="left"></td>
                                     <td align="right" valign="top">作品介绍：</td>
                                     <td align="left">
-                                        <textarea name="intro"  cols="45" rows="5" class="textarea" >${upsd.userPic.intro}</textarea></td>
+                                        <textarea name="intro"  cols="45" rows="5" class="textarea" >${upsd.userPic.intro}</textarea><span style="color:red">*</span></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>创作时间：</td>
+                                    <td>
+                                        <select id="id_creationDate" name="creationDate" lay-filter="aihao" class="iput_240" style="width: 100px">
+                                            <option value="">创作时间</option>
+                                            <option <c:if test="${upsd.userPic.creationDate == '2018'}">selected</c:if> value="2018">2018年</option>
+                                            <option <c:if test="${upsd.userPic.creationDate == '2017'}">selected</c:if> value="2017">2017年</option>
+                                            <option <c:if test="${upsd.userPic.creationDate == '2016'}">selected</c:if> value="2016">2016年</option>
+                                            <option <c:if test="${upsd.userPic.creationDate == '2015'}">selected</c:if> value="2015">2015年</option>
+                                        </select>
+                                        <span style="color: red">*</span>
+                                    </td>
                                 </tr>
                             </table>
                                 <div class="dashed"></div>

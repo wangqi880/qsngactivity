@@ -14,4 +14,6 @@ public class UserPic
 	String attachmentId ;
 	String imageName;
 	String intro;
+	//创作时间
+	String creationDate;
 }

@@ -14,4 +14,12 @@ public class UserPicDto
 	String imageName2;
 	String intro2;
 	String attachmentId2;
+	String imageName3;
+	String attachmentId3;
+	String intro3;
+	String imageName4;
+	String intro4;
+	String attachmentId5;
+	//创作时间
+	String creationDate;
 }

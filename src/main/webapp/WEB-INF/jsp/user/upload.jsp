@@ -11,10 +11,6 @@
 
     <link href="<%= path%>/css/glb1311_utf.css" rel="stylesheet" rev="stylesheet" type="text/css" media="all" ignoreapd="false">
     <link href="<%= path%>/css/css.css"  rel="stylesheet" type="text/css" />
-    <%--<link href="<%= path%>/js/uploadify/css/jquery.fileupload-ui.css"  rel="stylesheet" type="text/css" />
-    <link href="<%= path%>/js/uploadify/css/jquery.fileupload.css"  rel="stylesheet" type="text/css" />
-    <link href="<%= path%>/js/uploadify/css/jquery.fileupload-noscript.css"  rel="stylesheet" type="text/css" />
-    <link href="<%= path%>/js/uploadify/css/ jquery.fileupload-ui-noscript.css"  rel="stylesheet" type="text/css" />--%>
 
     <style type="text/css">
         *{margin:0;padding:0;list-style-type:none;}
@@ -70,8 +66,9 @@
         <div class="w_780 left">
             <div class="title"><h2>作品上传入口
                 <c:if test="${num ne 0}">
-                    （<a href="<%= path%>/user/showproduct.html" tppabs="http://pic.eol.cn/picture/take_in">${num}张</a>）
+                    （<a href="<%= path%>/user/showproduct.html" tppabs="http://pic.eol.cn/picture/take_in" style="text-decoration:underline">${num}张</a>）
                 </c:if>
+                可提交作品数${canupNum}
             </h2></div>
             <div id="Tabs_01" >
                 <div class='box font_14'>
@@ -82,7 +79,7 @@
 
                             <table width="780" border="0" align="center" cellpadding="5" cellspacing="0">
                                 <tr>
-                                    <td ><em>1.</em></td>
+                                    <td ></td>
                                     <td><div style="width: 80px">作品名称：</div></td>
                                     <td>
                                         <input id="id_imageName1" type="text" name="imageName1"   class="iput_240" value="作者+作品名" /><span style="color:red">*</span></td>
@@ -108,6 +105,20 @@
                                         <textarea style="resize: none" id="id_intro1" name="intro1"  cols="45" rows="5" class="textarea">字数不超过15-100</textarea><span style="color: red">*</span>
                                     </td>
                                 </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>创作时间：</td>
+                                    <td>
+                                                <select id="id_creationDate" name="creationDate" lay-filter="aihao" class="iput_240" style="width: 100px">
+                                                    <option value="">创作时间</option>
+                                                    <option value="2018">2018年</option>
+                                                    <option value="2017">2017年</option>
+                                                    <option value="2016">2016年</option>
+                                                    <option value="2015">2015年</option>
+                                                </select>
+                                        <span style="color: red">*</span>
+                                    </td>
+                                </tr>
 
                                     <tr id="firstPreview"  style="display: none">
                                         <td></td>
@@ -125,66 +136,10 @@
                                         </td>
 
                                     </tr>
-                                <tr>
+                              <%--  <tr>
                                     <td></td>
                                     <td width="80" align="left"><button type="button" id="addImage" value="add" class="button_upload">添加作品</button></td>
-                                </tr>
-                            </table>
-                            <!--第二张图片-->
-                            <table width="780" id="second_image" border="0" align="center" cellpadding="5" cellspacing="0" style="display: none">
-                                <tr>
-                                    <td ><em>2.</em></td>
-                                    <td><div style="width: 80px">作品名称：</div></td>
-                                    <td >
-                                        <input id="id_imageName2" type="text" name="imageName2"   class="iput_240" value="作者+作品名" /><span style="color: red">*</span></td>
-                                </tr>
-                                <tr>
-                                    <td ></td>
-                                    <td >作品图：</td>
-
-                                    <td >
-                                        <form id="frm_identityB" action="" enctype="multipart/form-data">
-                                            <div class="file"><div style="font-size: 14px">选择文件</div>
-                                                <input id="fileuploadB" name="attachs" accept="image/jpg"  type="file" value=""/>
-                                            </div>
-                                            <div style="float:left;margin-left: 20px"><div style="margin-top: 10px" id="showFileName2"></div></div>
-                                            <div style="float:left;margin-left: 20px"><input id="btnImportOKB" type="button" value="上传"  class="button_upload"/></div>
-
-                                        <%-- <span>
-                                                    <input id="fileuploadB" name="attachs" accept="image/jpg" type="file" value="" />
-                                                </span>
-                                            <input id="btnImportOKB" type="button" value="上传" />--%>
-                                        </form>
-                                    </td>
-                                </tr>
-
-                                <tr >
-                                        <td ></td>
-                                        <td >作品描述：</td>
-                                        <td >
-                                            <textarea style="resize: none" id="id_intro2" name="intro2"  cols="45" rows="5" class="textarea"> 字数不超过15-100</textarea><span style="color: red">*</span>
-                                        </td>
-                                </tr>
-                                <tr id="secondPreview"  style="display: none">
-                                    <td></td>
-                                    <td>预览：</td>
-                                    <td>
-                                        <div class="gallery" >
-                                            <!--显示图片-->
-                                            <ul>
-                                                <li>
-                                                    <a id="image2_b"> <img  style="width: auto;  height: auto; max-width: 100%;  max-height: 200px; " name="imageName" id="image2" width="100%" height="100%"></a>
-                                                </li>
-                                            </ul>
-                                            <div class="clear"></div>
-                                        </div>
-                                    </td>
-
-                                </tr>
-                                <tr>
-                                    <td></td>
-                                    <td width="80" align="left"><button type="button" id="delButton" value="add" class="button_upload">删除</button></td>
-                                </tr>
+                                </tr>--%>
                             </table>
                             <div><input type="checkbox" name="readme" id="readme">作品请勿重复上传，否则将取消资格。<a href="javascript:readNotice()"><span style="color:blue;text-decoration:underline">并已经确定注意事项</span></a></div>
 
@@ -192,8 +147,6 @@
                             <input type="hidden"   name="attachmentId1" id="attachmentId1">
                             <input type="hidden"   name="attachmentId2" id="attachmentId2">
                             <div class="dashed"></div>
-
-
                             </table>
                             <table width="780" border="0" align="center" cellpadding="10" cellspacing="0">
                                 <tr>
@@ -273,6 +226,9 @@
 
 
         })
+
+
+
         $("#delButton").click(function(){
             $("#second_image").hide();
             $("#attachmentId2").val("");
@@ -316,6 +272,9 @@
                     return;
                 }
             }
+
+
+
             //我们可以预先定义一个FormData对象
             var formData=new FormData();
             for(var i=0;i<paths.length;i++)
@@ -430,7 +389,6 @@
     });
 
     function formSubmit(){
-        var attachmentId2 = $("input[name='attachmentId2']").val();
         var attachmentId1 = $("input[name='attachmentId1']").val();
         if((attachmentId1==null||attachmentId1=="")){
             layer.msg("上传图片不能为空");
@@ -452,33 +410,15 @@
                 layer.msg("描述字数在15-100之间");
                 return ;
             }
-        }
+            //创作时间必须
+            var options=$("#id_creationDate option:selected").val();
 
-        var second_is_hidden= $("#second_image").is(":hidden");
-        if(!second_is_hidden){
-            if(attachmentId2==null||attachmentId2==""){
-                layer.msg("上传图片不能为空");
+            if(options=="" || options==null)
+            {
+                layer.msg("请选择创作时间");
                 return;
             }
-            if(attachmentId2!=null && attachmentId2!=""){
-                var imageName2= $("input[name='imageName2']").val();
-                var intro2 = $("textarea[name='intro2']").val();
-                if(imageName2==null||imageName2==""){
-                    layer.msg("作品名称不能为空");
-                    return ;
-                }
-
-                if(intro2==null||intro2==""){
-                    layer.msg("描述不能为空");
-                    return ;
-                }
-                if(intro2.length<15 || intro2.length>100){
-                    layer.msg("描述字数在15-100之间");
-                    return ;
-                }
-            }
         }
-
 
     $.get("<%= path%>/user/isUploadPermission",function(result){
         if(result.code=="000000"){
