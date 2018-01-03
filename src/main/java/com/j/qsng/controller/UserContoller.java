@@ -51,7 +51,7 @@ public class UserContoller
 
 	private final static String  UPLOADPAH="/resources/upload/";
 	private final static String  UPLOADTHUMPAH="/resources/upload/thumbnail/";
-	private final static  int UPLOADLIMITNUM=2;
+	private final static  int UPLOADLIMITNUM=4;
 
 	//上传图片最小大小
 	private final static  int PICTURE_MIN=1000000;
@@ -142,7 +142,7 @@ public class UserContoller
 		List<UserPic> oldUp = userPicService.queryByUserId(userId+"");
 		if(!CollectionUtils.isEmpty(oldUp) && oldUp.size()>=UPLOADLIMITNUM){
 			mode.setViewName("redirect:/user/showproduct.html");
-			mode.addObject("message","你已经提交过作品并且已经大于2个");
+			mode.addObject("message","你已经提交过作品并且已经大于"+UPLOADLIMITNUM);
 			return mode;
 		}
 

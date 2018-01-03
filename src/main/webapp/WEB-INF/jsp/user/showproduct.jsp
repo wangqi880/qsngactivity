@@ -47,6 +47,7 @@
             <li><a href="<%= path%>/index/act_rule.html" >参赛规则</a></li>
             <li><a href="<%= path%>/index/prize_info.html" >奖项设置</a></li>
             <li><a href="<%= path%>/user/upload.html">上传作品</a></li>
+            <li><a href="<%= path%>/index/rewardList" >获奖情况</a></li>
 <%--
             <li><a href="<%= path%>/user/userInfo.html">修改信息</a></li>
 --%>

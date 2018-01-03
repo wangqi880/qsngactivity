@@ -54,6 +54,7 @@
             <li><a href="<%= path%>/index/act_rule.html" tppabs="http://pic.eol.cn/picture/act_rule">参赛规则</a></li>
             <li><a href="<%= path%>/index/prize_info.html" tppabs="http://pic.eol.cn/picture/prize_info">奖项设置</a></li>
             <li class="bg_ii">上传作品</li>
+            <li><a href="<%= path%>/index/rewardList" >获奖情况</a></li>
 <%--
             <li><a href="<%= path%>/user/userInfo.html">修改信息</a></li>
 --%>
@@ -244,7 +245,7 @@
                 '8. 本次大赛官方活动网站注册信息中，参赛者确认同意接收主办方发送的相关活动以及产品促销信息的，主办方将向参赛者注册的联系方式中发送上述信息。<br/>\n' +
                 '9. 获奖者因获奖发生的个人所得税将由主办方承担。\n</div>',
                 end: function(){
-                    layer.tips('Hi', '#about', {tips: 1})
+                   /* layer.tips('Hi', '#about', {tips: 1})*/
                 }
             });
         });
