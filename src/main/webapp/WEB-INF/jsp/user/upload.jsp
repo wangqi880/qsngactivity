@@ -111,7 +111,7 @@
                                     <td>
                                                 <select id="id_creationDate" name="creationDate" lay-filter="aihao" class="iput_240" style="width: 100px">
                                                     <option value="">创作时间</option>
-                                                    <option value="2018">2018年</option>
+
                                                     <option value="2017">2017年</option>
                                                     <option value="2016">2016年</option>
                                                     <option value="2015">2015年</option>
@@ -141,7 +141,7 @@
                                     <td width="80" align="left"><button type="button" id="addImage" value="add" class="button_upload">添加作品</button></td>
                                 </tr>--%>
                             </table>
-                            <div><input type="checkbox" name="readme" id="readme">作品请勿重复上传，否则将取消资格。<a href="javascript:readNotice()"><span style="color:blue;text-decoration:underline">并已经确定注意事项</span></a></div>
+                            <div><input type="checkbox" name="readme" id="readme">作品请勿重复上传，否则将取消资格。<%--<a href="javascript:readNotice()"><span style="color:blue;text-decoration:underline">并已经确定注意事项</span></a>--%></div>
 
                             <script type="text/javascript" src="<%= path%>/js/zoom.min.js"></script>
                             <input type="hidden"   name="attachmentId1" id="attachmentId1">

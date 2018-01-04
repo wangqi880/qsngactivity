@@ -290,13 +290,20 @@ public class AdminController
 			return resp;
 		}
 		int j=0;
+		try{
 		for(int i=0;i<firstChoosedList.size();i++){
 			boolean flag = true;
 			AdminUser adminUser = null;
+			boolean oneFlag=false;
 			while(flag){
 				 adminUser= userList.get(j);
 				//是否已经第一次选过
 				int chooseNum = chooseLogService.queryFisrtChoosedByusernameAndPeriod(adminUser.getUsername(),firstChoosedList.get(i).getProdId(),ChooseUtils.FIRST_PERIOD);
+				if(1==userList.size() && chooseNum>=1){
+					flag=false;
+					oneFlag=true;
+					continue;
+				}
 				if(chooseNum>=1){
 					j++;
 				}else{
@@ -311,7 +318,9 @@ public class AdminController
 				}*/
 
 			}
-
+			if(oneFlag){
+				continue;
+			}
 			ChooseLog cl = new ChooseLog();
 			cl.setUsername(adminUser.getUsername());
 			cl.setProdId(firstChoosedList.get(i).getProdId());
@@ -323,6 +332,9 @@ public class AdminController
 			if(0==j%userList.size()){
 				j=0;
 			}
+		}}
+		catch (Exception e){
+			System.out.println("第二次分配错误："+e);
 		}
 		resp.setCode("000000");
 		resp.setInfo("分配成功");

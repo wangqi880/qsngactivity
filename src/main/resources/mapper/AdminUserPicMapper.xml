@@ -53,7 +53,7 @@
        select count(1)from t_admin_user_pic
     </select>
     <select id="queryByPage" parameterType="map"  resultMap="adminUserPicDto" >
-      select t.*,t1.name,t1.username from t_admin_user_pic t , t_admin_user t1 where t.userId=t1.id order by score desc limit #{offset},#{size}
+      select t.*,t1.name,t1.username from t_admin_user_pic t , t_admin_user t1 where t.userId=t1.id order by score desc,t.id asc limit #{offset},#{size}
     </select>
     <select id="load" parameterType="string"  resultMap="adminUserPicDto" >
         select t.*,t1.name,t1.username from t_admin_user_pic t , t_admin_user t1 where t.userId=t1.id and t.id=#{id}

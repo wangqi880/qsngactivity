@@ -125,7 +125,6 @@
                                     <td>
                                         <select id="id_creationDate" name="creationDate" lay-filter="aihao" class="iput_240" style="width: 100px">
                                             <option value="">创作时间</option>
-                                            <option <c:if test="${upsd.userPic.creationDate == '2018'}">selected</c:if> value="2018">2018年</option>
                                             <option <c:if test="${upsd.userPic.creationDate == '2017'}">selected</c:if> value="2017">2017年</option>
                                             <option <c:if test="${upsd.userPic.creationDate == '2016'}">selected</c:if> value="2016">2016年</option>
                                             <option <c:if test="${upsd.userPic.creationDate == '2015'}">selected</c:if> value="2015">2015年</option>

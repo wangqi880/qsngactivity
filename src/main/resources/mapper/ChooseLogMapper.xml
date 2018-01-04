@@ -275,7 +275,7 @@
         </if>
         LEFT JOIN t_attachment m3 ON m1.attachmentId = m3.id
         left join t_userpic_prize m4 on m1.prodId=m4.prodId
-        order by m4.prizeNum  desc limit #{offset},#{size}
+        order by m1.prodId ASC limit #{offset},#{size}
     </select>
 
 
@@ -387,6 +387,6 @@
          JOIN t_user m2 ON m1.userId = m2.id
         LEFT JOIN t_attachment m3 ON m1.attachmentId = m3.id
         left join t_userpic_prize m4 on m1.prodId=m4.prodId
-        order by m4.prizeNum  desc
+        order by m1.prodId  asc,m1.id
     </select>
 </mapper>
