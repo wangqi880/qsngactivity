@@ -44,7 +44,7 @@
 				<td>${item.username}</td>
 				<td>${item.name}</td>
 				<td>
-					<img src="<%=request.getContextPath() %>/resources/indexPic/${item.newName}" alt="${item.imageName}" style="width: 200px;height: 160px">
+					<img src="<%=request.getContextPath() %>/resources/indexPic/${item.newName}" alt="${item.imageName}" style="width: 200px;">
 				</td>
 				<td><span style="color: red">${item.score}</span></td>
 				<td><span style="color: red">${item.prizeNum}</span></td>
