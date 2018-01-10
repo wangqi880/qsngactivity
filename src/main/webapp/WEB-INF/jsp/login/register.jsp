@@ -171,8 +171,8 @@
                 dataType:"json",
                 success:function(result){
 					if("000000"==result.code){
-                        layer.confirm("注册成功，是否进入首页", function () {
-                            window.location.href="<%= path%>/index/indexnew.html";
+                        layer.confirm("注册成功，是否登录", function () {
+                            window.location.href="<%= path%>/login/login.html";
                         }, function () {
                         });
 

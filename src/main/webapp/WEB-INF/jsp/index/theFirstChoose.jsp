@@ -69,7 +69,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 </div>
                 <div>${message}</div>
                 <c:forEach items="${page.datas}" var="item">
-                    <div class="w_240 mar_r_30 left pos_r" style="display: inline-block">
+                    <div class="w_240 mar_r_30  pos_r" style="display: inline-block">
                         <p align="center">
                           <a href="<%= path%>/index/show2?id=${item.prodId}"><img src="<%= path%>/resources/upload/${item.newName}" width="215"/></a>
                         </p>

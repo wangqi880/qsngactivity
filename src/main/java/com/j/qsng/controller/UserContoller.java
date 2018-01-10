@@ -292,17 +292,52 @@ public class UserContoller
 		List<ChooseUserPicDto>  userDataList= chooseLogService.queryUserIdAndPeriod(userId,ChooseUtils.FIRST_PERIOD,ChooseUtils.NO_CHOOSE);
 		List<ChooseUserPicDto>  first= chooseLogService.queryUserIdAndPeriod(userId,ChooseUtils.FIRST_PERIOD,ChooseUtils.YES_CHOOSE);
 		List<ChooseUserPicDto>  second= chooseLogService.queryUserIdAndPeriod(userId,ChooseUtils.SECOND_PERIOD,ChooseUtils.YES_CHOOSE);
-		if(!CollectionUtils.isEmpty(second)){
-			modelAndView.addObject("dataList",second);
-			modelAndView.addObject("stage_message","恭喜您进入复赛");
-			modelAndView.addObject("dataList",second);
-		}else if(!CollectionUtils.isEmpty(first)){
-			modelAndView.addObject("dataList",first);
-			modelAndView.addObject("stage_message","恭喜您进入初赛，可在首页参赛作品中进行点赞");
-			modelAndView.addObject("dataList",first);
-		}else if(!CollectionUtils.isEmpty(userDataList)){
-			modelAndView.addObject("stage_message","对不起您未进入初赛");
+
+		//获奖阶段
+		String is_allowd_prize_show =configService.getConfigvalue(ChooseUtils.IS_ALLOWD_PRIZE_SHOW);
+		if(("1".equals(is_allowd_prize_show))){
+			List<ChooseUserPicDto>  dataList= chooseLogService.queryPrizeInfo(ChooseUtils.SECOND_PERIOD,0,95);
+			List<ChooseUserPicDto> huojiangList = new ArrayList<ChooseUserPicDto>();
+			String stage_message="";
+			for(ChooseUserPicDto ccuuppdd:dataList){
+				if(ccuuppdd.getUserId().equals(userId)){
+					huojiangList.add(ccuuppdd);
+				}
+			}
+			if(!CollectionUtils.isEmpty(huojiangList)){
+				stage_message="恭喜你获奖，请在获奖名单中查看。已获奖名单为准。";
+			}
+			if(CollectionUtils.isEmpty(huojiangList)){
+				List<ChooseUserPicDto>  huanyDataList= chooseLogService.queryPrizeInfo(ChooseUtils.FIRST_PERIOD,0,5);
+				for(ChooseUserPicDto hdl:huanyDataList){
+					if(hdl.getUserId().equals(userId)){
+						huojiangList.add(hdl);
+					}
+				}
+				if(!CollectionUtils.isEmpty(huojiangList)){
+					stage_message="恭喜你获最受欢迎奖，请在欢迎奖名单中查看。已获奖名单为准。";
+				}
+			}
+
+
+			if(StringUtils.isEmpty(stage_message)){
+				stage_message="对不起您未获奖。";
+			}
+			modelAndView.addObject("stage_message",stage_message);
+			modelAndView.addObject("dataList",huojiangList);
+
+		}else{
+			if(!CollectionUtils.isEmpty(second)){
+				modelAndView.addObject("dataList",second);
+				modelAndView.addObject("stage_message","恭喜您进入复赛");
+			}else if(!CollectionUtils.isEmpty(first)){
+				modelAndView.addObject("dataList",first);
+				modelAndView.addObject("stage_message","恭喜您进入初赛，可在首页参赛作品中进行点赞");
+			}else if(!CollectionUtils.isEmpty(userDataList)){
+				modelAndView.addObject("stage_message","对不起您未进入初赛");
+			}
 		}
+
 
 		return modelAndView;
 	}

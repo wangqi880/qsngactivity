@@ -325,18 +325,18 @@ public class IndexController
 			List<ChooseUserPicDto>  dataList= chooseLogService.queryPrizeInfo(ChooseUtils.SECOND_PERIOD,offset,size);
 			modelAndView.addObject("data",dataList);
 		}else if(RewardType.SECONDE_PRIZE.equals(type)){
-			offset=6;
-			size=15;
+			offset=5;
+			size=10;
 			List<ChooseUserPicDto>  dataList= chooseLogService.queryPrizeInfo(ChooseUtils.SECOND_PERIOD,offset,size);
 			modelAndView.addObject("data",dataList);
 		}else if(RewardType.THIRD_PRIZE.equals(type)){
-			offset=16;
-			size=45;
+			offset=15;
+			size=30;
 			List<ChooseUserPicDto>  dataList= chooseLogService.queryPrizeInfo(ChooseUtils.SECOND_PERIOD,offset,size);
 			modelAndView.addObject("data",dataList);
 		}else if(RewardType.EXCELLENT_PRIZE.equals(type)){
-			offset=46;
-			size=95;
+			offset=45;
+			size=50;
 			List<ChooseUserPicDto>  dataList= chooseLogService.queryPrizeInfo(ChooseUtils.SECOND_PERIOD,offset,size);
 			modelAndView.addObject("data",dataList);
 		}else if(RewardType.POPULAR_PRIZE.equals(type)){
