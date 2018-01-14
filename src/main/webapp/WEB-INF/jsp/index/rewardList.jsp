@@ -94,7 +94,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                                    <%-- <c:if test="${type != '5'}">
                                         <td>${item.score}</td>
                                     </c:if>--%>
-                                    <td><a href="<%= path%>/index/show2?id=${item.prodId}"><img src="<%= path%>/resources/upload/${item.newName}" /></a></td></tr>
+                                    <td><a href="<%= path%>/index/show2?id=${item.prodId}"><img src="<%= path%>/resources/upload/thumbnail/${item.newName}" /></a></td></tr>
                                 </c:forEach>
 
                             </tbody>

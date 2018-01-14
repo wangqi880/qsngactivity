@@ -147,7 +147,6 @@
                             <input type="hidden"   name="attachmentId1" id="attachmentId1">
                             <input type="hidden"   name="attachmentId2" id="attachmentId2">
                             <div class="dashed"></div>
-                            </table>
                             <table width="780" border="0" align="center" cellpadding="10" cellspacing="0">
                                 <tr>
                                     <td width="414" height="120" align="left"></td>
@@ -285,15 +284,16 @@
             $.ajax({
                 type: "POST",
                 data: formData,
-                url: "<%=path %>/user/pic/upload",
+                url: "<%=path %>/user/pic/upload/",
                 contentType: false,
                 processData: false,
             }).success(function(data) {
                 if (data.code=='000000') {
                     layer.msg("上传成功");
                     $("#firstPreview").show();
-                    $("#image1").attr('src',"<%= path%>"+data.data[0].filePath);
+                    $("#image1").attr('src',"<%= path%>"+data.data[0].thumFilePath);
                     $("#image1_a").attr('href',"<%= path%>"+data.data[0].filePath);
+                    $("#image1_a").attr('target',"_blank");
                     $("#attachmentId1").val(data.data[0].id);
                 } else {
                     layer.msg("上传失败"+data.info);

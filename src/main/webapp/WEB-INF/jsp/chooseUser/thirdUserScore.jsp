@@ -54,7 +54,7 @@
 				</td>
 				<td width="20%">${userpicScore.intro}</td>
 				<td width="48%">
-					<a href="<%=request.getContextPath() %>/resources/upload/${userpicScore.newName}" target="_blank"><img src="<%=request.getContextPath() %>/resources/upload/${userpicScore.newName}" alt="${userpicScore.imageName}" style="width: 200px;height: 160px"></a>
+					<a href="<%=request.getContextPath() %>/resources/upload/${userpicScore.newName}" target="_blank"><img src="<%=request.getContextPath() %>/resources/upload/thumFilePath/${userpicScore.newName}" alt="${userpicScore.imageName}" style="width: 200px;height: 160px"></a>
 				</td>
 				<input type="hidden" value="${userpicScore.score}" id="id_oldvalue_${userpicScore.userScoreId}">
 				<td><input type="text" value="${userpicScore.score}" name="name_${userpicScore.userScoreId}" id="id_${userpicScore.userScoreId}" size="1"></td>

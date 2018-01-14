@@ -68,10 +68,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                         <div class="w_240 mar_r_30  pos_r" style="display: inline-block">
                             <p align="center">
                                 <c:if test="${type eq 1}">
-                                    <a href="<%= path%>/index/show?id=${item.id}"><img src="<%= path%>/resources/indexPic/${item.newName}"  width="215" /></a>
+                                    <a href="<%= path%>/index/show?id=${item.id}"><img src="<%= path%>/resources/indexPic/thumbnail/${item.newName}"  width="215" /></a>
                                 </c:if>
                                 <c:if test="${type eq 2}">
-                                    <a href="<%= path%>/index/show?id=${item.id}"><img src="<%= path%>/resources/upload/${item.newName}" width="215" /></a>
+                                    <a href="<%= path%>/index/show?id=${item.id}"><img src="<%= path%>/resources/upload/thumbnail/${item.newName}" width="215" /></a>
                                 </c:if>
                             </p>
                             <ul>

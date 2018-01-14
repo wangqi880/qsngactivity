@@ -49,7 +49,7 @@
 						${userpic.imageName}
 				</td>
 				<td>
-					<img src="<%=request.getContextPath() %>/resources/upload/${userpic.newName}" alt="${userpic.imageName}" style="width: 200px;height: 160px">
+					<img src="<%=request.getContextPath() %>/resources/upload/thumFilePath/${userpic.newName}" alt="${userpic.imageName}" style="width: 200px;height: 160px">
 
 				</td>
 

@@ -132,7 +132,9 @@ public class AdminUserPicController {
                 att.setType(attach.getContentType());
                 att.setSize(attach.getSize());
                 att.setFilePath(path+""+att.getNewName());
+                att.setThumFilePath(path+"/thumbnail/"+att.getNewName());
                 attachmentService.add(att, attach.getInputStream(),realPath+path);
+                //attachmentService.add(att, attach.getInputStream());
                 list.add(att);
             }
         }catch (Exception e){

@@ -108,9 +108,11 @@ $(function(){
                 processData: false,
             }).success(function(data) {
                 if (data.code=='000000') {
-                    $("#image1").attr('src',"<%= request.getContextPath()%>"+data.data[0].filePath);
+                    $("#image1").attr('src',"<%= request.getContextPath()%>"+data.data[0].thumFilePath);
                     $("#image1_a").attr('href',"<%= request.getContextPath()%>"+data.data[0].filePath);
+                    $("#image1_a").attr('target',"_blank");
                     $("#attachmentId1").val(data.data[0].id);
+
                 } else {
                     alert("上传失败"+data.info);
                     /*console.log(data.info);*/

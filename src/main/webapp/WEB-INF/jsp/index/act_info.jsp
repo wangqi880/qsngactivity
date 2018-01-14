@@ -50,7 +50,7 @@
 <div class="top_b">
 <div class="main mar_t_20" >
 	<div class="w_780 ">
-   	  <div class="title"><h2>“童梦飞扬新时代”2018年迎春主题摄影公益活动</h2></div>
+   	  <div class="title"><h2>“童梦飞扬新时代”2018迎新主题摄影暨图片展公益活动</h2></div>
   	  <div class="jp_l">
   	  <div class="line_24 font_14 mar_f_20">
           <p>

@@ -48,7 +48,7 @@
 				</td>
 				<td>${item.imageName}</td>
 				<td>
-					<img src="<%=request.getContextPath() %>/resources/upload/${item.newName}" alt="${item.imageName}" style="width: 200px;height: 160px">
+					<img src="<%=request.getContextPath() %>/resources/upload/thumbnail/${item.newName}" alt="${item.imageName}" style="width: 200px;">
 				</td>
 				<td><span style="color: red">${item.score}</span></td>
 				<td><span style="color: red">${item.prizeNum}</span></td>

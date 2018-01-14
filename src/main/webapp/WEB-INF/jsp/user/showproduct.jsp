@@ -78,7 +78,7 @@
                                                 <!--显示图片-->
                                                 <ul>
                                                     <li>
-                                                        <a id="image1_a" href="<%= path%>/resources/upload/${imginfo.attachment.newName}"> <img src="<%=path %>/resources/upload/${imginfo.attachment.newName}" style="width: auto;  height: auto; max-width: 100%;  max-height: 200px; " name="imageName" id="image1"></a>
+                                                        <a id="image1_a" href="<%= path%>/resources/upload/${imginfo.attachment.newName}"> <img src="<%=path %>/resources/upload/thumbnail/${imginfo.attachment.newName}" style="width: auto;  height: auto; max-width: 100%;  max-height: 200px; " name="imageName" id="image1"></a>
                                                         <a ></a>
 
                                                     </li>

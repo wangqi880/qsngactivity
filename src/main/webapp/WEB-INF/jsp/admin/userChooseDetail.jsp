@@ -66,7 +66,7 @@
 						<%--<section class="demos">
 							<div style="width: 250px;height: 200px; background-image:url(<%=request.getContextPath() %>/resources/upload/${userpic.newName})" class="demo-image first" data-image="<%=request.getContextPath() %>/resources/upload/${userpic.newName}" data-title="${userpic.imageName}" data-caption="${userpic.intro}"></div>
 						</section>--%>
-						<div><a href="<%=request.getContextPath() %>/resources/upload/${userpic.newName}" target="_blank"> <img src="<%=request.getContextPath() %>/resources/upload/${userpic.newName}"  style="display:block;width:40%;"  alt=""></a></div>
+						<div><a href="<%=request.getContextPath() %>/resources/upload/thumFilePath/${userpic.newName}" target="_blank"> <img src="<%=request.getContextPath() %>/resources/upload/${userpic.newName}"  style="display:block;width:40%;"  alt=""></a></div>
 					</td>
 					<%--<td  width="20%">
 						<!--没有选中-->

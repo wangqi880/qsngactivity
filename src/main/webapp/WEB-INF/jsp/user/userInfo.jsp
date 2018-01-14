@@ -119,7 +119,7 @@
 
                                     <div class="single-member effect-2">
                                         <div class="member-image">
-                                            <img src="<%= path%>/resources/upload/${userPicShowDto.attachment.newName}">
+                                            <img src="<%= path%>/resources/upload/thumbnail/${userPicShowDto.attachment.newName}">
                                         </div>
                                         <div class="member-info">
                                             <h3>${userPicShowDto.imageName}</h3>

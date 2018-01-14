@@ -83,25 +83,25 @@
         <div class="w_780 left">
             <div class="title"><h2>修改作品信息</h2></div>
                 <div class="no_way"></div>
+            <div id="Tabs_01" >
                 <div class='box font_14'>
                     <div class='content' >
                         <form action="<%= path%>/user/updateUserPicOne" method="post" enctype="multipart/form-data" name="form_action" id="form_1">
                             <input type="hidden" value="1"  name="shtype" />
                             <input type="hidden" value="${upsd.attachment.id}"  name="oldAttachmentId" />
                             <input type="hidden" name="id" value="${upsd.userPic.id}">
-                            <div class="dashed"></div>
                             <table width="780" border="0" align="center" cellpadding="5" cellspacing="0">
                                 <tr>
-                                    <td width="29" align="left"></td>
-                                    <td width="74" height="40" align="right">作品名称：</td>
-                                    <td width="647" align="left">
+                                    <td ></td>
+                                    <td ><div style="width: 80px">作品名称：</div></td>
+                                    <td >
                                         <input type="text" name="imageName"   class="iput_240" value="${upsd.userPic.imageName}" /><span style="color:red">*</span></td>
                                 </tr>
                                 <tr>
-                                    <td align="left"></td>
-                                    <td height="40" align="right">作品图：</td>
+                                    <td ></td>
+                                    <td >作品图：</td>
 
-                                    <td align="left">
+                                    <td >
                                           <form id="frm_identityA" action="" enctype="multipart/form-data">
                                               <div class="file" ><div >选择文件</div>
                                                   <input id="fileupload" name="attachs" accept="image/jpg"  type="file" value=""/>
@@ -114,9 +114,9 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td align="left"></td>
-                                    <td align="right" valign="top">作品介绍：</td>
-                                    <td align="left">
+                                    <td ></td>
+                                    <td >作品介绍：</td>
+                                    <td >
                                         <textarea name="intro"  cols="45" rows="5" class="textarea" >${upsd.userPic.intro}</textarea><span style="color:red">*</span></td>
                                 </tr>
                                 <tr>
@@ -132,26 +132,32 @@
                                         <span style="color: red">*</span>
                                     </td>
                                 </tr>
-                            </table>
-                                <div class="dashed"></div>
+                                <tr>
+                                    <td></td>
+                                    <td>预览：</td>
+                                    <td>
+                                        <div class="gallery" >
+                                            <!--显示图片-->
+                                            <ul>
+                                                <li>
+                                                    <a id="image1_a" href="<%= path%>/resources/upload/${upsd.attachment.newName}">
+                                                        <img style="width: auto;  height: auto; max-width: 100%;  max-height: 200px; " name="imageName" id="image1" width="100%" height="100%"  src="<%= path%>/resources/upload/thumbnail/${upsd.attachment.newName}">
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a id="image2_b"> <img></a>
+                                                </li>
+                                            </ul>
+                                            <div class="clear"></div>
+                                        </div>
+                                    </td>
 
-                            <div class="gallery" >
-                                <!--显示图片-->
-                                <ul>
-                                    <li>
-                                        <a id="image1_a" href="<%= path%>/resources/upload/${upsd.attachment.newName}"> <img src="<%= path%>/resources/upload/${upsd.attachment.newName}"  id="image1" width="215" height="170" ></a>
-                                    </li>
-                                    <li>
-                                        <a id="image2_b"> <img></a>
-                                    </li>
-                                </ul>
-                                <div class="clear"></div>
-                            </div>
+                                </tr>
+                            </table>
+
                             <script type="text/javascript" src="<%= path%>/js/zoom.min.js"></script>
                             <input type="hidden"   name="attachmentId" id="attachmentId">
-
-
-                            </table>
+                            <div class="dashed"></div>
                             <table width="780" border="0" align="center" cellpadding="10" cellspacing="0">
                                 <tr>
                                     <td width="414" height="120" align="left"></td>
@@ -161,12 +167,8 @@
                             </table>
                         </form>
                     </div>
-
-
-
                 </div>
             </div>
-
         </div>
 
         <div class="no_way"></div>
@@ -241,8 +243,9 @@
             }).success(function(data) {
                 if (data.code=='000000') {
                     layer.msg("上传成功");
-                    $("#image1").attr('src',"<%= path%>"+data.data[0].filePath);
+                    $("#image1").attr('src',"<%= path%>"+data.data[0].thumFilePath);
                     $("#image1_a").attr('href',"<%= path%>"+data.data[0].filePath);
+                    $("#image1_a").attr('target',"_blank");
                     $("#attachmentId").val(data.data[0].id);
                 } else {
                     layer.msg("上传失败"+data.info);
