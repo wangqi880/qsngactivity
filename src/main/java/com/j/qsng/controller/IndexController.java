@@ -1,31 +1,24 @@
 package com.j.qsng.controller;
 
-import com.github.pagehelper.Page;
 import com.j.qsng.common.pojo.*;
 import com.j.qsng.common.util.DateUtils;
 import com.j.qsng.common.util.IDUtils;
-import com.j.qsng.common.util.IdcardUtils;
 import com.j.qsng.dto.AdminUserPicDto;
 import com.j.qsng.dto.ChooseUserPicDto;
 import com.j.qsng.dto.UserPicScorePrizeDto;
 import com.j.qsng.dto.UserPicShowDto;
 import com.j.qsng.model.ColumnContent;
 import com.j.qsng.model.User;
-import com.j.qsng.model.UserPicPrize;
 import com.j.qsng.model.UserPrize;
-import com.j.qsng.model.admin.AdminUserPic;
 import com.j.qsng.service.*;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.util.List;
 
@@ -319,24 +312,32 @@ public class IndexController
 		}
 		int offset=0;
 		int size=0;
+
+		if(RewardType.SPECUAK_PRIZE.equals(type)){
+			//特等奖1-3
+			offset=0;
+			size=3;
+			List<ChooseUserPicDto>  dataList= chooseLogService.queryPrizeInfo(ChooseUtils.SECOND_PERIOD,offset,size);
+			modelAndView.addObject("data",dataList);
+		}
 		if(RewardType.FIRTST_PRIZE.equals(type)){
-			 offset=0;
+			 offset=3;
 			 size=5;
 			List<ChooseUserPicDto>  dataList= chooseLogService.queryPrizeInfo(ChooseUtils.SECOND_PERIOD,offset,size);
 			modelAndView.addObject("data",dataList);
 		}else if(RewardType.SECONDE_PRIZE.equals(type)){
-			offset=5;
+			offset=8;
 			size=10;
 			List<ChooseUserPicDto>  dataList= chooseLogService.queryPrizeInfo(ChooseUtils.SECOND_PERIOD,offset,size);
 			modelAndView.addObject("data",dataList);
 		}else if(RewardType.THIRD_PRIZE.equals(type)){
-			offset=15;
-			size=30;
+			offset=18;
+			size=20;
 			List<ChooseUserPicDto>  dataList= chooseLogService.queryPrizeInfo(ChooseUtils.SECOND_PERIOD,offset,size);
 			modelAndView.addObject("data",dataList);
 		}else if(RewardType.EXCELLENT_PRIZE.equals(type)){
-			offset=45;
-			size=50;
+			offset=38;
+			size=62;
 			List<ChooseUserPicDto>  dataList= chooseLogService.queryPrizeInfo(ChooseUtils.SECOND_PERIOD,offset,size);
 			modelAndView.addObject("data",dataList);
 		}else if(RewardType.POPULAR_PRIZE.equals(type)){

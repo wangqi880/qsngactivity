@@ -51,6 +51,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             <div class="w_780 left">
                 <div class="title" style="text-align: center">
                     <div>
+                        <button value="6" class="layui-btn layui-btn-normal" onclick="getRewardList(this)">特等奖</button>
                         <button value="1" class="layui-btn layui-btn-normal" onclick="getRewardList(this)">一等奖</button>
                         <button value="2" class="layui-btn layui-btn-normal" onclick="getRewardList(this)">二等奖</button>
                         <button value="3" class="layui-btn layui-btn-normal" onclick="getRewardList(this)">三等奖</button>
