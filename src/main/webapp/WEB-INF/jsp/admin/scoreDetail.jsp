@@ -18,42 +18,39 @@
 </head>
 <body>
 <div id="content">
-	<h3 class="admin_link_bar">
-	</h3>
 	
-	<table width="90%" cellspacing="0" cellPadding="0" id="listTable">
+	<table width="96%" cellspacing="0" cellPadding="0" id="listTable">
 		<thead>
 		<tr>
-			<td>用户名</td>
+			<td>账号</td>
 			<td>姓名</td>
-			<td>电话</td>
-			<td>作品名</td>
-			<td>图片</td>
-			<td>得分</td>
+			
+			<td>联系方式</td>
+			<td>打分情况</td>
+			<td>数量</td>
 		</tr>
 		</thead>
 		<tbody>
-		<c:forEach items="${chooseUserPicDtoList }" var="userpic">
+		<c:forEach items="${list }" var="scoreInfo">
 			<tr>
-
 				<td>
-					${userpic.username}
+					${scoreInfo.chooseUserName}
+				</td>
+				<td>${scoreInfo.name }&nbsp;</td>
+				<td>
+						${scoreInfo.msisdn }&nbsp;
 				</td>
 				<td>
-						${userpic.name}
+					<c:if test="${scoreInfo.status =='score'}">
+						已打分作品
+					</c:if>
+					<c:if test="${scoreInfo.status =='unscore'}">
+						未打分作品
+					</c:if>
 				</td>
 				<td>
-						${userpic.msisdn}
+						${scoreInfo.num }&nbsp;
 				</td>
-				<td>
-						${userpic.imageName}
-				</td>
-				<td>
-					<img src="<%=request.getContextPath() %>/resources/upload/thumbnail/${userpic.newName}" alt="${userpic.imageName}" style="width: 200px;height: 160px">
-
-				</td>
-
-				<td><span style="color: red">${userpic.score}</span></td>
 			</tr>
 		</c:forEach>
 		</tbody>
@@ -71,8 +68,3 @@
 </div>
 </body>
 </html>
-<script type="text/javascript">
-
-    $(document).ready(function(){
-    })
-</script>

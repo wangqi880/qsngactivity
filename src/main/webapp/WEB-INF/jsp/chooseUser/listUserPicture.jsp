@@ -15,6 +15,12 @@
 	<style type="text/css">
 		.div1{ float:left; height:30px; width:100px; border-right:8px}
 		.div2{ border-left:0 none; float:left; height:30px; width:60px;}
+		input[type=checkbox] {
+			-ms-transform: scale(3); /* IE */
+			-moz-transform: scale(3); /* FireFox */
+			-webkit-transform: scale(3); /* Safari and Chrome */
+			-o-transform: scale(3); /* Opera */
+		}
 	</style>
 
 <!--图文-->
@@ -62,13 +68,13 @@
 					<td width="20%" align="left" valign="top" style="word-wrap:break-word;">
 							${userpic.intro}
 					</td>
-					<td  width="46%">
+					<td  width="38%">
 						<%--<section class="demos">
 							<div style="width: 250px;height: 200px; background-image:url(<%=request.getContextPath() %>/resources/upload/${userpic.newName})" class="demo-image first" data-image="<%=request.getContextPath() %>/resources/upload/${userpic.newName}" data-title="${userpic.imageName}" data-caption="${userpic.intro}"></div>
 						</section>--%>
-						<div><a href="<%=request.getContextPath() %>/resources/upload/${userpic.newName}" target="_blank"> <img src="<%=request.getContextPath() %>/resources/upload/thumFilePath/${userpic.newName}"  style="display:block;width:40%;"  alt=""></a></div>
+						<div><a href="<%=request.getContextPath() %>/resources/upload/${userpic.newName}" target="_blank"> <img src="<%=request.getContextPath() %>/resources/upload/thumbnail/${userpic.newName}"  style="display:block;width:40%;"  alt=""></a></div>
 					</td>
-					<td  width="20%">
+					<td  width="27%" align="center">
 						<!--没有选中-->
 						<c:if test="${userpic.chooseIs eq 0 }">
 							<input id="${userpic.id}" name="id" type="checkbox" value="${userpic.id}" />

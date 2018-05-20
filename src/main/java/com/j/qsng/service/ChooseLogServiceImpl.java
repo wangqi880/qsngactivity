@@ -7,6 +7,7 @@ import com.j.qsng.dao.ChooseLogMapper;
 import com.j.qsng.dto.AdminuserChoosePeriodNum;
 import com.j.qsng.dto.ChooseUserPicDto;
 import com.j.qsng.dto.UserPicScorePrizeDto;
+import com.j.qsng.dto.chooseScoreInfo;
 import com.j.qsng.model.admin.ChooseLog;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -182,7 +183,8 @@ public class ChooseLogServiceImpl implements ChooseLogService
 		return page;
 	}
 
-	public Pager<ChooseUserPicDto> queryPagerDetailByPeriodAndIsChoose(String userId,String chooseIs, String period,Integer pageOffsetIndex) {
+	//flag不为null表示表示使用点赞数排序，其他使用编号
+	public Pager<ChooseUserPicDto> queryPagerDetailByPeriodAndIsChoose(String userId,String chooseIs, String period,Integer pageOffsetIndex,String flag) {
 		Map map = new HashMap();
 		Integer pageSize = SystemContext.getPageSize();
 		Integer pageOffset = SystemContext.getPageOffset();
@@ -197,6 +199,7 @@ public class ChooseLogServiceImpl implements ChooseLogService
 		map.put("chooseIs",chooseIs);
 		map.put("period",period);
 		map.put("userId",userId);
+		map.put("flag",flag);
 		Pager<ChooseUserPicDto> page = new Pager<ChooseUserPicDto>();
 		int totole = queryNumByPeriodAndChecked(period,chooseIs);
 		page.setTotal(totole);
@@ -205,6 +208,10 @@ public class ChooseLogServiceImpl implements ChooseLogService
 		List<ChooseUserPicDto> list=chooseLogMapper.queryPagerDetailByPeriodAndIsChoose(map);
 		page.setDatas(list);
 		return page;
+	}
+
+	public Pager<ChooseUserPicDto> queryPagerDetailByPeriodAndIsChoose(String userId,String chooseIs, String period,Integer pageOffsetIndex) {
+		return queryPagerDetailByPeriodAndIsChoose(userId,chooseIs,period,pageOffsetIndex,null);
 	}
 
 	public List<ChooseUserPicDto> queryUserIdAndPeriod(String userId, String period, String chooseIs) {
@@ -237,6 +244,10 @@ public class ChooseLogServiceImpl implements ChooseLogService
 		map.put("period",period);
 		map.put("chooseIs",chooseIs);
 		return  chooseLogMapper.queryALLDetailByPeriodAndIsChoose(map);
+	}
+	//查询各个评委打分详情
+	public List<chooseScoreInfo>  chooseScoreInfos(){
+		return  chooseLogMapper.chooseScoreInfos();
 	}
 
 }

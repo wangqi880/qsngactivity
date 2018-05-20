@@ -63,7 +63,7 @@
                m2.msisdn,
                m2.sex,
                m3.newName,
-               m1.score
+               truncate(m1.score,2)as score
           FROM (SELECT
                       t1.id,
                       t2.userId,
@@ -93,7 +93,7 @@
                m2.msisdn,
                m2.sex,
                m3.newName,
-               m1.score
+               truncate(m1.score,2) as score
           FROM (SELECT
                       t1.id,
                       t2.userId,
@@ -104,7 +104,7 @@
                        t2.intro,
                        t1.score
                   FROM t_choose_log t1 LEFT JOIN t_user_pic t2 ON t1.prodId = t2.id
-                 WHERE t1.chooseIs = #{chooseIs} AND t1.choosePeriod = #{period}) m1
+                 WHERE t1.chooseIs = #{chooseIs} AND t1.choosePeriod = #{period} order by t1.score desc) m1
                LEFT JOIN t_user m2 ON m1.userId = m2.id
                LEFT JOIN t_attachment m3 ON m1.attachmentId = m3.id
     </select>
@@ -144,7 +144,7 @@
                m2.msisdn,
                m2.sex,
                m3.newName,
-               m1.score
+               truncate(m1.score,2) as score
           FROM (SELECT
                       t1.id,
                       t2.userId,
@@ -275,7 +275,13 @@
         </if>
         LEFT JOIN t_attachment m3 ON m1.attachmentId = m3.id
         left join t_userpic_prize m4 on m1.prodId=m4.prodId
-        order by m1.prodId ASC limit #{offset},#{size}
+        <if test="flag!=null and  flag!=''">
+            order by m4.prizeNum desc
+        </if>
+        <if test="flag==null or  flag==''">
+           order by m1.prodId ASC
+        </if>
+         limit #{offset},#{size}
     </select>
 
 
@@ -389,4 +395,25 @@
         left join t_userpic_prize m4 on m1.prodId=m4.prodId
         order by m1.prodId  asc,m1.id
     </select>
+
+    <select id="chooseScoreInfos" resultType="com.j.qsng.dto.chooseScoreInfo">
+        SELECT m1.name,
+      m1.msisdn,
+       m2.chooseUsername,
+       m2.status,
+       m2.num
+  FROM t_admin_user m1
+       JOIN
+       (SELECT t.chooseUsername, t.status, count(1) AS num
+          FROM (SELECT t.chooseUsername,
+                       CASE
+                          WHEN t.score > 0 THEN "score"
+                          WHEN t.score = 0 THEN "unscore"
+                       END
+                          AS status
+                  FROM t_user_score_log t) t
+        GROUP BY t.chooseUsername, t.status) m2
+          ON m1.username = m2.chooseUsername
+    </select>
+
 </mapper>

@@ -4,6 +4,7 @@ import com.j.qsng.common.pojo.Pager;
 import com.j.qsng.dto.AdminuserChoosePeriodNum;
 import com.j.qsng.dto.ChooseUserPicDto;
 import com.j.qsng.dto.UserPicScorePrizeDto;
+import com.j.qsng.dto.chooseScoreInfo;
 import com.j.qsng.model.admin.ChooseLog;
 
 import java.util.List;
@@ -64,7 +65,7 @@ public interface ChooseLogService
 
 	//根据期数和是否选中查询详细信息(分页)
 	Pager<ChooseUserPicDto> queryPagerDetailByPeriodAndIsChoose(String userId,String chooseIs,String period,Integer pageOffset);
-
+	Pager<ChooseUserPicDto> queryPagerDetailByPeriodAndIsChoose(String userId,String chooseIs,String period,Integer pageOffset,String flag);
 	//根据前段用户的id和期数,是否已选中，来查询该用户已经是否被选的详情,该用户id是全网用户id
 	List<ChooseUserPicDto> queryUserIdAndPeriod(String userId,String period,String chooseIs);
 
@@ -75,4 +76,7 @@ public interface ChooseLogService
 
 	//为了定位查询所有详情信息
 	List<ChooseUserPicDto> queryALLDetailByPeriodAndIsChoose(String period, String chooseIs);
+
+	//查询各个评委打分详情
+	public List<chooseScoreInfo>  chooseScoreInfos();
 }

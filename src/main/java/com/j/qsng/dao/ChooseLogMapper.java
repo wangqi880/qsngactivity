@@ -1,10 +1,7 @@
 package com.j.qsng.dao;
 
 import com.github.pagehelper.Page;
-import com.j.qsng.dto.AdminuserChoosePeriodNum;
-import com.j.qsng.dto.ChooseUserPicDto;
-import com.j.qsng.dto.UserPicScorePrizeDto;
-import com.j.qsng.dto.UserScoreLogDto;
+import com.j.qsng.dto.*;
 import com.j.qsng.model.admin.ChooseLog;
 
 import java.util.List;
@@ -78,4 +75,7 @@ public interface ChooseLogMapper
 
 	//为了定位查询所有详情信息
 	List<ChooseUserPicDto> queryALLDetailByPeriodAndIsChoose(Map map);
+
+	//查询各个评委打分详情
+	public List<chooseScoreInfo>  chooseScoreInfos();
 }

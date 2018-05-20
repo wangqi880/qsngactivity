@@ -32,7 +32,10 @@ $(function(){
 		<a href="<%=request.getContextPath() %>/admin/activityStatus" target="content">活动状态</a>
 	</li>
 	<li class="navChild">
-		<a href="<%=request.getContextPath() %>/admin/chooseAndScoreInfo" target="content">选择和打分详情</a>
+		<a href="<%=request.getContextPath() %>/admin/chooseAndScoreInfo" target="content">选择详情</a>
+	</li>
+	<li class="navChild">
+		<a href="<%=request.getContextPath() %>/admin/scoreDetail" target="content">打分详情</a>
 	</li>
 </ul>
 </c:if>
@@ -49,6 +52,9 @@ $(function(){
 	</li>
 	<li class="navChild">
 		<a href="<%=request.getContextPath() %>/chooseUser/listUserPicture/3" target="content">第三次打分</a>
+	</li>
+	<li class="navChild">
+		<a href="<%=request.getContextPath() %>/chooseUser/unscore" target="content">查看未打分作品</a>
 	</li>
 	<li class="navChild">
 		<a href="<%=request.getContextPath() %>/chooseUser/seeUserPicScore" target="content">查看得分</a>

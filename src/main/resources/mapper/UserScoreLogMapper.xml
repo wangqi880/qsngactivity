@@ -5,7 +5,7 @@
     <resultMap id="userScoreLog" type="com.j.qsng.model.admin.UserScoreLog" >
         <id column="id" property="id" jdbcType="VARCHAR" />
         <result column="chooseLogId" property="chooseLogId" jdbcType="VARCHAR" />
-        <result column="score" property="score" jdbcType="INTEGER" />
+        <result column="score" property="score" jdbcType="DOUBLE" />
         <result column="chooseUsername" property="chooseUsername" jdbcType="VARCHAR" />
         <result column="insertTime" property="insertTime" jdbcType="VARCHAR" />
     </resultMap>
@@ -31,7 +31,7 @@
         select * from t_user_score_log t where t.chooseLogId=#{chooseLogId}
     </select>
 
-    <select id="excChooseLogIdAvg" parameterType="string" resultType="double">
+    <select id="excChooseLogIdAvg" parameterType="string" resultType="DOUBLE">
         select avg(t.score) from t_user_score_log t where t.chooseLogId=#{chooseLogId}  and t.score!=0  group by chooseLogId
     </select>
 
@@ -57,7 +57,7 @@
                m2.msisdn,
                m2.sex,
                m3.newName,
-               m1.score
+        truncate(m1.score,2) as score
           FROM (SELECT t1.userScoreId,
                        t1.id,
                        t2.userId,
@@ -115,7 +115,7 @@
         m2.msisdn,
         m2.sex,
         m3.newName,
-        m1.score
+        truncate(m1.score,2) as score
         FROM (SELECT t1.userScoreId,
         t1.id,
         t2.userId,
@@ -148,17 +148,26 @@
         t1
         LEFT JOIN t_user_pic t2 ON t1.prodId = t2.id) m1
         LEFT JOIN t_user m2 ON m1.userId = m2.id
-        LEFT JOIN t_attachment m3 ON m1.attachmentId = m3.id order by m1.score ASC limit  #{offset},#{size}
+        LEFT JOIN t_attachment m3 ON m1.attachmentId = m3.id order by m1.id ASC limit  #{offset},#{size}
     </select>
 
-    <select id="queryNumByChooseusername" parameterType="string" resultType="int">
+    <select id="queryNumByChooseusername" parameterType="map" resultType="int">
         select count(1) from t_user_score_log WHERE chooseusername =#{chooseusername}
+        <if test="score==1">
+            and score>0
+        </if>
+        <if test="score==0">
+            and score=0
+        </if>
     </select>
 
     <select id="queryNumByChooseusernameAndScoreIs" parameterType="map" resultType="int">
         select count(1) from t_user_score_log WHERE chooseusername =#{chooseusername}
-        <if test="isScore == '1'">
+        <if test="score==1">
             and score>0
+        </if>
+        <if test="score==0">
+            and score=0
         </if>
     </select>
 </mapper>

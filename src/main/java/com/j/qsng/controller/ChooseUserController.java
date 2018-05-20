@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
+import java.awt.*;
 import java.util.List;
 
 /**
@@ -165,7 +166,7 @@ public class ChooseUserController
 		return resp;
 	}
 
-	@RequestMapping("/chooseUser/updateUserScore/{id}/{score}")
+	@RequestMapping("/chooseUser/updateUserScore/{id}/{score:.+}")
 	@ResponseBody
 	public  Object updateUserScore(@PathVariable String id,@PathVariable String score){
 		BaseResp resp = new BaseResp();
@@ -190,10 +191,10 @@ public class ChooseUserController
 		}
 
 
-		int score_value=0;
+		double score_value=0;
 		try
 		{
-			score_value = Integer.parseInt(score);
+			score_value = Double.parseDouble(score);
 		}catch (Exception e){
 			resp.setCode("000002");
 			resp.setInfo("分数格式不正确");
@@ -241,6 +242,24 @@ public class ChooseUserController
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.setViewName("/chooseUser/showPrizeNum");
 		Pager<UserPicScorePrizeDto> page = chooseLogService.queryPageDetailScorePrizeNum();
+		modelAndView.addObject("page",page);
+		return modelAndView;
+
+	}
+
+	//查看评委未打分的作品
+	@RequestMapping("/chooseUser/unscore")
+	public ModelAndView unscore(HttpSession session){
+		ModelAndView modelAndView = new ModelAndView();
+		modelAndView.setViewName("/chooseUser/unscore");
+		AdminUser adminUser = (AdminUser) session.getAttribute("adminUser");
+		String adminUsername = adminUser.getUsername();
+		Pager<UserScoreLogDto> page = userScoreLogService.queryPageDetailByUsernameAndScoreIs(adminUsername,"0");
+		int chooseNum = userScoreLogService.queryNumByChooseusernameAndScoreIs(adminUsername,"1");
+		int allNum = userScoreLogService.queryNumByChooseusernameAndScoreIs(adminUsername,null);
+		modelAndView.addObject("chooseNum",chooseNum);
+		modelAndView.addObject("allNum",allNum);
+		modelAndView.addObject("unChooseNum",allNum-chooseNum);
 		modelAndView.addObject("page",page);
 		return modelAndView;
 

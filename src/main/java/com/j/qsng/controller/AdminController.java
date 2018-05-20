@@ -7,6 +7,7 @@ import com.j.qsng.common.util.DateUtils;
 import com.j.qsng.common.util.IDUtils;
 import com.j.qsng.dto.AdminuserChoosePeriodNum;
 import com.j.qsng.dto.ChooseUserPicDto;
+import com.j.qsng.dto.chooseScoreInfo;
 import com.j.qsng.model.CongfigPojo;
 import com.j.qsng.model.UserPic;
 import com.j.qsng.model.admin.*;
@@ -473,4 +474,15 @@ public class AdminController
 		modelAndView.setViewName("admin/periodChooseDetail");
 		return modelAndView;
 	}
+
+	//评委打分情况,每个用户应该打多少
+	@RequestMapping("/admin/scoreDetail")
+	public ModelAndView scoreDetail(){
+		ModelAndView modelAndView  =new ModelAndView();
+		modelAndView.setViewName("admin/scoreDetail");
+		List<chooseScoreInfo> list = chooseLogService.chooseScoreInfos();
+		modelAndView.addObject("list",list);
+		return modelAndView;
+	}
+
 }

@@ -275,7 +275,7 @@ public class IndexController
 
 			}
 			//人气榜
-			Pager<ChooseUserPicDto> renqibang= chooseLogService.queryPagerDetailByPeriodAndIsChoose(null,ChooseUtils.YES_CHOOSE,ChooseUtils.FIRST_PERIOD,1);
+			Pager<ChooseUserPicDto> renqibang= chooseLogService.queryPagerDetailByPeriodAndIsChoose(null,ChooseUtils.YES_CHOOSE,ChooseUtils.FIRST_PERIOD,1,"1");
 			modelAndView.addObject("renqi",renqibang);
 		}else {
 			modelAndView.addObject("message","初赛还没结束，敬请期待！");

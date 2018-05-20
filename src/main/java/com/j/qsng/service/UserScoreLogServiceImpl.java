@@ -79,7 +79,7 @@ public class UserScoreLogServiceImpl implements UserScoreLogService
 		map.put("chooseusername",chooseusername);
 		map.put("score",score);
 		Pager<UserScoreLogDto> page = new Pager<UserScoreLogDto>();
-		int totole = userScoreLogMapper.queryNumByChooseusername(chooseusername);
+		int totole = userScoreLogMapper.queryNumByChooseusername(map);
 		page.setTotal(totole);
 		page.setSize(pageSize);
 		page.setOffset(pageOffset);
@@ -91,7 +91,7 @@ public class UserScoreLogServiceImpl implements UserScoreLogService
 	public int queryNumByChooseusernameAndScoreIs(String chooseusername, String isScore) {
 		Map map = new HashMap();
 		map.put("chooseusername",chooseusername);
-		map.put("isScore",isScore);
+		map.put("score",isScore);
 		return userScoreLogMapper.queryNumByChooseusernameAndScoreIs(map);
 	}
 }

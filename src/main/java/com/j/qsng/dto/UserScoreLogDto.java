@@ -22,5 +22,5 @@ public class UserScoreLogDto
 	String sex;
 	String newName;
 	//每个用户的score
-	int score;
+	double score;
 }

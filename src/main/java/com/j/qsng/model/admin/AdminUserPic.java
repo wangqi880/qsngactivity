@@ -15,6 +15,6 @@ public class AdminUserPic
 	String intro;
 	String newName;
 	int prizeNum;
-	int score;
+	double score;
 	String status;
 }

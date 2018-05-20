@@ -148,21 +148,29 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
     <div class="right w_280">
     <div class="title"><h3>人气榜</h3></div>
-            <table width="320" border="0" cellspacing="0" cellpadding="0" align="center" class="border mar_t_30 line_24 font_14">
+            <table width="300" border="0" cellspacing="0" cellpadding="0" align="center" class="border mar_t_30 line_24 font_14">
                 <tr>
-                    <td width="100" height="30" align="center" valign="middle" bgcolor="#64b3ee" class="white">排名</td>
-                    <td width="122" align="" valign="middle" bgcolor="#64b3ee" class="white">作品名称</td>
-                    <td width="75" align="" valign="middle" bgcolor="#64b3ee" class="white">作者</td>
-                    <td width="100" align="" valign="middle" bgcolor="#64b3ee" class="white">票数</td>
-                    <td width="100" align="" valign="middle" bgcolor="#64b3ee" class="white">编号</td>
+                    <td width="10%" height="30" align="center" valign="middle" bgcolor="#64b3ee" class="white">排名</td>
+                    <td width="35%" align="left" valign="middle" bgcolor="#64b3ee" class="white">作品名称</td>
+                    <td width="25%" align="left" valign="middle" bgcolor="#64b3ee" class="white">作者</td>
+                    <td width="20%" align="center" valign="middle" bgcolor="#64b3ee" class="white">票数</td>
+                    <td width="10%" align="center" valign="middle" bgcolor="#64b3ee" class="white">编号</td>
                 </tr>
                 <c:forEach items="${renqi.datas}" var="item" varStatus="status">
                     <tr>
-                        <td height="34" align="center" valign="middle" bgcolor="#F4F4F4"><em>${status.index+1}</em></td>
-                        <td align="" valign="middle" bgcolor="#F4F4F4"><a href="">${item.imageName}</a></td>
-                        <td align="" valign="middle" bgcolor="#F4F4F4">${item.name}</td>
-                        <td align="" valign="middle" bgcolor="#F4F4F4"><i>${item.prizeNum}</i></td>
-                        <td align="" valign="middle" bgcolor="#F4F4F4">${item.prodId}</td>
+                        <td width="10%" height="34" align="center" valign="middle" bgcolor="#F4F4F4"><em>${status.index+1}</em></td>
+                        <td width="30%" align="left" valign="middle" bgcolor="#F4F4F4">
+                           <c:if test="${item.imageName.length()>6}"><a title="${item.imageName}"> ${fn:substring(item.imageName, 0, 6)}...</a></c:if>
+                            <c:if test="${item.imageName.length()<=6}"><a title="${item.imageName}"> ${item.imageName}</a></c:if>
+
+                        </td>
+                        <td width="30%" align="left" valign="middle" bgcolor="#F4F4F4">
+                            <c:if test="${item.name.length()>6}"> ${fn:substring(item.name, 0, 6)}...</c:if>
+                            <c:if test="${item.name.length()<=6}">  ${item.name}</c:if>
+
+                        </td>
+                        <td width="20%" align="center" valign="middle" bgcolor="#F4F4F4"><i>${item.prizeNum}</i></td>
+                        <td width="10%" align="center" valign="middle" bgcolor="#F4F4F4">${item.prodId}</td>
                     </tr>
                 </c:forEach>
             </table>

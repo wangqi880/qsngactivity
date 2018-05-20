@@ -89,7 +89,7 @@
             elem:$('#page2'),		//指定的元素
             callback:function(n){	//回调函数
                 //这里修改分页之后重新调用首页(带分页参数)
-                location.replace("<%= request.getContextPath()%>/chooseUser/listUserPicture/${period}?pager.offset="+n);
+                location.replace("<%= request.getContextPath()%>/chooseUser/unscore?pager.offset="+n);
             }
         });
 	</script>

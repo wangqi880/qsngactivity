@@ -305,7 +305,7 @@ public class UserContoller
 				}
 			}
 			if(!CollectionUtils.isEmpty(huojiangList)){
-				stage_message="恭喜你获奖，请在获奖名单中查看。已获奖名单为准。";
+				stage_message="恭喜你获奖，请在获奖名单中查看， 以获奖名单为准。";
 			}
 			if(CollectionUtils.isEmpty(huojiangList)){
 				List<ChooseUserPicDto>  huanyDataList= chooseLogService.queryPrizeInfo(ChooseUtils.FIRST_PERIOD,0,5);
